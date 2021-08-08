@@ -1,0 +1,16 @@
+
+.navbar {
+    min-height : 12.5vh;
+} .icon {
+    height : 6.25vh;
+} .section {
+    margin-top : 12.5vh;
+} .zoom {
+    font-size : 500%;
+} .text-justify {
+    text-align : justify;
+} .line {
+    height : 3px;
+    border-radius: 3px;
+    background-color : #45AAF2;
+}

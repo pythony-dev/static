@@ -1,0 +1,1 @@
+<footer class="col-12 col-md-10 col-xl-8 offset-md-1 offset-xl-2 py-5"> Copyright © 2021 <?= $parameters["getText"]("navbar-title") . " - " . $parameters["getText"]("footer"); ?> - Version 1.0.0 </footer>

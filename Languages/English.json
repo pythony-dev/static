@@ -1,0 +1,50 @@
+{
+    "title-home" : "Home",
+    "title-news" : "News",
+    "title-contact" : "Contact",
+    "title-error" : "Error",
+
+    "navbar-title" : "Static",
+    "navbar-home" : "Home",
+    "navbar-news" : "News",
+    "navbar-contact" : "Contact",
+    "navbar-language" : "Language",
+
+    "footer" : "All Rights Reserved",
+
+    "home-main-title" : "Static",
+    "home-main-subtitle" : "Accelerate the Development of your Web Project",
+    "home-main-content" : "The development of a web project is a long step, during which you have to re-program the same basics common to any website. This is a useless waste of time for each new project, but it is still a necessary step. Fortunately for you, there is a solution : Static, the framework that will implement all these building blocks for you. This will allow you to focus on what matters most to you : The success of your project. And for that, I propose you to discover right now how this framework will optimize your future developments.",
+    "home-models-title" : "Models",
+    "home-models-content" : "Every web project requires connecting to and manipulating a database. Yet, with all the different environments and security rules in place, a simple connection can be a nightmare. And that's where Static comes in : By allowing you to automatically define your environments and securing all your queries, you'll never see databases the same way again.",
+    "home-views-title" : "Views",
+    "home-views-content" : "The design is an essential point of your website, because it is related to the feeling of your visitors during their navigation. It is therefore essential to have clear, simplified and consistent pages. With Static, you can unify your design by defining a global theme, and set up shared components between several pages.",
+    "home-controllers-title" : "Controllers",
+    "home-controllers-content" : "Each request made to your site will involve specific actions. Whether it's retrieving a blog post, or authenticating to access a protected resource, these rules must be consistent with each other. Static simplifies this by providing ready-to-use classes that you can reuse and customize as needed.",
+    "home-requests-title" : "Requests",
+    "home-requests-content" : "Any web application must be able to manage an API to communicate with its database. Static automates this by proposing specific routes, allowing to communicate more simply with the database.",
+    "home-translate-title" : "Translate",
+    "home-translate-content" : "Your site is used around the world, and you need to display its content in multiple languages ? By default, Static simply switches between English and French text, while remembering the language of each user. But you can also add new languages in a few clicks, and thus extend your popularity in new countries.",
+    "home-emails-title" : "Emails",
+    "home-emails-content" : "You want to exchange regularly with your visitors, or to warn them about each new publication ? Then take a look at Static's email system. While being fully integrated with the rest of your site, you can send emails without going into technical details. And of course, you can adapt to the preferences and language of each user.",
+    "home-download" : "Download Static on GitHub",
+
+    "news-title" : "News",
+    "news-content" : "Want to know the origins of Static ? Find out about upcoming features ? Or simply get some tips on how to use it better ? Just click on the article that interests you, and learn more about your favorite web development framework.",
+    "news-button" : "Read this Article",
+
+    "article-published" : "Published on",
+
+    "contact-title" : "Contact",
+    "contact-content" : "You want to ask us a question about using Static ? Help us in its development ? Or simply thank us for it ? Use the form below, and we'll get back to you as soon as possible.",
+    "contact-email" : "Email Address (steve@email.com)",
+    "contact-message" : "Your Message (I would like to ask you if…)",
+    "contact-submit" : "Send",
+
+    "emails-settings-header" : "MIME-Version : 1.0\nContent-type : text/html; charset=utf-8\nFrom : \"The Static Team\" <hello@email.com>",
+    "emails-settings-copy" : "MIME-Version : 1.0\nContent-type : text/html; charset=utf-8\nFrom : \"The Static Team\" <hello@email.com>\nBcc : private@email.com",
+    "emails-settings-footer" : " <br/> <br/> Sincerely, <br/> <br/> The Static Team <br/> <br/> To unsubscribe, you can contact us via <a href=\"https://www.website.com\"> our website </a> or <a href=\"mailto:hello@email.com\"> by email. </a> ",
+
+    "emails-contact-title" : "Thanks for your Message",
+    "emails-contact-content" : "Hello, <br/> <br/> Thank you for your message. We will get back to you as soon as possible to respond."
+}
