@@ -14,11 +14,12 @@
     Static\Kernel::addScript("https://code.jquery.com/jquery-3.5.0.min.js");
     Static\Kernel::addScript("/Public/Scripts/Index.js");
 
-    Static\Kernel::addRoute("error", "/error");
     Static\Kernel::addRoute("home", "/");
     Static\Kernel::addRoute("news", "/news");
-    Static\Kernel::addRoute("article", "/news/(link)");
+    Static\Kernel::addRoute("news", "/news/(page)");
+    Static\Kernel::addRoute("article", "/article/(link)");
     Static\Kernel::addRoute("contact", "/contact");
+    Static\Kernel::addRoute("error", "/error");
     Static\Kernel::addRequest("start");
     Static\Kernel::addRequest("language");
     Static\Kernel::addRequest("contact");

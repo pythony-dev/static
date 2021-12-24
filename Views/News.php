@@ -16,4 +16,5 @@
             </div>
         </div>
     <?php } ?>
+    <?= \Static\Components\Pagination::create($parameters["page"], $parameters["limit"], $parameters["getPath"]("/news")); ?>
 </article>

@@ -13,7 +13,7 @@
             <script src="<?= $parameters["getPath"]($script); ?>" defer> </script>
         <?php } ?>
     </head>
-    <body class="container text-center" style="background-image : url('<?= $parameters["getPath"]("/Public/Images/Main/Background.png"); ?>')">
+    <body class="container p-0 text-center" style="background-image : url('<?= $parameters["getPath"]("/Public/Images/Main/Background.png"); ?>')">
         <?php require_once("Views/Navbar.php"); ?>
         <section class="bg-white shadow border rounded-bottom section">
             <?php

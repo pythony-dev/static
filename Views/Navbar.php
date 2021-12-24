@@ -1,6 +1,6 @@
 <nav class="fixed-top justify-content-around px-5 navbar navbar-expand-md navbar-light bg-light shadow border rounded-bottom">
     <a class="d-flex navbar-brand" href="<?= $parameters["getPath"]("/"); ?>">
-        <img class="pe-4 icon" src="<?= $parameters["getPath"]("/Public/Images/Main/Icon.png"); ?>" alt="Static"/>
+        <img class="pe-4 icon" src="<?= $parameters["getPath"]("/Public/Images/Main/Icon.png"); ?>" alt="<?= $parameters["getText"]("navbar-title"); ?>"/>
         <p class="h1 my-auto ps-4"> <?= $parameters["getText"]("navbar-title"); ?> </p>
     </a>
     <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbar-collapse">

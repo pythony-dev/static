@@ -5,7 +5,7 @@ $(document).ready(() => {
         "referer" : document.referrer,
     })
 
-    $(".language").on("click", event => {
+    $(".language").click(event => {
         $.post("", {
             "request" : "language",
             "language" : $(event.target).attr("language"),

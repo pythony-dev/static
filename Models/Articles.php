@@ -6,12 +6,25 @@
 
     final class Articles extends Database {
 
-        public static function getArticles() {
-            $query = parent::$pdo->prepare("SELECT ID, Title, Overview, Link FROM Articles WHERE Language = :language ORDER BY ID DESC");
+        public static function getArticles($page) {
+            $page = (int)$page;
+
+            if($page <= 0) return array();
+
+            $query = parent::$pdo->prepare("SELECT ID, Title, Overview, Link FROM Articles WHERE Language = :language ORDER BY ID DESC LIMIT :page, 5");
             $query->bindValue(":language", htmlspecialchars(\Static\Languages\Translate::getLanguage()), PDO::PARAM_STR);
+            $query->bindValue(":page", $page * 5 - 5, PDO::PARAM_INT);
             $query->execute();
 
             return $query->fetchAll();
+        }
+
+        public static function count() {
+            $query = parent::$pdo->prepare("SELECT COUNT(ID) AS Count FROM Articles WHERE Language = :language");
+            $query->bindValue(":language", htmlspecialchars(\Static\Languages\Translate::getLanguage()), PDO::PARAM_STR);
+            $query->execute();
+
+            return $query->fetch()["Count"] ?? 0;
         }
 
         public static function getArticle($link) {
