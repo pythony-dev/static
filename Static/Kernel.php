@@ -4,6 +4,8 @@
 
     final class Kernel {
 
+        private static $version = "1.0.2";
+
         private static $link = "";
         private static $styles = array();
         private static $scripts = array();
@@ -46,7 +48,8 @@
         }
 
         public static function start() {
-            if(!array_key_exists("request", $_POST)) {
+            if(!\Static\Models\Requests::check()) return self::setError(429, "Too Many Requests");
+            else if(!array_key_exists("request", $_POST)) {
                 $start = strlen(self::$link) + 1;
                 $search = explode("/", substr((array_key_exists("HTTPS", $_SERVER) ? "https" : "http") . "://" . htmlspecialchars($_SERVER["HTTP_HOST"] . $_SERVER["REDIRECT_URL"]), $start));
 
