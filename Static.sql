@@ -105,6 +105,26 @@ INSERT INTO `Contact` (`ID`, `Sended`, `UserID`, `Email`, `Message`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `Requests`
+--
+
+CREATE TABLE `Requests` (
+  `ID` int(11) NOT NULL,
+  `DateTime` datetime NOT NULL,
+  `IPAddress` varchar(255) NOT NULL,
+  `UserAgent` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `Requests`
+--
+
+INSERT INTO `Requests` (`ID`, `DateTime`, `IPAddress`, `UserAgent`) VALUES
+(1, '2021-12-31 12:00:00', '127.0.0.1', '/');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `Users`
 --
 
@@ -162,6 +182,12 @@ ALTER TABLE `Contact`
   ADD PRIMARY KEY (`ID`);
 
 --
+-- Indexes for table `Requests`
+--
+ALTER TABLE `Requests`
+  ADD PRIMARY KEY (`ID`);
+
+--
 -- Indexes for table `Users`
 --
 ALTER TABLE `Users`
@@ -187,6 +213,12 @@ ALTER TABLE `Articles`
 -- AUTO_INCREMENT for table `Contact`
 --
 ALTER TABLE `Contact`
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `Requests`
+--
+ALTER TABLE `Requests`
   MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
