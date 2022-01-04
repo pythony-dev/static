@@ -7,8 +7,8 @@
     final class Contact extends Database {
 
         public static function create($email, $message) {
-            $query = parent::$pdo->prepare("INSERT INTO Contact (Sended, UserID, Email, Message) VALUES (NOW(), :userID, :email, :message)");
-            $query->bindValue(":userID", (int)\Static\Kernel::getValue($_SESSION, "userID"), PDO::PARAM_INT);
+            $query = parent::$pdo->prepare("INSERT INTO Contact (Sended, SessionID, Email, Message) VALUES (NOW(), :sessionID, :email, :message)");
+            $query->bindValue(":sessionID", (int)\Static\Kernel::getValue($_SESSION, "sessionID"), PDO::PARAM_INT);
             $query->bindValue(":email", htmlspecialchars($email), PDO::PARAM_STR);
             $query->bindValue(":message", htmlspecialchars($message), PDO::PARAM_STR);
 

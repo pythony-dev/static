@@ -90,7 +90,7 @@ INSERT INTO `Articles` (`ID`, `Published`, `Title`, `Overview`, `Content`, `Link
 CREATE TABLE `Contact` (
   `ID` int(11) NOT NULL,
   `Sended` datetime NOT NULL,
-  `UserID` int(11) NOT NULL,
+  `SessionID` int(11) NOT NULL,
   `Email` varchar(255) NOT NULL,
   `Message` varchar(4095) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -99,7 +99,7 @@ CREATE TABLE `Contact` (
 -- Dumping data for table `Contact`
 --
 
-INSERT INTO `Contact` (`ID`, `Sended`, `UserID`, `Email`, `Message`) VALUES
+INSERT INTO `Contact` (`ID`, `Sended`, `SessionID`, `Email`, `Message`) VALUES
 (1, '2021-08-08 16:00:00', 12345, 'steve@email.com', 'I would like to ask you if…');
 
 -- --------------------------------------------------------
@@ -125,22 +125,22 @@ INSERT INTO `Requests` (`ID`, `DateTime`, `IPAddress`, `UserAgent`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `Users`
+-- Table structure for table `Sessions`
 --
 
-CREATE TABLE `Users` (
+CREATE TABLE `Sessions` (
   `ID` int(11) NOT NULL,
   `Created` datetime NOT NULL,
-  `UserID` int(11) NOT NULL,
+  `SessionID` int(11) NOT NULL,
   `IPAddress` varchar(255) NOT NULL,
   `UserAgent` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `Users`
+-- Dumping data for table `Sessions`
 --
 
-INSERT INTO `Users` (`ID`, `Created`, `UserID`, `IPAddress`, `UserAgent`) VALUES
+INSERT INTO `Sessions` (`ID`, `Created`, `SessionID`, `IPAddress`, `UserAgent`) VALUES
 (1, '2021-08-08 16:00:00', 12345, '127.0.0.1', '/');
 
 -- --------------------------------------------------------
@@ -152,7 +152,7 @@ INSERT INTO `Users` (`ID`, `Created`, `UserID`, `IPAddress`, `UserAgent`) VALUES
 CREATE TABLE `Views` (
   `ID` int(11) NOT NULL,
   `Viewed` datetime NOT NULL,
-  `UserID` int(11) NOT NULL,
+  `SessionID` int(11) NOT NULL,
   `Language` varchar(255) NOT NULL,
   `Link` varchar(255) NOT NULL,
   `Referer` varchar(255) NOT NULL
@@ -162,7 +162,7 @@ CREATE TABLE `Views` (
 -- Dumping data for table `Views`
 --
 
-INSERT INTO `Views` (`ID`, `Viewed`, `UserID`, `Language`, `Link`, `Referer`) VALUES
+INSERT INTO `Views` (`ID`, `Viewed`, `SessionID`, `Language`, `Link`, `Referer`) VALUES
 (1, '2021-08-08 16:00:00', 12345, 'English', 'https://www.website.com', 'https://www.website.com');
 
 --
@@ -188,9 +188,9 @@ ALTER TABLE `Requests`
   ADD PRIMARY KEY (`ID`);
 
 --
--- Indexes for table `Users`
+-- Indexes for table `Sessions`
 --
-ALTER TABLE `Users`
+ALTER TABLE `Sessions`
   ADD PRIMARY KEY (`ID`);
 
 --
@@ -222,9 +222,9 @@ ALTER TABLE `Requests`
   MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
--- AUTO_INCREMENT for table `Users`
+-- AUTO_INCREMENT for table `Sessions`
 --
-ALTER TABLE `Users`
+ALTER TABLE `Sessions`
   MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
