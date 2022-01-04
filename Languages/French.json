@@ -1,10 +1,11 @@
 {
+    "project-name" : "Static",
+
+    "title-error" : "Erreur",
     "title-home" : "Accueil",
     "title-news" : "Actualités",
     "title-contact" : "Contact",
-    "title-error" : "Erreur",
 
-    "navbar-title" : "Static",
     "navbar-home" : "Accueil",
     "navbar-news" : "Actualités",
     "navbar-contact" : "Contact",

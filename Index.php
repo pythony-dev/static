@@ -20,6 +20,7 @@
     Static\Kernel::addRoute("article", "/article/(link)");
     Static\Kernel::addRoute("contact", "/contact");
     Static\Kernel::addRoute("error", "/error");
+
     Static\Kernel::addRequest("start");
     Static\Kernel::addRequest("language");
     Static\Kernel::addRequest("contact");

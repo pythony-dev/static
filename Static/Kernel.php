@@ -4,7 +4,7 @@
 
     final class Kernel {
 
-        private static $version = "1.1.0";
+        private static $version = "1.1.1";
 
         private static $link = "";
         private static $styles = array();
@@ -39,11 +39,8 @@
         public static function getParameters() {
             return array(
                 "title" => \Static\Languages\Translate::getText("title-" . lcfirst(self::$route)),
-                "getPath" => "\Static\Kernel::getPath",
-                "getRoute" => "\Static\Kernel::getRoute",
-                "getLanguage" => "\Static\Languages\Translate::getLanguage",
-                "getAllLanguages" => "\Static\Languages\Translate::getAllLanguages",
                 "getText" => "\Static\Languages\Translate::getText",
+                "getPath" => "\Static\Kernel::getPath",
             );
         }
 
