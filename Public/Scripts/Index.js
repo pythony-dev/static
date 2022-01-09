@@ -10,7 +10,19 @@ $(document).ready(() => {
             "request" : "language",
             "language" : $(event.target).attr("language"),
         }).then(response => {
-            if(response.includes("true")) document.location.reload()
+            if(response.includes("true")) location.reload()
+            else alert("Error")
+        }).fail(() => {
+            alert("Error")
+        })
+    })
+
+    $("#logOut").click(event => {
+        $.post("", {
+            "request" : "users",
+            "action" : "logOut"
+        }).then(response => {
+            if(response.includes("true")) location.reload()
             else alert("Error")
         }).fail(() => {
             alert("Error")

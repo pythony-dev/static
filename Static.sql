@@ -146,6 +146,28 @@ INSERT INTO `Sessions` (`ID`, `Created`, `SessionID`, `IPAddress`, `UserAgent`) 
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `Users`
+--
+
+CREATE TABLE `Users` (
+  `ID` int(11) NOT NULL,
+  `Signed` datetime NOT NULL,
+  `Email` varchar(255) NOT NULL,
+  `Username` varchar(255) NOT NULL,
+  `Password` varchar(255) NOT NULL,
+  `Reset` varchar(255) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `Users`
+--
+
+INSERT INTO `Users` (`ID`, `Signed`, `Email`, `Username`, `Password`, `Reset`) VALUES
+(1, '2022-01-09 12:00:00', 'hello@pythony.dev', 'Pythony', 'd7c35a4da36a8fe3d0ebec8e5cc91b0816a18516', NULL);
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `Views`
 --
 
@@ -194,6 +216,12 @@ ALTER TABLE `Sessions`
   ADD PRIMARY KEY (`ID`);
 
 --
+-- Indexes for table `Users`
+--
+ALTER TABLE `Users`
+  ADD PRIMARY KEY (`ID`);
+
+--
 -- Indexes for table `Views`
 --
 ALTER TABLE `Views`
@@ -225,6 +253,12 @@ ALTER TABLE `Requests`
 -- AUTO_INCREMENT for table `Sessions`
 --
 ALTER TABLE `Sessions`
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `Users`
+--
+ALTER TABLE `Users`
   MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --

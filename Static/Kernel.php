@@ -4,7 +4,7 @@
 
     final class Kernel {
 
-        private static $version = "1.1.1";
+        private static $version = "1.1.2";
 
         private static $link = "";
         private static $styles = array();
@@ -12,6 +12,8 @@
         private static $routes = array();
         private static $requests = array();
         private static $route = "";
+
+        private static $salt = "";
 
         public static function setLink($link) {
             self::$link = htmlspecialchars($link);
@@ -36,12 +38,37 @@
             array_push(self::$requests, htmlspecialchars($request));
         }
 
-        public static function getParameters() {
-            return array(
-                "title" => \Static\Languages\Translate::getText("title-" . lcfirst(self::$route)),
-                "getText" => "\Static\Languages\Translate::getText",
-                "getPath" => "\Static\Kernel::getPath",
-            );
+        public static function getRoute() {
+            return self::$route;
+        }
+
+        public static function getSalt() {
+            return self::$salt;
+        }
+
+        public static function setSalt($salt) {
+            self::$salt = htmlspecialchars($salt);
+        }
+
+        public static function getValue($array, $keys) {
+            if(!is_array($keys) && array_key_exists($keys, $array)) return htmlspecialchars($array[$keys]);
+            else if(is_array($keys) && count($keys) == 1 && array_key_exists($keys[0], $array)) return htmlspecialchars($array[$keys[0]]);
+            else if(is_array($keys) && count($keys) > 1) {
+                $key = array_shift($keys);
+
+                if(array_key_exists($key, $array)) return self::getValue($array[$key], $keys);
+            } else return "";
+        }
+
+        public static function getPath($path) {
+            $path = htmlspecialchars($path);
+
+            if(empty($path) || (strlen($path) > 0 && $path[0] == "/")) return self::$link . $path;
+            else return $path;
+        }
+
+        public static function getDateFormat() {
+            return "d/m/Y H:i:s";
         }
 
         public static function start() {
@@ -82,7 +109,7 @@
                         if(!file_exists($view)) return self::setError(404, "No View : " . $view);
                         else if(!class_exists($controller)) return self::setError(404, "No Controller : " . $controller);
 
-                        $parameters = array_merge(self::getParameters(), $controller::start($parameters));
+                        $parameters = $controller::start(array_merge(self::getParameters(), $parameters));
 
                         ob_start();
                         require_once($view);
@@ -117,7 +144,7 @@
         }
 
         public static function setError($error, $text) {
-            $parameters = array_merge(self::getParameters(), \Static\Controllers\Error::start(array(
+            $parameters = \Static\Controllers\Error::start(array_merge(self::getParameters(), array(
                 "error" => (int)$error,
                 "text" => htmlspecialchars($text),
             )));
@@ -137,29 +164,13 @@
             exit();
         }
 
-        public static function getPath($path) {
-            $path = htmlspecialchars($path);
-
-            if(empty($path) || (strlen($path) > 0 && $path[0] == "/")) return self::$link . $path;
-            else return $path;
-        }
-
-        public static function getRoute() {
-            return self::$route;
-        }
-
-        public static function getDateFormat() {
-            return "d/m/Y H:i:s";
-        }
-
-        public static function getValue($array, $keys) {
-            if(!is_array($keys) && array_key_exists($keys, $array)) return htmlspecialchars($array[$keys]);
-            else if(is_array($keys) && count($keys) == 1 && array_key_exists($keys[0], $array)) return htmlspecialchars($array[$keys[0]]);
-            else if(is_array($keys) && count($keys) > 1) {
-                $key = array_shift($keys);
-
-                if(array_key_exists($key, $array)) return self::getValue($array[$key], $keys);
-            } else return "";
+        public static function getParameters() {
+            return array(
+                "userID" => self::getValue($_SESSION, "userID"),
+                "title" => \Static\Languages\Translate::getText("title-" . lcfirst(self::$route)),
+                "getText" => "\Static\Languages\Translate::getText",
+                "getPath" => "\Static\Kernel::getPath",
+            );
         }
 
     }

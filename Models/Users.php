@@ -1,0 +1,112 @@
+<?php
+
+    namespace Static\Models;
+
+    use PDO;
+
+    final class Users extends Database {
+
+        public static function signUp($email, $username) {
+            $email = htmlspecialchars($email);
+            $username = htmlspecialchars($username);
+
+            if(self::isEmail($email) != "success" || self::isUsername($username) != "success") return false;
+
+            $password = self::createPassword();
+
+            $query = parent::$pdo->prepare("INSERT INTO Users (Signed, Email, Username, Password, Reset) VALUES (NOW(), :email, :username, :password, NULL)");
+            $query->bindValue(":email", $email, PDO::PARAM_STR);
+            $query->bindValue(":username", $username, PDO::PARAM_STR);
+            $query->bindValue(":password", sha1($password . \Static\Kernel::getSalt()), PDO::PARAM_STR);
+
+            return $query->execute();
+        }
+
+        public static function logIn($email, $password) {
+            $email = htmlspecialchars($email);
+            $password = sha1(htmlspecialchars($password) . \Static\Kernel::getSalt());
+
+            if(empty($email) || empty($password)) return false;
+
+            $query = parent::$pdo->prepare("SELECT ID, Password, Reset FROM Users WHERE Email = :email");
+            $query->bindValue(":email", $email, PDO::PARAM_STR);
+            $query->execute();
+
+            if(!($results = $query->fetch())) return false;
+
+            $id = (int)$results["ID"];
+
+            if($results["Password"] == $password) {
+                $_SESSION["userID"] = $id;
+
+                $query = parent::$pdo->prepare("UPDATE Users SET Reset = NULL WHERE ID = :id");
+                $query->bindValue(":id", $id, PDO::PARAM_INT);
+
+                return $query->execute();
+            } else if($results["Reset"] == $password) {
+                $_SESSION["userID"] = $id;
+
+                $query = parent::$pdo->prepare("UPDATE Users SET Password = Reset, Reset = NULL WHERE ID = :id");
+                $query->bindValue(":id", $id, PDO::PARAM_INT);
+
+                return $query->execute();
+            } else return false;
+        }
+
+        public static function reset($email) {
+            $email = htmlspecialchars($email);
+
+            if(self::isEmail($email) != "used") return false;
+
+            $reset = self::createPassword();
+
+            $query = parent::$pdo->prepare("UPDATE Users SET Reset = :reset WHERE Email = :email");
+            $query->bindValue(":reset", $reset, PDO::PARAM_STR);
+            $query->bindValue(":email", $email, PDO::PARAM_STR);
+
+            return $query->execute();
+        }
+
+        public static function isEmail($email) {
+            $email = htmlspecialchars($email);
+
+            if(empty($email)) return "empty";
+            else if(!preg_match("#^[0-9A-Za-z-_.]{3,64}@[0-9A-Za-z-_.]{3,64}$#", $email)) return "invalid";
+
+            $query = parent::$pdo->prepare("SELECT ID FROM Users WHERE Email = :email");
+            $query->bindValue(":email", $email, PDO::PARAM_STR);
+            $query->execute();
+
+            return $query->fetch() ? "used" : "success";
+        }
+
+        public static function isUsername($username) {
+            $username = htmlspecialchars($username);
+
+            if(empty($username)) return "empty";
+            else if(!preg_match("#^[0-9A-Za-z]{3,16}$#", $username)) return "invalid";
+
+            $query = parent::$pdo->prepare("SELECT ID FROM Users WHERE Username = :username");
+            $query->bindValue(":username", $username, PDO::PARAM_STR);
+            $query->execute();
+
+            return $query->fetch() ? "used" : "success";
+        }
+
+        public static function createPassword() {
+            $password = "";
+
+            while(strlen($password) != 16) {
+                $random = rand(0, 61);
+
+                if($random < 10) $password .= $random;
+                else if($random < 36) $password .= chr($random + 55);
+                else $password .= chr($random + 61);
+            }
+
+            return $password;
+        }
+
+    }
+
+?>

@@ -14,7 +14,7 @@
         <?php } ?>
     </head>
     <body class="container p-0 text-center" style="background-image : url('<?= $parameters["getPath"]("/Public/Images/Index/Background.png"); ?>')">
-        <?= \Static\Components\Navbar::create(); ?>
+        <?= \Static\Components\Navbar::create($parameters["userID"]); ?>
         <section class="bg-white shadow border rounded-bottom section">
             <?= $body . \Static\Components\Footer::create(); ?>
         </section>

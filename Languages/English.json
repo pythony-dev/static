@@ -5,11 +5,16 @@
     "title-home" : "Home",
     "title-news" : "News",
     "title-contact" : "Contact",
+    "title-signUp" : "Sign Up",
+    "title-logIn" : "Log In",
 
     "navbar-home" : "Home",
     "navbar-news" : "News",
     "navbar-contact" : "Contact",
     "navbar-language" : "Language",
+    "navbar-signUp" : "Sign Up",
+    "navbar-logIn" : "Log In",
+    "navbar-logOut" : "Log Out",
 
     "footer" : "All Rights Reserved",
 
@@ -41,6 +46,19 @@
     "contact-email" : "Email Address (steve@email.com)",
     "contact-message" : "Your Message (I would like to ask you if…)",
     "contact-submit" : "Send",
+
+    "signUp-title" : "Sign Up",
+    "signUp-content" : "Sign up to benefit from all the features of Static, and save your progress. Registration is free and you can delete your account at any time by contacting us. Once your registration is complete, you will receive an email with your password.",
+    "signUp-email" : "Email Address (steve@email.com)",
+    "signUp-username" : "Username (SteveParis)",
+    "signUp-submit" : "Send",
+
+    "logIn-title" : "Log In",
+    "logIn-content" : "By login to your account, you will be able to edit your profile, resume your progress, or continue your advancement. Note that if you are unable to access your account, you can reset your password by clicking on the button at the bottom of the page.",
+    "logIn-email" : "Email Address (steve@email.com)",
+    "logIn-password" : "Password (Steve123@)",
+    "logIn-submit" : "Send",
+    "logIn-reset" : "Reset my Password",
 
     "emails-settings-header" : "MIME-Version : 1.0\nContent-type : text/html; charset=utf-8\nFrom : \"The Static Team\" <hello@email.com>",
     "emails-settings-copy" : "MIME-Version : 1.0\nContent-type : text/html; charset=utf-8\nFrom : \"The Static Team\" <hello@email.com>\nBcc : private@email.com",

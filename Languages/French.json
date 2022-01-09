@@ -5,11 +5,16 @@
     "title-home" : "Accueil",
     "title-news" : "Actualités",
     "title-contact" : "Contact",
+    "title-signUp" : "Inscription",
+    "title-logIn" : "Connexion",
 
     "navbar-home" : "Accueil",
     "navbar-news" : "Actualités",
     "navbar-contact" : "Contact",
     "navbar-language" : "Langue",
+    "navbar-signUp" : "Inscription",
+    "navbar-logIn" : "Connexion",
+    "navbar-logOut" : "Déconnexion",
 
     "footer" : "Tous Droits Réservés",
 
@@ -41,6 +46,19 @@
     "contact-email" : "Adresse Email (steve@email.com)",
     "contact-message" : "Votre Message (J'aimerais vous demander si…)",
     "contact-submit" : "Envoyer",
+
+    "signUp-title" : "Inscription",
+    "signUp-content" : "Inscrivez-vous pour bénéficier de toutes les fonctionnalités de Static, et sauvegarder votre progression. L'inscription est sans aucun engagement, et vous pouvez supprimer votre compte à tout moment, en nous contactant. Une fois votre inscription finalisée, vous recevrez un email vous indiquant votre mot de passe.",
+    "signUp-email" : "Adresse Email (steve@email.com)",
+    "signUp-username" : "Pseudo (SteveParis)",
+    "signUp-submit" : "Envoyer",
+
+    "logIn-title" : "Connexion",
+    "logIn-content" : "En vous connectant à votre compte, vous pourrez modifier votre profil, reprendre votre progression, ou encore continuer votre avancée. Notez que si vous ne parvenez pas à accéder à votre compte, vous pouvez réinitialiser votre mot de passe, en cliquant sur le bouton en bas de page.",
+    "logIn-email" : "Adresse Email (steve@email.com)",
+    "logIn-password" : "Mot de Passe (Steve123@)",
+    "logIn-submit" : "Envoyer",
+    "logIn-reset" : "Réinitialiser mon Mot de Passe",
 
     "emails-settings-header" : "MIME-Version : 1.0\nContent-type : text/html; charset=utf-8\nFrom : \"L'Équipe Static\" <hello@email.com>",
     "emails-settings-copy" : "MIME-Version : 1.0\nContent-type : text/html; charset=utf-8\nFrom : \"L'Équipe Static\" <hello@email.com>\nBcc : private@email.com",

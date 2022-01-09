@@ -4,7 +4,9 @@
 
     final class Navbar {
 
-        static function create() {
+        static function create($userID) {
+            $userID = (int)$userID;
+
             $getText = \Static\Kernel::getParameters()["getText"];
             $getPath = \Static\Kernel::getParameters()["getPath"];
 
@@ -21,25 +23,37 @@
                 </button>
                 <div id="navbar-collapse" class="py-4 navbar-collapse collapse">
                     <ul class="navbar-nav w-100">
-                        <li class="w-100 nav-item">
-                            <a class="nav-link<?= \Static\Kernel::getRoute() != "Home" ? "" : " active"; ?>" href="<?= $getPath("/"); ?>"> <?= $getText("navbar-home"); ?> </a>
+                        <li class="w-100 my-auto nav-item">
+                            <a class="nav-link<?= \Static\Kernel::getRoute() != "Home" ? null : " active"; ?>" href="<?= $getPath("/"); ?>"> <?= $getText("navbar-home"); ?> </a>
                         </li>
-                        <li class="w-100 nav-item">
-                            <a class="nav-link<?= !in_array(\Static\Kernel::getRoute(), array("News", "Article")) ? "" : " active"; ?>" href="<?= $getPath("/news"); ?>"> <?= $getText("navbar-news"); ?> </a>
+                        <li class="w-100 my-auto nav-item">
+                            <a class="nav-link<?= !in_array(\Static\Kernel::getRoute(), array("News", "Article")) ? null : " active"; ?>" href="<?= $getPath("/news"); ?>"> <?= $getText("navbar-news"); ?> </a>
                         </li>
-                        <li class="w-100 nav-item">
-                            <a class="nav-link<?= \Static\Kernel::getRoute() != "Contact" ? "" : " active"; ?>" href="<?= $getPath("/contact"); ?>"> <?= $getText("navbar-contact"); ?> </a>
+                        <li class="w-100 my-auto nav-item">
+                            <a class="nav-link<?= \Static\Kernel::getRoute() != "Contact" ? null : " active"; ?>" href="<?= $getPath("/contact"); ?>"> <?= $getText("navbar-contact"); ?> </a>
                         </li>
-                        <li class="w-100 nav-item dropdown">
+                        <li class="w-100 my-auto nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href data-bs-toggle="dropdown"> <?= $getText("navbar-language"); ?> </a>
                             <ul class="w-100 dropdown-menu">
                                 <?php foreach(\Static\Languages\Translate::getAllLanguages() as $language) { ?>
                                     <li>
-                                        <a class="dropdown-item<?= \Static\Languages\Translate::getLanguage() != $language ? "" : " active"; ?> text-center language" href language="<?= $language; ?>"> <?= ucfirst($language); ?> </a>
+                                        <a class="dropdown-item<?= \Static\Languages\Translate::getLanguage() != $language ? null : " active"; ?> text-center language" href language="<?= $language; ?>"> <?= ucfirst($language); ?> </a>
                                     </li>
                                 <?php } ?>
                             </ul>
                         </li>
+                        <?php if($userID <= 0) { ?>
+                            <li class="w-200 my-auto nav-item">
+                                <div class="flex-column flex-md-row my-4 my-md-0 input-group">
+                                    <a class="w-50 btn btn-outline<?= \Static\Kernel::getRoute() != "SignUp" ? "-primary" : "-dark"; ?>" href="<?= $getPath("/sign-up"); ?>"> <?= $getText("navbar-signUp"); ?> </a>
+                                    <a class="w-50 btn btn-outline<?= \Static\Kernel::getRoute() != "LogIn" ? "-primary" : "-dark"; ?>" href="<?= $getPath("/log-in"); ?>"> <?= $getText("navbar-logIn"); ?> </a>
+                                </div>
+                            </li>
+                        <?php } else { ?>
+                            <li class="w-100 my-auto nav-item">
+                                <a id="logOut" class="w-100 btn btn-outline-dark"> <?= $getText("navbar-logOut"); ?> </a>
+                            </li>
+                        <?php } ?>
                     </ul>
                 </div>
             </nav>

@@ -1,8 +1,9 @@
-
 .navbar {
     min-height : 12.5vh;
 } .icon {
     height : 6.25vh;
+} .w-200 {
+    width : 200%;
 } .section {
     margin-top : 12.5vh;
 } .zoom {

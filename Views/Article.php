@@ -17,7 +17,7 @@
             <div class="col-12 col-md-6 py-5 px-md-5 my-auto">
                 <h2 class="py-4"> <?= $article["title"]; ?> </h2>
                 <p class="py-4 text-justify"> <?= $article["overview"]; ?> </p>
-                <a class="btn btn-outline-primary w-100 my-4" href="<?= $article["button"]; ?>"> <?= $parameters["getText"]("news-button"); ?> </a>
+                <a class="w-100 my-4 btn btn-outline-primary" href="<?= $article["button"]; ?>"> <?= $parameters["getText"]("news-button"); ?> </a>
             </div>
         </div>
     <?php } ?>
