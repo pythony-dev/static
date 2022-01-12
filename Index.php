@@ -23,6 +23,7 @@
     Static\Kernel::addRoute("contact", "/contact");
     Static\Kernel::addRoute("signUp", "/sign-up");
     Static\Kernel::addRoute("logIn", "/log-in");
+    Static\Kernel::addRoute("settings", "/settings");
 
     Static\Kernel::addRequest("start");
     Static\Kernel::addRequest("language");

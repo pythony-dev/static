@@ -8,5 +8,6 @@
     require_once("Controllers/Contact.php");
     require_once("Controllers/SignUp.php");
     require_once("Controllers/LogIn.php");
+    require_once("Controllers/Settings.php");
 
 ?>

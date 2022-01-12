@@ -50,8 +50,11 @@
                                 </div>
                             </li>
                         <?php } else { ?>
-                            <li class="w-100 my-auto nav-item">
-                                <a id="logOut" class="w-100 btn btn-outline-dark"> <?= $getText("navbar-logOut"); ?> </a>
+                            <li class="w-200 my-auto nav-item">
+                                <div class="flex-column flex-md-row my-4 my-md-0 input-group">
+                                    <a class="w-50 btn btn-outline<?= \Static\Kernel::getRoute() != "Settings" ? "-primary" : "-dark"; ?>" href="<?= $getPath("/settings"); ?>"> <?= $getText("navbar-settings"); ?> </a>
+                                    <a id="logOut" class="w-50 btn btn-outline-dark"> <?= $getText("navbar-logOut"); ?> </a>
+                                </div>
                             </li>
                         <?php } ?>
                     </ul>

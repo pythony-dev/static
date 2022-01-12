@@ -7,8 +7,11 @@ $(document).ready(() => {
             "email" : $("#contact-email").val(),
             "message" : $("#contact-message").val(),
         }).then(response => {
-            if(response.includes("true")) alert("Thanks !")
-            else alert("Error")
+            if(response.includes("true")) {
+                alert("Thanks !")
+
+                location.reload()
+            } else alert("Error")
         }).fail(() => {
             alert("Error")
         })

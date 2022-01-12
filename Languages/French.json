@@ -7,6 +7,7 @@
     "title-contact" : "Contact",
     "title-signUp" : "Inscription",
     "title-logIn" : "Connexion",
+    "title-settings" : "Paramètres",
 
     "navbar-home" : "Accueil",
     "navbar-news" : "Actualités",
@@ -14,6 +15,7 @@
     "navbar-language" : "Langue",
     "navbar-signUp" : "Inscription",
     "navbar-logIn" : "Connexion",
+    "navbar-settings" : "Paramètres",
     "navbar-logOut" : "Déconnexion",
 
     "footer" : "Tous Droits Réservés",
@@ -59,6 +61,16 @@
     "logIn-password" : "Mot de Passe (Steve123@)",
     "logIn-submit" : "Envoyer",
     "logIn-reset" : "Réinitialiser mon Mot de Passe",
+
+    "settings-title" : "Paramètres",
+    "settings-content" : "Bienvenue sur votre profil ! Vous pouvez y modifier votre adresse email, votre pseudo, votre mot de passe, et même votre avatar. Profitez-en pour montrer votre plus beau sourire à toute notre communauté.",
+    "settings-user" : "Utilisateur",
+    "settings-email" : "Adresse Email (steve@email.com)",
+    "settings-username" : "Pseudo (SteveParis)",
+    "settings-confirm" : "Confirmez avec votre Mot de Passe",
+    "settings-submit" : "Mettre à Jour",
+    "settings-change" : "Changer mon Mot de Passe",
+    "settings-password" : "Mot de Passe (Steve123@)",
 
     "emails-settings-header" : "MIME-Version : 1.0\nContent-type : text/html; charset=utf-8\nFrom : \"L'Équipe Static\" <hello@email.com>",
     "emails-settings-copy" : "MIME-Version : 1.0\nContent-type : text/html; charset=utf-8\nFrom : \"L'Équipe Static\" <hello@email.com>\nBcc : private@email.com",
