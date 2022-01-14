@@ -1,4 +1,30 @@
 $(document).ready(() => {
+    $("#settings-image").click(event => {
+        $("#settings-file").click()
+    })
+
+    $("#settings-file").change(event => {
+        const formData = new FormData()
+        formData.append("request", "images")
+        formData.append("image", $("#settings-file")[0].files[0])
+
+        $.ajax({
+            type : "POST",
+            url : "",
+            data : formData,
+            processData : false,
+            contentType : false,
+        }).done(response => {
+            if(response.includes("extension")) alert("Extension")
+            else if(response.includes("type")) alert("Type")
+            else if(response.includes("size")) alert("Size")
+            else if(response.includes("success")) location.reload()
+            else alert("Error")
+        }).fail(() => {
+            alert("Error")
+        })
+    })
+
     $("#settings-form").submit(event => {
         event.preventDefault()
 

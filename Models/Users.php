@@ -19,7 +19,7 @@
             $query->bindValue(":username", $username, PDO::PARAM_STR);
             $query->bindValue(":password", sha1($password . \Static\Kernel::getSalt()), PDO::PARAM_STR);
 
-            return $query->execute();
+            return $query->execute() && copy("Public/Images/Users/0.png", "Public/Images/Users/" . parent::$pdo->lastInsertId() . ".png");
         }
 
         public static function logIn($email, $password) {

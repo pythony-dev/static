@@ -29,6 +29,7 @@
     Static\Kernel::addRequest("language");
     Static\Kernel::addRequest("contact");
     Static\Kernel::addRequest("users");
+    Static\Kernel::addRequest("images");
 
     Static\Languages\Translate::setLanguage();
     Static\Kernel::start();

@@ -4,7 +4,7 @@
 
     final class Kernel {
 
-        private static $version = "1.1.3";
+        private static $version = "1.1.4";
 
         private static $link = "";
         private static $styles = array();
@@ -57,7 +57,7 @@
                 $key = array_shift($keys);
 
                 if(array_key_exists($key, $array)) return self::getValue($array[$key], $keys);
-            } else return "";
+            } else return null;
         }
 
         public static function getPath($path) {
