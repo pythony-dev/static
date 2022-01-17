@@ -15,7 +15,6 @@
     Static\Kernel::addScript("https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js");
     Static\Kernel::addScript("/Public/Scripts/Index.js");
 
-    Static\Kernel::addRoute("error", "/error");
     Static\Kernel::addRoute("home", "/");
     Static\Kernel::addRoute("news", "/news");
     Static\Kernel::addRoute("news", "/news/(page)");

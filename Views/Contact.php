@@ -4,6 +4,6 @@
     <form id="contact-form" class="px-5">
         <input id="contact-email" class="my-5 form-control text-center" type="email" placeholder="<?= $parameters["getText"]("contact-email"); ?>" required/>
         <textarea id="contact-message" class="my-5 form-control text-center" rows="5" placeholder="<?= $parameters["getText"]("contact-message"); ?>" required></textarea>
-        <input class="w-100 btn btn-primary" type="submit" value="<?= $parameters["getText"]("contact-submit"); ?>"/>
+        <input class="w-100 mb-5 btn btn-primary" type="submit" value="<?= $parameters["getText"]("contact-submit"); ?>"/>
     </form>
 </article>

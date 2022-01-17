@@ -16,7 +16,19 @@
             $query->bindValue(":page", $page * 5 - 5, PDO::PARAM_INT);
             $query->execute();
 
-            return $query->fetchAll();
+            $results = array();
+
+            while($article = $query->fetch()) {
+                array_push($results, array(
+                    "title" => \Static\Kernel::getValue($article, "Title"),
+                    "overview" => \Static\Kernel::getValue($article, "Overview"),
+                    "link" => \Static\Kernel::getValue($article, "Link"),
+                    "button" => \Static\Kernel::getPath("/article/" . \Static\Kernel::getValue($article, "Link")),
+                    "image" => \Static\Kernel::getPath("/Public/Images/Articles/" . (int)(\Static\Kernel::getValue($article, "ID") / 2 + .5) . ".jpeg"),
+                ));
+            }
+
+            return $results;
         }
 
         public static function count() {
@@ -42,7 +54,19 @@
             $query->bindValue(":language", htmlspecialchars(\Static\Languages\Translate::getLanguage()), PDO::PARAM_STR);
             $query->execute();
 
-            return $query->fetchAll();
+            $results = array();
+
+            while($article = $query->fetch()) {
+                array_push($results, array(
+                    "title" => \Static\Kernel::getValue($article, "Title"),
+                    "overview" => \Static\Kernel::getValue($article, "Overview"),
+                    "link" => \Static\Kernel::getValue($article, "Link"),
+                    "button" => \Static\Kernel::getPath("/article/" . \Static\Kernel::getValue($article, "Link")),
+                    "image" => \Static\Kernel::getPath("/Public/Images/Articles/" . (int)(\Static\Kernel::getValue($article, "ID") / 2 + .5) . ".jpeg"),
+                ));
+            }
+
+            return $results;
         }
 
     }

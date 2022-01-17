@@ -7,6 +7,5 @@
     require_once("Models/Articles.php");
     require_once("Models/Contact.php");
     require_once("Models/Users.php");
-    require_once("Models/Emails.php");
 
 ?>

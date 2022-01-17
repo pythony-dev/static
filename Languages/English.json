@@ -1,14 +1,7 @@
 {
     "project-name" : "Static",
 
-    "title-error" : "Error",
-    "title-home" : "Home",
-    "title-news" : "News",
-    "title-contact" : "Contact",
-    "title-signUp" : "Sign Up",
-    "title-logIn" : "Log In",
-    "title-settings" : "Settings",
-
+    "navbar-error" : "Error",
     "navbar-home" : "Home",
     "navbar-news" : "News",
     "navbar-contact" : "Contact",
@@ -72,10 +65,21 @@
     "settings-change" : "Change my Password",
     "settings-password" : "Password (Steve123@)",
 
-    "emails-settings-header" : "MIME-Version : 1.0\nContent-type : text/html; charset=utf-8\nFrom : \"The Static Team\" <hello@email.com>",
-    "emails-settings-copy" : "MIME-Version : 1.0\nContent-type : text/html; charset=utf-8\nFrom : \"The Static Team\" <hello@email.com>\nBcc : private@email.com",
-    "emails-settings-footer" : " <br/> <br/> Sincerely, <br/> <br/> The Static Team <br/> <br/> To unsubscribe, you can contact us via <a href=\"https://www.website.com\"> our website </a> or <a href=\"mailto:hello@email.com\"> by email. </a> ",
+    "emails-header" : "MIME-Version : 1.0\nContent-type : text/html; charset=utf-8\nFrom : \"The Static Team\" <hello@email.com>",
+    "emails-copy" : "MIME-Version : 1.0\nContent-type : text/html; charset=utf-8\nFrom : \"The Static Team\" <hello@email.com>\nBcc : private@email.com",
+    "emails-footer" : " <br/> <br/> Sincerely, <br/> <br/> The Static Team <br/> <br/> To unsubscribe, you can contact us via <a href=\"https://www.website.com\"> our website </a> or <a href=\"mailto:hello@email.com\"> by email. </a>",
 
-    "emails-contact-title" : "Thanks for your Message",
-    "emails-contact-content" : "Hello, <br/> <br/> Thank you for your message. We will get back to you as soon as possible to respond."
+    "emails-contact-title" : "Thank you for your Message",
+    "emails-contact-content-1" : "We have received your message. To remind you, this one indicated : <br/> <br/> ",
+    "emails-contact-content-2" : " <br/> <br/> We will come back to you as soon as possible to answer them.",
+
+    "emails-signUp-title" : "Welcome to Static",
+    "emails-signUp-content-1" : "Thank you for signing up for Static. You can now <a href=\"https://www.website.com/log-in\"> log in </a> to your account with your credentials : <br/> <br/> Email Address : ",
+    "emails-signUp-content-2" : " <br/> Password : ",
+    "emails-signUp-content-3" : " <br/> <br/> You can change this information on the <a href=\"https://www.website.com/settings\"> Settings </a> page of your account.",
+
+    "emails-reset-title" : "Change of your Password",
+    "emails-reset-content-1" : "Following your request, we have just reset your password. You can now <a href=\"https://www.website.com/log-in\"> log in </a> to your account with your new credentials : <br/> <br/> Email Address : ",
+    "emails-reset-content-2" : " <br/> Password : ",
+    "emails-reset-content-3" : " <br/> <br/> You can change this information on the <a href=\"https://www.website.com/settings\"> Settings </a> page of your account."
 }

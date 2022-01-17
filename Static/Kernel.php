@@ -4,7 +4,7 @@
 
     final class Kernel {
 
-        private static $version = "1.1.4";
+        private static $version = "1.1.5";
 
         private static $link = "";
         private static $styles = array();
@@ -74,6 +74,8 @@
         public static function start() {
             if(!\Static\Models\Requests::check()) return self::setError(429, "Too Many Requests");
             else if(!array_key_exists("request", $_POST)) {
+                self::addRoute("error", "/error/(error)");
+
                 $start = strlen(self::$link) + 1;
                 $search = explode("/", substr((array_key_exists("HTTPS", $_SERVER) ? "https" : "http") . "://" . htmlspecialchars($_SERVER["HTTP_HOST"] . $_SERVER["REDIRECT_URL"]), $start));
 
@@ -101,7 +103,7 @@
                     if($found) {
                         self::$route = ucfirst($route["name"]);
 
-                        if(self::$route == "Error") return self::setError(array_key_exists("error", $_POST) ? $_POST["error"] : 200, array_key_exists("text", $_POST) ? $_POST["text"] : "Unknown Error");
+                        if(self::$route == "Error") return self::setError(array_key_exists("error", $parameters) ? $parameters["error"] : 500, "Internal Server Error");
 
                         $view = "Views/" . self::$route . ".php";
                         $controller = "\Static\Controllers\\" . self::$route;
@@ -124,6 +126,8 @@
                         return;
                     }
                 }
+
+                return self::setError(404, "No Route : " . self::getValue($_SERVER, "REDIRECT_URL"));
             } else {
                 $search = htmlspecialchars($_POST["request"]);
 
@@ -138,9 +142,9 @@
                         return;
                     }
                 }
-            }
 
-            return self::setError(404, "No Route : " . self::getValue($_SERVER, "REDIRECT_URL"));
+                return self::setError(404, "No Request : " . $search);
+            }
         }
 
         public static function setError($error, $text) {
@@ -148,6 +152,8 @@
                 "error" => (int)$error,
                 "text" => htmlspecialchars($text),
             )));
+
+            http_response_code(array_key_exists("error", $parameters) ? (int)$parameters["error"] : 500);
 
             ob_start();
             require_once("Views/Error.php");
@@ -159,15 +165,13 @@
             $scripts = self::$scripts;
             require_once("Views/Index.php");
 
-            http_response_code(array_key_exists("error", $parameters) ? (int)$parameters["error"] : 200);
-
             exit();
         }
 
         public static function getParameters() {
             return array(
                 "userID" => self::getValue($_SESSION, "userID"),
-                "title" => \Static\Languages\Translate::getText("title-" . lcfirst(self::$route)),
+                "title" => \Static\Languages\Translate::getText("navbar-" . lcfirst(self::$route)),
                 "getText" => "\Static\Languages\Translate::getText",
                 "getPath" => "\Static\Kernel::getPath",
             );

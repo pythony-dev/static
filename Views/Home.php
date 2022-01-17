@@ -3,7 +3,7 @@
     <h2 class="p-5 fw-bold"> <?= $parameters["getText"]("home-main-subtitle"); ?> </h2>
     <p class="p-5 text-justify"> <?= $parameters["getText"]("home-main-content"); ?> </p>
     <?php foreach($parameters["themes"] as $id => $theme) { ?>
-        <div class="row<?= $id % 2 ? " flex-row-reverse" : ""; ?> px-5">
+        <div class="row<?= $id % 2 ? " flex-row-reverse" : null; ?> px-5 mx-0">
             <?php if($id != 0) { ?>
                 <div class="d-md-none mx-auto my-5 line"> </div>
             <?php } ?>

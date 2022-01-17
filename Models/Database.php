@@ -9,6 +9,10 @@
         protected static $environment = "";
         protected static $pdo = null;
 
+        public final static function getEnvironment() {
+            return self::$environment;
+        }
+
         public final static function setEnvironment($environment) {
             self::$environment = htmlspecialchars($environment);
         }

@@ -4,6 +4,6 @@
     <form id="signUp-form" class="px-5">
         <input id="signUp-email" class="my-5 form-control text-center" type="email" placeholder="<?= $parameters["getText"]("signUp-email"); ?>" required/>
         <input id="signUp-username" class="my-5 form-control text-center" type="text" placeholder="<?= $parameters["getText"]("signUp-username"); ?>" required/>
-        <input class="w-100 btn btn-primary" type="submit" value="<?= $parameters["getText"]("signUp-submit"); ?>"/>
+        <input class="w-100 mb-5 btn btn-primary" type="submit" value="<?= $parameters["getText"]("signUp-submit"); ?>"/>
     </form>
 </article>

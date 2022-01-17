@@ -20,19 +20,8 @@
             $parameters["image"] =  \Static\Kernel::getPath("/Public/Images/Articles/" . (int)(\Static\Kernel::getValue($article, "ID") / 2 + .5) . ".jpeg");
 
             $parameters["random"] = \Static\Models\Articles::getRandomArticles(\Static\Kernel::getValue($parameters, "link"));
-            $parameters["cleanArticle"] = "\Static\Controllers\Article::cleanArticle";
 
             return $parameters;
-        }
-
-        public static function cleanArticle($article) {
-            return array(
-                "title" => \Static\Kernel::getValue($article, "Title"),
-                "overview" => \Static\Kernel::getValue($article, "Overview"),
-                "link" => \Static\Kernel::getValue($article, "Link"),
-                "button" => \Static\Kernel::getPath("/article/" . \Static\Kernel::getValue($article, "Link")),
-                "image" => \Static\Kernel::getPath("/Public/Images/Articles/" . (int)(\Static\Kernel::getValue($article, "ID") / 2 + .5) . ".jpeg"),
-            );
         }
 
     }

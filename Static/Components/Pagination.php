@@ -9,7 +9,11 @@
             $limit = (int)$limit;
             $path = htmlspecialchars($path);
 
-            if($page < 1 || $limit < 2 || $limit < $page) return null;
+            if($page < 1 || $page > $limit) {
+                header("Location: " . $path);
+
+                exit();
+            } else if($limit < 2) return null;
 
             $previous = $page - 1;
             $next = $page + 1;
@@ -18,7 +22,7 @@
             ?>
 
             <nav class="p-5">
-                <ul class="pagination">
+                <ul class="pagination mb-0">
                     <?php if($previous >= 2) { ?>
                         <li class="w-100 page-item">
                             <a class="page-link" href="<?= $path; ?>/1"> 1 </a>

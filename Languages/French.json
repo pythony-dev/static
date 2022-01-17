@@ -1,14 +1,7 @@
 {
     "project-name" : "Static",
 
-    "title-error" : "Erreur",
-    "title-home" : "Accueil",
-    "title-news" : "Actualités",
-    "title-contact" : "Contact",
-    "title-signUp" : "Inscription",
-    "title-logIn" : "Connexion",
-    "title-settings" : "Paramètres",
-
+    "navbar-error" : "Erreur",
     "navbar-home" : "Accueil",
     "navbar-news" : "Actualités",
     "navbar-contact" : "Contact",
@@ -72,10 +65,21 @@
     "settings-change" : "Changer mon Mot de Passe",
     "settings-password" : "Mot de Passe (Steve123@)",
 
-    "emails-settings-header" : "MIME-Version : 1.0\nContent-type : text/html; charset=utf-8\nFrom : \"L'Équipe Static\" <hello@email.com>",
-    "emails-settings-copy" : "MIME-Version : 1.0\nContent-type : text/html; charset=utf-8\nFrom : \"L'Équipe Static\" <hello@email.com>\nBcc : private@email.com",
-    "emails-settings-footer" : " <br/> <br/> Cordialement, <br/> <br/> L'Équipe Static <br/> <br/> Pour vous désabonner, vous pouvez nous contacter via <a href=\"https://www.website.com\"> notre site web </a> ou <a href=\"mailto:hello@email.com\"> par email. </a> ",
+    "emails-header" : "MIME-Version : 1.0\nContent-type : text/html; charset=utf-8\nFrom : \"L'Équipe Static\" <hello@email.com>",
+    "emails-copy" : "MIME-Version : 1.0\nContent-type : text/html; charset=utf-8\nFrom : \"L'Équipe Static\" <hello@email.com>\nBcc : private@email.com",
+    "emails-footer" : " <br/> <br/> Cordialement, <br/> <br/> L'Équipe Static <br/> <br/> Pour vous désabonner, vous pouvez nous contacter via <a href=\"https://www.website.com\"> notre site web </a> ou <a href=\"mailto:hello@email.com\"> par email. </a>",
 
     "emails-contact-title" : "Merci pour votre Message",
-    "emails-contact-content" : "Bonjour, <br/> <br/> Merci pour votre message. Nous reviendrons vers vous dès que possible pour y répondre."
+    "emails-contact-content-1" : "Nous avons bien reçu votre message. Pour rappel, celui-ci indiquait : <br/> <br/> ",
+    "emails-contact-content-2" : " <br/> <br/> Nous reviendrons vers vous dès que possible pour y répondre.",
+
+    "emails-signUp-title" : "Bienvenue sur Static",
+    "emails-signUp-content-1" : "Merci pour votre inscription sur Static. Vous pouvez dès maintenant <a href=\"https://www.website.com/log-in\"> vous connecter </a> à votre compte avec vos identifiants : <br/> <br/> Adresse Email : ",
+    "emails-signUp-content-2" : " <br/> Mot de Passe : ",
+    "emails-signUp-content-3" : " <br/> <br/> Vous pouvez changer ces informations sur la page <a href=\"https://www.website.com/settings\"> Paramètres </a> de votre compte.",
+
+    "emails-reset-title" : "Changement de votre Mot de Passe",
+    "emails-reset-content-1" : "Suite à votre demande, nous venons de réinitialiser votre mot de passe. Vous pouvez dès maintenant <a href=\"https://www.website.com/log-in\"> vous connecter </a> à votre compte avec vos nouveaux identifiants : <br/> <br/> Adresse Email : ",
+    "emails-reset-content-2" : " <br/> Mot de Passe : ",
+    "emails-reset-content-3" : " <br/> <br/> Vous pouvez changer ces informations sur la page <a href=\"https://www.website.com/settings\"> Paramètres </a> de votre compte."
 }
