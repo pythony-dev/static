@@ -67,7 +67,8 @@
 
     "emails-header" : "MIME-Version : 1.0\nContent-type : text/html; charset=utf-8\nFrom : \"L'Équipe Static\" <hello@email.com>",
     "emails-copy" : "MIME-Version : 1.0\nContent-type : text/html; charset=utf-8\nFrom : \"L'Équipe Static\" <hello@email.com>\nBcc : private@email.com",
-    "emails-footer" : " <br/> <br/> Cordialement, <br/> <br/> L'Équipe Static <br/> <br/> Pour vous désabonner, vous pouvez nous contacter via <a href=\"https://www.website.com\"> notre site web </a> ou <a href=\"mailto:hello@email.com\"> par email. </a>",
+    "emails-start" : "Bonjour, <br/> <br/> ",
+    "emails-end" : " <br/> <br/> Cordialement, <br/> <br/> L'Équipe Static <br/> <br/> Pour vous désabonner, vous pouvez nous contacter via <a href=\"https://www.website.com\"> notre site web </a> ou <a href=\"mailto:hello@email.com\"> par email. </a>",
 
     "emails-contact-title" : "Merci pour votre Message",
     "emails-contact-content-1" : "Nous avons bien reçu votre message. Pour rappel, celui-ci indiquait : <br/> <br/> ",

@@ -67,7 +67,8 @@
 
     "emails-header" : "MIME-Version : 1.0\nContent-type : text/html; charset=utf-8\nFrom : \"The Static Team\" <hello@email.com>",
     "emails-copy" : "MIME-Version : 1.0\nContent-type : text/html; charset=utf-8\nFrom : \"The Static Team\" <hello@email.com>\nBcc : private@email.com",
-    "emails-footer" : " <br/> <br/> Sincerely, <br/> <br/> The Static Team <br/> <br/> To unsubscribe, you can contact us via <a href=\"https://www.website.com\"> our website </a> or <a href=\"mailto:hello@email.com\"> by email. </a>",
+    "emails-start" : "Hello, <br/> <br/> ",
+    "emails-end" : " <br/> <br/> Sincerely, <br/> <br/> The Static Team <br/> <br/> To unsubscribe, you can contact us via <a href=\"https://www.website.com\"> our website </a> or <a href=\"mailto:hello@email.com\"> by email. </a>",
 
     "emails-contact-title" : "Thank you for your Message",
     "emails-contact-content-1" : "We have received your message. To remind you, this one indicated : <br/> <br/> ",
