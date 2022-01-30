@@ -4,7 +4,7 @@
 
     final class Kernel {
 
-        private static $version = "1.1.5";
+        private static $version = "1.2.0";
 
         private static $link = "";
         private static $styles = array();
@@ -34,8 +34,11 @@
             ));
         }
 
-        public static function addRequest($request) {
-            array_push(self::$requests, htmlspecialchars($request));
+        public static function addRequest($name, $secure) {
+            array_push(self::$requests, array(
+                "name" => htmlspecialchars($name),
+                "secure" => boolval($secure),
+            ));
         }
 
         public static function getRoute() {
@@ -131,9 +134,11 @@
             } else {
                 $search = htmlspecialchars($_POST["request"]);
 
+                if(self::$requests[array_search($search, array_column(self::$requests, "name"))]["secure"] && !\Static\Models\Tokens::check()) return self::setError(401, "Invalid Token");
+
                 foreach(self::$requests as $request) {
-                    if($search == $request) {
-                        $request = "Requests/" . ucfirst($request) . ".php";
+                    if($search == $request["name"]) {
+                        $request = "Requests/" . ucfirst($request["name"]) . ".php";
 
                         if(!file_exists($request)) return self::setError(404, "No Request : " . $request);
 

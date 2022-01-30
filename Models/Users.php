@@ -61,7 +61,7 @@
             $reset = self::createPassword();
 
             $query = parent::$pdo->prepare("UPDATE Users SET Reset = :reset WHERE Email = :email");
-            $query->bindValue(":reset", $reset, PDO::PARAM_STR);
+            $query->bindValue(":reset", sha1($reset . \Static\Kernel::getSalt()), PDO::PARAM_STR);
             $query->bindValue(":email", $email, PDO::PARAM_STR);
 
             return $query->execute() && \Static\Emails::reset($email, $reset);

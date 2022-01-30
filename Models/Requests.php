@@ -10,6 +10,14 @@
         private static $limit = 4;
         private static $sessions = 4;
 
+        public static function create() {
+            $query = parent::$pdo->prepare("INSERT INTO Requests (DateTime, IPAddress, UserAgent) VALUES (NOW(), :ipAddress, :userAgent)");
+            $query->bindValue(":ipAddress", \Static\Kernel::getValue($_SERVER, "REMOTE_ADDR"), PDO::PARAM_STR);
+            $query->bindValue(":userAgent", \Static\Kernel::getValue($_SERVER, "HTTP_USER_AGENT"), PDO::PARAM_STR);
+
+            return $query->execute();
+        }
+
         public static function check() {
             $query = parent::$pdo->prepare("SELECT COUNT(ID) AS Count FROM Requests WHERE IPAddress = :ipAddress AND TIMESTAMPDIFF(SECOND, DateTime, NOW()) < :delay");
             $query->bindValue(":ipAddress", \Static\Kernel::getValue($_SERVER, "REMOTE_ADDR"), PDO::PARAM_STR);
@@ -28,14 +36,6 @@
 
                 return $query->fetch()["Count"] < self::$limit && self::create();
             } else return false;
-        }
-
-        public static function create() {
-            $query = parent::$pdo->prepare("INSERT INTO Requests (DateTime, IPAddress, UserAgent) VALUES (NOW(), :ipAddress, :userAgent)");
-            $query->bindValue(":ipAddress", \Static\Kernel::getValue($_SERVER, "REMOTE_ADDR"), PDO::PARAM_STR);
-            $query->bindValue(":userAgent", \Static\Kernel::getValue($_SERVER, "HTTP_USER_AGENT"), PDO::PARAM_STR);
-
-            return $query->execute();
         }
 
     }

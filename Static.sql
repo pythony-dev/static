@@ -146,6 +146,27 @@ INSERT INTO `Sessions` (`ID`, `Created`, `SessionID`, `IPAddress`, `UserAgent`) 
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `Tokens`
+--
+
+CREATE TABLE `Tokens` (
+  `ID` int(11) NOT NULL,
+  `Created` datetime NOT NULL,
+  `Used` datetime DEFAULT NULL,
+  `Value` varchar(255) NOT NULL,
+  `UserID` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `Tokens`
+--
+
+INSERT INTO `Tokens` (`ID`, `Created`, `Used`, `Value`, `UserID`) VALUES
+(1, '2022-01-25 12:00:00', '2022-01-25 12:00:00', 'ce27cb141098feb00714e758646be3e99c185b71', 0);
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `Users`
 --
 
@@ -216,6 +237,12 @@ ALTER TABLE `Sessions`
   ADD PRIMARY KEY (`ID`);
 
 --
+-- Indexes for table `Tokens`
+--
+ALTER TABLE `Tokens`
+  ADD PRIMARY KEY (`ID`);
+
+--
 -- Indexes for table `Users`
 --
 ALTER TABLE `Users`
@@ -253,6 +280,12 @@ ALTER TABLE `Requests`
 -- AUTO_INCREMENT for table `Sessions`
 --
 ALTER TABLE `Sessions`
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `Tokens`
+--
+ALTER TABLE `Tokens`
   MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --

@@ -24,11 +24,12 @@
     Static\Kernel::addRoute("logIn", "/log-in");
     Static\Kernel::addRoute("settings", "/settings");
 
-    Static\Kernel::addRequest("start");
-    Static\Kernel::addRequest("language");
-    Static\Kernel::addRequest("contact");
-    Static\Kernel::addRequest("users");
-    Static\Kernel::addRequest("images");
+    Static\Kernel::addRequest("tokens", false);
+    Static\Kernel::addRequest("start", false);
+    Static\Kernel::addRequest("language", false);
+    Static\Kernel::addRequest("contact", true);
+    Static\Kernel::addRequest("users", true);
+    Static\Kernel::addRequest("images", true);
 
     Static\Languages\Translate::setLanguage();
     Static\Kernel::start();
