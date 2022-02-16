@@ -30,9 +30,8 @@
 
             $query = parent::$pdo->prepare("UPDATE Tokens SET Used = NOW() WHERE ID = :id");
             $query->bindValue(":id", (int)$results["ID"], PDO::PARAM_INT);
-            $query->execute();
 
-            return true;
+            return $query->execute();
         }
 
     }

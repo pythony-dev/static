@@ -10,7 +10,7 @@ $(document).ready(() => {
                 "email" : $("#logIn-email").val(),
                 "password" : $("#logIn-password").val(),
             }).then(response => {
-                if(response.includes("true")) location.replace("settings")
+                if(JSON.parse(response)["status"] == "success") location.replace("settings")
                 else alert("Error")
             }).fail(() => {
                 alert("Error")
@@ -28,7 +28,7 @@ $(document).ready(() => {
                 "action" : "reset",
                 "email" : $("#logIn-reset-email").val(),
             }).then(response => {
-                if(response.includes("true")) {
+                if(JSON.parse(response)["status"] == "success") {
                     alert("Success")
 
                     location.reload()

@@ -11,16 +11,8 @@
             $headers = htmlspecialchars_decode(\Static\Languages\Translate::getText("emails-" . ($copy ? "copy" : "header")));
 
             if(\Static\Models\Database::getEnvironment() == "production") return mail($email, $subject, $message, $headers);
-            else if(\Static\Models\Database::getEnvironment() == "development") {
-                print_r(array(
-                    "email" => $email,
-                    "subject" => $subject,
-                    "message" => $message,
-                    "headers" => $headers,
-                ));
-
-                return true;
-            } else return false;
+            else if(\Static\Models\Database::getEnvironment() == "development") return true;
+            else return false;
         }
 
         public static function contact($email, $message) {

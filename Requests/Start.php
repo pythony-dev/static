@@ -1,7 +1,19 @@
 <?php
 
-    if(!array_key_exists("sessionID", $_SESSION)) \Static\Models\Sessions::create();
+    namespace Static\Requests;
 
-    \Static\Models\Views::create(\Static\Kernel::getValue($_POST, "link"), \Static\Kernel::getValue($_POST, "referer"));
+    final class Start {
+
+        public static function create() {
+            $link = \Static\Kernel::getValue($_POST, "link");
+            $referer = \Static\Kernel::getValue($_POST, "referer");
+
+            \Static\Models\Sessions::create();
+            \Static\Models\Views::create($link, $referer);
+
+            return array();
+        }
+
+    }
 
 ?>

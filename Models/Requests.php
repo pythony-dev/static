@@ -7,8 +7,8 @@
     final class Requests extends Database {
 
         private static $delay = 1;
-        private static $limit = 4;
-        private static $sessions = 4;
+        private static $limit = 16;
+        private static $sessions = 16;
 
         public static function create() {
             $query = parent::$pdo->prepare("INSERT INTO Requests (DateTime, IPAddress, UserAgent) VALUES (NOW(), :ipAddress, :userAgent)");

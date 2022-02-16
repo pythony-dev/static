@@ -6,10 +6,11 @@ $(document).ready(() => {
             $.post("", {
                 "token" : token,
                 "request" : "contact",
+                "action" : "create",
                 "email" : $("#contact-email").val(),
                 "message" : $("#contact-message").val(),
             }).then(response => {
-                if(response.includes("true")) {
+                if(JSON.parse(response)["status"] == "success") {
                     alert("Thanks !")
 
                     location.reload()

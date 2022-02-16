@@ -1,11 +1,23 @@
 <?php
 
-    $language = \Static\Kernel::getValue($_POST, "language");
+    namespace Static\Requests;
 
-    if(!empty($language) && in_array($language, \Static\Languages\Translate::getAllLanguages())) {
-        $_SESSION["language"] = $language;
+    final class Language {
 
-        echo "true";
+        public static function update() {
+            $parameters = array();
+
+            $language = \Static\Kernel::getValue($_POST, "language");
+
+            if(!empty($language) && in_array($language, \Static\Languages\Translate::getAllLanguages())) {
+                $_SESSION["language"] = $language;
+
+                $parameters["status"] = "success";
+            } else $parameters["status"] = "error";
+
+            return $parameters;
+        }
+
     }
 
 ?>

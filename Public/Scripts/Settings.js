@@ -1,33 +1,4 @@
 $(document).ready(() => {
-    $("#settings-image").click(event => {
-        $("#settings-file").click()
-    })
-
-    $("#settings-file").change(event => {
-        getToken(token => {
-            const formData = new FormData()
-            formData.append("token", token)
-            formData.append("request", "images")
-            formData.append("image", $("#settings-file")[0].files[0])
-
-            $.ajax({
-                type : "POST",
-                url : "",
-                data : formData,
-                processData : false,
-                contentType : false,
-            }).done(response => {
-                if(response.includes("extension")) alert("Extension")
-                else if(response.includes("type")) alert("Type")
-                else if(response.includes("size")) alert("Size")
-                else if(response.includes("success")) location.reload()
-                else alert("Error")
-            }).fail(() => {
-                alert("Error")
-            })
-        })
-    })
-
     $("#settings-form").submit(event => {
         event.preventDefault()
 
@@ -40,11 +11,11 @@ $(document).ready(() => {
                 "username" : $("#settings-username").val(),
                 "confirm" : $("#settings-confirm").val(),
             }).then(response => {
-                if(response.includes("success")) {
+                if(JSON.parse(response)["status"] == "success") {
                     alert("Success")
 
                     location.reload()
-                } else if(response.includes("password")) $("#settings-confirm").addClass("is-invalid")
+                } else if(JSON.parse(response)["status"] == "password") $("#settings-confirm").addClass("is-invalid")
                 else alert("Error")
             }).fail(() => {
                 alert("Error")
@@ -62,7 +33,7 @@ $(document).ready(() => {
                 "action" : "isEmail",
                 "email" : $("#settings-email").val(),
             }).then(response => {
-                if(response.includes("success")) $("#settings-email").removeClass("is-invalid").addClass("is-valid")
+                if(JSON.parse(response)["status"] == "success") $("#settings-email").removeClass("is-invalid").addClass("is-valid")
                 else $("#settings-email").removeClass("is-valid").addClass("is-invalid")
             })
         })
@@ -78,7 +49,7 @@ $(document).ready(() => {
                 "action" : "isUsername",
                 "username" : $("#settings-username").val(),
             }).then(response => {
-                if(response.includes("success")) $("#settings-username").removeClass("is-invalid").addClass("is-valid")
+                if(JSON.parse(response)["status"] == "success") $("#settings-username").removeClass("is-invalid").addClass("is-valid")
                 else $("#settings-username").removeClass("is-valid").addClass("is-invalid")
             })
         })
@@ -95,11 +66,11 @@ $(document).ready(() => {
                 "password" : $("#settings-change-password").val(),
                 "confirm" : $("#settings-change-confirm").val(),
             }).then(response => {
-                if(response.includes("success")) {
+                if(JSON.parse(response)["status"] == "success") {
                     alert("Success")
 
                     location.reload()
-                } else if(response.includes("password")) $("#settings-change-confirm").addClass("is-invalid")
+                } else if(JSON.parse(response)["status"] == "password") $("#settings-change-confirm").addClass("is-invalid")
                 else alert("Error")
             }).fail(() => {
                 alert("Error")
@@ -117,8 +88,36 @@ $(document).ready(() => {
                 "action" : "isPassword",
                 "password" : $("#settings-change-password").val(),
             }).then(response => {
-                if(response.includes("success")) $("#settings-change-password").removeClass("is-invalid").addClass("is-valid")
+                if(JSON.parse(response)["status"] == "success") $("#settings-change-password").removeClass("is-invalid").addClass("is-valid")
                 else $("#settings-change-password").removeClass("is-valid").addClass("is-invalid")
+            })
+        })
+    })
+
+    $("#settings-image").click(event => {
+        $("#settings-file").click()
+    })
+
+    $("#settings-file").change(event => {
+        getToken(token => {
+            const formData = new FormData()
+            formData.append("token", token)
+            formData.append("request", "images")
+            formData.append("action", "upload")
+            formData.append("image", $("#settings-file")[0].files[0])
+
+            $.ajax({
+                type : "POST",
+                url : "",
+                data : formData,
+                processData : false,
+                contentType : false,
+            }).done(response => {
+                if(JSON.parse(response)["status"] == "extension") alert("Extension")
+                else if(JSON.parse(response)["status"] == "type") alert("Type")
+                else if(JSON.parse(response)["status"] == "size") alert("Size")
+                else if(JSON.parse(response)["status"] == "success") location.reload()
+                else alert("Error")
             }).fail(() => {
                 alert("Error")
             })

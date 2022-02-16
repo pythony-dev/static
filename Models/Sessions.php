@@ -7,6 +7,8 @@
     final class Sessions extends Database {
 
         public static function create() {
+            if(array_key_exists("sessionID", $_SESSION)) return;
+
             $sessionID = rand(1, 16777215);
 
             $query = parent::$pdo->prepare("INSERT INTO Sessions (Created, SessionID, IPAddress, UserAgent) VALUES (NOW(), :sessionID, :ipAddress, :userAgent)");

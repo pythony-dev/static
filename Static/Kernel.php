@@ -4,7 +4,7 @@
 
     final class Kernel {
 
-        private static $version = "1.2.0";
+        private static $version = "1.2.1";
 
         private static $link = "";
         private static $styles = array();
@@ -138,11 +138,13 @@
 
                 foreach(self::$requests as $request) {
                     if($search == $request["name"]) {
-                        $request = "Requests/" . ucfirst($request["name"]) . ".php";
+                        $request = "\Static\Requests\\" . ucfirst($request["name"]);
+                        $action = self::getValue($_POST, "action");
 
-                        if(!file_exists($request)) return self::setError(404, "No Request : " . $request);
+                        if(!class_exists($request)) return self::setError(404, "No Class : " . $request);
+                        if(!method_exists($request, $action)) return self::setError(404, "No Method : " . $request . "::" . $action);
 
-                        require_once($request);
+                        echo json_encode($request::$action());
 
                         return;
                     }

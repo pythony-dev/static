@@ -10,7 +10,8 @@
             $email = htmlspecialchars($email);
             $username = htmlspecialchars($username);
 
-            if(self::isEmail($email) != "success" || self::isUsername($username) != "success") return false;
+            if(self::isEmail($email) != "success") return "email";
+            else if(self::isUsername($username) != "success") return "username";
 
             $password = self::createPassword();
 
@@ -19,20 +20,20 @@
             $query->bindValue(":username", $username, PDO::PARAM_STR);
             $query->bindValue(":password", sha1($password . \Static\Kernel::getSalt()), PDO::PARAM_STR);
 
-            return $query->execute() && copy("Public/Images/Users/0.png", "Public/Images/Users/" . parent::$pdo->lastInsertId() . ".png") && \Static\Emails::signUp($email, $password);
+            return $query->execute() && copy("Public/Images/Users/0.png", "Public/Images/Users/" . parent::$pdo->lastInsertId() . ".png") && \Static\Emails::signUp($email, $password) ? "success" : "error";
         }
 
         public static function logIn($email, $password) {
             $email = htmlspecialchars($email);
             $password = sha1(htmlspecialchars($password) . \Static\Kernel::getSalt());
 
-            if(empty($email) || empty($password)) return false;
+            if(empty($email) || empty($password)) return "empty";
 
             $query = parent::$pdo->prepare("SELECT ID, Password, Reset FROM Users WHERE Email = :email");
             $query->bindValue(":email", $email, PDO::PARAM_STR);
             $query->execute();
 
-            if(!($results = $query->fetch())) return false;
+            if(!($results = $query->fetch())) return "not found";
 
             $id = (int)$results["ID"];
 
@@ -42,21 +43,21 @@
                 $query = parent::$pdo->prepare("UPDATE Users SET Reset = NULL WHERE ID = :id");
                 $query->bindValue(":id", $id, PDO::PARAM_INT);
 
-                return $query->execute();
+                return $query->execute() ? "success" : "error";
             } else if($results["Reset"] == $password) {
                 $_SESSION["userID"] = $id;
 
                 $query = parent::$pdo->prepare("UPDATE Users SET Password = Reset, Reset = NULL WHERE ID = :id");
                 $query->bindValue(":id", $id, PDO::PARAM_INT);
 
-                return $query->execute();
-            } else return false;
+                return $query->execute() ? "success" : "error";
+            } else return "password";
         }
 
         public static function reset($email) {
             $email = htmlspecialchars($email);
 
-            if(self::isEmail($email) != "used") return false;
+            if(self::isEmail($email) != "used") return "email";
 
             $reset = self::createPassword();
 
@@ -64,7 +65,7 @@
             $query->bindValue(":reset", sha1($reset . \Static\Kernel::getSalt()), PDO::PARAM_STR);
             $query->bindValue(":email", $email, PDO::PARAM_STR);
 
-            return $query->execute() && \Static\Emails::reset($email, $reset);
+            return $query->execute() && \Static\Emails::reset($email, $reset) ? "success" : "error";
         }
 
         public static function getUser() {

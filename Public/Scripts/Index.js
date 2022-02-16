@@ -1,6 +1,7 @@
 $(document).ready(() => {
     $.post("", {
         "request" : "start",
+        "action" : "create",
         "link" : location.pathname,
         "referer" : document.referrer,
     })
@@ -8,9 +9,10 @@ $(document).ready(() => {
     $(".language").click(event => {
         $.post("", {
             "request" : "language",
+            "action" : "update",
             "language" : $(event.target).attr("language"),
         }).then(response => {
-            if(response.includes("true")) location.reload()
+            if(JSON.parse(response)["status"] == "success") location.reload()
             else alert("Error")
         }).fail(() => {
             alert("Error")
@@ -24,7 +26,7 @@ $(document).ready(() => {
                 "request" : "users",
                 "action" : "logOut",
             }).then(response => {
-                if(response.includes("true")) location.reload()
+                if(JSON.parse(response)["status"] == "success") location.reload()
                 else alert("Error")
             }).fail(() => {
                 alert("Error")
@@ -36,8 +38,9 @@ $(document).ready(() => {
 const getToken = (callback) => {
     $.post("", {
         "request" : "tokens",
+        "action" : "create",
     }).then(response => {
-        callback(response)
+        callback(JSON.parse(response)["token"])
     }).fail(() => {
         alert("Error")
     })

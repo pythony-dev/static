@@ -10,7 +10,7 @@ $(document).ready(() => {
                 "email" : $("#signUp-email").val(),
                 "username" : $("#signUp-username").val(),
             }).then(response => {
-                if(response.includes("true")) {
+                if(JSON.parse(response)["status"] == "success") {
                     alert("Success")
 
                     location.replace("log-in")
@@ -31,7 +31,7 @@ $(document).ready(() => {
                 "action" : "isEmail",
                 "email" : $("#signUp-email").val(),
             }).then(response => {
-                if(response.includes("success")) $("#signUp-email").removeClass("is-invalid").addClass("is-valid")
+                if(JSON.parse(response)["status"] == "success") $("#signUp-email").removeClass("is-invalid").addClass("is-valid")
                 else $("#signUp-email").removeClass("is-valid").addClass("is-invalid")
             })
         })
@@ -47,7 +47,7 @@ $(document).ready(() => {
                 "action" : "isUsername",
                 "username" : $("#signUp-username").val(),
             }).then(response => {
-                if(response.includes("success")) $("#signUp-username").removeClass("is-invalid").addClass("is-valid")
+                if(JSON.parse(response)["status"] == "success") $("#signUp-username").removeClass("is-invalid").addClass("is-valid")
                 else $("#signUp-username").removeClass("is-valid").addClass("is-invalid")
             })
         })

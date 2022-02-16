@@ -1,23 +1,86 @@
 <?php
 
-    $action = \Static\Kernel::getValue($_POST, "action");
-    $email = \Static\Kernel::getValue($_POST, "email");
-    $username = \Static\Kernel::getValue($_POST, "username");
-    $password = \Static\Kernel::getValue($_POST, "password");
-    $confirm = \Static\Kernel::getValue($_POST, "confirm");
+    namespace Static\Requests;
 
-    if($action == "signUp" && \Static\Models\Users::signUp($email, $username)) echo "true";
-    else if($action == "logIn" && \Static\Models\Users::logIn($email, $password)) echo "true";
-    else if($action == "reset" && \Static\Models\Users::reset($email)) echo "true";
-    else if($action == "update") echo \Static\Models\Users::update($email, $username, $confirm);
-    else if($action == "change") echo \Static\Models\Users::change($password, $confirm);
-    else if($action == "isEmail") echo \Static\Models\Users::isEmail($email);
-    else if($action == "isUsername") echo \Static\Models\Users::isUsername($username);
-    else if($action == "isPassword") echo \Static\Models\Users::isPassword($password);
-    else if($action == "logOut") {
-        $_SESSION["userID"] = null;
+    final class Users {
 
-        echo "true";
+        public static function signUp() {
+            $email = \Static\Kernel::getValue($_POST, "email");
+            $username = \Static\Kernel::getValue($_POST, "username");
+
+            return array(
+                "status" => \Static\Models\Users::signUp($email, $username),
+            );
+        }
+
+        public static function logIn() {
+            $email = \Static\Kernel::getValue($_POST, "email");
+            $password = \Static\Kernel::getValue($_POST, "password");
+
+            return array(
+                "status" => \Static\Models\Users::logIn($email, $password),
+            );
+        }
+
+        public static function reset() {
+            $email = \Static\Kernel::getValue($_POST, "email");
+
+            return array(
+                "status" => \Static\Models\Users::reset($email),
+            );
+        }
+
+        public static function update() {
+            $email = \Static\Kernel::getValue($_POST, "email");
+            $username = \Static\Kernel::getValue($_POST, "username");
+            $confirm = \Static\Kernel::getValue($_POST, "confirm");
+
+            return array(
+                "status" => \Static\Models\Users::update($email, $username, $confirm),
+            );
+        }
+
+        public static function change() {
+            $password = \Static\Kernel::getValue($_POST, "password");
+            $confirm = \Static\Kernel::getValue($_POST, "confirm");
+
+            return array(
+                "status" => \Static\Models\Users::change($password, $confirm),
+            );
+        }
+
+        public static function logOut() {
+            $_SESSION["userID"] = null;
+
+            return array(
+                "status" => "success",
+            );
+        }
+
+        public static function isEmail() {
+            $email = \Static\Kernel::getValue($_POST, "email");
+
+            return array(
+                "status" => \Static\Models\Users::isEmail($email),
+            );
+        }
+
+        public static function isUsername() {
+            $username = \Static\Kernel::getValue($_POST, "username");
+
+            return array(
+                "status" => \Static\Models\Users::isUsername($username),
+            );
+        }
+
+        public static function isPassword() {
+            $password = \Static\Kernel::getValue($_POST, "password");
+
+            return array(
+                "status" => \Static\Models\Users::isPassword($password),
+            );
+        }
+
     }
 
 ?>
