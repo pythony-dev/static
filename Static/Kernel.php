@@ -4,7 +4,8 @@
 
     final class Kernel {
 
-        private static $version = "1.2.1";
+        private static $version = "1.2.2";
+        private static $settings = array();
 
         private static $link = "";
         private static $styles = array();
@@ -63,6 +64,16 @@
             } else return null;
         }
 
+        public static function getSettings($settings) {
+            $settings = \Static\Kernel::getValue(self::$settings, $settings);
+
+            if(str_contains($settings, "@")) {
+                foreach(self::$settings as $key => $value) $settings = str_replace("@" . $key, htmlspecialchars($value), $settings);
+            }
+
+            return $settings;
+        }
+
         public static function getPath($path) {
             $path = htmlspecialchars($path);
 
@@ -75,6 +86,8 @@
         }
 
         public static function start() {
+            if(file_exists("Static/Settings.json")) self::$settings = (array)json_decode(file_get_contents("Static/Settings.json"));
+
             if(!\Static\Models\Requests::check()) return self::setError(429, "Too Many Requests");
             else if(!array_key_exists("request", $_POST)) {
                 self::addRoute("error", "/error/(error)");
@@ -180,6 +193,7 @@
                 "userID" => self::getValue($_SESSION, "userID"),
                 "title" => \Static\Languages\Translate::getText("navbar-" . lcfirst(self::$route)),
                 "getText" => "\Static\Languages\Translate::getText",
+                "getSettings" => "\Static\Kernel::getSettings",
                 "getPath" => "\Static\Kernel::getPath",
             );
         }

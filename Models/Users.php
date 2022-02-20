@@ -20,7 +20,15 @@
             $query->bindValue(":username", $username, PDO::PARAM_STR);
             $query->bindValue(":password", sha1($password . \Static\Kernel::getSalt()), PDO::PARAM_STR);
 
-            return $query->execute() && copy("Public/Images/Users/0.png", "Public/Images/Users/" . parent::$pdo->lastInsertId() . ".png") && \Static\Emails::signUp($email, $password) ? "success" : "error";
+            $title = \Static\Languages\Translate::getText("emails-signUp-title");
+            $content = htmlspecialchars_decode(\Static\Languages\Translate::getText("emails-signUp-content", array(
+                "log-in" => \Static\Kernel::getPath("/log-in"),
+                "email" => $email,
+                "password" => $password,
+                "settings" => \Static\Kernel::getPath("/settings"),
+            )));
+
+            return $query->execute() && copy("Public/Images/Users/0.png", "Public/Images/Users/" . parent::$pdo->lastInsertId() . ".png") && \Static\Emails::send($email, $title, $content) ? "success" : "error";
         }
 
         public static function logIn($email, $password) {
@@ -65,7 +73,15 @@
             $query->bindValue(":reset", sha1($reset . \Static\Kernel::getSalt()), PDO::PARAM_STR);
             $query->bindValue(":email", $email, PDO::PARAM_STR);
 
-            return $query->execute() && \Static\Emails::reset($email, $reset) ? "success" : "error";
+            $title = \Static\Languages\Translate::getText("emails-reset-title");
+            $content = htmlspecialchars_decode(\Static\Languages\Translate::getText("emails-reset-content", array(
+                "log-in" => \Static\Kernel::getPath("/log-in"),
+                "email" => $email,
+                "password" => $reset,
+                "settings" => \Static\Kernel::getPath("/settings"),
+            )));
+
+            return $query->execute() && \Static\Emails::send($email, $title, $content) ? "success" : "error";
         }
 
         public static function getUser() {

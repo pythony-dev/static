@@ -1,6 +1,4 @@
 {
-    "project-name" : "Static",
-
     "navbar-error" : "Erreur",
     "navbar-home" : "Accueil",
     "navbar-news" : "Actualités",
@@ -13,9 +11,8 @@
 
     "footer" : "Tous Droits Réservés",
 
-    "home-main-title" : "Static",
-    "home-main-subtitle" : "Accélérez le Développement de votre Projet Web",
-    "home-main-content" : "Le développement d'un projet web est une longue étape, durant laquelle vous devez reprogrammer à nouveau les mêmes bases communes à tout site web. C'est une perte de temps inutile à chaque nouveau projet, mais qui reste une étape indispensable. Heureusement pour vous, il existe une solution : Static, le framework qui implémentera toutes ces briques de base à votre place. Cela vous permettra de vous concentrer sur ce qui compte le plus pour vous : La réussite de votre projet. Et pour cela, je vous propose de découvrir tout de suite en quoi ce framework va optimiser vos développements futurs.",
+    "home-title" : "Accélérez le Développement de votre Projet Web",
+    "home-content" : "Le développement d'un projet web est une longue étape, durant laquelle vous devez reprogrammer à nouveau les mêmes bases communes à tout site web. C'est une perte de temps inutile à chaque nouveau projet, mais qui reste une étape indispensable. Heureusement pour vous, il existe une solution : Static, le framework qui implémentera toutes ces briques de base à votre place. Cela vous permettra de vous concentrer sur ce qui compte le plus pour vous : La réussite de votre projet. Et pour cela, je vous propose de découvrir tout de suite en quoi ce framework va optimiser vos développements futurs.",
     "home-models-title" : "Modèles",
     "home-models-content" : "Tout projet web nécessite de se connecter et de manipuler une base de données. Pourtant, entre les différents environnements existants, et les nombreuses règles de sécurité, une simple connexion peut virer au cauchemar. Et c'est là que Static entre en jeu : En vous permettant de définir automatiquement vos environnements et en sécurisant toutes vos requêtes, vous ne verrez plus les bases de données de la même manière.",
     "home-views-title" : "Vues",
@@ -65,22 +62,15 @@
     "settings-change" : "Changer mon Mot de Passe",
     "settings-password" : "Mot de Passe (Steve123@)",
 
-    "emails-header" : "MIME-Version : 1.0\nContent-type : text/html; charset=utf-8\nFrom : \"L'Équipe Static\" <hello@email.com>",
-    "emails-copy" : "MIME-Version : 1.0\nContent-type : text/html; charset=utf-8\nFrom : \"L'Équipe Static\" <hello@email.com>\nBcc : private@email.com",
     "emails-start" : "Bonjour, <br/> <br/> ",
-    "emails-end" : " <br/> <br/> Cordialement, <br/> <br/> L'Équipe Static <br/> <br/> Pour vous désabonner, vous pouvez nous contacter via <a href=\"https://www.website.com\"> notre site web </a> ou <a href=\"mailto:hello@email.com\"> par email. </a>",
+    "emails-end" : " <br/> <br/> Cordialement, <br/> <br/> L'Équipe @name <br/> <br/> Pour vous désabonner, vous pouvez nous contacter via <a href=\"@website\"> notre site web </a> ou <a href=\"mailto:@email\"> par email. </a>",
 
     "emails-contact-title" : "Merci pour votre Message",
-    "emails-contact-content-1" : "Nous avons bien reçu votre message. Pour rappel, celui-ci indiquait : <br/> <br/> ",
-    "emails-contact-content-2" : " <br/> <br/> Nous reviendrons vers vous dès que possible pour y répondre.",
+    "emails-contact-content" : "Nous avons bien reçu votre message. Pour rappel, celui-ci indiquait : <br/> <br/> @message <br/> <br/> Nous reviendrons vers vous dès que possible pour y répondre.",
 
     "emails-signUp-title" : "Bienvenue sur Static",
-    "emails-signUp-content-1" : "Merci pour votre inscription sur Static. Vous pouvez dès maintenant <a href=\"https://www.website.com/log-in\"> vous connecter </a> à votre compte avec vos identifiants : <br/> <br/> Adresse Email : ",
-    "emails-signUp-content-2" : " <br/> Mot de Passe : ",
-    "emails-signUp-content-3" : " <br/> <br/> Vous pouvez changer ces informations sur la page <a href=\"https://www.website.com/settings\"> Paramètres </a> de votre compte.",
+    "emails-signUp-content" : "Merci pour votre inscription sur Static. Vous pouvez dès maintenant <a href=\"@log-in\"> vous connecter </a> à votre compte avec vos identifiants : <br/> <br/> Adresse Email : @email <br/> Mot de Passe : @password <br/> <br/> Vous pouvez changer ces informations sur la page <a href=\"@settings\"> Paramètres </a> de votre compte.",
 
     "emails-reset-title" : "Changement de votre Mot de Passe",
-    "emails-reset-content-1" : "Suite à votre demande, nous venons de réinitialiser votre mot de passe. Vous pouvez dès maintenant <a href=\"https://www.website.com/log-in\"> vous connecter </a> à votre compte avec vos nouveaux identifiants : <br/> <br/> Adresse Email : ",
-    "emails-reset-content-2" : " <br/> Mot de Passe : ",
-    "emails-reset-content-3" : " <br/> <br/> Vous pouvez changer ces informations sur la page <a href=\"https://www.website.com/settings\"> Paramètres </a> de votre compte."
+    "emails-reset-content" : "Suite à votre demande, nous venons de réinitialiser votre mot de passe. Vous pouvez dès maintenant <a href=\"@log-in\"> vous connecter </a> à votre compte avec vos nouveaux identifiants : <br/> <br/> Adresse Email : @email <br/> Mot de Passe : @password <br/> <br/> Vous pouvez changer ces informations sur la page <a href=\"@settings\"> Paramètres </a> de votre compte."
 }

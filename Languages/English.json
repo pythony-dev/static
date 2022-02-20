@@ -1,6 +1,4 @@
 {
-    "project-name" : "Static",
-
     "navbar-error" : "Error",
     "navbar-home" : "Home",
     "navbar-news" : "News",
@@ -13,9 +11,8 @@
 
     "footer" : "All Rights Reserved",
 
-    "home-main-title" : "Static",
-    "home-main-subtitle" : "Accelerate the Development of your Web Project",
-    "home-main-content" : "The development of a web project is a long step, during which you have to re-program the same basics common to any website. This is a useless waste of time for each new project, but it is still a necessary step. Fortunately for you, there is a solution : Static, the framework that will implement all these building blocks for you. This will allow you to focus on what matters most to you : The success of your project. And for that, I propose you to discover right now how this framework will optimize your future developments.",
+    "home-title" : "Accelerate the Development of your Web Project",
+    "home-content" : "The development of a web project is a long step, during which you have to re-program the same basics common to any website. This is a useless waste of time for each new project, but it is still a necessary step. Fortunately for you, there is a solution : Static, the framework that will implement all these building blocks for you. This will allow you to focus on what matters most to you : The success of your project. And for that, I propose you to discover right now how this framework will optimize your future developments.",
     "home-models-title" : "Models",
     "home-models-content" : "Every web project requires connecting to and manipulating a database. Yet, with all the different environments and security rules in place, a simple connection can be a nightmare. And that's where Static comes in : By allowing you to automatically define your environments and securing all your queries, you'll never see databases the same way again.",
     "home-views-title" : "Views",
@@ -65,22 +62,15 @@
     "settings-change" : "Change my Password",
     "settings-password" : "Password (Steve123@)",
 
-    "emails-header" : "MIME-Version : 1.0\nContent-type : text/html; charset=utf-8\nFrom : \"The Static Team\" <hello@email.com>",
-    "emails-copy" : "MIME-Version : 1.0\nContent-type : text/html; charset=utf-8\nFrom : \"The Static Team\" <hello@email.com>\nBcc : private@email.com",
     "emails-start" : "Hello, <br/> <br/> ",
-    "emails-end" : " <br/> <br/> Sincerely, <br/> <br/> The Static Team <br/> <br/> To unsubscribe, you can contact us via <a href=\"https://www.website.com\"> our website </a> or <a href=\"mailto:hello@email.com\"> by email. </a>",
+    "emails-end" : " <br/> <br/> Sincerely, <br/> <br/> The @name Team <br/> <br/> To unsubscribe, you can contact us via <a href=\"@website\"> our website </a> or <a href=\"mailto:@email\"> by email. </a>",
 
     "emails-contact-title" : "Thank you for your Message",
-    "emails-contact-content-1" : "We have received your message. To remind you, this one indicated : <br/> <br/> ",
-    "emails-contact-content-2" : " <br/> <br/> We will come back to you as soon as possible to answer them.",
+    "emails-contact-content" : "We have received your message. To remind you, this one indicated : <br/> <br/> @message <br/> <br/> We will come back to you as soon as possible to answer them.",
 
     "emails-signUp-title" : "Welcome to Static",
-    "emails-signUp-content-1" : "Thank you for signing up for Static. You can now <a href=\"https://www.website.com/log-in\"> log in </a> to your account with your credentials : <br/> <br/> Email Address : ",
-    "emails-signUp-content-2" : " <br/> Password : ",
-    "emails-signUp-content-3" : " <br/> <br/> You can change this information on the <a href=\"https://www.website.com/settings\"> Settings </a> page of your account.",
+    "emails-signUp-content" : "Thank you for signing up for Static. You can now <a href=\"@log-in\"> log in </a> to your account with your credentials : <br/> <br/> Email Address : @email <br/> Password : @password <br/> <br/> You can change this information on the <a href=\"@settings\"> Settings </a> page of your account.",
 
     "emails-reset-title" : "Change of your Password",
-    "emails-reset-content-1" : "Following your request, we have just reset your password. You can now <a href=\"https://www.website.com/log-in\"> log in </a> to your account with your new credentials : <br/> <br/> Email Address : ",
-    "emails-reset-content-2" : " <br/> Password : ",
-    "emails-reset-content-3" : " <br/> <br/> You can change this information on the <a href=\"https://www.website.com/settings\"> Settings </a> page of your account."
+    "emails-reset-content" : "Following your request, we have just reset your password. You can now <a href=\"@log-in\"> log in </a> to your account with your new credentials : <br/> <br/> Email Address : @email <br/> Password : @password <br/> <br/> You can change this information on the <a href=\"@settings\"> Settings </a> page of your account."
 }

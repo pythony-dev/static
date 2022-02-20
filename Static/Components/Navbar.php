@@ -8,6 +8,7 @@
             $userID = (int)$userID;
 
             $getText = \Static\Kernel::getParameters()["getText"];
+            $getSettings = \Static\Kernel::getParameters()["getSettings"];
             $getPath = \Static\Kernel::getParameters()["getPath"];
 
             ob_start();
@@ -15,8 +16,8 @@
 
             <nav class="fixed-top px-5 navbar navbar-expand-md navbar-light bg-light shadow border rounded-bottom">
                 <a class="d-flex me-0 navbar-brand" href="<?= $getPath("/"); ?>">
-                    <img class="pe-4 icon" src="<?= $getPath("/Public/Images/Index/Icon.png"); ?>" alt="<?= $getText("project-name"); ?>"/>
-                    <p class="h1 my-auto ps-4"> <?= $getText("project-name"); ?> </p>
+                    <img class="pe-4 icon" src="<?= $getPath("/Public/Images/Index/Icon.png"); ?>" alt="<?= $getSettings("name"); ?>"/>
+                    <p class="h1 my-auto ps-4"> <?= $getSettings("name"); ?> </p>
                 </a>
                 <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbar-collapse">
                     <span class="navbar-toggler-icon"> </span>

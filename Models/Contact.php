@@ -17,7 +17,12 @@
             $query->bindValue(":email", $email, PDO::PARAM_STR);
             $query->bindValue(":message", $message, PDO::PARAM_STR);
 
-            return $query->execute() && \Static\Emails::contact($email, $message) ? "success" : "error";
+            $title = \Static\Languages\Translate::getText("emails-contact-title");
+            $content = htmlspecialchars_decode(\Static\Languages\Translate::getText("emails-contact-content", array(
+                "message" => $message,
+            )));
+
+            return $query->execute() && \Static\Emails::send($email, $title, $content, true) ? "success" : "error";
         }
 
     }

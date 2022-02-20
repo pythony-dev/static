@@ -29,8 +29,14 @@
             return array("english", "french");
         }
 
-        public static function getText($text) {
-            return \Static\Kernel::getValue(self::$translations, $text);
+        public static function getText($text, $parameters = null) {
+            $text = \Static\Kernel::getValue(self::$translations, $text);
+
+            if(!is_array($parameters)) return $text;
+
+            foreach($parameters as $key => $value) $text = str_replace("@" . $key, htmlspecialchars($value), $text);
+
+            return $text;
         }
 
     }
