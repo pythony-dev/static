@@ -6,12 +6,13 @@
 
     final class Users extends Database {
 
-        public static function signUp($email, $username) {
+        public static function signUp($email, $username, $agree) {
             $email = htmlspecialchars($email);
             $username = htmlspecialchars($username);
 
             if(self::isEmail($email) != "success") return "email";
             else if(self::isUsername($username) != "success") return "username";
+            else if($agree != "true") return "agree";
 
             $password = self::createPassword();
 

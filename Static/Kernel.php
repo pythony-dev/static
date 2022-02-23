@@ -4,10 +4,9 @@
 
     final class Kernel {
 
-        private static $version = "1.2.2";
+        private static $version = "1.2.3";
         private static $settings = array();
 
-        private static $link = "";
         private static $styles = array();
         private static $scripts = array();
         private static $routes = array();
@@ -15,10 +14,6 @@
         private static $route = "";
 
         private static $salt = "";
-
-        public static function setLink($link) {
-            self::$link = htmlspecialchars($link);
-        }
 
         public static function addStyle($style) {
             array_push(self::$styles, htmlspecialchars($style));
@@ -77,7 +72,7 @@
         public static function getPath($path) {
             $path = htmlspecialchars($path);
 
-            if(empty($path) || (strlen($path) > 0 && $path[0] == "/")) return self::$link . $path;
+            if(empty($path) || (strlen($path) > 0 && $path[0] == "/")) return self::getSettings("settings-link") . $path;
             else return $path;
         }
 
@@ -88,15 +83,18 @@
         public static function start() {
             if(file_exists("Static/Settings.json")) self::$settings = (array)json_decode(file_get_contents("Static/Settings.json"));
 
+            \Static\Models\Database::connect();
+            \Static\Languages\Translate::setLanguage();
+
             if(!\Static\Models\Requests::check()) return self::setError(429, "Too Many Requests");
             else if(!array_key_exists("request", $_POST)) {
                 self::addRoute("error", "/error/(error)");
 
-                $start = strlen(self::$link) + 1;
+                $start = strlen(self::getSettings("settings-link")) + 1;
                 $search = explode("/", substr((array_key_exists("HTTPS", $_SERVER) ? "https" : "http") . "://" . htmlspecialchars($_SERVER["HTTP_HOST"] . $_SERVER["REDIRECT_URL"]), $start));
 
                 foreach(self::$routes as $route) {
-                    $path = explode("/", substr(self::$link . $route["path"], $start));
+                    $path = explode("/", substr(self::getSettings("settings-link") . $route["path"], $start));
 
                     if(count($search) != count($path)) continue;
 
@@ -145,6 +143,8 @@
 
                 return self::setError(404, "No Route : " . self::getValue($_SERVER, "REDIRECT_URL"));
             } else {
+                self::addRequest("tokens", false);
+
                 $search = htmlspecialchars($_POST["request"]);
 
                 if(self::$requests[array_search($search, array_column(self::$requests, "name"))]["secure"] && !\Static\Models\Tokens::check()) return self::setError(401, "Invalid Token");
@@ -191,7 +191,7 @@
         public static function getParameters() {
             return array(
                 "userID" => self::getValue($_SESSION, "userID"),
-                "title" => \Static\Languages\Translate::getText("navbar-" . lcfirst(self::$route)),
+                "title" => \Static\Languages\Translate::getText("title-" . strtolower(self::$route)),
                 "getText" => "\Static\Languages\Translate::getText",
                 "getSettings" => "\Static\Kernel::getSettings",
                 "getPath" => "\Static\Kernel::getPath",

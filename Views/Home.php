@@ -1,5 +1,5 @@
 <article class="col-12 col-md-10 col-xl-8 offset-md-1 offset-xl-2 py-5">
-    <h1 class="p-5 fw-bold zoom"> <?= $parameters["getSettings"]("name"); ?> </h1>
+    <h1 class="p-5 fw-bold zoom"> <?= $parameters["getSettings"]("project-name"); ?> </h1>
     <h2 class="p-5 fw-bold"> <?= $parameters["getText"]("home-title"); ?> </h2>
     <p class="p-5 text-justify"> <?= $parameters["getText"]("home-content"); ?> </p>
     <?php foreach($parameters["themes"] as $id => $theme) { ?>
@@ -11,8 +11,8 @@
                 <img class="img-fluid" src="<?= $parameters["getPath"]("/Public/Images/Home/" . $theme . ".png"); ?>" alt="<?= $theme; ?>"/>
             </div>
             <div class="col-12 col-md-6 py-5 px-md-5 my-auto">
-                <h3 class="py-4"> <?= $parameters["getText"]("home-" . lcfirst($theme) . "-title"); ?> </h3>
-                <p class="py-4 text-justify"> <?= $parameters["getText"]("home-" . lcfirst($theme) . "-content"); ?> </p>
+                <h3 class="py-4"> <?= $parameters["getText"]("home-" . strtolower($theme) . "-title"); ?> </h3>
+                <p class="py-4 text-justify"> <?= $parameters["getText"]("home-" . strtolower($theme) . "-content"); ?> </p>
             </div>
         </div>
     <?php } ?>

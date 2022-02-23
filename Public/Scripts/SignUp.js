@@ -9,6 +9,7 @@ $(document).ready(() => {
                 "action" : "signUp",
                 "email" : $("#signUp-email").val(),
                 "username" : $("#signUp-username").val(),
+                "agree" : String($("#signUp-agree").is(":checked")),
             }).then(response => {
                 if(JSON.parse(response)["status"] == "success") {
                     alert("Success")

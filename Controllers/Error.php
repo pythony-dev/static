@@ -12,7 +12,7 @@
                 $parameters["text"] = "Internal Server Error";
             }
 
-            $parameters["title"] = \Static\Languages\Translate::getText("navbar-error") . " " . (int)$parameters["error"];
+            $parameters["title"] = \Static\Languages\Translate::getText("title-error") . " " . (int)$parameters["error"];
 
             return $parameters;
         }

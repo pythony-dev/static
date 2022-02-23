@@ -6,10 +6,12 @@
     width : 200%;
 } .section {
     margin-top : 12.5vh;
-} .zoom {
-    font-size : 500%;
 } .text-justify {
     text-align : justify;
+} .networks {
+    height : 5vh;
+} .zoom {
+    font-size : 500%;
 } .line {
     height : 3px;
     border-radius: 3px;

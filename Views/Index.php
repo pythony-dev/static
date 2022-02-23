@@ -5,7 +5,7 @@
     <head>
         <meta charset="utf-8"/>
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
-        <title> <?= htmlspecialchars($title) . " - " . $parameters["getSettings"]("name"); ?> </title>
+        <title> <?= htmlspecialchars($title) . " - " . $parameters["getSettings"]("project-name"); ?> </title>
         <link rel="icon" href="<?= $parameters["getPath"]("/Public/Images/Index/Icon.png"); ?>"/>
         <?php foreach($styles as $style) { ?>
             <link rel="stylesheet" href="<?= $parameters["getPath"]($style); ?>"/>

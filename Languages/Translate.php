@@ -29,10 +29,15 @@
             return array("english", "french");
         }
 
-        public static function getText($text, $parameters = null) {
+        public static function getText($text, $parameters = array()) {
             $text = \Static\Kernel::getValue(self::$translations, $text);
 
             if(!is_array($parameters)) return $text;
+
+            $parameters["name"] = \Static\Kernel::getSettings("project-name");
+            $parameters["link"] = \Static\Kernel::getSettings("settings-link");
+            $parameters["terms"] = \Static\Kernel::getPath("/terms");
+            $parameters["privacy"] = \Static\Kernel::getPath("/privacy");
 
             foreach($parameters as $key => $value) $text = str_replace("@" . $key, htmlspecialchars($value), $text);
 

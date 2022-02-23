@@ -1,17 +1,18 @@
 {
-    "name" : "Static",
-    "version" : "1.0.0",
+    "project-name" : "Static",
+    "project-version" : "1.0.0",
+    "project-environment" : "production",
 
-    "website" : "https://www.pythony.dev/Static",
-    "email" : "hello@pythony.dev",
-    "copy" : "private@pythony.dev",
+    "settings-link" : "https://www.pythony.dev/Static",
+    "settings-email" : "hello@pythony.dev",
+    "settings-copy" : "private@pythony.dev",
 
-    "emails-header" : "MIME-Version : 1.0\nContent-type : text/html; charset=utf-8\nFrom : \"The @name Team\" <@email>",
-    "emails-copy" : "MIME-Version : 1.0\nContent-type : text/html; charset=utf-8\nFrom : \"The @name Team\" <@email>\nBcc : @copy",
+    "networks-facebook" : "https://www.facebook.com",
+    "networks-youtube" : "https://www.youtube.com",
+    "networks-instagram" : "https://www.instagram.com",
+    "networks-tiktok" : "https://www.tiktok.com",
+    "networks-twitter" : "https://www.twitter.com",
 
-    "facebook" : "https://www.facebook.com",
-    "youtube" : "https://www.youtube.com",
-    "instagram" : "https://www.instagram.com",
-    "tiktok" : "https://www.tiktok.com",
-    "twitter" : "https://www.twitter.com"
+    "emails-header" : "MIME-Version : 1.0\nContent-type : text/html; charset=utf-8\nFrom : \"The @project-name Team\" <@settings-email>",
+    "emails-copy" : "MIME-Version : 1.0\nContent-type : text/html; charset=utf-8\nFrom : \"The @project-name Team\" <@settings-email>\nBcc : @settings-copy"
 }

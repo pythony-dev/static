@@ -9,15 +9,9 @@
         protected static $environment = "";
         protected static $pdo = null;
 
-        public final static function getEnvironment() {
-            return self::$environment;
-        }
-
-        public final static function setEnvironment($environment) {
-            self::$environment = htmlspecialchars($environment);
-        }
-
         public final static function connect() {
+            self::$environment = \Static\Kernel::getSettings("project-environment");
+
             $charset = ";charset=utf8";
             $options = array(\PDO::ATTR_ERRMODE => \PDO::ERRMODE_SILENT);
 
@@ -28,6 +22,10 @@
             } catch(PDOException $exception) {
                 exit();
             }
+        }
+
+        public final static function getEnvironment() {
+            return self::$environment;
         }
 
     }

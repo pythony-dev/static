@@ -12,38 +12,28 @@
             ob_start();
             ?>
 
-            <footer class="bg-dark shadow border border-dark rounded-bottom">
-                <article class="col-12 col-md-10 col-xl-8 offset-md-1 offset-xl-2 py-5">
-                    <div class="row">
-                        <div class="col-12 col-md-4 d-flex p-5">
+            <footer class="bg-dark shadow border border-dark">
+                <article class="col-12 col-md-10 col-xl-8 offset-md-1 offset-xl-2">
+                    <div class="row m-0">
+                        <div class="col-8 col-md-4 offset-2 offset-md-0 d-flex p-5 pb-2 pb-md-5">
                             <div class="m-auto bg-light shadow border border-dark rounded-circle">
-                                <img class="img-fluid p-4" src="<?= $getPath("/Public/Images/Index/Icon.png"); ?>" alt="<?= $getSettings("name"); ?>"/>
+                                <img class="img-fluid p-4" src="<?= $getPath("/Public/Images/Index/Icon.png"); ?>" alt="<?= $getSettings("project-name"); ?>"/>
                             </div>
                         </div>
-                        <div class="col-12 col-md-8">
+                        <div class="col-12 col-md-8 p-5 pt-2 pt-md-5">
                             <div class="d-flex flex-column justify-content-center h-100">
-                                <p class="pt-4 text-center text-light"> Copyright © 2022 <?= $getSettings("name") . " - " . $getText("footer") . " - " . $getSettings("version"); ?> </p>
-                                <div>
-                                    <a class="p-4 text-decoration-none link-light" href=""> Terms and Conditions </a>
-                                    <a class="p-4 text-decoration-none link-light" href=""> Privacy Policy </a>
-                                    <a class="p-4 text-decoration-none link-light" href="<?= $getPath("/contact"); ?>"> Contact </a>
+                                <p class="pt-4 text-center text-light"> Copyright © 2022 <?= $getSettings("project-name") . " - " . $getText("footer-rights") . " - " . $getSettings("project-version"); ?> </p>
+                                <div class="d-flex flex-column flex-md-row justify-content-between pb-4">
+                                    <a class="text-decoration-none link-light" href="<?= $getPath("/terms"); ?>"> <?= $getText("footer-terms"); ?> </a>
+                                    <a class="text-decoration-none link-light" href="<?= $getPath("/privacy"); ?>"> <?= $getText("footer-privacy"); ?> </a>
+                                    <a class="text-decoration-none link-light" href="<?= $getPath("/contact"); ?>"> <?= $getText("footer-contact"); ?> </a>
                                 </div>
-                                <div class="d-flex p-4">
-                                    <a class="p-4" href="<?= $getSettings("facebook"); ?>" target="_blank">
-                                        <img class="img-fluid shadow border border-dark rounded-circle" src="<?= $getPath("/Public/Images/Networks/Facebook.png"); ?>" alt="Facebook"/>
-                                    </a>
-                                    <a class="p-4" href="<?= $getSettings("youtube"); ?>" target="_blank">
-                                        <img class="img-fluid shadow border border-dark rounded-circle" src="<?= $getPath("/Public/Images/Networks/YouTube.png"); ?>" alt="YouTube"/>
-                                    </a>
-                                    <a class="p-4" href="<?= $getSettings("instagram"); ?>" target="_blank">
-                                        <img class="img-fluid shadow border border-dark rounded-circle" src="<?= $getPath("/Public/Images/Networks/Instagram.png"); ?>" alt="Instagram"/>
-                                    </a>
-                                    <a class="p-4" href="<?= $getSettings("tiktok"); ?>" target="_blank">
-                                        <img class="img-fluid shadow border border-dark rounded-circle" src="<?= $getPath("/Public/Images/Networks/TikTok.png"); ?>" alt="TikTok"/>
-                                    </a>
-                                    <a class="p-4" href="<?= $getSettings("twitter"); ?>" target="_blank">
-                                        <img class="img-fluid shadow border border-dark rounded-circle" src="<?= $getPath("/Public/Images/Networks/Twitter.png"); ?>" alt="Twitter"/>
-                                    </a>
+                                <div class="d-flex justify-content-between py-4">
+                                    <?php foreach(array("Facebook", "YouTube", "Instagram", "TikTok", "Twitter") as $network) { ?>
+                                        <a href="<?= $getSettings("networks-" . strtolower($network)); ?>" target="_blank">
+                                            <img class="img-fluid shadow border border-dark rounded-circle networks" src="<?= $getPath("/Public/Images/Networks/" . $network . ".png"); ?>" alt="<?= $network; ?>"/>
+                                        </a>
+                                    <?php } ?>
                                 </div>
                             </div>
                         </div>

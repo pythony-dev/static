@@ -1,5 +1,7 @@
 <?php
 
+    session_start();
+
     require_once("Static/Kernel.php");
     require_once("Static/Emails.php");
     require_once("Static/Requires/Controllers.php");

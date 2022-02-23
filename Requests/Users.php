@@ -7,9 +7,10 @@
         public static function signUp() {
             $email = \Static\Kernel::getValue($_POST, "email");
             $username = \Static\Kernel::getValue($_POST, "username");
+            $agree = \Static\Kernel::getValue($_POST, "agree");
 
             return array(
-                "status" => \Static\Models\Users::signUp($email, $username),
+                "status" => \Static\Models\Users::signUp($email, $username, $agree),
             );
         }
 

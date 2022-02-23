@@ -100,7 +100,7 @@ CREATE TABLE `Contact` (
 --
 
 INSERT INTO `Contact` (`ID`, `Sended`, `SessionID`, `Email`, `Message`) VALUES
-(1, '2021-08-08 16:00:00', 12345, 'steve@email.com', 'I would like to ask you if…');
+(1, '2021-08-08 16:00:00', 12345, 'hello@pythony.dev', 'I would like to ask you if…');
 
 -- --------------------------------------------------------
 
@@ -206,7 +206,7 @@ CREATE TABLE `Views` (
 --
 
 INSERT INTO `Views` (`ID`, `Viewed`, `SessionID`, `Language`, `Link`, `Referer`) VALUES
-(1, '2021-08-08 16:00:00', 12345, 'English', 'https://www.website.com', 'https://www.website.com');
+(1, '2021-08-08 16:00:00', 12345, 'English', 'https://www.pythony.dev/Static', 'https://www.pythony.dev/Static');
 
 --
 -- Indexes for dumped tables
