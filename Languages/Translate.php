@@ -18,7 +18,7 @@
             $file = "Languages/" . ucfirst(self::$language) . ".json";
 
             if(file_exists($file)) self::$translations = (array)json_decode(file_get_contents($file));
-            else \Static\Kernel::setError(404, "No Language : " . $file);
+            else self::$translations = (array)json_decode(file_get_contents("Languages/English.json"));
         }
 
         public static function getLanguage() {
@@ -29,7 +29,7 @@
             return array("english", "french");
         }
 
-        public static function getText($text, $parameters = array()) {
+        public static function getText($text, $decode = false, $parameters = array()) {
             $text = \Static\Kernel::getValue(self::$translations, $text);
 
             if(!is_array($parameters)) return $text;
@@ -41,7 +41,7 @@
 
             foreach($parameters as $key => $value) $text = str_replace("@" . $key, htmlspecialchars($value), $text);
 
-            return $text;
+            return !$decode ? $text : htmlspecialchars_decode($text);
         }
 
     }

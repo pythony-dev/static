@@ -18,9 +18,9 @@
             $query->bindValue(":message", $message, PDO::PARAM_STR);
 
             $title = \Static\Languages\Translate::getText("emails-contact-title");
-            $content = htmlspecialchars_decode(\Static\Languages\Translate::getText("emails-contact-content", array(
+            $content = \Static\Languages\Translate::getText("emails-contact-content", true, array(
                 "message" => $message,
-            )));
+            ));
 
             return $query->execute() && \Static\Emails::send($email, $title, $content, true) ? "success" : "error";
         }

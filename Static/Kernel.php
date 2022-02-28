@@ -4,7 +4,7 @@
 
     final class Kernel {
 
-        private static $version = "1.2.3";
+        private static $version = "1.2.4";
         private static $settings = array();
 
         private static $styles = array();
@@ -15,12 +15,12 @@
 
         private static $salt = "";
 
-        public static function addStyle($style) {
-            array_push(self::$styles, htmlspecialchars($style));
+        public static function addStyle($style, $encode = true) {
+            array_push(self::$styles, $encode ? htmlspecialchars($style) : $style);
         }
 
-        public static function addScript($script) {
-            array_push(self::$scripts, htmlspecialchars($script));
+        public static function addScript($script, $encode = true) {
+            array_push(self::$scripts, $encode ? htmlspecialchars($script) : $script);
         }
 
         public static function addRoute($name, $path) {
@@ -59,18 +59,18 @@
             } else return null;
         }
 
-        public static function getSettings($settings) {
+        public static function getSettings($settings, $decode = false) {
             $settings = \Static\Kernel::getValue(self::$settings, $settings);
 
             if(str_contains($settings, "@")) {
                 foreach(self::$settings as $key => $value) $settings = str_replace("@" . $key, htmlspecialchars($value), $settings);
             }
 
-            return $settings;
+            return !$decode ? $settings : htmlspecialchars_decode($settings);
         }
 
-        public static function getPath($path) {
-            $path = htmlspecialchars($path);
+        public static function getPath($path, $encode = true) {
+            $path = $encode ? htmlspecialchars($path) : $path;
 
             if(empty($path) || (strlen($path) > 0 && $path[0] == "/")) return self::getSettings("settings-link") . $path;
             else return $path;
@@ -86,7 +86,7 @@
             \Static\Models\Database::connect();
             \Static\Languages\Translate::setLanguage();
 
-            if(!\Static\Models\Requests::check()) return self::setError(429, "Too Many Requests");
+            if(!\Static\Models\Requests::check()) return self::setError(429, "Too Many Requests", false);
             else if(!array_key_exists("request", $_POST)) {
                 self::addRoute("error", "/error/(error)");
 
@@ -117,14 +117,15 @@
                     if($found) {
                         self::$route = ucfirst($route["name"]);
 
-                        if(self::$route == "Error") return self::setError(array_key_exists("error", $parameters) ? $parameters["error"] : 500, "Internal Server Error");
+                        if(self::$route == "Error") return self::setError(array_key_exists("error", $parameters) ? $parameters["error"] : 500, "Internal Server Error", false);
 
                         $view = "Views/" . self::$route . ".php";
                         $controller = "\Static\Controllers\\" . self::$route;
 
-                        if(!file_exists($view)) return self::setError(404, "No View : " . $view);
-                        else if(!class_exists($controller)) return self::setError(404, "No Controller : " . $controller);
+                        if(!file_exists($view)) return self::setError(404, "No View : " . $view, false);
+                        else if(!class_exists($controller)) return self::setError(404, "No Controller : " . $controller, false);
 
+                        \Static\Controllers\Main::start($parameters);
                         $parameters = $controller::start(array_merge(self::getParameters(), $parameters));
 
                         ob_start();
@@ -141,7 +142,7 @@
                     }
                 }
 
-                return self::setError(404, "No Route : " . self::getValue($_SERVER, "REDIRECT_URL"));
+                return self::setError(404, "No Route : " . self::getValue($_SERVER, "REDIRECT_URL"), false);
             } else {
                 self::addRequest("tokens", false);
 
@@ -167,23 +168,32 @@
             }
         }
 
-        public static function setError($error, $text) {
+        public static function setError($error, $message, $request = true) {
+            \Static\Controllers\Main::start(array());
             $parameters = \Static\Controllers\Error::start(array_merge(self::getParameters(), array(
                 "error" => (int)$error,
-                "text" => htmlspecialchars($text),
+                "message" => htmlspecialchars($message),
             )));
 
-            http_response_code(array_key_exists("error", $parameters) ? (int)$parameters["error"] : 500);
+            http_response_code(array_key_exists("error", $parameters) ? $parameters["error"] : 500);
 
-            ob_start();
-            require_once("Views/Error.php");
-            $body = ob_get_contents();
-            ob_end_clean();
+            if($request) {
+                echo json_encode(array(
+                    "error" => $parameters["error"],
+                    "message" => $parameters["message"],
+                ));
+            } else {
+                ob_start();
+                require_once("Views/Error.php");
+                $body = ob_get_contents();
+                ob_end_clean();
 
-            $title = array_key_exists("title", $parameters) ? $parameters["title"] : "Error";
-            $styles = self::$styles;
-            $scripts = self::$scripts;
-            require_once("Views/Index.php");
+                $title = array_key_exists("title", $parameters) ? $parameters["title"] : "Error";
+                $styles = self::$styles;
+                $scripts = self::$scripts;
+
+                require_once("Views/Index.php");
+            }
 
             exit();
         }

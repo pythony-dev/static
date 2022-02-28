@@ -6,7 +6,7 @@
         <input id="signUp-username" class="my-5 form-control text-center" type="text" placeholder="<?= $parameters["getText"]("signUp-username"); ?>" required/>
         <div class="pb-5">
             <input id="signUp-agree" class="me-4 form-check-input" type="checkbox" required/>
-            <label class="ps-4 form-check-label" for="signUp-agree"> <?= htmlspecialchars_decode($parameters["getText"]("signUp-agree")); ?> </label>
+            <label class="ps-4 form-check-label" for="signUp-agree"> <?= $parameters["getText"]("signUp-agree", true); ?> </label>
         </div>
         <input class="w-100 mb-5 btn btn-primary" type="submit" value="<?= $parameters["getText"]("signUp-submit"); ?>"/>
     </form>

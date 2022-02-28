@@ -8,9 +8,9 @@
         <title> <?= htmlspecialchars($title) . " - " . $parameters["getSettings"]("project-name"); ?> </title>
         <link rel="icon" href="<?= $parameters["getPath"]("/Public/Images/Index/Icon.png"); ?>"/>
         <?php foreach($styles as $style) { ?>
-            <link rel="stylesheet" href="<?= $parameters["getPath"]($style); ?>"/>
+            <link rel="stylesheet" href="<?= $style; ?>"/>
         <?php } foreach($scripts as $script) { ?>
-            <script src="<?= $parameters["getPath"]($script); ?>" defer> </script>
+            <script src="<?= $script; ?>" defer> </script>
         <?php } ?>
     </head>
     <body class="container p-0 text-center" style="background-image : url('<?= $parameters["getPath"]("/Public/Images/Index/Background.png"); ?>')">
