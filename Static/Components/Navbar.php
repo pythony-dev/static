@@ -28,6 +28,9 @@
                             <a class="nav-link<?= \Static\Kernel::getRoute() != "Home" ? null : " active"; ?>" href="<?= $getPath("/"); ?>"> <?= $getText("title-home"); ?> </a>
                         </li>
                         <li class="w-100 my-auto nav-item">
+                            <a class="nav-link<?= \Static\Kernel::getRoute() != "Features" ? null : " active"; ?>" href="<?= $getPath("/features"); ?>"> <?= $getText("title-features"); ?> </a>
+                        </li>
+                        <li class="w-100 my-auto nav-item">
                             <a class="nav-link<?= !in_array(\Static\Kernel::getRoute(), array("News", "Article")) ? null : " active"; ?>" href="<?= $getPath("/news"); ?>"> <?= $getText("title-news"); ?> </a>
                         </li>
                         <li class="w-100 my-auto nav-item">

@@ -1,6 +1,7 @@
 {
     "title-error" : "Erreur",
     "title-home" : "Accueil",
+    "title-features" : "Fonctionnalités",
     "title-news" : "Actualités",
     "title-contact" : "Contact",
     "title-language" : "Langue",
@@ -33,6 +34,9 @@
     "home-emails-title" : "Emails",
     "home-emails-content" : "Vous souhaitez échanger régulièrement avec vos visiteurs, où les prévenir à chaque nouvelle publication ? Alors jetez un oeil au système d'emails de @name. Tout en étant pleinement intégré au reste de votre site, vous pourrez ainsi envoyer des emails sans rentrer dans des détails techniques. En vous adaptant bien sûr aux préférences et à la langue de chaque utilisateur.",
     "home-download" : "Téléchargez @name sur GitHub",
+
+    "features-title" : "Fonctionnalités",
+    "features-content" : "@name met à disposition un ensemble de composants visant à vous simplifier la vie. Bien sûr, il vous faudra dans un premier temps les découvrir, via la liste ci-dessous, et prendre le temps de les comprendre, pour pouvoir les utiliser efficacement dans vos différentes pages.",
 
     "news-title" : "Actualités",
     "news-content" : "Vous voulez connaître les origines de @name ? Découvrir les prochaines fonctionnalités prévues ? Ou simplement avoir quelques conseils pour l'utiliser au mieux ? Cliquez simplement sur l'article qui vous intéresse, et apprenez-en plus sur votre framework de développement web favori.",

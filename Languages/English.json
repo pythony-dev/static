@@ -1,6 +1,7 @@
 {
     "title-error" : "Error",
     "title-home" : "Home",
+    "title-features" : "Features",
     "title-news" : "News",
     "title-contact" : "Contact",
     "title-language" : "Language",
@@ -33,6 +34,9 @@
     "home-emails-title" : "Emails",
     "home-emails-content" : "You want to exchange regularly with your visitors, or to warn them about each new publication ? Then take a look at @name's email system. While being fully integrated with the rest of your site, you can send emails without going into technical details. And of course, you can adapt to the preferences and language of each user.",
     "home-download" : "Download @name on GitHub",
+
+    "features-title" : "Features",
+    "features-content" : "@name provides a set of components aiming at simplifying your life. Of course, you will have to discover them first, via the list below, and take the time to understand them, to be able to use them efficiently in your different pages.",
 
     "news-title" : "News",
     "news-content" : "Want to know the origins of @name ? Find out about upcoming features ? Or simply get some tips on how to use it better ? Just click on the article that interests you, and learn more about your favorite web development framework.",

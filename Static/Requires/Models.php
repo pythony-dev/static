@@ -5,6 +5,7 @@
     require_once("Models/Sessions.php");
     require_once("Models/Views.php");
     require_once("Models/Tokens.php");
+    require_once("Models/Features.php");
     require_once("Models/Articles.php");
     require_once("Models/Contact.php");
     require_once("Models/Users.php");

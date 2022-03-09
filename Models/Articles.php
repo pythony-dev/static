@@ -20,11 +20,11 @@
 
             while($article = $query->fetch()) {
                 array_push($results, array(
+                    "image" => \Static\Kernel::getPath("/Public/Images/Articles/" . (int)(\Static\Kernel::getValue($article, "ID") / 2 + .5) . ".jpeg"),
                     "title" => \Static\Kernel::getValue($article, "Title"),
                     "overview" => \Static\Kernel::getValue($article, "Overview"),
                     "link" => \Static\Kernel::getValue($article, "Link"),
                     "button" => \Static\Kernel::getPath("/article/" . \Static\Kernel::getValue($article, "Link")),
-                    "image" => \Static\Kernel::getPath("/Public/Images/Articles/" . (int)(\Static\Kernel::getValue($article, "ID") / 2 + .5) . ".jpeg"),
                 ));
             }
 
@@ -58,11 +58,11 @@
 
             while($article = $query->fetch()) {
                 array_push($results, array(
+                    "image" => \Static\Kernel::getPath("/Public/Images/Articles/" . (int)(\Static\Kernel::getValue($article, "ID") / 2 + .5) . ".jpeg"),
                     "title" => \Static\Kernel::getValue($article, "Title"),
                     "overview" => \Static\Kernel::getValue($article, "Overview"),
                     "link" => \Static\Kernel::getValue($article, "Link"),
                     "button" => \Static\Kernel::getPath("/article/" . \Static\Kernel::getValue($article, "Link")),
-                    "image" => \Static\Kernel::getPath("/Public/Images/Articles/" . (int)(\Static\Kernel::getValue($article, "ID") / 2 + .5) . ".jpeg"),
                 ));
             }
 
