@@ -8,9 +8,8 @@
             $email = htmlspecialchars($email);
             $title = \Static\Kernel::getSettings("project-name") . " - " . htmlspecialchars($title);
             $content = \Static\Languages\Translate::getText("emails-start", true) . $content . \Static\Languages\Translate::getText("emails-end", true, array(
-                "name" => \Static\Kernel::getSettings("project-name"),
-                "link" => \Static\Kernel::getPath("/contact"),
                 "email" => \Static\Kernel::getSettings("settings-email"),
+                "contact" => \Static\Kernel::getPath("/contact"),
             ));
             $headers = \Static\Kernel::getSettings("emails-" . ($copy ? "copy" : "header"), true);
 

@@ -22,7 +22,7 @@
                         </div>
                         <div class="col-12 col-md-8 p-5 pt-2 pt-md-5">
                             <div class="d-flex flex-column justify-content-center h-100">
-                                <p class="pt-4 text-center text-light"> Copyright © 2022 <?= $getSettings("project-name") . " - " . $getText("footer-rights") . " - " . $getSettings("project-version"); ?> </p>
+                                <p class="pt-4 text-center text-light"> Copyright © <?= date("Y") . " " . $getSettings("project-name") . " - " . $getText("footer-rights") . " - " . $getSettings("project-version"); ?> </p>
                                 <div class="d-flex flex-column flex-md-row justify-content-between pb-4">
                                     <a class="text-decoration-none link-light" href="<?= $getPath("/terms"); ?>"> <?= $getText("footer-terms"); ?> </a>
                                     <a class="text-decoration-none link-light" href="<?= $getPath("/privacy"); ?>"> <?= $getText("footer-privacy"); ?> </a>

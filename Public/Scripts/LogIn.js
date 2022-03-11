@@ -10,10 +10,13 @@ $(document).ready(() => {
                 "email" : $("#logIn-email").val(),
                 "password" : $("#logIn-password").val(),
             }).then(response => {
-                if(JSON.parse(response)["status"] == "success") location.replace("settings")
-                else alert("Error")
+                if(response["status"] == "empty") alert($("#logIn-alert-empty").val())
+                else if(response["status"] == "not found") alert($("#logIn-alert-notFound").val())
+                else if(response["status"] == "password") alert($("#logIn-alert-password").val())
+                else if(response["status"] == "success") location.replace("settings")
+                else alert($("#logIn-alert-error").val())
             }).fail(() => {
-                alert("Error")
+                alert($("#logIn-alert-error").val())
             })
         })
     })
@@ -28,13 +31,14 @@ $(document).ready(() => {
                 "action" : "reset",
                 "email" : $("#logIn-reset-email").val(),
             }).then(response => {
-                if(JSON.parse(response)["status"] == "success") {
-                    alert("Success")
+                if(response["status"] == "email") alert($("#logIn-alert-reset-email").val())
+                else if(response["status"] == "success") {
+                    alert($("#logIn-alert-reset-success").val())
 
                     location.reload()
-                } else alert("Error")
+                } else alert($("#logIn-alert-reset-error").val())
             }).fail(() => {
-                alert("Error")
+                alert($("#logIn-alert-reset-error").val())
             })
         })
     })

@@ -8,7 +8,7 @@
 
         public static function getFeatures() {
             $query = parent::$pdo->prepare("SELECT ID, Title, Subtitle, Content FROM Features WHERE Language = :language ORDER BY ID DESC");
-            $query->bindValue(":language", htmlspecialchars(\Static\Languages\Translate::getLanguage()), PDO::PARAM_STR);
+            $query->bindValue(":language", \Static\Languages\Translate::getLanguage(), PDO::PARAM_STR);
             $query->execute();
 
             $results = array();

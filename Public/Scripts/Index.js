@@ -12,10 +12,10 @@ $(document).ready(() => {
             "action" : "update",
             "language" : $(event.target).attr("language"),
         }).then(response => {
-            if(JSON.parse(response)["status"] == "success") location.reload()
-            else alert("Error")
+            if(response["status"] == "success") location.reload()
+            else alert($("#index-alert-language").val())
         }).fail(() => {
-            alert("Error")
+            alert($("#index-alert-language").val())
         })
     })
 
@@ -26,10 +26,10 @@ $(document).ready(() => {
                 "request" : "users",
                 "action" : "logOut",
             }).then(response => {
-                if(JSON.parse(response)["status"] == "success") location.reload()
-                else alert("Error")
+                if(response["status"] == "success") location.reload()
+                else alert($("#index-alert-logOut").val())
             }).fail(() => {
-                alert("Error")
+                alert($("#index-alert-logOut").val())
             })
         })
     })
@@ -40,8 +40,8 @@ const getToken = (callback) => {
         "request" : "tokens",
         "action" : "create",
     }).then(response => {
-        callback(JSON.parse(response)["token"])
+        callback(response["token"])
     }).fail(() => {
-        alert("Error")
+        alert($("#index-alert-token").val())
     })
 }

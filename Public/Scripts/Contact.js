@@ -10,13 +10,14 @@ $(document).ready(() => {
                 "email" : $("#contact-email").val(),
                 "message" : $("#contact-message").val(),
             }).then(response => {
-                if(JSON.parse(response)["status"] == "success") {
-                    alert("Thanks !")
+                if(response["status"] == "empty") alert($("#contact-alert-empty").val())
+                else if(response["status"] == "success") {
+                    alert($("#contact-alert-success").val())
 
                     location.reload()
-                } else alert("Error")
+                } else alert($("#contact-alert-error").val())
             }).fail(() => {
-                alert("Error")
+                alert($("#contact-alert-error").val())
             })
         })
     })

@@ -4,7 +4,7 @@
 
     final class Kernel {
 
-        private static $version = "1.2.5";
+        private static $version = "1.2.6";
         private static $settings = array();
 
         private static $styles = array();
@@ -13,7 +13,7 @@
         private static $requests = array();
         private static $route = "";
 
-        private static $salt = "";
+        private static $salt = "0123456789ABCDEF";
 
         public static function addStyle($style, $encode = true) {
             array_push(self::$styles, $encode ? htmlspecialchars($style) : $style);
@@ -43,10 +43,6 @@
 
         public static function getSalt() {
             return self::$salt;
-        }
-
-        public static function setSalt($salt) {
-            self::$salt = htmlspecialchars($salt);
         }
 
         public static function getValue($array, $keys) {
@@ -86,7 +82,7 @@
             \Static\Models\Database::connect();
             \Static\Languages\Translate::setLanguage();
 
-            if(!\Static\Models\Requests::check()) return self::setError(429, "Too Many Requests", false);
+            if(!\Static\Models\Requests::check()) return self::setError(429, \Static\Languages\Translate::getText("error-requests"), false);
             else if(!array_key_exists("request", $_POST)) {
                 self::addRoute("error", "/error/(error)");
 
@@ -117,15 +113,15 @@
                     if($found) {
                         self::$route = ucfirst($route["name"]);
 
-                        if(self::$route == "Error") return self::setError(array_key_exists("error", $parameters) ? $parameters["error"] : 500, "Internal Server Error", false);
+                        if(self::$route == "Error") return self::setError(array_key_exists("error", $parameters) ? $parameters["error"] : 500, \Static\Languages\Translate::getText("error-internal"), false);
 
                         $view = "Views/" . self::$route . ".php";
                         $controller = "\Static\Controllers\\" . self::$route;
 
-                        if(!file_exists($view)) return self::setError(404, "No View : " . $view, false);
-                        else if(!class_exists($controller)) return self::setError(404, "No Controller : " . $controller, false);
+                        if(!file_exists($view)) return self::setError(404, \Static\Languages\Translate::getText("error-view") . $view, false);
+                        else if(!class_exists($controller)) return self::setError(404, \Static\Languages\Translate::getText("error-controller") . $controller, false);
 
-                        \Static\Controllers\Main::start($parameters);
+                        $parameters = \Static\Controllers\Main::start($parameters);
                         $parameters = $controller::start(array_merge(self::getParameters(), $parameters));
 
                         ob_start();
@@ -142,21 +138,23 @@
                     }
                 }
 
-                return self::setError(404, "No Route : " . self::getValue($_SERVER, "REDIRECT_URL"), false);
+                return self::setError(404, \Static\Languages\Translate::getText("error-route") . self::getValue($_SERVER, "REDIRECT_URL"), false);
             } else {
+                header("Content-Type: application/json");
+
                 self::addRequest("tokens", false);
 
                 $search = htmlspecialchars($_POST["request"]);
 
-                if(self::$requests[array_search($search, array_column(self::$requests, "name"))]["secure"] && !\Static\Models\Tokens::check()) return self::setError(401, "Invalid Token");
+                if(self::$requests[array_search($search, array_column(self::$requests, "name"))]["secure"] && !\Static\Models\Tokens::check()) return self::setError(401, \Static\Languages\Translate::getText("error-token") . \Static\Kernel::getValue($_POST, "token"));
 
                 foreach(self::$requests as $request) {
                     if($search == $request["name"]) {
                         $request = "\Static\Requests\\" . ucfirst($request["name"]);
                         $action = self::getValue($_POST, "action");
 
-                        if(!class_exists($request)) return self::setError(404, "No Class : " . $request);
-                        if(!method_exists($request, $action)) return self::setError(404, "No Method : " . $request . "::" . $action);
+                        if(!class_exists($request)) return self::setError(404, \Static\Languages\Translate::getText("error-class") . $request);
+                        if(!method_exists($request, $action)) return self::setError(404, \Static\Languages\Translate::getText("error-method") . $request . "::" . $action);
 
                         echo json_encode($request::$action());
 
@@ -164,7 +162,7 @@
                     }
                 }
 
-                return self::setError(404, "No Request : " . $search);
+                return self::setError(404, \Static\Languages\Translate::getText("error-request") . $search);
             }
         }
 

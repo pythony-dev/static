@@ -11,14 +11,19 @@ $(document).ready(() => {
                 "username" : $("#settings-username").val(),
                 "confirm" : $("#settings-confirm").val(),
             }).then(response => {
-                if(JSON.parse(response)["status"] == "success") {
-                    alert("Success")
+                if(response["status"] == "user") alert($("#settings-alert-user").val())
+                else if(response["status"] == "invalid") alert($("#settings-alert-invalid").val())
+                else if(response["status"] == "password") {
+                    $("#settings-confirm").addClass("is-invalid")
+
+                    alert($("#settings-alert-password").val())
+                } else if(response["status"] == "success") {
+                    alert($("#settings-alert-success").val())
 
                     location.reload()
-                } else if(JSON.parse(response)["status"] == "password") $("#settings-confirm").addClass("is-invalid")
-                else alert("Error")
+                } else alert($("#settings-alert-error").val())
             }).fail(() => {
-                alert("Error")
+                alert($("#settings-alert-error").val())
             })
         })
     })
@@ -33,7 +38,7 @@ $(document).ready(() => {
                 "action" : "isEmail",
                 "email" : $("#settings-email").val(),
             }).then(response => {
-                if(JSON.parse(response)["status"] == "success") $("#settings-email").removeClass("is-invalid").addClass("is-valid")
+                if(response["status"] == "success") $("#settings-email").removeClass("is-invalid").addClass("is-valid")
                 else $("#settings-email").removeClass("is-valid").addClass("is-invalid")
             })
         })
@@ -49,7 +54,7 @@ $(document).ready(() => {
                 "action" : "isUsername",
                 "username" : $("#settings-username").val(),
             }).then(response => {
-                if(JSON.parse(response)["status"] == "success") $("#settings-username").removeClass("is-invalid").addClass("is-valid")
+                if(response["status"] == "success") $("#settings-username").removeClass("is-invalid").addClass("is-valid")
                 else $("#settings-username").removeClass("is-valid").addClass("is-invalid")
             })
         })
@@ -66,14 +71,19 @@ $(document).ready(() => {
                 "password" : $("#settings-change-password").val(),
                 "confirm" : $("#settings-change-confirm").val(),
             }).then(response => {
-                if(JSON.parse(response)["status"] == "success") {
-                    alert("Success")
+                if(response["status"] == "user") alert($("#settings-alert-change-user").val())
+                else if(response["status"] == "invalid") alert($("#settings-alert-change-invalid").val())
+                else if(response["status"] == "password") {
+                    $("#settings-change-confirm").addClass("is-invalid")
+
+                    alert($("#settings-alert-change-password").val())
+                } else if(response["status"] == "success") {
+                    alert($("#settings-alert-change-success").val())
 
                     location.reload()
-                } else if(JSON.parse(response)["status"] == "password") $("#settings-change-confirm").addClass("is-invalid")
-                else alert("Error")
+                } else alert($("#settings-alert-change-error").val())
             }).fail(() => {
-                alert("Error")
+                alert($("#settings-alert-change-error").val())
             })
         })
     })
@@ -88,7 +98,7 @@ $(document).ready(() => {
                 "action" : "isPassword",
                 "password" : $("#settings-change-password").val(),
             }).then(response => {
-                if(JSON.parse(response)["status"] == "success") $("#settings-change-password").removeClass("is-invalid").addClass("is-valid")
+                if(response["status"] == "success") $("#settings-change-password").removeClass("is-invalid").addClass("is-valid")
                 else $("#settings-change-password").removeClass("is-valid").addClass("is-invalid")
             })
         })
@@ -113,13 +123,18 @@ $(document).ready(() => {
                 processData : false,
                 contentType : false,
             }).done(response => {
-                if(JSON.parse(response)["status"] == "extension") alert("Extension")
-                else if(JSON.parse(response)["status"] == "type") alert("Type")
-                else if(JSON.parse(response)["status"] == "size") alert("Size")
-                else if(JSON.parse(response)["status"] == "success") location.reload()
-                else alert("Error")
+                if(response["status"] == "userID") alert($("#settings-alert-file-userID").val())
+                else if(response["status"] == "extension") alert($("#settings-alert-file-extension").val())
+                else if(response["status"] == "type") alert($("#settings-alert-file-type").val())
+                else if(response["status"] == "size") alert($("#settings-alert-file-size").val())
+                else if(response["status"] == "image") alert($("#settings-alert-file-image").val())
+                else if(response["status"] == "success") {
+                    alert($("#settings-alert-file-success").val())
+
+                    location.reload()
+                } else alert($("#settings-alert-file-error").val())
             }).fail(() => {
-                alert("Error")
+                alert($("#settings-alert-file-error").val())
             })
         })
     })
