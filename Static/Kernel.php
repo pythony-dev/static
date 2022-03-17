@@ -4,7 +4,7 @@
 
     final class Kernel {
 
-        private static $version = "1.2.6";
+        private static $version = "1.2.7";
         private static $settings = array();
 
         private static $styles = array();
@@ -87,7 +87,7 @@
                 self::addRoute("error", "/error/(error)");
 
                 $start = strlen(self::getSettings("settings-link")) + 1;
-                $search = explode("/", substr((array_key_exists("HTTPS", $_SERVER) ? "https" : "http") . "://" . htmlspecialchars($_SERVER["HTTP_HOST"] . $_SERVER["REDIRECT_URL"]), $start));
+                $search = explode("/", substr((array_key_exists("HTTPS", $_SERVER) ? "https" : "http") . "://" . self::getValue($_SERVER, "HTTP_HOST") . self::getValue($_SERVER, "REDIRECT_URL"), $start));
 
                 foreach(self::$routes as $route) {
                     $path = explode("/", substr(self::getSettings("settings-link") . $route["path"], $start));
@@ -146,7 +146,7 @@
 
                 $search = htmlspecialchars($_POST["request"]);
 
-                if(self::$requests[array_search($search, array_column(self::$requests, "name"))]["secure"] && !\Static\Models\Tokens::check()) return self::setError(401, \Static\Languages\Translate::getText("error-token") . \Static\Kernel::getValue($_POST, "token"));
+                if(\Static\Kernel::getSettings("project-environment") != "development" && self::$requests[array_search($search, array_column(self::$requests, "name"))]["secure"] && !\Static\Models\Tokens::check()) return self::setError(401, \Static\Languages\Translate::getText("error-token") . \Static\Kernel::getValue($_POST, "token"));
 
                 foreach(self::$requests as $request) {
                     if($search == $request["name"]) {
@@ -167,11 +167,11 @@
         }
 
         public static function setError($error, $message, $request = true) {
-            \Static\Controllers\Main::start(array());
-            $parameters = \Static\Controllers\Error::start(array_merge(self::getParameters(), array(
+            $parameters = \Static\Controllers\Main::start(array(
                 "error" => (int)$error,
                 "message" => htmlspecialchars($message),
-            )));
+            ));
+            $parameters = \Static\Controllers\Error::start(array_merge(self::getParameters(), $parameters));
 
             http_response_code(array_key_exists("error", $parameters) ? $parameters["error"] : 500);
 

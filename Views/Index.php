@@ -19,8 +19,10 @@
             <?= $body; ?>
         </section>
         <?= \Static\Components\Footer::create(); ?>
-        <?php if(is_array($parameters["alerts"])) foreach($parameters["alerts"] as $alert) { ?>
-            <input id="<?= $alert; ?>" class="d-none" value="<?= $parameters["getText"]($alert); ?>"/>
-        <?php } ?>
+        <div>
+            <?php if(is_array($parameters["alerts"])) foreach($parameters["alerts"] as $alert) { ?>
+                <input id="<?= $alert; ?>" class="d-none" value="<?= $parameters["getText"]($alert); ?>"/>
+            <?php } ?>
+        </div>
     </body>
 </html>

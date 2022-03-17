@@ -24,10 +24,6 @@
             }
         }
 
-        public final static function getEnvironment() {
-            return self::$environment;
-        }
-
     }
 
 ?>

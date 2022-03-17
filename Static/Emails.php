@@ -13,9 +13,17 @@
             ));
             $headers = \Static\Kernel::getSettings("emails-" . ($copy ? "copy" : "header"), true);
 
-            if(\Static\Models\Database::getEnvironment() == "production") return mail($email, $subject, $message, $headers);
-            else if(\Static\Models\Database::getEnvironment() == "development") return true;
-            else return false;
+            if(\Static\Kernel::getSettings("project-environment") == "production") return mail($email, $title, $content, $headers);
+            else if(\Static\Kernel::getSettings("project-environment") == "development" && array_key_exists("debug", $_POST)) {
+                echo json_encode(array(
+                    "email" => $email,
+                    "title" => $title,
+                    "content" => $content,
+                    "headers" => $headers,
+                ));
+
+                exit();
+            } else return \Static\Kernel::getSettings("project-environment") == "development";
         }
 
     }
