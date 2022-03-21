@@ -49,15 +49,15 @@
                         <?php if($userID <= 0) { ?>
                             <li class="w-200 my-auto nav-item">
                                 <div class="flex-column flex-md-row my-4 my-md-0 input-group">
-                                    <a class="w-50 btn btn-outline<?= \Static\Kernel::getRoute() != "SignUp" ? "-primary" : "-dark"; ?>" href="<?= $getPath("/sign-up"); ?>"> <?= $getText("title-signup"); ?> </a>
-                                    <a class="w-50 btn btn-outline<?= \Static\Kernel::getRoute() != "LogIn" ? "-primary" : "-dark"; ?>" href="<?= $getPath("/log-in"); ?>"> <?= $getText("title-login"); ?> </a>
+                                    <a class="w-50 btn btn-outline<?= \Static\Kernel::getRoute() != "SignUp" ? "-primary" : "-dark"; ?>" href="<?= $getPath("/sign-up"); ?>"> <?= $getText("title-signUp"); ?> </a>
+                                    <a class="w-50 btn btn-outline<?= \Static\Kernel::getRoute() != "LogIn" ? "-primary" : "-dark"; ?>" href="<?= $getPath("/log-in"); ?>"> <?= $getText("title-logIn"); ?> </a>
                                 </div>
                             </li>
                         <?php } else { ?>
                             <li class="w-200 my-auto nav-item">
                                 <div class="flex-column flex-md-row my-4 my-md-0 input-group">
                                     <a class="w-50 btn btn-outline<?= \Static\Kernel::getRoute() != "Settings" ? "-primary" : "-dark"; ?>" href="<?= $getPath("/settings"); ?>"> <?= $getText("title-settings"); ?> </a>
-                                    <a id="logOut" class="w-50 btn btn-outline-dark"> <?= $getText("title-logout"); ?> </a>
+                                    <a id="logOut" class="w-50 btn btn-outline-dark"> <?= $getText("title-logOut"); ?> </a>
                                 </div>
                             </li>
                         <?php } ?>

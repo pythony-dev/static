@@ -4,7 +4,7 @@
 
     final class Kernel {
 
-        private static $version = "1.2.7";
+        private static $version = "1.3.0";
         private static $settings = array();
 
         private static $styles = array();
@@ -199,7 +199,7 @@
         public static function getParameters() {
             return array(
                 "userID" => self::getValue($_SESSION, "userID"),
-                "title" => \Static\Languages\Translate::getText("title-" . strtolower(self::$route)),
+                "title" => \Static\Languages\Translate::getText("title-" . lcfirst(self::$route)),
                 "getText" => "\Static\Languages\Translate::getText",
                 "getSettings" => "\Static\Kernel::getSettings",
                 "getPath" => "\Static\Kernel::getPath",

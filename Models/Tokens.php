@@ -9,7 +9,7 @@
         public static function create() {
             $value = sha1(\Static\Models\Users::createPassword() . \Static\Kernel::getSalt());
 
-            $query = parent::$pdo->prepare("INSERT INTO Tokens (Created, Used, Value, UserID) VALUES (NOW(), NULL, :value, :userID)");
+            $query = parent::$pdo->prepare("INSERT INTO Tokens (created, used, value, userID) VALUES (NOW(), NULL, :value, :userID)");
             $query->bindValue(":value", $value, PDO::PARAM_STR);
             $query->bindValue(":userID", (int)\Static\Kernel::getValue($_SESSION, "userID"), PDO::PARAM_INT);
 
@@ -21,14 +21,14 @@
 
             if(empty($value)) return false;
 
-            $query = parent::$pdo->prepare("SELECT ID FROM Tokens WHERE Value = :value AND TIMESTAMPDIFF(SECOND, Created, NOW()) < 60 AND Used IS NULL AND UserID = :userID");
+            $query = parent::$pdo->prepare("SELECT id FROM Tokens WHERE value = :value AND TIMESTAMPDIFF(SECOND, created, NOW()) < 60 AND used IS NULL AND userID = :userID");
             $query->bindValue(":value", $value, PDO::PARAM_STR);
             $query->bindValue(":userID", (int)\Static\Kernel::getValue($_SESSION, "userID"), PDO::PARAM_INT);
             $query->execute();
 
             if(!($results = $query->fetch())) return false;
 
-            $query = parent::$pdo->prepare("UPDATE Tokens SET Used = NOW() WHERE ID = :id");
+            $query = parent::$pdo->prepare("UPDATE Tokens SET used = NOW() WHERE id = :id");
             $query->bindValue(":id", (int)$results["ID"], PDO::PARAM_INT);
 
             return $query->execute();

@@ -16,7 +16,7 @@
 
             $password = self::createPassword();
 
-            $query = parent::$pdo->prepare("INSERT INTO Users (Signed, Email, Username, Password, Reset) VALUES (NOW(), :email, :username, :password, NULL)");
+            $query = parent::$pdo->prepare("INSERT INTO Users (created, email, username, password, reset) VALUES (NOW(), :email, :username, :password, NULL)");
             $query->bindValue(":email", $email, PDO::PARAM_STR);
             $query->bindValue(":username", $username, PDO::PARAM_STR);
             $query->bindValue(":password", sha1($password . \Static\Kernel::getSalt()), PDO::PARAM_STR);
@@ -38,25 +38,25 @@
 
             if(empty($email) || empty($password)) return "empty";
 
-            $query = parent::$pdo->prepare("SELECT ID, Password, Reset FROM Users WHERE Email = :email");
+            $query = parent::$pdo->prepare("SELECT id, password, reset FROM Users WHERE email = :email");
             $query->bindValue(":email", $email, PDO::PARAM_STR);
             $query->execute();
 
             if(!($results = $query->fetch())) return "not found";
 
-            $id = (int)$results["ID"];
+            $id = (int)$results["id"];
 
-            if($results["Password"] == $password) {
+            if($results["password"] == $password) {
                 $_SESSION["userID"] = $id;
 
-                $query = parent::$pdo->prepare("UPDATE Users SET Reset = NULL WHERE ID = :id");
+                $query = parent::$pdo->prepare("UPDATE Users SET reset = NULL WHERE id = :id");
                 $query->bindValue(":id", $id, PDO::PARAM_INT);
 
                 return $query->execute() ? "success" : "error";
-            } else if($results["Reset"] == $password) {
+            } else if($results["reset"] == $password) {
                 $_SESSION["userID"] = $id;
 
-                $query = parent::$pdo->prepare("UPDATE Users SET Password = Reset, Reset = NULL WHERE ID = :id");
+                $query = parent::$pdo->prepare("UPDATE Users SET password = reset, reset = NULL WHERE id = :id");
                 $query->bindValue(":id", $id, PDO::PARAM_INT);
 
                 return $query->execute() ? "success" : "error";
@@ -70,7 +70,7 @@
 
             $reset = self::createPassword();
 
-            $query = parent::$pdo->prepare("UPDATE Users SET Reset = :reset WHERE Email = :email");
+            $query = parent::$pdo->prepare("UPDATE Users SET reset = :reset WHERE email = :email");
             $query->bindValue(":reset", sha1($reset . \Static\Kernel::getSalt()), PDO::PARAM_STR);
             $query->bindValue(":email", $email, PDO::PARAM_STR);
 
@@ -90,7 +90,7 @@
 
             if($id < 1) return array();
 
-            $query = parent::$pdo->prepare("SELECT ID, Email, Username FROM Users WHERE ID = :id");
+            $query = parent::$pdo->prepare("SELECT id, email, username FROM Users WHERE id = :id");
             $query->bindValue(":id", $id, PDO::PARAM_INT);
             $query->execute();
 
@@ -107,14 +107,14 @@
             if($id < 1) return "user";
             else if(self::isEmail($email) != "success" || self::isUsername($username) != "success") return "invalid";
 
-            $query = parent::$pdo->prepare("SELECT ID FROM Users WHERE ID = :id AND Password = :confirm");
+            $query = parent::$pdo->prepare("SELECT id FROM Users WHERE id = :id AND password = :confirm");
             $query->bindValue(":id", $id, PDO::PARAM_INT);
             $query->bindValue(":confirm", $confirm, PDO::PARAM_STR);
             $query->execute();
 
             if(!$query->fetch()) return "password";
 
-            $query = parent::$pdo->prepare("UPDATE Users SET Email = :email, Username = :username WHERE ID = :id");
+            $query = parent::$pdo->prepare("UPDATE Users SET email = :email, username = :username WHERE id = :id");
             $query->bindValue(":email", $email, PDO::PARAM_STR);
             $query->bindValue(":username", $username, PDO::PARAM_STR);
             $query->bindValue(":id", $id, PDO::PARAM_INT);
@@ -131,14 +131,14 @@
             $password = sha1(htmlspecialchars($password) . \Static\Kernel::getSalt());
             $confirm = sha1(htmlspecialchars($confirm) . \Static\Kernel::getSalt());
 
-            $query = parent::$pdo->prepare("SELECT ID FROM Users WHERE ID = :id AND Password = :confirm");
+            $query = parent::$pdo->prepare("SELECT id FROM Users WHERE id = :id AND password = :confirm");
             $query->bindValue(":id", $id, PDO::PARAM_INT);
             $query->bindValue(":confirm", $confirm, PDO::PARAM_STR);
             $query->execute();
 
             if(!$query->fetch()) return "password";
 
-            $query = parent::$pdo->prepare("UPDATE Users SET Password = :password WHERE ID = :id");
+            $query = parent::$pdo->prepare("UPDATE Users SET password = :password WHERE id = :id");
             $query->bindValue(":password", $password, PDO::PARAM_STR);
             $query->bindValue(":id", $id, PDO::PARAM_INT);
 
@@ -153,7 +153,7 @@
             if(empty($email)) return "empty";
             else if(!preg_match("#^[0-9A-Za-z-_.]{3,64}@[0-9A-Za-z-_.]{3,64}$#", $email)) return "invalid";
 
-            $query = parent::$pdo->prepare("SELECT ID FROM Users WHERE ID != :id AND Email = :email");
+            $query = parent::$pdo->prepare("SELECT id FROM Users WHERE id != :id AND email = :email");
             $query->bindValue(":id", $id, PDO::PARAM_INT);
             $query->bindValue(":email", $email, PDO::PARAM_STR);
             $query->execute();
@@ -169,7 +169,7 @@
             if(empty($username)) return "empty";
             else if(!preg_match("#^[0-9A-Za-z]{3,16}$#", $username)) return "invalid";
 
-            $query = parent::$pdo->prepare("SELECT ID FROM Users WHERE ID != :id AND Username = :username");
+            $query = parent::$pdo->prepare("SELECT id FROM Users WHERE id != :id AND username = :username");
             $query->bindValue(":id", $id, PDO::PARAM_INT);
             $query->bindValue(":username", $username, PDO::PARAM_STR);
             $query->execute();
