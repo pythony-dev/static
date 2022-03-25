@@ -29,7 +29,7 @@
                 "settings" => \Static\Kernel::getPath("/settings"),
             ));
 
-            return $query->execute() && copy("Public/Images/Users/0.png", "Public/Images/Users/" . parent::$pdo->lastInsertId() . ".png") && \Static\Emails::send($email, $title, $content) ? "success" : "error";
+            return $query->execute() && copy("Public/Images/Users/0.jpeg", "Public/Images/Users/" . parent::$pdo->lastInsertId() . ".jpeg") && \Static\Emails::send($email, $title, $content) ? "success" : "error";
         }
 
         public static function logIn($email, $password) {
