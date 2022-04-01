@@ -24,9 +24,9 @@
                             <div class="d-flex flex-column justify-content-center h-100">
                                 <p class="pt-4 text-center text-light"> Copyright © <?= date("Y") . " " . $getSettings("project-name") . " - " . $getText("footer-rights") . " - " . $getSettings("project-version"); ?> </p>
                                 <div class="d-flex flex-column flex-md-row justify-content-between pb-4">
+                                    <a class="text-decoration-none link-light" href="<?= $getPath("/contact"); ?>"> <?= $getText("footer-contact"); ?> </a>
                                     <a class="text-decoration-none link-light" href="<?= $getPath("/terms"); ?>"> <?= $getText("footer-terms"); ?> </a>
                                     <a class="text-decoration-none link-light" href="<?= $getPath("/privacy"); ?>"> <?= $getText("footer-privacy"); ?> </a>
-                                    <a class="text-decoration-none link-light" href="<?= $getPath("/contact"); ?>"> <?= $getText("footer-contact"); ?> </a>
                                 </div>
                                 <div class="d-flex justify-content-between py-4">
                                     <?php foreach(array("Facebook", "YouTube", "Instagram", "TikTok", "Twitter") as $network) { ?>

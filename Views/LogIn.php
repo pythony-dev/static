@@ -13,8 +13,8 @@
         <div class="modal-content p-5">
             <p class="h2 p-5 fw-bold"> <?= $parameters["getText"]("logIn-reset"); ?> </p>
             <form id="logIn-reset-form" class="px-5">
-                <input id="logIn-reset-email" class="my-5 form-control text-center" type="email" placeholder="<?= $parameters["getText"]("logIn-email"); ?>" required/>
-                <input class="w-100 mb-5 btn btn-primary" type="submit" value="<?= $parameters["getText"]("logIn-submit"); ?>"/>
+                <input id="logIn-reset-email" class="my-5 form-control text-center" type="email" placeholder="<?= $parameters["getText"]("logIn-reset-email"); ?>" required/>
+                <input class="w-100 mb-5 btn btn-primary" type="submit" value="<?= $parameters["getText"]("logIn-reset-submit"); ?>"/>
             </form>
         </div>
     </div>

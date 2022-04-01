@@ -4,8 +4,12 @@
 
     final class Translate {
 
-        protected static $language = "";
+        protected static $language = "english";
         protected static $translations = array();
+
+        public static function getAllLanguages() {
+            return array("english", "french");
+        }
 
         public static function setLanguage() {
             foreach(self::getAllLanguages() as $language) {
@@ -13,29 +17,23 @@
             }
 
             if(array_key_exists("language", $_SESSION) && in_array($_SESSION["language"], self::getAllLanguages())) self::$language = htmlspecialchars($_SESSION["language"]);
-            else self::$language = "english";
 
             $file = "Languages/" . ucfirst(self::$language) . ".json";
-
-            if(file_exists($file)) self::$translations = (array)json_decode(file_get_contents($file));
-            else self::$translations = (array)json_decode(file_get_contents("Languages/English.json"));
+            self::$translations = (array)json_decode(file_get_contents(file_exists($file) ? $file : "Languages/English.json"));
         }
 
         public static function getLanguage() {
             return self::$language;
         }
 
-        public static function getAllLanguages() {
-            return array("english", "french");
-        }
-
         public static function getText($text, $decode = false, $parameters = array()) {
             $text = \Static\Kernel::getValue(self::$translations, $text);
 
-            if(!is_array($parameters)) return $text;
+            if(!is_array($parameters)) $parameters = array();
 
             $parameters["name"] = \Static\Kernel::getSettings("project-name");
             $parameters["link"] = \Static\Kernel::getSettings("settings-link");
+            $parameters["contact"] = \Static\Kernel::getPath("/contact");
             $parameters["terms"] = \Static\Kernel::getPath("/terms");
             $parameters["privacy"] = \Static\Kernel::getPath("/privacy");
 

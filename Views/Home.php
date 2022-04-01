@@ -37,6 +37,6 @@
         <?php } ?>
     <?php } ?>
     <div class="p-5">
-        <a class="w-100 btn btn-primary" href="https://github.com/pythony-dev/static" target="_blank" rel="noopener"> <?= $parameters["getText"]("home-download"); ?> </a>
+        <a class="w-100 btn btn-primary" href="https://github.com/pythony-dev/static" target="_blank" rel="noopener"> <?= $parameters["getText"]("home-action"); ?> </a>
     </div>
 </article>

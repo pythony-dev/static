@@ -20,9 +20,9 @@
         <div class="modal-content p-5">
             <p class="h2 p-5 fw-bold"> <?= $parameters["getText"]("settings-change"); ?> </p>
             <form id="settings-change-form" class="px-5">
-                <input id="settings-change-password" class="my-5 form-control text-center" type="password" placeholder="<?= $parameters["getText"]("settings-password"); ?>" required/>
-                <input id="settings-change-confirm" class="my-5 form-control text-center" type="password" placeholder="<?= $parameters["getText"]("settings-confirm"); ?>" required/>
-                <input class="w-100 mb-5 btn btn-primary" type="submit" value="<?= $parameters["getText"]("settings-submit"); ?>"/>
+                <input id="settings-change-password" class="my-5 form-control text-center" type="password" placeholder="<?= $parameters["getText"]("settings-change-password"); ?>" required/>
+                <input id="settings-change-confirm" class="my-5 form-control text-center" type="password" placeholder="<?= $parameters["getText"]("settings-change-confirm"); ?>" required/>
+                <input class="w-100 mb-5 btn btn-primary" type="submit" value="<?= $parameters["getText"]("settings-change-submit"); ?>"/>
             </form>
         </div>
     </div>

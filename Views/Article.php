@@ -5,7 +5,7 @@
         <img class="img-fluid shadow border rounded" src="<?= $parameters["image"] ?>" alt="<?= $parameters["title"]; ?>"/>
     </div>
     <p class="p-5 text-justify"> <?= $parameters["content"]; ?> </p>
-    <p class="p-5 text-end"> <?= $parameters["getText"]("article-published") . " " . $parameters["published"]; ?> </p>
+    <p class="p-5 text-end"> <?= $parameters["getText"]("article-published") . $parameters["published"]; ?> </p>
     <?php foreach($parameters["random"] as $id => $article) { ?>
         <div class="row<?= $id % 2 ? " flex-row-reverse" : null; ?> px-5 mx-0">
             <?php if($id != 0) { ?>
@@ -17,7 +17,7 @@
             <div class="col-12 col-md-6 py-4 px-md-4 my-auto">
                 <h2 class="py-4"> <?= $article["title"]; ?> </h2>
                 <p class="py-4 text-justify"> <?= $article["overview"]; ?> </p>
-                <a class="w-100 my-4 btn btn-outline-primary" href="<?= $article["button"]; ?>"> <?= $parameters["getText"]("news-button"); ?> </a>
+                <a class="w-100 my-4 btn btn-outline-primary" href="<?= $article["button"]; ?>"> <?= $parameters["getText"]("article-action"); ?> </a>
             </div>
         </div>
     <?php } ?>
