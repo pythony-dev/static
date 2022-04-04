@@ -13,7 +13,7 @@
 
             \Static\Kernel::addScript(\Static\Kernel::getPath("/Public/Scripts/LogIn.js"));
 
-            $parameters["alerts"] = array_merge($parameters["alerts"], array("logIn-alert-empty", "logIn-alert-notFound", "logIn-alert-password", "logIn-alert-error", "logIn-alert-reset-email", "logIn-alert-reset-success", "logIn-alert-reset-error"));
+            $parameters["alerts"] = array_merge($parameters["alerts"], array("logIn-alert-email", "logIn-alert-password", "logIn-alert-error", "logIn-alert-reset-email", "logIn-alert-reset-success", "logIn-alert-reset-error"));
 
             return $parameters;
         }

@@ -36,13 +36,14 @@
             $email = htmlspecialchars($email);
             $password = sha1(htmlspecialchars($password) . \Static\Kernel::getSalt());
 
-            if(empty($email) || empty($password)) return "empty";
+            if(empty($email)) return "email";
+            else if(empty($password)) return "password";
 
             $query = parent::$pdo->prepare("SELECT id, password, reset FROM Users WHERE email = :email");
             $query->bindValue(":email", $email, PDO::PARAM_STR);
             $query->execute();
 
-            if(!($results = $query->fetch())) return "not found";
+            if(!($results = $query->fetch())) return "email";
 
             $id = (int)$results["id"];
 
@@ -105,14 +106,15 @@
             $id = (int)\Static\Kernel::getValue($_SESSION, "userID");
 
             if($id < 1) return "user";
-            else if(self::isEmail($email) != "success" || self::isUsername($username) != "success") return "invalid";
+            else if(self::isEmail($email) != "success") return "email";
+            else if(self::isUsername($username) != "success") return "username";
 
             $query = parent::$pdo->prepare("SELECT id FROM Users WHERE id = :id AND password = :confirm");
             $query->bindValue(":id", $id, PDO::PARAM_INT);
             $query->bindValue(":confirm", $confirm, PDO::PARAM_STR);
             $query->execute();
 
-            if(!$query->fetch()) return "password";
+            if(!$query->fetch()) return "confirm";
 
             $query = parent::$pdo->prepare("UPDATE Users SET email = :email, username = :username WHERE id = :id");
             $query->bindValue(":email", $email, PDO::PARAM_STR);
@@ -126,7 +128,7 @@
             $id = (int)\Static\Kernel::getValue($_SESSION, "userID");
 
             if($id < 1) return "user";
-            else if(self::isPassword($password) != "success") return "invalid";
+            else if(self::isPassword($password) != "success") return "password";
 
             $password = sha1(htmlspecialchars($password) . \Static\Kernel::getSalt());
             $confirm = sha1(htmlspecialchars($confirm) . \Static\Kernel::getSalt());
@@ -136,7 +138,7 @@
             $query->bindValue(":confirm", $confirm, PDO::PARAM_STR);
             $query->execute();
 
-            if(!$query->fetch()) return "password";
+            if(!$query->fetch()) return "confirm";
 
             $query = parent::$pdo->prepare("UPDATE Users SET password = :password WHERE id = :id");
             $query->bindValue(":password", $password, PDO::PARAM_STR);

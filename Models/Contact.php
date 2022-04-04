@@ -10,7 +10,8 @@
             $email = htmlspecialchars($email);
             $message = htmlspecialchars($message);
 
-            if(empty($email) || empty($message)) return "empty";
+            if(empty($email)) return "email";
+            else if(empty($message)) return "message";
 
             $query = parent::$pdo->prepare("INSERT INTO Contact (created, sessionID, email, message) VALUES (NOW(), :sessionID, :email, :message)");
             $query->bindValue(":sessionID", (int)\Static\Kernel::getValue($_SESSION, "sessionID"), PDO::PARAM_INT);

@@ -10,8 +10,7 @@ $(document).ready(() => {
                 "email" : $("#logIn-email").val(),
                 "password" : $("#logIn-password").val(),
             }).then(response => {
-                if(response["status"] == "empty") alert($("#logIn-alert-empty").val())
-                else if(response["status"] == "not found") alert($("#logIn-alert-notFound").val())
+                if(response["status"] == "email") alert($("#logIn-alert-email").val())
                 else if(response["status"] == "password") alert($("#logIn-alert-password").val())
                 else if(response["status"] == "success") location.replace("settings")
                 else alert($("#logIn-alert-error").val())

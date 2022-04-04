@@ -13,6 +13,7 @@ $(document).ready(() => {
             }).then(response => {
                 if(response["status"] == "email") alert($("#signUp-alert-email").val())
                 else if(response["status"] == "username") alert($("#signUp-alert-username").val())
+                else if(response["status"] == "agree") alert($("#signUp-alert-agree").val())
                 else if(response["status"] == "success") {
                     alert($("#signUp-alert-success").val())
 

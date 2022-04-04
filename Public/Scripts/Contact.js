@@ -10,7 +10,8 @@ $(document).ready(() => {
                 "email" : $("#contact-email").val(),
                 "message" : $("#contact-message").val(),
             }).then(response => {
-                if(response["status"] == "empty") alert($("#contact-alert-empty").val())
+                if(response["status"] == "email") alert($("#contact-alert-email").val())
+                else if(response["status"] == "message") alert($("#contact-alert-message").val())
                 else if(response["status"] == "success") {
                     alert($("#contact-alert-success").val())
 
