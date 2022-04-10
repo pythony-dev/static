@@ -11,6 +11,10 @@
             return array("english", "french");
         }
 
+        public static function getLanguage() {
+            return self::$language;
+        }
+
         public static function setLanguage() {
             foreach(self::getAllLanguages() as $language) {
                 if(array_key_exists($language, $_GET)) $_SESSION["language"] = $language;
@@ -22,10 +26,6 @@
             self::$translations = (array)json_decode(file_get_contents(file_exists($file) ? $file : "Languages/English.json"));
         }
 
-        public static function getLanguage() {
-            return self::$language;
-        }
-
         public static function getText($text, $decode = false, $parameters = array()) {
             $text = \Static\Kernel::getValue(self::$translations, $text);
 
@@ -33,6 +33,7 @@
 
             $parameters["name"] = \Static\Kernel::getSettings("project-name");
             $parameters["link"] = \Static\Kernel::getSettings("settings-link");
+            $parameters["email"] = \Static\Kernel::getSettings("settings-email");
             $parameters["contact"] = \Static\Kernel::getPath("/contact");
             $parameters["terms"] = \Static\Kernel::getPath("/terms");
             $parameters["privacy"] = \Static\Kernel::getPath("/privacy");

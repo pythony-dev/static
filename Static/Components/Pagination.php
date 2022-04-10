@@ -23,17 +23,15 @@
 
             <nav class="p-5">
                 <ul class="pagination mb-0">
-                    <?php if($previous >= 2) { ?>
+                    <?php if($page >= 3) { ?>
                         <li class="w-100 page-item">
                             <a class="page-link" href="<?= $path; ?>/1"> 1 </a>
                         </li>
-                    <?php } ?>
-                    <?php if($previous >= 3) { ?>
+                    <?php } if($page >= 4) { ?>
                         <li class="w-100 page-item disabled">
                             <a class="page-link"> ... </a>
                         </li>
-                    <?php } ?>
-                    <?php if($previous >= 1) { ?>
+                    <?php } if($page >= 2) { ?>
                         <li class="w-100 page-item">
                             <a class="page-link" href="<?= $path . "/" . $previous; ?>"> <?= $previous ?> </a>
                         </li>
@@ -45,13 +43,11 @@
                         <li class="w-100 page-item">
                             <a class="page-link" href="<?= $path . "/" . $next; ?>"> <?= $next; ?> </a>
                         </li>
-                    <?php } ?>
-                    <?php if($page <= $limit - 3) { ?>
+                    <?php } if($page <= $limit - 3) { ?>
                         <li class="w-100 page-item disabled">
                             <a class="page-link"> ... </a>
                         </li>
-                    <?php } ?>
-                    <?php if($page <= $limit - 2) { ?>
+                    <?php } if($page <= $limit - 2) { ?>
                         <li class="w-100 page-item">
                             <a class="page-link" href="<?= $path . "/" . $limit; ?>"> <?= $limit; ?> </a>
                         </li>

@@ -12,9 +12,15 @@ $(document).ready(() => {
                 "confirm" : $("#settings-confirm").val(),
             }).then(response => {
                 if(response["status"] == "user") alert($("#settings-alert-user").val())
-                else if(response["status"] == "email") alert($("#settings-alert-email").val())
-                else if(response["status"] == "username") alert($("#settings-alert-username").val())
-                else if(response["status"] == "confirm") {
+                else if(response["status"] == "email") {
+                    $("#settings-email").removeClass("is-valid").addClass("is-invalid")
+
+                    alert($("#settings-alert-email").val())
+                } else if(response["status"] == "username") {
+                    $("#settings-username").removeClass("is-valid").addClass("is-invalid")
+
+                    alert($("#settings-alert-username").val())
+                } else if(response["status"] == "confirm") {
                     $("#settings-confirm").addClass("is-invalid")
 
                     alert($("#settings-alert-confirm").val())
@@ -74,7 +80,7 @@ $(document).ready(() => {
             }).then(response => {
                 if(response["status"] == "user") alert($("#settings-alert-change-user").val())
                 else if(response["status"] == "password") {
-                    $("#settings-change-password").addClass("is-invalid")
+                    $("#settings-change-password").removeClass("is-valid").addClass("is-invalid")
 
                     alert($("#settings-alert-change-password").val())
                 } else if(response["status"] == "confirm") {

@@ -9,7 +9,7 @@
         public static function getArticles($page) {
             $page = (int)$page;
 
-            if($page <= 0) return array();
+            if($page < 1) return array();
 
             $query = parent::$pdo->prepare("SELECT id, title, overview, link FROM Articles WHERE language = :language ORDER BY id DESC LIMIT :page, 5");
             $query->bindValue(":language", \Static\Languages\Translate::getLanguage(), PDO::PARAM_STR);
@@ -23,7 +23,6 @@
                     "image" => \Static\Kernel::getPath("/Public/Images/Articles/" . (int)(\Static\Kernel::getValue($article, "id") / 2 + .5) . ".jpeg"),
                     "title" => \Static\Kernel::getValue($article, "title"),
                     "overview" => \Static\Kernel::getValue($article, "overview"),
-                    "link" => \Static\Kernel::getValue($article, "link"),
                     "button" => \Static\Kernel::getPath("/article/" . \Static\Kernel::getValue($article, "link")),
                 ));
             }
@@ -61,7 +60,6 @@
                     "image" => \Static\Kernel::getPath("/Public/Images/Articles/" . (int)(\Static\Kernel::getValue($article, "id") / 2 + .5) . ".jpeg"),
                     "title" => \Static\Kernel::getValue($article, "title"),
                     "overview" => \Static\Kernel::getValue($article, "overview"),
-                    "link" => \Static\Kernel::getValue($article, "link"),
                     "button" => \Static\Kernel::getPath("/article/" . \Static\Kernel::getValue($article, "link")),
                 ));
             }

@@ -4,7 +4,7 @@
 
     final class Kernel {
 
-        private static $version = "1.3.4";
+        private static $version = "1.3.5";
         private static $settings = array();
 
         private static $styles = array();
@@ -52,17 +52,16 @@
                 $key = array_shift($keys);
 
                 if(array_key_exists($key, $array)) return self::getValue($array[$key], $keys);
+                else return null;
             } else return null;
         }
 
-        public static function getSettings($settings, $decode = false) {
+        public static function getSettings($settings) {
             $settings = \Static\Kernel::getValue(self::$settings, $settings);
 
-            if(str_contains($settings, "@")) {
-                foreach(self::$settings as $key => $value) $settings = str_replace("@" . $key, htmlspecialchars($value), $settings);
-            }
+            foreach(self::$settings as $key => $value) $settings = str_replace("@" . $key, htmlspecialchars($value), $settings);
 
-            return !$decode ? $settings : htmlspecialchars_decode($settings);
+            return $settings;
         }
 
         public static function getPath($path, $encode = true) {
@@ -72,12 +71,23 @@
             else return $path;
         }
 
+        public static function getParameters() {
+            return array(
+                "userID" => self::getValue($_SESSION, "userID"),
+                "title" => \Static\Languages\Translate::getText("title-" . lcfirst(self::$route)),
+                "getSettings" => "\Static\Kernel::getSettings",
+                "getPath" => "\Static\Kernel::getPath",
+                "getText" => "\Static\Languages\Translate::getText",
+            );
+        }
+
         public static function getDateFormat() {
             return "d/m/Y H:i:s";
         }
 
         public static function start() {
             if(file_exists("Static/Settings.json")) self::$settings = (array)json_decode(file_get_contents("Static/Settings.json"));
+            else exit();
 
             \Static\Models\Database::connect();
             \Static\Languages\Translate::setLanguage();
@@ -92,7 +102,7 @@
                 foreach(self::$routes as $route) {
                     $path = explode("/", substr(self::getSettings("settings-link") . $route["path"], $start));
 
-                    if(count($search) != count($path)) continue;
+                    if(count($path) != count($search)) continue;
 
                     $parameters = array();
                     $found = true;
@@ -105,9 +115,7 @@
 
                             if(empty($value)) $found = false;
                             else $parameters[$value] = $action;
-                        }
-
-                        else if($action != $path[$id]) $found = false;
+                        } else if($action != $path[$id]) $found = false;
                     }
 
                     if($found) {
@@ -132,6 +140,7 @@
                         $title = array_key_exists("title", $parameters) ? $parameters["title"] : self::$route;
                         $styles = self::$styles;
                         $scripts = self::$scripts;
+
                         require_once("Views/Index.php");
 
                         return;
@@ -143,18 +152,20 @@
                 header("Content-Type: application/json");
 
                 self::addRequest("tokens", false);
+                self::addRequest("start", false);
+                self::addRequest("language", false);
 
                 $search = htmlspecialchars($_POST["request"]);
 
-                if(\Static\Kernel::getSettings("project-environment") != "development" && self::$requests[array_search($search, array_column(self::$requests, "name"))]["secure"] && !\Static\Models\Tokens::check()) return self::setError(401, \Static\Languages\Translate::getText("error-token") . \Static\Kernel::getValue($_POST, "token"));
+                if(\Static\Kernel::getSettings("project-environment") != "development" && self::$requests[array_search($search, array_column(self::$requests, "name"))]["secure"] && !\Static\Models\Tokens::check()) return self::setError(401, \Static\Languages\Translate::getText("error-token") . \Static\Kernel::getValue($_POST, "token"), true);
 
                 foreach(self::$requests as $request) {
                     if($search == $request["name"]) {
                         $request = "\Static\Requests\\" . ucfirst($request["name"]);
                         $action = self::getValue($_POST, "action");
 
-                        if(!class_exists($request)) return self::setError(404, \Static\Languages\Translate::getText("error-class") . $request);
-                        if(!method_exists($request, $action)) return self::setError(404, \Static\Languages\Translate::getText("error-method") . $request . "::" . $action);
+                        if(!class_exists($request)) return self::setError(404, \Static\Languages\Translate::getText("error-class") . $request, true);
+                        if(!method_exists($request, $action)) return self::setError(404, \Static\Languages\Translate::getText("error-method") . $request . "::" . $action, true);
 
                         echo json_encode($request::$action());
 
@@ -162,23 +173,23 @@
                     }
                 }
 
-                return self::setError(404, \Static\Languages\Translate::getText("error-request") . $search);
+                return self::setError(404, \Static\Languages\Translate::getText("error-request") . $search, true);
             }
         }
 
-        public static function setError($error, $message, $request = true) {
+        public static function setError($error, $message, $request) {
             $parameters = \Static\Controllers\Main::start(array(
                 "error" => (int)$error,
                 "message" => htmlspecialchars($message),
             ));
             $parameters = \Static\Controllers\Error::start(array_merge(self::getParameters(), $parameters));
 
-            http_response_code(array_key_exists("error", $parameters) ? $parameters["error"] : 500);
+            http_response_code(array_key_exists("error", $parameters) ? (int)$parameters["error"] : 500);
 
             if($request) {
                 echo json_encode(array(
-                    "error" => $parameters["error"],
-                    "message" => $parameters["message"],
+                    "error" => (int)$parameters["error"],
+                    "message" => htmlspecialchars($parameters["message"]),
                 ));
             } else {
                 ob_start();
@@ -194,16 +205,6 @@
             }
 
             exit();
-        }
-
-        public static function getParameters() {
-            return array(
-                "userID" => self::getValue($_SESSION, "userID"),
-                "title" => \Static\Languages\Translate::getText("title-" . lcfirst(self::$route)),
-                "getText" => "\Static\Languages\Translate::getText",
-                "getSettings" => "\Static\Kernel::getSettings",
-                "getPath" => "\Static\Kernel::getPath",
-            );
         }
 
     }

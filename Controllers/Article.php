@@ -5,9 +5,7 @@
     final class Article extends Main {
 
         public static function start($parameters) {
-            $article = \Static\Models\Articles::getArticle(\Static\Kernel::getValue($parameters, "link"));
-
-            if(!$article) {
+            if(!$article = \Static\Models\Articles::getArticle(\Static\Kernel::getValue($parameters, "link"))) {
                 header("Location: " . \Static\Kernel::getPath("/news"));
 
                 exit();

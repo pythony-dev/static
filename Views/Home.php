@@ -4,34 +4,34 @@
     <p class="p-5 text-justify"> <?= $parameters["getText"]("home-content"); ?> </p>
     <?php foreach($parameters["themes"] as $id => $theme) { ?>
         <?php if($theme == "Time") { ?>
-            <div class="row px-5 mx-0">
+            <div class="row mx-0 px-5">
                 <div class="d-md-none mx-auto my-5 line"> </div>
-                <div class="col-12 py-5 px-md-5">
-                    <h3 class="py-4"> <?= $parameters["getText"]("home-time-title"); ?> </h3>
-                    <p class="py-4 text-justify"> <?= $parameters["getText"]("home-time-content"); ?> </p>
-                    <canvas id="home-time" class="py-4"> </canvas>
+                <div class="col-12 px-md-4 py-4">
+                    <h3 class="p-4"> <?= $parameters["getText"]("home-time-title"); ?> </h3>
+                    <p class="p-4 text-justify"> <?= $parameters["getText"]("home-time-content"); ?> </p>
+                    <canvas id="home-time" class="p-4"> </canvas>
                 </div>
             </div>
         <?php } else if($theme == "Productivity") { ?>
-            <div class="row px-5 mx-0">
+            <div class="row mx-0 px-5">
                 <div class="d-md-none mx-auto my-5 line"> </div>
-                <div class="col-12 py-5 px-md-5">
-                    <h3 class="py-4"> <?= $parameters["getText"]("home-productivity-title"); ?> </h3>
-                    <p class="py-4 text-justify"> <?= $parameters["getText"]("home-productivity-content"); ?> </p>
-                    <canvas id="home-productivity" class="py-4"> </canvas>
+                <div class="col-12 px-md-4 py-4">
+                    <h3 class="p-4"> <?= $parameters["getText"]("home-productivity-title"); ?> </h3>
+                    <p class="p-4 text-justify"> <?= $parameters["getText"]("home-productivity-content"); ?> </p>
+                    <canvas id="home-productivity" class="p-4"> </canvas>
                 </div>
             </div>
         <?php } else { ?>
-            <div class="row<?= $id % 2 ? " flex-row-reverse" : null; ?> px-5 mx-0">
+            <div class="row mx-0 px-5<?= $id % 2 ? " flex-row-reverse" : null; ?>">
                 <?php if($id != 0) { ?>
                     <div class="d-md-none mx-auto my-5 line"> </div>
                 <?php } ?>
-                <div class="col-12 col-md-6 py-5 my-auto">
+                <div class="col-12 col-md-6 my-auto py-4">
                     <img class="img-fluid" src="<?= $parameters["getPath"]("/Public/Images/Home/" . $theme . ".png"); ?>" alt="<?= $theme; ?>"/>
                 </div>
-                <div class="col-12 col-md-6 py-5 px-md-5 my-auto">
-                    <h3 class="py-4"> <?= $parameters["getText"]("home-" . strtolower($theme) . "-title"); ?> </h3>
-                    <p class="py-4 text-justify"> <?= $parameters["getText"]("home-" . strtolower($theme) . "-content"); ?> </p>
+                <div class="col-12 col-md-6 my-auto px-md-4 py-4">
+                    <h3 class="p-4"> <?= $parameters["getText"]("home-" . strtolower($theme) . "-title"); ?> </h3>
+                    <p class="p-4 text-justify"> <?= $parameters["getText"]("home-" . strtolower($theme) . "-content"); ?> </p>
                 </div>
             </div>
         <?php } ?>

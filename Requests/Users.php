@@ -50,14 +50,6 @@
             );
         }
 
-        public static function logOut() {
-            $_SESSION["userID"] = null;
-
-            return array(
-                "status" => "success",
-            );
-        }
-
         public static function isEmail() {
             $email = \Static\Kernel::getValue($_POST, "email");
 
@@ -79,6 +71,14 @@
 
             return array(
                 "status" => \Static\Models\Users::isPassword($password),
+            );
+        }
+
+        public static function logOut() {
+            $_SESSION["userID"] = null;
+
+            return array(
+                "status" => "success",
             );
         }
 

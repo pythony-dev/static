@@ -24,9 +24,9 @@
             $title = \Static\Languages\Translate::getText("emails-signUp-title");
             $content = \Static\Languages\Translate::getText("emails-signUp-content", true, array(
                 "log-in" => \Static\Kernel::getPath("/log-in"),
+                "settings" => \Static\Kernel::getPath("/settings"),
                 "email" => $email,
                 "password" => $password,
-                "settings" => \Static\Kernel::getPath("/settings"),
             ));
 
             return $query->execute() && copy("Public/Images/Users/0.jpeg", "Public/Images/Users/" . parent::$pdo->lastInsertId() . ".jpeg") && \Static\Emails::send($email, $title, $content) ? "success" : "error";
@@ -47,7 +47,8 @@
 
             $id = (int)$results["id"];
 
-            if($results["password"] == $password) {
+            if($id < 1) return "email";
+            else if($results["password"] == $password) {
                 $_SESSION["userID"] = $id;
 
                 $query = parent::$pdo->prepare("UPDATE Users SET reset = NULL WHERE id = :id");
@@ -78,9 +79,9 @@
             $title = \Static\Languages\Translate::getText("emails-reset-title");
             $content = \Static\Languages\Translate::getText("emails-reset-content", true, array(
                 "log-in" => \Static\Kernel::getPath("/log-in"),
+                "settings" => \Static\Kernel::getPath("/settings"),
                 "email" => $email,
                 "password" => $reset,
-                "settings" => \Static\Kernel::getPath("/settings"),
             ));
 
             return $query->execute() && \Static\Emails::send($email, $title, $content) ? "success" : "error";
@@ -155,9 +156,9 @@
             if(empty($email)) return "empty";
             else if(!preg_match("#^[0-9A-Za-z-_.]{3,64}@[0-9A-Za-z-_.]{3,64}$#", $email)) return "invalid";
 
-            $query = parent::$pdo->prepare("SELECT id FROM Users WHERE id != :id AND email = :email");
-            $query->bindValue(":id", $id, PDO::PARAM_INT);
+            $query = parent::$pdo->prepare("SELECT id FROM Users WHERE email = :email AND id != :id");
             $query->bindValue(":email", $email, PDO::PARAM_STR);
+            $query->bindValue(":id", $id, PDO::PARAM_INT);
             $query->execute();
 
             return $query->fetch() ? "used" : "success";
@@ -171,9 +172,9 @@
             if(empty($username)) return "empty";
             else if(!preg_match("#^[0-9A-Za-z]{3,16}$#", $username)) return "invalid";
 
-            $query = parent::$pdo->prepare("SELECT id FROM Users WHERE id != :id AND username = :username");
-            $query->bindValue(":id", $id, PDO::PARAM_INT);
+            $query = parent::$pdo->prepare("SELECT id FROM Users WHERE username = :username AND id != :id");
             $query->bindValue(":username", $username, PDO::PARAM_STR);
+            $query->bindValue(":id", $id, PDO::PARAM_INT);
             $query->execute();
 
             return $query->fetch() ? "used" : "success";
@@ -183,7 +184,7 @@
             $password = htmlspecialchars($password);
 
             if(empty($password)) return "empty";
-            else if(!preg_match("#^[0-9A-Za-z]{3,16}$#", $password)) return "invalid";
+            else if(!preg_match("#^[0-9A-Za-z-_.]{3,16}$#", $password)) return "invalid";
 
             return "success";
         }

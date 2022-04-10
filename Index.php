@@ -1,5 +1,7 @@
 <?php
 
+    session_start();
+
     require_once("Static/Requires/Kernel.php");
 
     Static\Kernel::addRoute("home", "/");
@@ -14,8 +16,6 @@
     Static\Kernel::addRoute("terms", "/terms");
     Static\Kernel::addRoute("privacy", "/privacy");
 
-    Static\Kernel::addRequest("start", false);
-    Static\Kernel::addRequest("language", false);
     Static\Kernel::addRequest("contact", true);
     Static\Kernel::addRequest("users", true);
     Static\Kernel::addRequest("images", true);

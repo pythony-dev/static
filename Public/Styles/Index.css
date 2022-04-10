@@ -10,12 +10,12 @@
     text-align : justify;
 } .networks {
     height : 5vh;
-} .zoom {
-    font-size : 500%;
 } .line {
     height : 3px;
     border-radius: 3px;
     background-color : #45AAF2;
+} .zoom {
+    font-size : 500%;
 } .pointer {
     cursor : pointer;
 }

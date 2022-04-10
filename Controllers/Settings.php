@@ -17,7 +17,7 @@
             $parameters["alerts"] = array_merge($parameters["alerts"], array(
                 "settings-alert-user", "settings-alert-email", "settings-alert-username", "settings-alert-confirm", "settings-alert-success", "settings-alert-error",
                 "settings-alert-change-user", "settings-alert-change-password", "settings-alert-change-confirm", "settings-alert-change-success", "settings-alert-change-error",
-                "settings-alert-file-userID", "settings-alert-file-extension", "settings-alert-file-type", "settings-alert-file-size", "settings-alert-file-image", "settings-alert-file-success", "settings-alert-file-error"
+                "settings-alert-file-userID", "settings-alert-file-extension", "settings-alert-file-type", "settings-alert-file-size", "settings-alert-file-image", "settings-alert-file-success", "settings-alert-file-error",
             ));
 
             return $parameters;
