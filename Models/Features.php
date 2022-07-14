@@ -15,7 +15,7 @@
 
             while($feature = $query->fetch()) {
                 array_push($results, array(
-                    "image" => \Static\Kernel::getPath("/Public/Images/Features/" . (int)(\Static\Kernel::getValue($feature, "id") / 2 + .5) . ".jpeg"),
+                    "image" => \Static\Kernel::getPath("/Public/Images/Features/" . \Static\Kernel::getID(\Static\Kernel::getValue($feature, "id")) . ".jpeg"),
                     "title" => $feature["title"],
                     "subtitle" => $feature["subtitle"],
                     "content" => $feature["content"],

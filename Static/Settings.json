@@ -5,7 +5,6 @@
 
     "settings-link" : "https://www.pythony.dev/Static",
     "settings-email" : "hello@pythony.dev",
-    "settings-copy" : "private@pythony.dev",
 
     "networks-facebook" : "https://www.facebook.com",
     "networks-youtube" : "https://www.youtube.com",
@@ -14,5 +13,5 @@
     "networks-twitter" : "https://www.twitter.com",
 
     "emails-header" : "MIME-Version : 1.0\nContent-type : text/html; charset=utf-8\nFrom : \"The @project-name Team\" <@settings-email>",
-    "emails-copy" : "MIME-Version : 1.0\nContent-type : text/html; charset=utf-8\nFrom : \"The @project-name Team\" <@settings-email>\nBcc : @settings-copy"
+    "emails-copy" : "MIME-Version : 1.0\nContent-type : text/html; charset=utf-8\nFrom : \"The @project-name Team\" <@settings-email>\nBcc : @settings-email"
 }

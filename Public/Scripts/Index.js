@@ -2,7 +2,7 @@ $(document).ready(() => {
     $.post("", {
         "request" : "start",
         "action" : "create",
-        "link" : location.pathname,
+        "link" : location.pathname + location.search,
         "referer" : document.referrer,
     })
 

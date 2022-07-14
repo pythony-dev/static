@@ -14,7 +14,7 @@
             ob_start();
             ?>
 
-            <nav class="fixed-top px-5 navbar navbar-expand-md navbar-light bg-light shadow border rounded-bottom">
+            <nav class="fixed-top px-4 navbar navbar-expand-lg navbar-light bg-light shadow border rounded-bottom">
                 <a class="d-flex me-0 navbar-brand" href="<?= $getPath("/"); ?>">
                     <img class="pe-3 icon" src="<?= $getPath("/Public/Images/Index/Icon.png"); ?>" alt="<?= $getSettings("project-name"); ?>"/>
                     <p class="h1 my-auto ps-3"> <?= $getSettings("project-name"); ?> </p>

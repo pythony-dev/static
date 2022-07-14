@@ -58,13 +58,14 @@
     "news-title" : "Actualités",
     "news-content" : "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi luctus metus eu dolor viverra accumsan. Aliquam dapibus dolor vitae posuere vulputate. In posuere augue nibh, vitae pretium ipsum tincidunt sed. Curabitur elit risus, pharetra a egestas in, rutrum eget velit. Quisque maximus sit amet quam ac blandit. Suspendisse interdum molestie libero non tristique. Praesent at risus pretium, feugiat odio ut, molestie urna. In varius quam volutpat, egestas odio non, vehicula sem. Cras pellentesque eros ex, a molestie quam ultricies eu. Nunc mollis ligula id efficitur sagittis. Cras rutrum aliquet sem, ac feugiat elit luctus sit amet. Nam ut purus ut orci luctus ultricies ac sed eros.",
     "news-action" : "Lire cet Article",
+    "news-empty" : "Aucun Article",
 
     "article-published" : "Publié le ",
     "article-action" : "Lire cet Article",
 
     "contact-title" : "Contact",
     "contact-content" : "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi luctus metus eu dolor viverra accumsan. Aliquam dapibus dolor vitae posuere vulputate. In posuere augue nibh, vitae pretium ipsum tincidunt sed. Curabitur elit risus, pharetra a egestas in, rutrum eget velit. Quisque maximus sit amet quam ac blandit. Suspendisse interdum molestie libero non tristique. Praesent at risus pretium, feugiat odio ut, molestie urna. In varius quam volutpat, egestas odio non, vehicula sem. Cras pellentesque eros ex, a molestie quam ultricies eu. Nunc mollis ligula id efficitur sagittis. Cras rutrum aliquet sem, ac feugiat elit luctus sit amet. Nam ut purus ut orci luctus ultricies ac sed eros.",
-    "contact-email" : "Adresse Email (steve@email.com)",
+    "contact-email" : "Adresse Email (steve@exemple.com)",
     "contact-message" : "Votre Message (J'aimerai vous remercier pour…)",
     "contact-submit" : "Envoyer",
     "contact-alert-email" : "Cette adresse email est incorrecte",
@@ -74,7 +75,7 @@
 
     "signUp-title" : "Inscription",
     "signUp-content" : "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi luctus metus eu dolor viverra accumsan. Aliquam dapibus dolor vitae posuere vulputate. In posuere augue nibh, vitae pretium ipsum tincidunt sed. Curabitur elit risus, pharetra a egestas in, rutrum eget velit. Quisque maximus sit amet quam ac blandit. Suspendisse interdum molestie libero non tristique. Praesent at risus pretium, feugiat odio ut, molestie urna. In varius quam volutpat, egestas odio non, vehicula sem. Cras pellentesque eros ex, a molestie quam ultricies eu. Nunc mollis ligula id efficitur sagittis. Cras rutrum aliquet sem, ac feugiat elit luctus sit amet. Nam ut purus ut orci luctus ultricies ac sed eros.",
-    "signUp-email" : "Adresse Email (steve@email.com)",
+    "signUp-email" : "Adresse Email (steve@exemple.com)",
     "signUp-username" : "Pseudo (SteveParis)",
     "signUp-agree" : "J'accepte les <a href=\"@terms\" target=\"_blank\"> Termes et Conditions </a> et je reconnais la <a href=\"@privacy\" target=\"_blank\"> Politique de Confidentialité. </a>",
     "signUp-submit" : "S'Inscrire",
@@ -86,11 +87,11 @@
 
     "logIn-title" : "Connexion",
     "logIn-content" : "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi luctus metus eu dolor viverra accumsan. Aliquam dapibus dolor vitae posuere vulputate. In posuere augue nibh, vitae pretium ipsum tincidunt sed. Curabitur elit risus, pharetra a egestas in, rutrum eget velit. Quisque maximus sit amet quam ac blandit. Suspendisse interdum molestie libero non tristique. Praesent at risus pretium, feugiat odio ut, molestie urna. In varius quam volutpat, egestas odio non, vehicula sem. Cras pellentesque eros ex, a molestie quam ultricies eu. Nunc mollis ligula id efficitur sagittis. Cras rutrum aliquet sem, ac feugiat elit luctus sit amet. Nam ut purus ut orci luctus ultricies ac sed eros.",
-    "logIn-email" : "Adresse Email (steve@email.com)",
+    "logIn-email" : "Adresse Email (steve@exemple.com)",
     "logIn-password" : "Mot de Passe (Steve123@)",
     "logIn-submit" : "Se Connecter",
     "logIn-reset" : "Réinitialiser mon Mot de Passe",
-    "logIn-reset-email" : "Adresse Email (steve@email.com)",
+    "logIn-reset-email" : "Adresse Email (steve@exemple.com)",
     "logIn-reset-submit" : "Réinitialiser",
     "logIn-alert-email" : "Cette adresse email est incorrecte",
     "logIn-alert-password" : "Ce mot de passe est incorrect",
@@ -102,7 +103,7 @@
     "settings-title" : "Paramètres",
     "settings-content" : "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi luctus metus eu dolor viverra accumsan. Aliquam dapibus dolor vitae posuere vulputate. In posuere augue nibh, vitae pretium ipsum tincidunt sed. Curabitur elit risus, pharetra a egestas in, rutrum eget velit. Quisque maximus sit amet quam ac blandit. Suspendisse interdum molestie libero non tristique. Praesent at risus pretium, feugiat odio ut, molestie urna. In varius quam volutpat, egestas odio non, vehicula sem. Cras pellentesque eros ex, a molestie quam ultricies eu. Nunc mollis ligula id efficitur sagittis. Cras rutrum aliquet sem, ac feugiat elit luctus sit amet. Nam ut purus ut orci luctus ultricies ac sed eros.",
     "settings-user" : "Utilisateur",
-    "settings-email" : "Nouvelle Adresse Email (steve@email.com)",
+    "settings-email" : "Nouvelle Adresse Email (steve@exemple.com)",
     "settings-username" : "Nouveau Pseudo (SteveParis)",
     "settings-confirm" : "Confirmez avec votre Mot de Passe",
     "settings-submit" : "Mettre à Jour",
@@ -180,8 +181,8 @@
     "emails-contact-content" : "Nous avons bien reçu votre message ! Pour rappel, celui-ci indiquait : <br/> <br/> @message <br/> <br/> Nous reviendrons vers vous dès que possible pour y répondre.",
 
     "emails-signUp-title" : "Bienvenue",
-    "emails-signUp-content" : "Merci pour votre Inscription ! Vous pouvez dès maintenant <a href=\"@log-in\"> vous connecter </a> à votre compte avec vos identifiants : <br/> <br/> Adresse Email : @email <br/> Mot de Passe : @password <br/> <br/> Vous pouvez changer ces informations sur la page <a href=\"@settings\"> Paramètres </a> de votre compte.",
+    "emails-signUp-content" : "Merci pour votre Inscription ! Vous pouvez dès maintenant <a href=\"@log-in\"> vous connecter </a> à votre compte avec vos identifiants : <br/> <br/> Adresse Email : @user-email <br/> Mot de Passe : @user-password <br/> <br/> Vous pouvez changer ces informations sur la page <a href=\"@settings\"> Paramètres </a> de votre compte.",
 
     "emails-reset-title" : "Changement de votre Mot de Passe",
-    "emails-reset-content" : "Suite à votre demande, nous venons de réinitialiser votre mot de passe. Vous pouvez dès maintenant <a href=\"@log-in\"> vous connecter </a> à votre compte avec vos nouveaux identifiants : <br/> <br/> Adresse Email : @email <br/> Mot de Passe : @password <br/> <br/> Vous pouvez changer ces informations sur la page <a href=\"@settings\"> Paramètres </a> de votre compte."
+    "emails-reset-content" : "Suite à votre demande, nous venons de réinitialiser votre mot de passe. Vous pouvez dès maintenant <a href=\"@log-in\"> vous connecter </a> à votre compte avec vos nouveaux identifiants : <br/> <br/> Adresse Email : @user-email <br/> Mot de Passe : @user-password <br/> <br/> Vous pouvez changer ces informations sur la page <a href=\"@settings\"> Paramètres </a> de votre compte."
 }

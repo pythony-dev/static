@@ -25,8 +25,8 @@
             $content = \Static\Languages\Translate::getText("emails-signUp-content", true, array(
                 "log-in" => \Static\Kernel::getPath("/log-in"),
                 "settings" => \Static\Kernel::getPath("/settings"),
-                "email" => $email,
-                "password" => $password,
+                "user-email" => $email,
+                "user-password" => $password,
             ));
 
             return $query->execute() && copy("Public/Images/Users/0.jpeg", "Public/Images/Users/" . parent::$pdo->lastInsertId() . ".jpeg") && \Static\Emails::send($email, $title, $content) ? "success" : "error";
@@ -80,8 +80,8 @@
             $content = \Static\Languages\Translate::getText("emails-reset-content", true, array(
                 "log-in" => \Static\Kernel::getPath("/log-in"),
                 "settings" => \Static\Kernel::getPath("/settings"),
-                "email" => $email,
-                "password" => $reset,
+                "user-email" => $email,
+                "user-password" => $reset,
             ));
 
             return $query->execute() && \Static\Emails::send($email, $title, $content) ? "success" : "error";
@@ -192,10 +192,11 @@
         public static function createPassword() {
             $password = "";
 
-            while(strlen($password) != 16) {
+            while(strlen($password) != 15) {
                 $random = rand(0, 61);
 
-                if($random < 10) $password .= $random;
+                if(strlen($password) % 4 == 3) $password .= "-";
+                else if($random < 10) $password .= $random;
                 else if($random < 36) $password .= chr($random + 55);
                 else $password .= chr($random + 61);
             }

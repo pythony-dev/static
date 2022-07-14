@@ -4,7 +4,7 @@
 
     final class Kernel {
 
-        private static $version = "1.3.5";
+        private static $version = "1.3.6";
         private static $settings = array();
 
         private static $styles = array();
@@ -69,6 +69,10 @@
 
             if(empty($path) || (strlen($path) > 0 && $path[0] == "/")) return self::getSettings("settings-link") . $path;
             else return $path;
+        }
+
+        public static function getID($id) {
+            return (int)(($id - 1) / count(\Static\Languages\Translate::getAllLanguages())) + 1;
         }
 
         public static function getParameters() {

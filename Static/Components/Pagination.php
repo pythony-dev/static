@@ -9,11 +9,12 @@
             $limit = (int)$limit;
             $path = htmlspecialchars($path);
 
-            if($page < 1 || $page > $limit) {
+            if($limit < 2) return null;
+            else if($page < 1 || $page > $limit) {
                 header("Location: " . $path);
 
                 exit();
-            } else if($limit < 2) return null;
+            }
 
             $previous = $page - 1;
             $next = $page + 1;

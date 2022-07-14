@@ -15,6 +15,8 @@
                 <a class="w-100 my-4 btn btn-outline-primary" href="<?= $article["button"]; ?>"> <?= $parameters["getText"]("news-action"); ?> </a>
             </div>
         </div>
+    <?php } if(count($parameters["articles"]) == 0) { ?>
+        <p class="p-5"> <?= $parameters["getText"]("news-empty"); ?> </p>
     <?php } ?>
     <?= \Static\Components\Pagination::create($parameters["page"], $parameters["limit"], $parameters["getPath"]("/news")); ?>
 </article>
