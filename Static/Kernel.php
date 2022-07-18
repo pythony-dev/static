@@ -4,7 +4,7 @@
 
     final class Kernel {
 
-        private static $version = "1.3.6";
+        private static $version = "1.4.0";
         private static $settings = array();
 
         private static $styles = array();
@@ -96,7 +96,7 @@
             \Static\Models\Database::connect();
             \Static\Languages\Translate::setLanguage();
 
-            if(!\Static\Models\Requests::check()) return self::setError(429, \Static\Languages\Translate::getText("error-requests"), false);
+            if(!\Static\Models\Sessions::start() || !\Static\Models\Requests::start()) return self::setError(429, \Static\Languages\Translate::getText("error-requests"), false);
             else if(!array_key_exists("request", $_POST)) {
                 self::addRoute("error", "/error/(error)");
 

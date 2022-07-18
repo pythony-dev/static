@@ -16,10 +16,11 @@
 
             $password = self::createPassword();
 
-            $query = parent::$pdo->prepare("INSERT INTO Users (created, email, username, password, reset) VALUES (NOW(), :email, :username, :password, NULL)");
+            $query = parent::$pdo->prepare("INSERT INTO Users (created, email, username, password, reset, sessionID) VALUES (NOW(), :email, :username, :password, NULL, :sessionID)");
             $query->bindValue(":email", $email, PDO::PARAM_STR);
             $query->bindValue(":username", $username, PDO::PARAM_STR);
             $query->bindValue(":password", sha1($password . \Static\Kernel::getSalt()), PDO::PARAM_STR);
+            $query->bindValue(":sessionID", (int)\Static\Kernel::getValue($_SESSION, "sessionID"), PDO::PARAM_INT);
 
             $title = \Static\Languages\Translate::getText("emails-signUp-title");
             $content = \Static\Languages\Translate::getText("emails-signUp-content", true, array(

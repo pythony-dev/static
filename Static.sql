@@ -150,16 +150,17 @@ INSERT INTO `Features` (`id`, `title`, `subtitle`, `content`, `language`) VALUES
 CREATE TABLE `Requests` (
   `id` int(11) NOT NULL,
   `created` datetime NOT NULL,
-  `ipAddress` varchar(255) NOT NULL,
-  `userAgent` varchar(255) NOT NULL
+  `sessionID` int(11) NOT NULL,
+  `link` varchar(255) NOT NULL,
+  `language` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `Requests`
 --
 
-INSERT INTO `Requests` (`id`, `created`, `ipAddress`, `userAgent`) VALUES
-(1, '2022-04-10 12:00:00', '127.0.0.1', 'Static/1.0');
+INSERT INTO `Requests` (`id`, `created`, `sessionID`, `link`, `language`) VALUES
+(1, '2022-04-10 12:00:00', 16777215, '/Static/', 'english');
 
 -- --------------------------------------------------------
 
@@ -172,15 +173,16 @@ CREATE TABLE `Sessions` (
   `created` datetime NOT NULL,
   `sessionID` int(11) NOT NULL,
   `ipAddress` varchar(255) NOT NULL,
-  `userAgent` varchar(255) NOT NULL
+  `userAgent` varchar(255) NOT NULL,
+  `parameters` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `Sessions`
 --
 
-INSERT INTO `Sessions` (`id`, `created`, `sessionID`, `ipAddress`, `userAgent`) VALUES
-(1, '2022-04-10 12:00:00', 16777215, '127.0.0.1', 'Static/1.0');
+INSERT INTO `Sessions` (`id`, `created`, `sessionID`, `ipAddress`, `userAgent`, `parameters`) VALUES
+(1, '2022-04-10 12:00:00', 16777215, '127.0.0.1', 'Static/1.0', '');
 
 -- --------------------------------------------------------
 
@@ -215,37 +217,16 @@ CREATE TABLE `Users` (
   `email` varchar(255) NOT NULL,
   `username` varchar(255) NOT NULL,
   `password` varchar(255) NOT NULL,
-  `reset` varchar(255) DEFAULT NULL
+  `reset` varchar(255) DEFAULT NULL,
+  `sessionID` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `Users`
 --
 
-INSERT INTO `Users` (`id`, `created`, `email`, `username`, `password`, `reset`) VALUES
-(1, '2022-04-10 12:00:00', 'hello@pythony.dev', 'Pythony', 'd7c35a4da36a8fe3d0ebec8e5cc91b0816a18516', NULL);
-
--- --------------------------------------------------------
-
---
--- Table structure for table `Views`
---
-
-CREATE TABLE `Views` (
-  `id` int(11) NOT NULL,
-  `created` datetime NOT NULL,
-  `sessionID` int(11) DEFAULT NULL,
-  `language` varchar(255) NOT NULL,
-  `link` varchar(255) NOT NULL,
-  `referer` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- Dumping data for table `Views`
---
-
-INSERT INTO `Views` (`id`, `created`, `sessionID`, `language`, `link`, `referer`) VALUES
-(1, '2022-04-10 12:00:00', 16777215, 'english', 'https://www.pythony.dev/Static', 'https://www.pythony.dev/Static');
+INSERT INTO `Users` (`id`, `created`, `email`, `username`, `password`, `reset`, `sessionID`) VALUES
+(1, '2022-04-10 12:00:00', 'hello@pythony.dev', 'Pythony', 'd7c35a4da36a8fe3d0ebec8e5cc91b0816a18516', NULL, 16777215);
 
 --
 -- Indexes for dumped tables
@@ -294,12 +275,6 @@ ALTER TABLE `Users`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `Views`
---
-ALTER TABLE `Views`
-  ADD PRIMARY KEY (`id`);
-
---
 -- AUTO_INCREMENT for dumped tables
 --
 
@@ -343,10 +318,4 @@ ALTER TABLE `Tokens`
 -- AUTO_INCREMENT for table `Users`
 --
 ALTER TABLE `Users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
-
---
--- AUTO_INCREMENT for table `Views`
---
-ALTER TABLE `Views`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;

@@ -1,11 +1,4 @@
 $(document).ready(() => {
-    $.post("", {
-        "request" : "start",
-        "action" : "create",
-        "link" : location.pathname + location.search,
-        "referer" : document.referrer,
-    })
-
     $(".language").click(event => {
         $.post("", {
             "request" : "language",
@@ -35,7 +28,7 @@ $(document).ready(() => {
     })
 })
 
-const getToken = (callback) => {
+const getToken = callback => {
     $.post("", {
         "request" : "tokens",
         "action" : "create",

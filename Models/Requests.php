@@ -6,35 +6,24 @@
 
     final class Requests extends Database {
 
-        private static $delay = 1;
-        private static $limit = 16;
-        private static $sessions = 16;
+        public static function start() {
+            $sessionID = (int)\Static\Kernel::getValue($_SESSION, "sessionID");
 
-        public static function create() {
-            $query = parent::$pdo->prepare("INSERT INTO Requests (created, ipAddress, userAgent) VALUES (NOW(), :ipAddress, :userAgent)");
-            $query->bindValue(":ipAddress", \Static\Kernel::getValue($_SERVER, "REMOTE_ADDR"), PDO::PARAM_STR);
-            $query->bindValue(":userAgent", \Static\Kernel::getValue($_SERVER, "HTTP_USER_AGENT"), PDO::PARAM_STR);
+            if($sessionID <= 0) return false;
 
-            return $query->execute();
-        }
-
-        public static function check() {
-            $query = parent::$pdo->prepare("SELECT COUNT(id) AS count FROM Requests WHERE ipAddress = :ipAddress AND TIMESTAMPDIFF(SECOND, created, NOW()) < :delay");
-            $query->bindValue(":ipAddress", \Static\Kernel::getValue($_SERVER, "REMOTE_ADDR"), PDO::PARAM_STR);
-            $query->bindValue(":delay", (int)self::$delay, PDO::PARAM_INT);
+            $query = parent::$pdo->prepare("SELECT COUNT(id) AS count FROM Requests WHERE sessionID = :sessionID AND TIMESTAMPDIFF(SECOND, created, NOW()) = 0");
+            $query->bindValue(":sessionID", $sessionID, PDO::PARAM_INT);
             $query->execute();
 
-            $count = $query->fetch()["count"] ?? self::$limit;
+            $count = $query->fetch()["count"] ?? 16;
 
-            if($count < self::$limit) return self::create();
-            else if($count < self::$limit * self::$sessions) {
-                $query = parent::$pdo->prepare("SELECT COUNT(id) AS count FROM Requests WHERE ipAddress = :ipAddress AND userAgent = :userAgent AND TIMESTAMPDIFF(SECOND, created, NOW()) < :delay");
-                $query->bindValue(":ipAddress", \Static\Kernel::getValue($_SERVER, "REMOTE_ADDR"), PDO::PARAM_STR);
-                $query->bindValue(":userAgent", \Static\Kernel::getValue($_SERVER, "HTTP_USER_AGENT"), PDO::PARAM_STR);
-                $query->bindValue(":delay", (int)self::$delay, PDO::PARAM_INT);
-                $query->execute();
+            if($count <= 15) {
+                $query = parent::$pdo->prepare("INSERT INTO Requests (created, sessionID, link, language) VALUES (NOW(), :sessionID, :link, :language)");
+                $query->bindValue(":sessionID", $sessionID, PDO::PARAM_INT);
+                $query->bindValue(":link", \Static\Kernel::getValue($_SERVER, "REQUEST_URI"), PDO::PARAM_STR);
+                $query->bindValue(":language", \Static\Languages\Translate::getLanguage(), PDO::PARAM_STR);
 
-                return ($query->fetch()["count"] ?? self::$limit) < self::$limit && self::create();
+                return $query->execute();
             } else return false;
         }
 
