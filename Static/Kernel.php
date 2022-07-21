@@ -4,7 +4,7 @@
 
     final class Kernel {
 
-        private static $version = "1.4.0";
+        private static $version = "1.4.1";
         private static $settings = array();
 
         private static $styles = array();

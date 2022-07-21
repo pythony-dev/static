@@ -144,6 +144,29 @@ INSERT INTO `Features` (`id`, `title`, `subtitle`, `content`, `language`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `Logs`
+--
+
+CREATE TABLE `Logs` (
+  `id` int(11) NOT NULL,
+  `created` datetime NOT NULL,
+  `sessionID` int(11) NOT NULL,
+  `userID` int(11) NOT NULL,
+  `status` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `Logs`
+--
+
+INSERT INTO `Logs` (`id`, `created`, `sessionID`, `userID`, `status`) VALUES
+(1, '2022-04-10 12:00:00', 16777215, 1, 'success'),
+(2, '2022-04-10 12:00:00', 16777215, 1, 'reset'),
+(3, '2022-04-10 12:00:00', 16777215, 1, 'error');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `Requests`
 --
 
@@ -208,6 +231,30 @@ INSERT INTO `Tokens` (`id`, `created`, `used`, `value`, `userID`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `Updates`
+--
+
+CREATE TABLE `Updates` (
+  `id` int(11) NOT NULL,
+  `updated` datetime NOT NULL,
+  `userID` int(11) NOT NULL,
+  `setting` varchar(255) NOT NULL,
+  `value` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `Updates`
+--
+
+INSERT INTO `Updates` (`id`, `updated`, `userID`, `setting`, `value`) VALUES
+(1, '2022-04-10 12:00:00', 1, 'email', 'hello@pythony.dev'),
+(2, '2022-04-10 12:00:00', 1, 'username', 'Pythony'),
+(3, '2022-04-10 12:00:00', 1, 'password', 'd7c35a4da36a8fe3d0ebec8e5cc91b0816a18516'),
+(4, '2022-04-10 12:00:00', 1, 'reset', 'd7c35a4da36a8fe3d0ebec8e5cc91b0816a18516');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `Users`
 --
 
@@ -251,6 +298,12 @@ ALTER TABLE `Features`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `Logs`
+--
+ALTER TABLE `Logs`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `Requests`
 --
 ALTER TABLE `Requests`
@@ -266,6 +319,12 @@ ALTER TABLE `Sessions`
 -- Indexes for table `Tokens`
 --
 ALTER TABLE `Tokens`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `Updates`
+--
+ALTER TABLE `Updates`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -297,6 +356,12 @@ ALTER TABLE `Features`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
+-- AUTO_INCREMENT for table `Logs`
+--
+ALTER TABLE `Logs`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
 -- AUTO_INCREMENT for table `Requests`
 --
 ALTER TABLE `Requests`
@@ -313,6 +378,12 @@ ALTER TABLE `Sessions`
 --
 ALTER TABLE `Tokens`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `Updates`
+--
+ALTER TABLE `Updates`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `Users`

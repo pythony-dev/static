@@ -55,15 +55,19 @@
                 $query = parent::$pdo->prepare("UPDATE Users SET reset = NULL WHERE id = :id");
                 $query->bindValue(":id", $id, PDO::PARAM_INT);
 
-                return $query->execute() ? "success" : "error";
+                return \Static\Models\Logs::create($id, "success") && $query->execute() ? "success" : "error";
             } else if($results["reset"] == $password) {
                 $_SESSION["userID"] = $id;
 
                 $query = parent::$pdo->prepare("UPDATE Users SET password = reset, reset = NULL WHERE id = :id");
                 $query->bindValue(":id", $id, PDO::PARAM_INT);
 
-                return $query->execute() ? "success" : "error";
-            } else return "password";
+                return \Static\Models\Logs::create($id, "reset") && \Static\Models\Updates::create("reset", $results["password"]) && $query->execute() ? "success" : "error";
+            } else {
+                \Static\Models\Logs::create($id, "error");
+
+                return "password";
+            }
         }
 
         public static function reset($email) {
@@ -111,19 +115,19 @@
             else if(self::isEmail($email) != "success") return "email";
             else if(self::isUsername($username) != "success") return "username";
 
-            $query = parent::$pdo->prepare("SELECT id FROM Users WHERE id = :id AND password = :confirm");
+            $query = parent::$pdo->prepare("SELECT email, username FROM Users WHERE id = :id AND password = :confirm");
             $query->bindValue(":id", $id, PDO::PARAM_INT);
             $query->bindValue(":confirm", $confirm, PDO::PARAM_STR);
             $query->execute();
 
-            if(!$query->fetch()) return "confirm";
+            if(!($results = $query->fetch())) return "confirm";
 
             $query = parent::$pdo->prepare("UPDATE Users SET email = :email, username = :username WHERE id = :id");
             $query->bindValue(":email", $email, PDO::PARAM_STR);
             $query->bindValue(":username", $username, PDO::PARAM_STR);
             $query->bindValue(":id", $id, PDO::PARAM_INT);
 
-            return $query->execute() ? "success" : "error";
+            return \Static\Models\Updates::create("email", $results["email"]) && \Static\Models\Updates::create("username", $results["username"]) && $query->execute() ? "success" : "error";
         }
 
         public static function change($password, $confirm) {
@@ -135,18 +139,18 @@
             $password = sha1(htmlspecialchars($password) . \Static\Kernel::getSalt());
             $confirm = sha1(htmlspecialchars($confirm) . \Static\Kernel::getSalt());
 
-            $query = parent::$pdo->prepare("SELECT id FROM Users WHERE id = :id AND password = :confirm");
+            $query = parent::$pdo->prepare("SELECT password FROM Users WHERE id = :id AND password = :confirm");
             $query->bindValue(":id", $id, PDO::PARAM_INT);
             $query->bindValue(":confirm", $confirm, PDO::PARAM_STR);
             $query->execute();
 
-            if(!$query->fetch()) return "confirm";
+            if(!($results = $query->fetch())) return "confirm";
 
-            $query = parent::$pdo->prepare("UPDATE Users SET password = :password WHERE id = :id");
+            $query = parent::$pdo->prepare("UPDATE Users SET password = :password, reset = NULL WHERE id = :id");
             $query->bindValue(":password", $password, PDO::PARAM_STR);
             $query->bindValue(":id", $id, PDO::PARAM_INT);
 
-            return $query->execute() ? "success" : "error";
+            return \Static\Models\Updates::create("password", $results["password"]) && $query->execute() ? "success" : "error";
         }
 
         public static function isEmail($email) {
