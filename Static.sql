@@ -106,6 +106,29 @@ INSERT INTO `Contact` (`id`, `created`, `sessionID`, `email`, `message`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `Errors`
+--
+
+CREATE TABLE `Errors` (
+  `id` int(11) NOT NULL,
+  `created` datetime NOT NULL,
+  `sessionID` int(11) NOT NULL,
+  `userID` int(11) NOT NULL,
+  `link` varchar(255) NOT NULL,
+  `error` int(11) NOT NULL,
+  `response` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `Errors`
+--
+
+INSERT INTO `Errors` (`id`, `created`, `sessionID`, `userID`, `link`, `error`, `response`) VALUES
+(1, '2022-04-10 12:00:00', 16777215, 0, '/Static/', 200, 'Success');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `Features`
 --
 
@@ -261,6 +284,7 @@ INSERT INTO `Updates` (`id`, `updated`, `userID`, `setting`, `value`) VALUES
 CREATE TABLE `Users` (
   `id` int(11) NOT NULL,
   `created` datetime NOT NULL,
+  `deleted` datetime DEFAULT NULL,
   `email` varchar(255) NOT NULL,
   `username` varchar(255) NOT NULL,
   `password` varchar(255) NOT NULL,
@@ -272,8 +296,8 @@ CREATE TABLE `Users` (
 -- Dumping data for table `Users`
 --
 
-INSERT INTO `Users` (`id`, `created`, `email`, `username`, `password`, `reset`, `sessionID`) VALUES
-(1, '2022-04-10 12:00:00', 'hello@pythony.dev', 'Pythony', 'd7c35a4da36a8fe3d0ebec8e5cc91b0816a18516', NULL, 16777215);
+INSERT INTO `Users` (`id`, `created`, `deleted`, `email`, `username`, `password`, `reset`, `sessionID`) VALUES
+(1, '2022-04-10 12:00:00', NULL, 'hello@pythony.dev', 'Pythony', 'd7c35a4da36a8fe3d0ebec8e5cc91b0816a18516', NULL, 16777215);
 
 --
 -- Indexes for dumped tables
@@ -289,6 +313,12 @@ ALTER TABLE `Articles`
 -- Indexes for table `Contact`
 --
 ALTER TABLE `Contact`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `Errors`
+--
+ALTER TABLE `Errors`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -347,6 +377,12 @@ ALTER TABLE `Articles`
 -- AUTO_INCREMENT for table `Contact`
 --
 ALTER TABLE `Contact`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `Errors`
+--
+ALTER TABLE `Errors`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --

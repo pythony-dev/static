@@ -114,6 +114,32 @@ $(document).ready(() => {
         })
     })
 
+    $("#settings-delete-form").submit(event => {
+        event.preventDefault()
+
+        getToken(token => {
+            $.post("", {
+                "token" : token,
+                "request" : "users",
+                "action" : "delete",
+                "confirm" : $("#settings-delete-confirm").val(),
+            }).then(response => {
+                if(response["status"] == "user") alert($("#settings-alert-delete-user").val())
+                else if(response["status"] == "confirm") {
+                    $("#settings-delete-confirm").addClass("is-invalid")
+
+                    alert($("#settings-alert-delete-confirm").val())
+                } else if(response["status"] == "success") {
+                    alert($("#settings-alert-delete-success").val())
+
+                    location.replace("sign-up")
+                } else alert($("#settings-alert-delete-error").val())
+            }).fail(() => {
+                alert($("#settings-alert-delete-error").val())
+            })
+        })
+    })
+
     $("#settings-image").click(event => {
         $("#settings-file").click()
     })

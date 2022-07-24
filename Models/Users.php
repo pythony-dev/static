@@ -40,7 +40,7 @@
             if(empty($email)) return "email";
             else if(empty($password)) return "password";
 
-            $query = parent::$pdo->prepare("SELECT id, password, reset FROM Users WHERE email = :email");
+            $query = parent::$pdo->prepare("SELECT id, password, reset FROM Users WHERE email = :email AND deleted IS NULL");
             $query->bindValue(":email", $email, PDO::PARAM_STR);
             $query->execute();
 
@@ -52,14 +52,14 @@
             else if($results["password"] == $password) {
                 $_SESSION["userID"] = $id;
 
-                $query = parent::$pdo->prepare("UPDATE Users SET reset = NULL WHERE id = :id");
+                $query = parent::$pdo->prepare("UPDATE Users SET reset = NULL WHERE id = :id AND deleted IS NULL");
                 $query->bindValue(":id", $id, PDO::PARAM_INT);
 
                 return \Static\Models\Logs::create($id, "success") && $query->execute() ? "success" : "error";
             } else if($results["reset"] == $password) {
                 $_SESSION["userID"] = $id;
 
-                $query = parent::$pdo->prepare("UPDATE Users SET password = reset, reset = NULL WHERE id = :id");
+                $query = parent::$pdo->prepare("UPDATE Users SET password = reset, reset = NULL WHERE id = :id AND deleted IS NULL");
                 $query->bindValue(":id", $id, PDO::PARAM_INT);
 
                 return \Static\Models\Logs::create($id, "reset") && \Static\Models\Updates::create("reset", $results["password"]) && $query->execute() ? "success" : "error";
@@ -77,7 +77,7 @@
 
             $reset = self::createPassword();
 
-            $query = parent::$pdo->prepare("UPDATE Users SET reset = :reset WHERE email = :email");
+            $query = parent::$pdo->prepare("UPDATE Users SET reset = :reset WHERE email = :email AND deleted IS NULL");
             $query->bindValue(":reset", sha1($reset . \Static\Kernel::getSalt()), PDO::PARAM_STR);
             $query->bindValue(":email", $email, PDO::PARAM_STR);
 
@@ -97,7 +97,7 @@
 
             if($id < 1) return array();
 
-            $query = parent::$pdo->prepare("SELECT id, email, username FROM Users WHERE id = :id");
+            $query = parent::$pdo->prepare("SELECT id, email, username FROM Users WHERE id = :id AND deleted IS NULL");
             $query->bindValue(":id", $id, PDO::PARAM_INT);
             $query->execute();
 
@@ -115,7 +115,7 @@
             else if(self::isEmail($email) != "success") return "email";
             else if(self::isUsername($username) != "success") return "username";
 
-            $query = parent::$pdo->prepare("SELECT email, username FROM Users WHERE id = :id AND password = :confirm");
+            $query = parent::$pdo->prepare("SELECT email, username FROM Users WHERE id = :id AND password = :confirm AND deleted IS NULL");
             $query->bindValue(":id", $id, PDO::PARAM_INT);
             $query->bindValue(":confirm", $confirm, PDO::PARAM_STR);
             $query->execute();
@@ -139,7 +139,7 @@
             $password = sha1(htmlspecialchars($password) . \Static\Kernel::getSalt());
             $confirm = sha1(htmlspecialchars($confirm) . \Static\Kernel::getSalt());
 
-            $query = parent::$pdo->prepare("SELECT password FROM Users WHERE id = :id AND password = :confirm");
+            $query = parent::$pdo->prepare("SELECT password FROM Users WHERE id = :id AND password = :confirm AND deleted IS NULL");
             $query->bindValue(":id", $id, PDO::PARAM_INT);
             $query->bindValue(":confirm", $confirm, PDO::PARAM_STR);
             $query->execute();
@@ -153,6 +153,30 @@
             return \Static\Models\Updates::create("password", $results["password"]) && $query->execute() ? "success" : "error";
         }
 
+        public static function delete($confirm) {
+            $id = (int)\Static\Kernel::getValue($_SESSION, "userID");
+
+            if($id < 1) return "user";
+
+            $confirm = sha1(htmlspecialchars($confirm) . \Static\Kernel::getSalt());
+
+            $query = parent::$pdo->prepare("SELECT id FROM Users WHERE id = :id AND password = :confirm AND deleted IS NULL");
+            $query->bindValue(":id", $id, PDO::PARAM_INT);
+            $query->bindValue(":confirm", $confirm, PDO::PARAM_STR);
+            $query->execute();
+
+            if(!$query->fetch()) return "confirm";
+
+            $query = parent::$pdo->prepare("UPDATE Users SET deleted = NOW() WHERE id = :id");
+            $query->bindValue(":id", $id, PDO::PARAM_INT);
+
+            if($query->execute() && (int)$query->rowCount() >= 1) {
+                $_SESSION["userID"] = 0;
+
+                return "success";
+            } else return "error";
+        }
+
         public static function isEmail($email) {
             $email = htmlspecialchars($email);
 
@@ -161,7 +185,7 @@
             if(empty($email)) return "empty";
             else if(!preg_match("#^[0-9A-Za-z-_.]{3,64}@[0-9A-Za-z-_.]{3,64}$#", $email)) return "invalid";
 
-            $query = parent::$pdo->prepare("SELECT id FROM Users WHERE email = :email AND id != :id");
+            $query = parent::$pdo->prepare("SELECT id FROM Users WHERE email = :email AND id != :id AND deleted IS NULL");
             $query->bindValue(":email", $email, PDO::PARAM_STR);
             $query->bindValue(":id", $id, PDO::PARAM_INT);
             $query->execute();
@@ -177,7 +201,7 @@
             if(empty($username)) return "empty";
             else if(!preg_match("#^[0-9A-Za-z]{3,16}$#", $username)) return "invalid";
 
-            $query = parent::$pdo->prepare("SELECT id FROM Users WHERE username = :username AND id != :id");
+            $query = parent::$pdo->prepare("SELECT id FROM Users WHERE username = :username AND id != :id AND deleted IS NULL");
             $query->bindValue(":username", $username, PDO::PARAM_STR);
             $query->bindValue(":id", $id, PDO::PARAM_INT);
             $query->execute();

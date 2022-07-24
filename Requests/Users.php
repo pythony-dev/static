@@ -50,6 +50,14 @@
             );
         }
 
+        public static function delete() {
+            $confirm = \Static\Kernel::getValue($_POST, "confirm");
+
+            return array(
+                "status" => \Static\Models\Users::delete($confirm),
+            );
+        }
+
         public static function isEmail() {
             $email = \Static\Kernel::getValue($_POST, "email");
 

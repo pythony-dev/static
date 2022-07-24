@@ -12,6 +12,7 @@
             <input id="settings-confirm" class="my-5 form-control text-center" type="password" placeholder="<?= $parameters["getText"]("settings-confirm"); ?>" required/>
             <input class="w-100 btn btn-primary" type="submit" value="<?= $parameters["getText"]("settings-submit"); ?>"/>
             <button class="w-100 my-5 btn btn-outline-primary" type="button" data-bs-toggle="modal" data-bs-target="#settings-change-modal"> <?= $parameters["getText"]("settings-change"); ?> </button>
+            <button class="w-100 mb-5 btn btn-outline-danger" type="button" data-bs-toggle="modal" data-bs-target="#settings-delete-modal"> <?= $parameters["getText"]("settings-delete"); ?> </button>
         </form>
     </div>
 </article>
@@ -23,6 +24,17 @@
                 <input id="settings-change-password" class="my-5 form-control text-center" type="password" placeholder="<?= $parameters["getText"]("settings-change-password"); ?>" required/>
                 <input id="settings-change-confirm" class="my-5 form-control text-center" type="password" placeholder="<?= $parameters["getText"]("settings-change-confirm"); ?>" required/>
                 <input class="w-100 mb-5 btn btn-primary" type="submit" value="<?= $parameters["getText"]("settings-change-submit"); ?>"/>
+            </form>
+        </div>
+    </div>
+</div>
+<div id="settings-delete-modal" class="modal fade">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content p-5">
+            <h3 class="p-5"> <?= $parameters["getText"]("settings-delete"); ?> </h3>
+            <form id="settings-delete-form" class="px-5">
+                <input id="settings-delete-confirm" class="my-5 form-control text-center" type="password" placeholder="<?= $parameters["getText"]("settings-delete-confirm"); ?>" required/>
+                <input class="w-100 mb-5 btn btn-danger" type="submit" value="<?= $parameters["getText"]("settings-delete-submit"); ?>"/>
             </form>
         </div>
     </div>

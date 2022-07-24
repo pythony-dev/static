@@ -10,5 +10,6 @@
     require_once("Models/Users.php");
     require_once("Models/Updates.php");
     require_once("Models/Logs.php");
+    require_once("Models/Errors.php");
 
 ?>

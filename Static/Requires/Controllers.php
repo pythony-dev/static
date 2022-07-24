@@ -1,7 +1,6 @@
 <?php
 
     require_once("Controllers/Main.php");
-    require_once("Controllers/Error.php");
     require_once("Controllers/Home.php");
     require_once("Controllers/Features.php");
     require_once("Controllers/News.php");
@@ -12,5 +11,6 @@
     require_once("Controllers/Settings.php");
     require_once("Controllers/Terms.php");
     require_once("Controllers/Privacy.php");
+    require_once("Controllers/Error.php");
 
 ?>

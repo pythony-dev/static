@@ -4,7 +4,7 @@
 
     final class Kernel {
 
-        private static $version = "1.4.1";
+        private static $version = "1.4.2";
         private static $settings = array();
 
         private static $styles = array();
@@ -181,10 +181,10 @@
             }
         }
 
-        public static function setError($error, $message, $request) {
+        public static function setError($error, $response, $request) {
             $parameters = \Static\Controllers\Main::start(array(
                 "error" => (int)$error,
-                "message" => htmlspecialchars($message),
+                "response" => htmlspecialchars($response),
             ));
             $parameters = \Static\Controllers\Error::start(array_merge(self::getParameters(), $parameters));
 
@@ -193,7 +193,7 @@
             if($request) {
                 echo json_encode(array(
                     "error" => (int)$parameters["error"],
-                    "message" => htmlspecialchars($parameters["message"]),
+                    "response" => htmlspecialchars($parameters["response"]),
                 ));
             } else {
                 ob_start();
@@ -207,6 +207,8 @@
 
                 require_once("Views/Index.php");
             }
+
+            \Static\Models\Errors::create((int)$parameters["error"], htmlspecialchars($parameters["response"]));
 
             exit();
         }
