@@ -289,6 +289,7 @@ CREATE TABLE `Users` (
   `username` varchar(255) NOT NULL,
   `password` varchar(255) NOT NULL,
   `reset` varchar(255) DEFAULT NULL,
+  `notifications` varchar(4095) NOT NULL,
   `sessionID` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -296,8 +297,8 @@ CREATE TABLE `Users` (
 -- Dumping data for table `Users`
 --
 
-INSERT INTO `Users` (`id`, `created`, `deleted`, `email`, `username`, `password`, `reset`, `sessionID`) VALUES
-(1, '2022-04-10 12:00:00', NULL, 'hello@pythony.dev', 'Pythony', 'd7c35a4da36a8fe3d0ebec8e5cc91b0816a18516', NULL, 16777215);
+INSERT INTO `Users` (`id`, `created`, `deleted`, `email`, `username`, `password`, `reset`, `notifications`, `sessionID`) VALUES
+(1, '2022-04-10 12:00:00', NULL, 'hello@pythony.dev', 'Pythony', 'd7c35a4da36a8fe3d0ebec8e5cc91b0816a18516', NULL, '{"published":"true"}', 16777215);
 
 --
 -- Indexes for dumped tables

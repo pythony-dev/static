@@ -1,5 +1,5 @@
 $(document).ready(() => {
-    $("#settings-form").submit(event => {
+    $("#settings-account-form").submit(event => {
         event.preventDefault()
 
         getToken(token => {
@@ -7,35 +7,36 @@ $(document).ready(() => {
                 "token" : token,
                 "request" : "users",
                 "action" : "update",
-                "email" : $("#settings-email").val(),
-                "username" : $("#settings-username").val(),
-                "confirm" : $("#settings-confirm").val(),
+                "email" : $("#settings-account-email").val(),
+                "username" : $("#settings-account-username").val(),
+                "confirm" : $("#settings-account-confirm").val(),
             }).then(response => {
-                if(response["status"] == "user") alert($("#settings-alert-user").val())
-                else if(response["status"] == "email") {
-                    $("#settings-email").removeClass("is-valid").addClass("is-invalid")
+                $("#settings-account-confirm").val("")
 
-                    alert($("#settings-alert-email").val())
+                if(response["status"] == "email") {
+                    $("#settings-account-email").removeClass("is-valid").addClass("is-invalid")
+
+                    alert($("#settings-alert-account-email").val())
                 } else if(response["status"] == "username") {
-                    $("#settings-username").removeClass("is-valid").addClass("is-invalid")
+                    $("#settings-account-username").removeClass("is-valid").addClass("is-invalid")
 
-                    alert($("#settings-alert-username").val())
+                    alert($("#settings-alert-account-username").val())
                 } else if(response["status"] == "confirm") {
-                    $("#settings-confirm").addClass("is-invalid")
+                    $("#settings-account-confirm").addClass("is-invalid")
 
-                    alert($("#settings-alert-confirm").val())
+                    alert($("#settings-alert-account-confirm").val())
                 } else if(response["status"] == "success") {
-                    alert($("#settings-alert-success").val())
+                    alert($("#settings-alert-account-success").val())
 
                     location.reload()
-                } else alert($("#settings-alert-error").val())
+                } else alert($("#settings-alert-account-error").val())
             }).fail(() => {
-                alert($("#settings-alert-error").val())
+                alert($("#settings-alert-account-error").val())
             })
         })
     })
 
-    $("#settings-email").blur(event => {
+    $("#settings-account-email").blur(event => {
         event.preventDefault()
 
         getToken(token => {
@@ -43,15 +44,15 @@ $(document).ready(() => {
                 "token" : token,
                 "request" : "users",
                 "action" : "isEmail",
-                "email" : $("#settings-email").val(),
+                "email" : $("#settings-account-email").val(),
             }).then(response => {
-                if(response["status"] == "success") $("#settings-email").removeClass("is-invalid").addClass("is-valid")
-                else $("#settings-email").removeClass("is-valid").addClass("is-invalid")
+                if(response["status"] == "success") $("#settings-account-email").removeClass("is-invalid").addClass("is-valid")
+                else $("#settings-account-email").removeClass("is-valid").addClass("is-invalid")
             })
         })
     })
 
-    $("#settings-username").blur(event => {
+    $("#settings-account-username").blur(event => {
         event.preventDefault()
 
         getToken(token => {
@@ -59,15 +60,43 @@ $(document).ready(() => {
                 "token" : token,
                 "request" : "users",
                 "action" : "isUsername",
-                "username" : $("#settings-username").val(),
+                "username" : $("#settings-account-username").val(),
             }).then(response => {
-                if(response["status"] == "success") $("#settings-username").removeClass("is-invalid").addClass("is-valid")
-                else $("#settings-username").removeClass("is-valid").addClass("is-invalid")
+                if(response["status"] == "success") $("#settings-account-username").removeClass("is-invalid").addClass("is-valid")
+                else $("#settings-account-username").removeClass("is-valid").addClass("is-invalid")
             })
         })
     })
 
-    $("#settings-change-form").submit(event => {
+    $("#settings-notifications-form").submit(event => {
+        event.preventDefault()
+
+        getToken(token => {
+            $.post("", {
+                "token" : token,
+                "request" : "users",
+                "action" : "notify",
+                "published" : $("#settings-notifications-published").is(":checked").toString(),
+                "confirm" : $("#settings-notifications-confirm").val(),
+            }).then(response => {
+                $("#settings-notifications-confirm").val("")
+
+                if(response["status"] == "confirm") {
+                    $("#settings-notifications-confirm").addClass("is-invalid")
+
+                    alert($("#settings-alert-notifications-confirm").val())
+                } else if(response["status"] == "success") {
+                    alert($("#settings-alert-notifications-success").val())
+
+                    location.reload()
+                } else alert($("#settings-alert-notifications-error").val())
+            }).fail(() => {
+                alert($("#settings-alert-notifications-error").val())
+            })
+        })
+    })
+
+    $("#settings-others-change-form").submit(event => {
         event.preventDefault()
 
         getToken(token => {
@@ -75,30 +104,31 @@ $(document).ready(() => {
                 "token" : token,
                 "request" : "users",
                 "action" : "change",
-                "password" : $("#settings-change-password").val(),
-                "confirm" : $("#settings-change-confirm").val(),
+                "password" : $("#settings-others-change-password").val(),
+                "confirm" : $("#settings-others-change-confirm").val(),
             }).then(response => {
-                if(response["status"] == "user") alert($("#settings-alert-change-user").val())
-                else if(response["status"] == "password") {
-                    $("#settings-change-password").removeClass("is-valid").addClass("is-invalid")
+                $("#settings-others-change-confirm").val("")
 
-                    alert($("#settings-alert-change-password").val())
+                if(response["status"] == "password") {
+                    $("#settings-others-change-password").removeClass("is-valid").addClass("is-invalid")
+
+                    alert($("#settings-alert-others-change-password").val())
                 } else if(response["status"] == "confirm") {
-                    $("#settings-change-confirm").addClass("is-invalid")
+                    $("#settings-others-change-confirm").addClass("is-invalid")
 
-                    alert($("#settings-alert-change-confirm").val())
+                    alert($("#settings-alert-others-change-confirm").val())
                 } else if(response["status"] == "success") {
-                    alert($("#settings-alert-change-success").val())
+                    alert($("#settings-alert-others-change-success").val())
 
                     location.reload()
-                } else alert($("#settings-alert-change-error").val())
+                } else alert($("#settings-alert-others-change-error").val())
             }).fail(() => {
-                alert($("#settings-alert-change-error").val())
+                alert($("#settings-alert-others-change-error").val())
             })
         })
     })
 
-    $("#settings-change-password").blur(event => {
+    $("#settings-others-change-password").blur(event => {
         event.preventDefault()
 
         getToken(token => {
@@ -106,38 +136,41 @@ $(document).ready(() => {
                 "token" : token,
                 "request" : "users",
                 "action" : "isPassword",
-                "password" : $("#settings-change-password").val(),
+                "password" : $("#settings-others-change-password").val(),
             }).then(response => {
-                if(response["status"] == "success") $("#settings-change-password").removeClass("is-invalid").addClass("is-valid")
-                else $("#settings-change-password").removeClass("is-valid").addClass("is-invalid")
+                if(response["status"] == "success") $("#settings-others-change-password").removeClass("is-invalid").addClass("is-valid")
+                else $("#settings-others-change-password").removeClass("is-valid").addClass("is-invalid")
             })
         })
     })
 
-    $("#settings-delete-form").submit(event => {
+    $("#settings-others-delete-form").submit(event => {
         event.preventDefault()
 
-        getToken(token => {
-            $.post("", {
-                "token" : token,
-                "request" : "users",
-                "action" : "delete",
-                "confirm" : $("#settings-delete-confirm").val(),
-            }).then(response => {
-                if(response["status"] == "user") alert($("#settings-alert-delete-user").val())
-                else if(response["status"] == "confirm") {
-                    $("#settings-delete-confirm").addClass("is-invalid")
+        if(confirm($("#settings-alert-others-delete-ask").val())) {
+            getToken(token => {
+                $.post("", {
+                    "token" : token,
+                    "request" : "users",
+                    "action" : "delete",
+                    "confirm" : $("#settings-others-delete-confirm").val(),
+                }).then(response => {
+                    $("#settings-others-delete-confirm").val("")
 
-                    alert($("#settings-alert-delete-confirm").val())
-                } else if(response["status"] == "success") {
-                    alert($("#settings-alert-delete-success").val())
+                    if(response["status"] == "confirm") {
+                        $("#settings-others-delete-confirm").addClass("is-invalid")
 
-                    location.replace("sign-up")
-                } else alert($("#settings-alert-delete-error").val())
-            }).fail(() => {
-                alert($("#settings-alert-delete-error").val())
+                        alert($("#settings-alert-others-delete-confirm").val())
+                    } else if(response["status"] == "success") {
+                        alert($("#settings-alert-others-delete-success").val())
+
+                        location.replace("sign-up")
+                    } else alert($("#settings-alert-others-delete-error").val())
+                }).fail(() => {
+                    alert($("#settings-alert-others-delete-error").val())
+                })
             })
-        })
+        } else $("#settings-others-delete-confirm").val("")
     })
 
     $("#settings-image").click(event => {

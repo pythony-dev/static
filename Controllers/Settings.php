@@ -15,10 +15,13 @@
 
             \Static\Kernel::addScript(\Static\Kernel::getPath("/Public/Scripts/Settings.js"));
 
+            $parameters["notifications"] = json_decode(htmlspecialchars_decode($parameters["user"]["notifications"]), true);
+
             $parameters["alerts"] = array_merge($parameters["alerts"], array(
-                "settings-alert-user", "settings-alert-email", "settings-alert-username", "settings-alert-confirm", "settings-alert-success", "settings-alert-error",
-                "settings-alert-change-user", "settings-alert-change-password", "settings-alert-change-confirm", "settings-alert-change-success", "settings-alert-change-error",
-                "settings-alert-delete-user", "settings-alert-delete-confirm", "settings-alert-delete-success", "settings-alert-delete-error",
+                "settings-alert-account-email", "settings-alert-account-username", "settings-alert-account-confirm", "settings-alert-account-success", "settings-alert-account-error",
+                "settings-alert-notifications-confirm", "settings-alert-notifications-success", "settings-alert-notifications-error",
+                "settings-alert-others-change-password", "settings-alert-others-change-confirm", "settings-alert-others-change-success", "settings-alert-others-change-error",
+                "settings-alert-others-delete-ask", "settings-alert-others-delete-confirm", "settings-alert-others-delete-success", "settings-alert-others-delete-error",
                 "settings-alert-file-userID", "settings-alert-file-extension", "settings-alert-file-type", "settings-alert-file-size", "settings-alert-file-image", "settings-alert-file-success", "settings-alert-file-error",
             ));
 

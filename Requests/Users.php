@@ -41,6 +41,17 @@
             );
         }
 
+        public static function notify() {
+            $notifications = json_encode([
+                "published" => \Static\Kernel::getValue($_POST, "published"),
+            ]);
+            $confirm = \Static\Kernel::getValue($_POST, "confirm");
+
+            return array(
+                "status" => \Static\Models\Users::notify($notifications, $confirm),
+            );
+        }
+
         public static function change() {
             $password = \Static\Kernel::getValue($_POST, "password");
             $confirm = \Static\Kernel::getValue($_POST, "confirm");
