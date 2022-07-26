@@ -18,6 +18,7 @@
                 <div class="col-12 col-md-6 my-auto px-md-4 py-4">
                     <img id="settings-account-image" class="img-fluid shadow border rounded-circle pointer" src="<?= $parameters["getPath"]("/Public/Images/Users/" . $parameters["user"]["id"] . ".jpeg?" . time()); ?>" alt="<?= $parameters["getText"]("settings-account-user"); ?>"/>
                     <input id="settings-account-file" class="d-none" type="file" accept=".jpg, .jpeg, .png"/>
+                    <div id="settings-account-spinner" class="d-none spinner-border"> </div>
                 </div>
                 <div class="col-12 col-md-6 my-auto px-md-4 py-4">
                     <input id="settings-account-email" class="my-5 form-control text-center" type="email" value="<?= $parameters["user"]["email"]; ?>" placeholder="<?= $parameters["getText"]("settings-account-email"); ?>" required/>

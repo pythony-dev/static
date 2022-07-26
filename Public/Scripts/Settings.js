@@ -173,17 +173,20 @@ $(document).ready(() => {
         } else $("#settings-others-delete-confirm").val("")
     })
 
-    $("#settings-image").click(event => {
-        $("#settings-file").click()
+    $("#settings-account-image").click(event => {
+        $("#settings-account-file").click()
     })
 
-    $("#settings-file").change(event => {
+    $("#settings-account-file").change(event => {
+        $("#settings-account-image").addClass("d-none")
+        $("#settings-account-spinner").removeClass("d-none")
+
         getToken(token => {
             const formData = new FormData()
             formData.append("token", token)
             formData.append("request", "images")
             formData.append("action", "upload")
-            formData.append("image", $("#settings-file")[0].files[0])
+            formData.append("image", $("#settings-account-file")[0].files[0])
 
             $.ajax({
                 type : "POST",
@@ -192,18 +195,24 @@ $(document).ready(() => {
                 processData : false,
                 contentType : false,
             }).done(response => {
-                if(response["status"] == "userID") alert($("#settings-alert-file-userID").val())
-                else if(response["status"] == "extension") alert($("#settings-alert-file-extension").val())
-                else if(response["status"] == "type") alert($("#settings-alert-file-type").val())
-                else if(response["status"] == "size") alert($("#settings-alert-file-size").val())
-                else if(response["status"] == "image") alert($("#settings-alert-file-image").val())
+                if(response["status"] == "userID") alert($("#settings-alert-account-file-userID").val())
+                else if(response["status"] == "extension") alert($("#settings-alert-account-file-extension").val())
+                else if(response["status"] == "type") alert($("#settings-alert-account-file-type").val())
+                else if(response["status"] == "size") alert($("#settings-alert-account-file-size").val())
+                else if(response["status"] == "image") alert($("#settings-alert-account-file-image").val())
                 else if(response["status"] == "success") {
-                    alert($("#settings-alert-file-success").val())
+                    alert($("#settings-alert-account-file-success").val())
 
                     location.reload()
-                } else alert($("#settings-alert-file-error").val())
+                } else alert($("#settings-alert-account-file-error").val())
+
+                $("#settings-account-spinner").addClass("d-none")
+                $("#settings-account-image").removeClass("d-none")
             }).fail(() => {
-                alert($("#settings-alert-file-error").val())
+                alert($("#settings-alert-account-file-error").val())
+
+                $("#settings-account-spinner").addClass("d-none")
+                $("#settings-account-image").removeClass("d-none")
             })
         })
     })
