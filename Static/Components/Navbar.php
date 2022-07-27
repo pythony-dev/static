@@ -49,16 +49,30 @@
                         <?php if($userID < 1) { ?>
                             <li class="w-200 nav-item">
                                 <div class="flex-column flex-lg-row my-4 input-group">
-                                    <a class="w-50 btn btn-outline<?= \Static\Kernel::getRoute() != "SignUp" ? "-primary" : "-dark"; ?>" href="<?= $getPath("/sign-up"); ?>"> <?= $getText("title-signUp"); ?> </a>
-                                    <a class="w-50 btn btn-outline<?= \Static\Kernel::getRoute() != "LogIn" ? "-primary" : "-dark"; ?>" href="<?= $getPath("/log-in"); ?>"> <?= $getText("title-logIn"); ?> </a>
+                                    <a class="w-50 btn btn-outline-primary" href="<?= $getPath("/sign-up"); ?>"> <?= $getText("title-signUp"); ?> </a>
+                                    <a class="w-50 btn btn-outline-primary" href="<?= $getPath("/log-in"); ?>"> <?= $getText("title-logIn"); ?> </a>
                                 </div>
                             </li>
                         <?php } else { ?>
-                            <li class="w-200 nav-item">
-                                <div class="flex-column flex-lg-row my-4 input-group">
-                                    <a class="w-50 btn btn-outline<?= \Static\Kernel::getRoute() != "Settings" ? "-primary" : "-dark"; ?>" href="<?= $getPath("/settings"); ?>"> <?= $getText("title-settings"); ?> </a>
-                                    <a id="logOut" class="w-50 btn btn-outline-dark"> <?= $getText("title-logOut"); ?> </a>
-                                </div>
+                            <li class="w-100 my-4 nav-item dropdown">
+                                <button class="w-100 btn btn-outline-primary dropdown-toggle" data-bs-toggle="dropdown"> <?= $getText("title-settings"); ?> </button>
+                                <ul class="w-100 dropdown-menu text-center">
+                                    <li>
+                                        <a class="dropdown-item" href="<?= $getPath("/settings"); ?>"> <?= $getText("title-settings-account"); ?> </a>
+                                    </li>
+                                    <li>
+                                        <a class="dropdown-item" href="<?= $getPath("/settings"); ?>?notifications"> <?= $getText("title-settings-notifications"); ?> </a>
+                                    </li>
+                                    <li>
+                                        <a class="dropdown-item" href="<?= $getPath("/settings"); ?>?others"> <?= $getText("title-settings-others"); ?> </a>
+                                    </li>
+                                    <li>
+                                        <div class="dropdown-divider"> </div>
+                                    </li>
+                                    <li>
+                                        <button id="logOut" class="dropdown-item"> <?= $getText("title-settings-logOut"); ?> </button>
+                                    </li>
+                                </ul>
                             </li>
                         <?php } ?>
                     </ul>

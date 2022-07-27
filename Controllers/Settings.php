@@ -15,6 +15,11 @@
 
             \Static\Kernel::addScript(\Static\Kernel::getPath("/Public/Scripts/Settings.js"));
 
+            $parameters["tabs"] = array(
+                "account" => !array_key_exists("notifications", $_GET) && !array_key_exists("others", $_GET),
+                "notifications" => array_key_exists("notifications", $_GET),
+                "others" => array_key_exists("others", $_GET),
+            );
             $parameters["notifications"] = json_decode(htmlspecialchars_decode($parameters["user"]["notifications"]), true);
 
             $parameters["alerts"] = array_merge($parameters["alerts"], array(

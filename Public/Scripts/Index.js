@@ -12,7 +12,7 @@ $(document).ready(() => {
         })
     })
 
-    $("#logOut").click(event => {
+    $("#logOut, #settings-logOut").click(event => {
         getToken(token => {
             $.post("", {
                 "token" : token,
