@@ -31,7 +31,7 @@
                                     <a class="text-decoration-none link-light" href="<?= $getPath("/privacy"); ?>"> <?= $getText("footer-privacy"); ?> </a>
                                 </div>
                                 <div class="d-flex justify-content-around py-4">
-                                    <?php foreach(array("Facebook", "YouTube", "Instagram", "TikTok", "Twitter") as $network) { ?>
+                                    <?php foreach(\Static\Kernel::getNetworks() as $network) { ?>
                                         <?php if($getSettings("networks-" . strtolower($network))) { ?>
                                             <a href="<?= $getSettings("networks-" . strtolower($network)); ?>" target="_blank">
                                                 <img class="img-fluid shadow border border-dark rounded-circle networks" src="<?= $getPath("/Public/Images/Networks/" . $network . ".png"); ?>" alt="<?= $network; ?>"/>

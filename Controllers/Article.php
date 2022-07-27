@@ -16,6 +16,7 @@
             $parameters["title"] = \Static\Kernel::getValue($article, "title");
             $parameters["overview"] = \Static\Kernel::getValue($article, "overview");
             $parameters["content"] = nl2br(\Static\Kernel::getValue($article, "content"));
+            $parameters["networks"] = json_decode($article["networks"], true) ?? array();
 
             $parameters["random"] = \Static\Models\Articles::getRandomArticles(\Static\Kernel::getValue($parameters, "link"));
 

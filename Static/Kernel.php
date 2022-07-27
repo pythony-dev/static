@@ -4,7 +4,7 @@
 
     final class Kernel {
 
-        private static $version = "1.4.5";
+        private static $version = "1.4.6";
         private static $settings = array();
 
         private static $styles = array();
@@ -37,6 +37,14 @@
             ));
         }
 
+        public static function getSettings($settings) {
+            $settings = \Static\Kernel::getValue(self::$settings, $settings);
+
+            foreach(self::$settings as $key => $value) $settings = str_replace("@" . $key, htmlspecialchars($value), $settings);
+
+            return $settings;
+        }
+
         public static function getRoute() {
             return self::$route;
         }
@@ -54,14 +62,6 @@
                 if(array_key_exists($key, $array)) return self::getValue($array[$key], $keys);
                 else return null;
             } else return null;
-        }
-
-        public static function getSettings($settings) {
-            $settings = \Static\Kernel::getValue(self::$settings, $settings);
-
-            foreach(self::$settings as $key => $value) $settings = str_replace("@" . $key, htmlspecialchars($value), $settings);
-
-            return $settings;
         }
 
         public static function getPath($path, $encode = true) {
@@ -83,6 +83,10 @@
                 "getPath" => "\Static\Kernel::getPath",
                 "getText" => "\Static\Languages\Translate::getText",
             );
+        }
+
+        public static function getNetworks() {
+            return array("Facebook", "YouTube", "Instagram", "TikTok", "Twitter");
         }
 
         public static function getDateFormat() {

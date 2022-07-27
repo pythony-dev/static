@@ -39,7 +39,7 @@
         }
 
         public static function getArticle($link) {
-            $query = parent::$pdo->prepare("SELECT id, published, title, overview, content FROM Articles WHERE NOW() >= published AND link = :link AND language = :language");
+            $query = parent::$pdo->prepare("SELECT id, published, title, overview, content, networks FROM Articles WHERE NOW() >= published AND link = :link AND language = :language");
             $query->bindValue(":link", htmlspecialchars($link), PDO::PARAM_STR);
             $query->bindValue(":language", \Static\Languages\Translate::getLanguage(), PDO::PARAM_STR);
             $query->execute();
