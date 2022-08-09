@@ -16,9 +16,9 @@
     Static\Kernel::addRoute("terms", "/terms");
     Static\Kernel::addRoute("privacy", "/privacy");
 
-    Static\Kernel::addRequest("contact", true);
-    Static\Kernel::addRequest("users", true);
-    Static\Kernel::addRequest("images", true);
+    Static\Kernel::addRequest("contact");
+    Static\Kernel::addRequest("users");
+    Static\Kernel::addRequest("images");
 
     Static\Kernel::start();
 

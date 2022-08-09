@@ -1,14 +1,17 @@
 $(document).ready(() => {
     $(".language").click(event => {
-        $.post("", {
-            "request" : "language",
-            "action" : "update",
-            "language" : $(event.target).attr("language"),
-        }).then(response => {
-            if(response["status"] == "success") location.reload()
-            else alert($("#index-alert-language").val())
-        }).fail(() => {
-            alert($("#index-alert-language").val())
+        getToken(token => {
+            $.post("", {
+                "token" : token,
+                "request" : "language",
+                "action" : "update",
+                "language" : $(event.target).attr("language"),
+            }).then(response => {
+                if(response["status"] == "success") location.reload()
+                else alert($("#index-alert-language").val())
+            }).fail(() => {
+                alert($("#index-alert-language").val())
+            })
         })
     })
 

@@ -8,13 +8,14 @@
         <button class="w-100 my-5 btn btn-outline-primary" type="button" data-bs-toggle="modal" data-bs-target="#logIn-reset-modal"> <?= $parameters["getText"]("logIn-reset"); ?> </button>
     </form>
 </article>
-<div id="logIn-reset-modal" class="modal fade">
+<div id="logIn-reset-modal" class="modal fade p-5">
     <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content p-5">
+        <div class="modal-content p-md-5">
             <h3 class="p-5"> <?= $parameters["getText"]("logIn-reset"); ?> </h3>
             <form id="logIn-reset-form" class="px-5">
                 <input id="logIn-reset-email" class="my-5 form-control text-center" type="email" placeholder="<?= $parameters["getText"]("logIn-reset-email"); ?>" required/>
                 <input class="w-100 mb-5 btn btn-primary" type="submit" value="<?= $parameters["getText"]("logIn-reset-submit"); ?>"/>
+                <button class="w-100 mb-5 btn btn-outline-secondary" type="button" data-bs-dismiss="modal"> <?= $parameters["getText"]("logIn-reset-cancel"); ?> </button>
             </form>
         </div>
     </div>

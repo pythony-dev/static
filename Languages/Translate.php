@@ -20,7 +20,7 @@
                 if(array_key_exists($language, $_GET)) $_SESSION["language"] = $language;
             }
 
-            if(array_key_exists("language", $_SESSION) && in_array($_SESSION["language"], self::getAllLanguages())) self::$language = htmlspecialchars($_SESSION["language"]);
+            if(array_key_exists("language", $_SESSION) && in_array(\Static\Kernel::getValue($_SESSION, "language"), self::getAllLanguages())) self::$language = htmlspecialchars(\Static\Kernel::getValue($_SESSION, "language"));
 
             $file = "Languages/" . ucfirst(self::$language) . ".json";
             self::$translations = (array)json_decode(file_get_contents(file_exists($file) ? $file : "Languages/English.json"));

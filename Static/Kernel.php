@@ -4,7 +4,7 @@
 
     final class Kernel {
 
-        private static $version = "1.4.6";
+        private static $version = "1.4.7";
         private static $settings = array();
 
         private static $styles = array();
@@ -30,7 +30,7 @@
             ));
         }
 
-        public static function addRequest($name, $secure) {
+        public static function addRequest($name, $secure = true) {
             array_push(self::$requests, array(
                 "name" => htmlspecialchars($name),
                 "secure" => boolval($secure),
@@ -160,8 +160,7 @@
                 header("Content-Type: application/json");
 
                 self::addRequest("tokens", false);
-                self::addRequest("start", false);
-                self::addRequest("language", false);
+                self::addRequest("language");
 
                 $search = htmlspecialchars($_POST["request"]);
 
@@ -175,7 +174,10 @@
                         if(!class_exists($request)) return self::setError(404, \Static\Languages\Translate::getText("error-class") . $request, true);
                         if(!method_exists($request, $action)) return self::setError(404, \Static\Languages\Translate::getText("error-method") . $request . "::" . $action, true);
 
-                        echo json_encode($request::$action());
+                        $response = $request::$action();
+
+                        if(self::getSettings("project-environment") == "development" && array_key_exists("debug", $_POST)) print_r(\Static\Emails::getEmails());
+                        else echo json_encode($response);
 
                         return;
                     }

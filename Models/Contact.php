@@ -10,11 +10,14 @@
             $email = htmlspecialchars($email);
             $message = htmlspecialchars($message);
 
+            $sessionID = (int)\Static\Kernel::getValue($_SESSION, "sessionID");
+
             if(empty($email)) return "email";
             else if(empty($message)) return "message";
+            else if($sessionID <= 0) return "error";
 
             $query = parent::$pdo->prepare("INSERT INTO Contact (created, sessionID, email, message) VALUES (NOW(), :sessionID, :email, :message)");
-            $query->bindValue(":sessionID", (int)\Static\Kernel::getValue($_SESSION, "sessionID"), PDO::PARAM_INT);
+            $query->bindValue(":sessionID", $sessionID, PDO::PARAM_INT);
             $query->bindValue(":email", $email, PDO::PARAM_STR);
             $query->bindValue(":message", $message, PDO::PARAM_STR);
 

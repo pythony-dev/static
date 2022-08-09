@@ -14,7 +14,9 @@
             ?>
 
             <div class="card">
-                <img class="card-img-top" src="<?= $image; ?>" alt="<?= $title; ?>"/>
+                <?php if(!empty($image)) { ?>
+                    <img class="card-img-top" src="<?= $image; ?>" alt="<?= $title; ?>"/>
+                <?php } ?>
                 <div class="card-body">
                     <p class="px-4 pt-4 h3 card-title"> <?= $title; ?> </p>
                     <p class="px-4 pb-4 card-subtitle text-muted"> <?= $subtitle; ?> </p>

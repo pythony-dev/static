@@ -45,25 +45,27 @@
         </div>
     </div>
 </article>
-<div id="settings-others-change-modal" class="modal fade">
+<div id="settings-others-change-modal" class="modal fade p-5">
     <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content p-5">
+        <div class="modal-content p-md-5">
             <h3 class="p-5"> <?= $parameters["getText"]("settings-others-change"); ?> </h3>
             <form id="settings-others-change-form" class="px-5">
                 <input id="settings-others-change-password" class="my-5 form-control text-center" type="password" placeholder="<?= $parameters["getText"]("settings-others-change-password"); ?>" required/>
                 <input id="settings-others-change-confirm" class="my-5 form-control text-center" type="password" placeholder="<?= $parameters["getText"]("settings-others-change-confirm"); ?>" required/>
                 <input class="w-100 mb-5 btn btn-primary" type="submit" value="<?= $parameters["getText"]("settings-others-change-submit"); ?>"/>
+                <button class="w-100 mb-5 btn btn-outline-secondary" type="button" data-bs-dismiss="modal"> <?= $parameters["getText"]("settings-others-change-cancel"); ?> </button>
             </form>
         </div>
     </div>
 </div>
-<div id="settings-others-delete-modal" class="modal fade">
+<div id="settings-others-delete-modal" class="modal fade p-5">
     <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content p-5">
+        <div class="modal-content p-md-5">
             <h3 class="p-5"> <?= $parameters["getText"]("settings-others-delete"); ?> </h3>
             <form id="settings-others-delete-form" class="px-5">
                 <input id="settings-others-delete-confirm" class="my-5 form-control text-center" type="password" placeholder="<?= $parameters["getText"]("settings-others-delete-confirm"); ?>" required/>
                 <input class="w-100 mb-5 btn btn-danger" type="submit" value="<?= $parameters["getText"]("settings-others-delete-submit"); ?>"/>
+                <button class="w-100 mb-5 btn btn-outline-secondary" type="button" data-bs-dismiss="modal"> <?= $parameters["getText"]("settings-others-delete-cancel"); ?> </button>
             </form>
         </div>
     </div>

@@ -102,7 +102,7 @@ CREATE TABLE `Contact` (
 --
 
 INSERT INTO `Contact` (`id`, `created`, `sessionID`, `email`, `message`) VALUES
-(1, '2022-04-10 12:00:00', 16777215, 'hello@pythony.dev', 'I would like to thank you for…');
+(1, '2022-04-10 12:00:00', 1, 'hello@pythony.dev', 'I would like to thank you for…');
 
 -- --------------------------------------------------------
 
@@ -125,7 +125,7 @@ CREATE TABLE `Errors` (
 --
 
 INSERT INTO `Errors` (`id`, `created`, `sessionID`, `userID`, `link`, `error`, `response`) VALUES
-(1, '2022-04-10 12:00:00', 16777215, 0, '/Static/', 200, 'Success');
+(1, '2022-04-10 12:00:00', 1, 0, '/Static/', 200, 'Success');
 
 -- --------------------------------------------------------
 
@@ -184,9 +184,9 @@ CREATE TABLE `Logs` (
 --
 
 INSERT INTO `Logs` (`id`, `created`, `sessionID`, `userID`, `status`) VALUES
-(1, '2022-04-10 12:00:00', 16777215, 1, 'success'),
-(2, '2022-04-10 12:00:00', 16777215, 1, 'reset'),
-(3, '2022-04-10 12:00:00', 16777215, 1, 'error');
+(1, '2022-04-10 12:00:00', 1, 1, 'success'),
+(2, '2022-04-10 12:00:00', 1, 1, 'reset'),
+(3, '2022-04-10 12:00:00', 1, 1, 'error');
 
 -- --------------------------------------------------------
 
@@ -198,6 +198,7 @@ CREATE TABLE `Requests` (
   `id` int(11) NOT NULL,
   `created` datetime NOT NULL,
   `sessionID` int(11) NOT NULL,
+  `userID` int(11) NOT NULL,
   `link` varchar(255) NOT NULL,
   `language` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -206,8 +207,8 @@ CREATE TABLE `Requests` (
 -- Dumping data for table `Requests`
 --
 
-INSERT INTO `Requests` (`id`, `created`, `sessionID`, `link`, `language`) VALUES
-(1, '2022-04-10 12:00:00', 16777215, '/Static/', 'english');
+INSERT INTO `Requests` (`id`, `created`, `sessionID`, `userID`, `link`, `language`) VALUES
+(1, '2022-04-10 12:00:00', 1, 0, '/Static/', 'english');
 
 -- --------------------------------------------------------
 
@@ -218,18 +219,17 @@ INSERT INTO `Requests` (`id`, `created`, `sessionID`, `link`, `language`) VALUES
 CREATE TABLE `Sessions` (
   `id` int(11) NOT NULL,
   `created` datetime NOT NULL,
-  `sessionID` int(11) NOT NULL,
-  `ipAddress` varchar(255) NOT NULL,
-  `userAgent` varchar(255) NOT NULL,
-  `parameters` varchar(255) NOT NULL
+  `ipAddress` varchar(255) DEFAULT NULL,
+  `userAgent` varchar(255) DEFAULT NULL,
+  `parameters` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `Sessions`
 --
 
-INSERT INTO `Sessions` (`id`, `created`, `sessionID`, `ipAddress`, `userAgent`, `parameters`) VALUES
-(1, '2022-04-10 12:00:00', 16777215, '127.0.0.1', 'Static/1.0', '');
+INSERT INTO `Sessions` (`id`, `created`, `ipAddress`, `userAgent`, `parameters`) VALUES
+(1, '2022-04-10 12:00:00', '127.0.0.1', 'Static/1.0', NULL);
 
 -- --------------------------------------------------------
 
@@ -240,17 +240,18 @@ INSERT INTO `Sessions` (`id`, `created`, `sessionID`, `ipAddress`, `userAgent`, 
 CREATE TABLE `Tokens` (
   `id` int(11) NOT NULL,
   `created` datetime NOT NULL,
-  `used` datetime DEFAULT NULL,
-  `value` varchar(255) NOT NULL,
-  `userID` int(11) NOT NULL
+  `deleted` datetime DEFAULT NULL,
+  `sessionID` int(11) NOT NULL,
+  `userID` int(11) NOT NULL,
+  `value` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `Tokens`
 --
 
-INSERT INTO `Tokens` (`id`, `created`, `used`, `value`, `userID`) VALUES
-(1, '2022-04-10 12:00:00', '2022-04-10 12:00:00', '4d857d2408b00c3dd17f0c4ffcf15b97f1049867', 1);
+INSERT INTO `Tokens` (`id`, `created`, `deleted`, `sessionID`, `userID`, `value`) VALUES
+(1, '2022-04-10 12:00:00', NULL, 1, 0, '4d857d2408b00c3dd17f0c4ffcf15b97f1049867');
 
 -- --------------------------------------------------------
 
@@ -260,7 +261,8 @@ INSERT INTO `Tokens` (`id`, `created`, `used`, `value`, `userID`) VALUES
 
 CREATE TABLE `Updates` (
   `id` int(11) NOT NULL,
-  `updated` datetime NOT NULL,
+  `created` datetime NOT NULL,
+  `sessionID` int(11) NOT NULL,
   `userID` int(11) NOT NULL,
   `setting` varchar(255) NOT NULL,
   `value` varchar(255) NOT NULL
@@ -270,11 +272,11 @@ CREATE TABLE `Updates` (
 -- Dumping data for table `Updates`
 --
 
-INSERT INTO `Updates` (`id`, `updated`, `userID`, `setting`, `value`) VALUES
-(1, '2022-04-10 12:00:00', 1, 'email', 'hello@pythony.dev'),
-(2, '2022-04-10 12:00:00', 1, 'username', 'Pythony'),
-(3, '2022-04-10 12:00:00', 1, 'password', 'd7c35a4da36a8fe3d0ebec8e5cc91b0816a18516'),
-(4, '2022-04-10 12:00:00', 1, 'reset', 'd7c35a4da36a8fe3d0ebec8e5cc91b0816a18516');
+INSERT INTO `Updates` (`id`, `created`, `sessionID`, `userID`, `setting`, `value`) VALUES
+(1, '2022-04-10 12:00:00', 1, 1, 'email', 'hello@pythony.dev'),
+(2, '2022-04-10 12:00:00', 1, 1, 'username', 'Pythony'),
+(3, '2022-04-10 12:00:00', 1, 1, 'password', 'd7c35a4da36a8fe3d0ebec8e5cc91b0816a18516'),
+(4, '2022-04-10 12:00:00', 1, 1, 'reset', 'd7c35a4da36a8fe3d0ebec8e5cc91b0816a18516');
 
 -- --------------------------------------------------------
 
@@ -286,20 +288,20 @@ CREATE TABLE `Users` (
   `id` int(11) NOT NULL,
   `created` datetime NOT NULL,
   `deleted` datetime DEFAULT NULL,
+  `sessionID` int(11) NOT NULL,
   `email` varchar(255) NOT NULL,
   `username` varchar(255) NOT NULL,
   `password` varchar(255) NOT NULL,
   `reset` varchar(255) DEFAULT NULL,
-  `notifications` varchar(4095) NOT NULL,
-  `sessionID` int(11) NOT NULL
+  `notifications` varchar(4095) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `Users`
 --
 
-INSERT INTO `Users` (`id`, `created`, `deleted`, `email`, `username`, `password`, `reset`, `notifications`, `sessionID`) VALUES
-(1, '2022-04-10 12:00:00', NULL, 'hello@pythony.dev', 'Pythony', 'd7c35a4da36a8fe3d0ebec8e5cc91b0816a18516', NULL, '{"published":"true"}', 16777215);
+INSERT INTO `Users` (`id`, `created`, `deleted`, `sessionID`, `email`, `username`, `password`, `reset`, `notifications`) VALUES
+(1, '2022-04-10 12:00:00', NULL, 1, 'hello@pythony.dev', 'Pythony', 'd7c35a4da36a8fe3d0ebec8e5cc91b0816a18516', NULL, '{"published":"true"}');
 
 --
 -- Indexes for dumped tables

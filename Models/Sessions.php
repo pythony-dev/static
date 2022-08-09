@@ -16,15 +16,14 @@
             $count = $query->fetch()["count"] ?? 16;
 
             if($count <= 15) {
-                $sessionID = (int)rand(1, 16777215);
+                $parameters = \Static\Kernel::getValue($_SERVER, "QUERY_STRING");
 
-                $query = parent::$pdo->prepare("INSERT INTO Sessions (created, sessionID, ipAddress, userAgent, parameters) VALUES (NOW(), :sessionID, :ipAddress, :userAgent, :parameters)");
-                $query->bindValue(":sessionID", $sessionID, PDO::PARAM_INT);
+                $query = parent::$pdo->prepare("INSERT INTO Sessions (created, ipAddress, userAgent, parameters) VALUES (NOW(), :ipAddress, :userAgent, :parameters)");
                 $query->bindValue(":ipAddress", \Static\Kernel::getValue($_SERVER, "REMOTE_ADDR"), PDO::PARAM_STR);
                 $query->bindValue(":userAgent", \Static\Kernel::getValue($_SERVER, "HTTP_USER_AGENT"), PDO::PARAM_STR);
-                $query->bindValue(":parameters", \Static\Kernel::getValue($_SERVER, "QUERY_STRING"), PDO::PARAM_STR);
+                $query->bindValue(":parameters", empty($parameters) ? NULL : $parameters, PDO::PARAM_STR);
 
-                return $query->execute() && $_SESSION["sessionID"] = $sessionID;
+                return $query->execute() && $_SESSION["sessionID"] = parent::$pdo->lastInsertId();
             } else return false;
         }
 
