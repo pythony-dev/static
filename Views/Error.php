@@ -2,6 +2,6 @@
     <h1 class="p-5 fw-bold"> <?= $parameters["getText"]("title-error") . " " . $parameters["error"]; ?> </h1>
     <p class="p-5"> <?= $parameters["response"]; ?> </p>
     <div class="p-5">
-        <a class="w-100 btn btn-primary" href="<?= $parameters["getPath"]("/"); ?>"> <?= $parameters["getText"]("error-action"); ?> </a>
+        <a class="w-100 btn btn-primary" href="<?= $parameters["getPath"]("/"); ?>"> <?= $parameters["getText"]("error-button"); ?> </a>
     </div>
 </article>

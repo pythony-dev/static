@@ -9,6 +9,7 @@ $(document).ready(() => {
                 "action" : "update",
                 "email" : $("#settings-account-email").val(),
                 "username" : $("#settings-account-username").val(),
+                "language" : $("#settings-account-language").val(),
                 "confirm" : $("#settings-account-confirm").val(),
             }).then(response => {
                 $("#settings-account-confirm").val("")
@@ -28,7 +29,7 @@ $(document).ready(() => {
                 } else if(response["status"] == "success") {
                     alert($("#settings-alert-account-success").val())
 
-                    location.reload()
+                    location.replace("settings")
                 } else alert($("#settings-alert-account-error").val())
             }).fail(() => {
                 alert($("#settings-alert-account-error").val())
@@ -88,7 +89,7 @@ $(document).ready(() => {
                 } else if(response["status"] == "success") {
                     alert($("#settings-alert-notifications-success").val())
 
-                    location.reload()
+                    location.replace("settings?notifications")
                 } else alert($("#settings-alert-notifications-error").val())
             }).fail(() => {
                 alert($("#settings-alert-notifications-error").val())
@@ -96,7 +97,7 @@ $(document).ready(() => {
         })
     })
 
-    $("#settings-others-change-form").submit(event => {
+    $("#change-form").submit(event => {
         event.preventDefault()
 
         getToken(token => {
@@ -104,31 +105,31 @@ $(document).ready(() => {
                 "token" : token,
                 "request" : "users",
                 "action" : "change",
-                "password" : $("#settings-others-change-password").val(),
-                "confirm" : $("#settings-others-change-confirm").val(),
+                "password" : $("#change-password").val(),
+                "confirm" : $("#change-confirm").val(),
             }).then(response => {
-                $("#settings-others-change-confirm").val("")
+                $("#change-confirm").val("")
 
                 if(response["status"] == "password") {
-                    $("#settings-others-change-password").removeClass("is-valid").addClass("is-invalid")
+                    $("#change-password").removeClass("is-valid").addClass("is-invalid")
 
-                    alert($("#settings-alert-others-change-password").val())
+                    alert($("#change-alert-password").val())
                 } else if(response["status"] == "confirm") {
-                    $("#settings-others-change-confirm").addClass("is-invalid")
+                    $("#change-confirm").addClass("is-invalid")
 
-                    alert($("#settings-alert-others-change-confirm").val())
+                    alert($("#change-alert-confirm").val())
                 } else if(response["status"] == "success") {
-                    alert($("#settings-alert-others-change-success").val())
+                    alert($("#change-alert-success").val())
 
-                    location.reload()
-                } else alert($("#settings-alert-others-change-error").val())
+                    location.replace("settings?others")
+                } else alert($("#change-alert-error").val())
             }).fail(() => {
-                alert($("#settings-alert-others-change-error").val())
+                alert($("#change-alert-error").val())
             })
         })
     })
 
-    $("#settings-others-change-password").blur(event => {
+    $("#change-password").blur(event => {
         event.preventDefault()
 
         getToken(token => {
@@ -136,41 +137,41 @@ $(document).ready(() => {
                 "token" : token,
                 "request" : "users",
                 "action" : "isPassword",
-                "password" : $("#settings-others-change-password").val(),
+                "password" : $("#change-password").val(),
             }).then(response => {
-                if(response["status"] == "success") $("#settings-others-change-password").removeClass("is-invalid").addClass("is-valid")
-                else $("#settings-others-change-password").removeClass("is-valid").addClass("is-invalid")
+                if(response["status"] == "success") $("#change-password").removeClass("is-invalid").addClass("is-valid")
+                else $("#change-password").removeClass("is-valid").addClass("is-invalid")
             })
         })
     })
 
-    $("#settings-others-delete-form").submit(event => {
+    $("#delete-form").submit(event => {
         event.preventDefault()
 
-        if(confirm($("#settings-alert-others-delete-ask").val())) {
+        if(confirm($("#delete-alert-ask").val())) {
             getToken(token => {
                 $.post("", {
                     "token" : token,
                     "request" : "users",
                     "action" : "delete",
-                    "confirm" : $("#settings-others-delete-confirm").val(),
+                    "confirm" : $("#delete-confirm").val(),
                 }).then(response => {
-                    $("#settings-others-delete-confirm").val("")
+                    $("#delete-confirm").val("")
 
                     if(response["status"] == "confirm") {
-                        $("#settings-others-delete-confirm").addClass("is-invalid")
+                        $("#delete-confirm").addClass("is-invalid")
 
-                        alert($("#settings-alert-others-delete-confirm").val())
+                        alert($("#delete-alert-confirm").val())
                     } else if(response["status"] == "success") {
-                        alert($("#settings-alert-others-delete-success").val())
+                        alert($("#delete-alert-success").val())
 
                         location.replace("sign-up")
-                    } else alert($("#settings-alert-others-delete-error").val())
+                    } else alert($("#delete-alert-error").val())
                 }).fail(() => {
-                    alert($("#settings-alert-others-delete-error").val())
+                    alert($("#delete-alert-error").val())
                 })
             })
-        } else $("#settings-others-delete-confirm").val("")
+        } else $("#delete-confirm").val("")
     })
 
     $("#settings-account-image").click(event => {

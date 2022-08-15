@@ -12,6 +12,7 @@
             \Static\Kernel::addScript("https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js");
             \Static\Kernel::addScript(\Static\Kernel::getPath("/Public/Scripts/Index.js"));
 
+            $parameters["modals"] = array();
             $parameters["alerts"] = array("index-alert-language", "index-alert-logOut", "index-alert-token");
 
             return $parameters;

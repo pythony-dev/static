@@ -6,7 +6,6 @@
 
     Static\Kernel::addRoute("home", "/");
     Static\Kernel::addRoute("features", "/features");
-    Static\Kernel::addRoute("news", "/news");
     Static\Kernel::addRoute("news", "/news/(page)");
     Static\Kernel::addRoute("article", "/article/(link)");
     Static\Kernel::addRoute("contact", "/contact");

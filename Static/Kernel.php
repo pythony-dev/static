@@ -4,7 +4,7 @@
 
     final class Kernel {
 
-        private static $version = "1.4.7";
+        private static $version = "1.4.8";
         private static $settings = array();
 
         private static $styles = array();
@@ -110,7 +110,7 @@
                 foreach(self::$routes as $route) {
                     $path = explode("/", substr(self::getSettings("settings-link") . $route["path"], $start));
 
-                    if(count($path) != count($search)) continue;
+                    if(count($path) < count($search)) continue;
 
                     $parameters = array();
                     $found = true;

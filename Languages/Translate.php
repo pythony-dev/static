@@ -7,14 +7,6 @@
         protected static $language = "english";
         protected static $translations = array();
 
-        public static function getAllLanguages() {
-            return array("english", "french");
-        }
-
-        public static function getLanguage() {
-            return self::$language;
-        }
-
         public static function setLanguage() {
             foreach(self::getAllLanguages() as $language) {
                 if(array_key_exists($language, $_GET)) $_SESSION["language"] = $language;
@@ -24,6 +16,14 @@
 
             $file = "Languages/" . ucfirst(self::$language) . ".json";
             self::$translations = (array)json_decode(file_get_contents(file_exists($file) ? $file : "Languages/English.json"));
+        }
+
+        public static function getLanguage() {
+            return htmlspecialchars(self::$language);
+        }
+
+        public static function getAllLanguages() {
+            return array("english", "french");
         }
 
         public static function getText($text, $decode = false, $parameters = array()) {

@@ -18,7 +18,7 @@
                     <img class="card-img-top" src="<?= $image; ?>" alt="<?= $title; ?>"/>
                 <?php } ?>
                 <div class="card-body">
-                    <p class="px-4 pt-4 h3 card-title"> <?= $title; ?> </p>
+                    <p class="px-4 pt-4 h3"> <?= $title; ?> </p>
                     <p class="px-4 pb-4 card-subtitle text-muted"> <?= $subtitle; ?> </p>
                     <p class="p-4 card-text text-justify"> <?= $content; ?> </p>
                 </div>

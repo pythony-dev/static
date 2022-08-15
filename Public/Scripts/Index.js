@@ -15,7 +15,7 @@ $(document).ready(() => {
         })
     })
 
-    $("#logOut, #settings-logOut").click(event => {
+    $("#navbar-logOut, #settings-logOut").click(event => {
         getToken(token => {
             $.post("", {
                 "token" : token,
@@ -36,7 +36,7 @@ const getToken = callback => {
         "request" : "tokens",
         "action" : "create",
     }).then(response => {
-        if("token" in response) callback(response["token"])
+        if(response["status"] == "success" && "token" in response) callback(response["token"])
         else alert($("#index-alert-token").val())
     }).fail(() => {
         alert($("#index-alert-token").val())

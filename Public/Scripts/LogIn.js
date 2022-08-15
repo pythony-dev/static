@@ -10,6 +10,8 @@ $(document).ready(() => {
                 "email" : $("#logIn-email").val(),
                 "password" : $("#logIn-password").val(),
             }).then(response => {
+                $("#logIn-password").val("")
+
                 if(response["status"] == "email") alert($("#logIn-alert-email").val())
                 else if(response["status"] == "password") alert($("#logIn-alert-password").val())
                 else if(response["status"] == "success") location.replace("settings")
@@ -20,7 +22,7 @@ $(document).ready(() => {
         })
     })
 
-    $("#logIn-reset-form").submit(event => {
+    $("#reset-form").submit(event => {
         event.preventDefault()
 
         getToken(token => {
@@ -28,16 +30,19 @@ $(document).ready(() => {
                 "token" : token,
                 "request" : "users",
                 "action" : "reset",
-                "email" : $("#logIn-reset-email").val(),
+                "email" : $("#reset-email").val(),
             }).then(response => {
-                if(response["status"] == "email") alert($("#logIn-alert-reset-email").val())
-                else if(response["status"] == "success") {
-                    alert($("#logIn-alert-reset-success").val())
+                if(response["status"] == "email") {
+                    $("#reset-email").addClass("is-invalid")
+
+                    alert($("#reset-alert-email").val())
+                } else if(response["status"] == "success") {
+                    alert($("#reset-alert-success").val())
 
                     location.reload()
-                } else alert($("#logIn-alert-reset-error").val())
+                } else alert($("#reset-alert-error").val())
             }).fail(() => {
-                alert($("#logIn-alert-reset-error").val())
+                alert($("#reset-alert-error").val())
             })
         })
     })

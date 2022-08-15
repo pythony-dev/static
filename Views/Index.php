@@ -4,7 +4,7 @@
 <html>
     <head>
         <meta charset="utf-8"/>
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1"/>
         <title> <?= htmlspecialchars($title) . " - " . $parameters["getSettings"]("project-name"); ?> </title>
         <link rel="icon" href="<?= $parameters["getPath"]("/Public/Images/Index/Icon.png"); ?>"/>
         <?php foreach($styles as $style) { ?>
@@ -13,15 +13,21 @@
             <script src="<?= $script; ?>" defer> </script>
         <?php } ?>
     </head>
-    <body class="container p-0 text-center" style="background-image : url('<?= $parameters["getPath"]("/Public/Images/Index/Background.png"); ?>')">
-        <?= \Static\Components\Navbar::create($parameters["userID"]); ?>
-        <section class="bg-white shadow border section">
-            <?= $body; ?>
-        </section>
-        <?= \Static\Components\Footer::create(); ?>
-        <div>
+    <body class="container text-center" style="background-image : url('<?= $parameters["getPath"]("/Public/Images/Index/Background.png"); ?>')">
+        <?= \Static\Components\Navbar::create(); ?>
+        <section class="bg-white shadow border section"> <?= $body; ?> </section>
+        <?php
+            echo \Static\Components\Footer::create();
+
+            if(is_array($parameters["modals"])) {
+                foreach($parameters["modals"] as $modal) {
+                    if(file_exists("Views/Modals/" . ucfirst($modal) . ".php")) require_once("Views/Modals/" . ucfirst($modal) . ".php");
+                }
+            }
+        ?>
+        <div class="d-none">
             <?php if(is_array($parameters["alerts"])) foreach($parameters["alerts"] as $alert) { ?>
-                <input id="<?= $alert; ?>" class="d-none" value="<?= $parameters["getText"]($alert); ?>"/>
+                <input id="<?= htmlspecialchars($alert); ?>" value="<?= $parameters["getText"](htmlspecialchars($alert)); ?>"/>
             <?php } ?>
         </div>
     </body>

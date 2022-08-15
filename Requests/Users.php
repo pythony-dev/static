@@ -34,10 +34,11 @@
         public static function update() {
             $email = \Static\Kernel::getValue($_POST, "email");
             $username = \Static\Kernel::getValue($_POST, "username");
+            $language = \Static\Kernel::getValue($_POST, "language");
             $confirm = \Static\Kernel::getValue($_POST, "confirm");
 
             return array(
-                "status" => \Static\Models\Users::update($email, $username, $confirm),
+                "status" => \Static\Models\Users::update($email, $username, $language, $confirm),
             );
         }
 

@@ -2,41 +2,21 @@
     <h1 class="p-5 fw-bold zoom"> <?= $parameters["getSettings"]("project-name"); ?> </h1>
     <h2 class="p-5 fw-bold"> <?= $parameters["getText"]("home-title"); ?> </h2>
     <p class="p-5 text-justify"> <?= $parameters["getText"]("home-content"); ?> </p>
-    <?php foreach($parameters["themes"] as $id => $theme) { ?>
-        <?php if($theme == "Time") { ?>
-            <div class="row mx-0 px-5">
-                <div class="d-md-none mx-auto my-5 line"> </div>
-                <div class="col-12 px-md-4 py-4">
-                    <h3 class="p-4"> <?= $parameters["getText"]("home-time-title"); ?> </h3>
-                    <p class="p-4 text-justify"> <?= $parameters["getText"]("home-time-content"); ?> </p>
-                    <canvas id="home-time" class="p-4"> </canvas>
-                </div>
+    <div class="p-5">
+        <a class="w-100 btn btn-primary" href="<?= $parameters["getPath"]("/sign-up"); ?>"> <?= $parameters["getText"]("home-button"); ?> </a>
+    </div>
+    <?php foreach($parameters["themes"] as $id => $theme) {
+        if(!in_array($theme, $parameters["charts"])) echo \Static\Components\Article::create($id, $parameters["getPath"]("/Public/Images/Home/" . $theme . ".png"), $parameters["getText"]("home-" . strtolower($theme) . "-title"), $parameters["getText"]("home-" . strtolower($theme) . "-content"));
+        else { ?>
+            <div class="d-md-none p-5">
+                <div class="line"> </div>
             </div>
-        <?php } else if($theme == "Productivity") { ?>
-            <div class="row mx-0 px-5">
-                <div class="d-md-none mx-auto my-5 line"> </div>
-                <div class="col-12 px-md-4 py-4">
-                    <h3 class="p-4"> <?= $parameters["getText"]("home-productivity-title"); ?> </h3>
-                    <p class="p-4 text-justify"> <?= $parameters["getText"]("home-productivity-content"); ?> </p>
-                    <canvas id="home-productivity" class="p-4"> </canvas>
-                </div>
-            </div>
-        <?php } else { ?>
-            <div class="row mx-0 px-5<?= $id % 2 ? " flex-row-reverse" : null; ?>">
-                <?php if($id != 0) { ?>
-                    <div class="d-md-none mx-auto my-5 line"> </div>
-                <?php } ?>
-                <div class="col-12 col-md-6 my-auto py-4">
-                    <img class="img-fluid" src="<?= $parameters["getPath"]("/Public/Images/Home/" . $theme . ".png"); ?>" alt="<?= $theme; ?>"/>
-                </div>
-                <div class="col-12 col-md-6 my-auto px-md-4 py-4">
-                    <h3 class="p-4"> <?= $parameters["getText"]("home-" . strtolower($theme) . "-title"); ?> </h3>
-                    <p class="p-4 text-justify"> <?= $parameters["getText"]("home-" . strtolower($theme) . "-content"); ?> </p>
-                </div>
-            </div>
+            <h3 class="px-5 pt-5 pb-4"> <?= $parameters["getText"]("home-" . lcfirst($theme) . "-title"); ?> </h3>
+            <p class="px-5 py-4 text-justify"> <?= $parameters["getText"]("home-" . lcfirst($theme) . "-content"); ?> </p>
+            <canvas id="home-<?= lcfirst($theme); ?>" class="px-5 pb-5 pt-4"> </canvas>
         <?php } ?>
     <?php } ?>
     <div class="p-5">
-        <a class="w-100 btn btn-primary" href="https://github.com/pythony-dev/static" target="_blank" rel="noopener"> <?= $parameters["getText"]("home-action"); ?> </a>
+        <a class="w-100 btn btn-primary" href="<?= $parameters["getPath"]("/sign-up"); ?>"> <?= $parameters["getText"]("home-button"); ?> </a>
     </div>
 </article>

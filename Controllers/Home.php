@@ -9,6 +9,7 @@
             \Static\Kernel::addScript(\Static\Kernel::getPath("/Public/Scripts/Home.js"));
 
             $parameters["themes"] = array("Why", "Framework", "Time", "Templates", "Components", "Productivity", "Analytics", "Translations");
+            $parameters["charts"] = array($parameters["themes"][2], $parameters["themes"][5]);
 
             return $parameters;
         }

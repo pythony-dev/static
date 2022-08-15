@@ -23,7 +23,7 @@
                     "image" => \Static\Kernel::getPath("/Public/Images/Articles/" . \Static\Kernel::getID(\Static\Kernel::getValue($article, "id")) . ".jpeg"),
                     "title" => \Static\Kernel::getValue($article, "title"),
                     "overview" => \Static\Kernel::getValue($article, "overview"),
-                    "button" => \Static\Kernel::getPath("/article/" . \Static\Kernel::getValue($article, "link")),
+                    "link" => \Static\Kernel::getPath("/article/" . \Static\Kernel::getValue($article, "link")),
                 ));
             }
 
@@ -60,7 +60,7 @@
                     "image" => \Static\Kernel::getPath("/Public/Images/Articles/" . \Static\Kernel::getID(\Static\Kernel::getValue($article, "id")) . ".jpeg"),
                     "title" => \Static\Kernel::getValue($article, "title"),
                     "overview" => \Static\Kernel::getValue($article, "overview"),
-                    "button" => \Static\Kernel::getPath("/article/" . \Static\Kernel::getValue($article, "link")),
+                    "link" => \Static\Kernel::getPath("/article/" . \Static\Kernel::getValue($article, "link")),
                 ));
             }
 

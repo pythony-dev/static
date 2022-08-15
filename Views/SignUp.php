@@ -1,13 +1,15 @@
 <article class="col-12 col-md-10 col-xl-8 offset-md-1 offset-xl-2 py-5">
     <h1 class="p-5 fw-bold"> <?= $parameters["getText"]("signUp-title"); ?> </h1>
     <p class="p-5 text-justify"> <?= $parameters["getText"]("signUp-content"); ?> </p>
-    <form id="signUp-form" class="px-5">
-        <input id="signUp-email" class="my-5 form-control text-center" type="email" placeholder="<?= $parameters["getText"]("signUp-email"); ?>" required/>
-        <input id="signUp-username" class="my-5 form-control text-center" type="text" placeholder="<?= $parameters["getText"]("signUp-username"); ?>" required/>
-        <div class="pb-5">
-            <input id="signUp-agree" class="me-4 form-check-input" type="checkbox" required/>
-            <label class="ps-4 form-check-label" for="signUp-agree"> <?= $parameters["getText"]("signUp-agree", true); ?> </label>
+    <form id="signUp-form" class="p-5">
+        <input id="signUp-email" class="mb-5 form-control text-center" type="email" placeholder="<?= $parameters["getText"]("signUp-email"); ?>" required/>
+        <input id="signUp-username" class="mt-5 form-control text-center" type="text" placeholder="<?= $parameters["getText"]("signUp-username"); ?>" required/>
+        <div class="d-flex justify-content-center align-items-center py-5">
+            <div class="pe-4">
+                <input id="signUp-agree" class="form-check-input" type="checkbox" required/>
+            </div>
+            <label class="ps-4 text-justify" for="signUp-agree"> <?= $parameters["getText"]("signUp-agree", true); ?> </label>
         </div>
-        <input class="w-100 mb-5 btn btn-primary" type="submit" value="<?= $parameters["getText"]("signUp-submit"); ?>"/>
+        <input class="w-100 btn btn-primary" type="submit" value="<?= $parameters["getText"]("signUp-submit"); ?>"/>
     </form>
 </article>

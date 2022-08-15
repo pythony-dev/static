@@ -163,7 +163,9 @@ INSERT INTO `Features` (`id`, `title`, `subtitle`, `content`, `language`) VALUES
 (15, 'Sample Feature 8', 'Sample Benefit 8', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam id convallis odio. Cras bibendum lacus vel sapien suscipit, lacinia pulvinar.', 'english'),
 (16, 'Exemple de Fonctionnalité 8', 'Exemple de Bénéfice 8', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam id convallis odio. Cras bibendum lacus vel sapien suscipit, lacinia pulvinar.', 'french'),
 (17, 'Sample Feature 9', 'Sample Benefit 9', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam id convallis odio. Cras bibendum lacus vel sapien suscipit, lacinia pulvinar.', 'english'),
-(18, 'Exemple de Fonctionnalité 9', 'Exemple de Bénéfice 9', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam id convallis odio. Cras bibendum lacus vel sapien suscipit, lacinia pulvinar.', 'french');
+(18, 'Exemple de Fonctionnalité 9', 'Exemple de Bénéfice 9', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam id convallis odio. Cras bibendum lacus vel sapien suscipit, lacinia pulvinar.', 'french'),
+(19, 'Sample Feature 10', 'Sample Benefit 10', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam id convallis odio. Cras bibendum lacus vel sapien suscipit, lacinia pulvinar.', 'english'),
+(20, 'Exemple de Fonctionnalité 10', 'Exemple de Bénéfice 10', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam id convallis odio. Cras bibendum lacus vel sapien suscipit, lacinia pulvinar.', 'french');
 
 -- --------------------------------------------------------
 
@@ -291,17 +293,18 @@ CREATE TABLE `Users` (
   `sessionID` int(11) NOT NULL,
   `email` varchar(255) NOT NULL,
   `username` varchar(255) NOT NULL,
+  `language` varchar(255) NOT NULL,
+  `notifications` varchar(4095) NOT NULL,
   `password` varchar(255) NOT NULL,
-  `reset` varchar(255) DEFAULT NULL,
-  `notifications` varchar(4095) NOT NULL
+  `reset` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `Users`
 --
 
-INSERT INTO `Users` (`id`, `created`, `deleted`, `sessionID`, `email`, `username`, `password`, `reset`, `notifications`) VALUES
-(1, '2022-04-10 12:00:00', NULL, 1, 'hello@pythony.dev', 'Pythony', 'd7c35a4da36a8fe3d0ebec8e5cc91b0816a18516', NULL, '{"published":"true"}');
+INSERT INTO `Users` (`id`, `created`, `deleted`, `sessionID`, `email`, `username`, `language`, `notifications`, `password`, `reset`) VALUES
+(1, '2022-04-10 12:00:00', NULL, 1, 'hello@pythony.dev', 'Pythony', 'french', '{"published":"true"}', 'd7c35a4da36a8fe3d0ebec8e5cc91b0816a18516', NULL);
 
 --
 -- Indexes for dumped tables
@@ -393,7 +396,7 @@ ALTER TABLE `Errors`
 -- AUTO_INCREMENT for table `Features`
 --
 ALTER TABLE `Features`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
 -- AUTO_INCREMENT for table `Logs`
