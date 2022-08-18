@@ -93,6 +93,7 @@ CREATE TABLE `Contact` (
   `id` int(11) NOT NULL,
   `created` datetime NOT NULL,
   `sessionID` int(11) NOT NULL,
+  `userID` int(11) NOT NULL,
   `email` varchar(255) NOT NULL,
   `message` varchar(4095) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -101,8 +102,8 @@ CREATE TABLE `Contact` (
 -- Dumping data for table `Contact`
 --
 
-INSERT INTO `Contact` (`id`, `created`, `sessionID`, `email`, `message`) VALUES
-(1, '2022-04-10 12:00:00', 1, 'hello@pythony.dev', 'I would like to thank you for…');
+INSERT INTO `Contact` (`id`, `created`, `sessionID`, `userID`, `email`, `message`) VALUES
+(1, '2022-04-10 12:00:00', 1, 1, 'hello@pythony.dev', 'I would like to thank you for…');
 
 -- --------------------------------------------------------
 
@@ -304,7 +305,7 @@ CREATE TABLE `Users` (
 --
 
 INSERT INTO `Users` (`id`, `created`, `deleted`, `sessionID`, `email`, `username`, `language`, `notifications`, `password`, `reset`) VALUES
-(1, '2022-04-10 12:00:00', NULL, 1, 'hello@pythony.dev', 'Pythony', 'french', '{"published":"true"}', 'd7c35a4da36a8fe3d0ebec8e5cc91b0816a18516', NULL);
+(1, '2022-04-10 12:00:00', NULL, 1, 'hello@pythony.dev', 'Pythony', 'english', '{"published":"true"}', 'd7c35a4da36a8fe3d0ebec8e5cc91b0816a18516', NULL);
 
 --
 -- Indexes for dumped tables

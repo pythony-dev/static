@@ -13,7 +13,9 @@
                 exit();
             }
 
-            \Static\Kernel::addScript(\Static\Kernel::getPath("/Public/Scripts/Settings.js"));
+            \Static\Kernel::addScript("/Public/Scripts/Settings.js");
+            \Static\Kernel::addScript("/Public/Scripts/Change.js");
+            \Static\Kernel::addScript("/Public/Scripts/Delete.js");
 
             $parameters["tabs"] = array(
                 "account" => !array_key_exists("notifications", $_GET) && !array_key_exists("others", $_GET),
@@ -25,7 +27,7 @@
             $parameters["modals"] = array_merge($parameters["modals"], array("change", "delete"));
             $parameters["alerts"] = array_merge($parameters["alerts"], array(
                 "settings-alert-account-email", "settings-alert-account-username", "settings-alert-account-confirm", "settings-alert-account-success", "settings-alert-account-error",
-                "settings-alert-account-file-userID", "settings-alert-account-file-extension", "settings-alert-account-file-type", "settings-alert-account-file-size", "settings-alert-account-file-image", "settings-alert-account-file-success", "settings-alert-account-file-error",
+                "settings-alert-image-userID", "settings-alert-image-extension", "settings-alert-image-type", "settings-alert-image-size", "settings-alert-image-image", "settings-alert-image-success", "settings-alert-image-error",
                 "settings-alert-notifications-confirm", "settings-alert-notifications-success", "settings-alert-notifications-error",
                 "change-alert-password", "change-alert-confirm", "change-alert-success", "change-alert-error",
                 "delete-alert-ask", "delete-alert-confirm", "delete-alert-success", "delete-alert-error",

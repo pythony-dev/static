@@ -19,9 +19,9 @@
         <form id="settings-account-form" class="tab-pane fade<?= $parameters["tabs"]["account"] ? " show active" : null; ?>">
             <div class="row mx-0">
                 <div class="col-12 col-md-6 my-auto px-0 pb-5 pb-md-0 pe-md-5">
-                    <img id="settings-account-image" class="img-fluid shadow border rounded-circle pointer" src="<?= $parameters["getPath"]("/Public/Images/Users/" . $parameters["user"]["id"] . ".jpeg?" . time()); ?>" alt="<?= $parameters["getText"]("settings-account-user"); ?>"/>
-                    <input id="settings-account-file" class="d-none" type="file" accept=".jpg, .jpeg, .png"/>
-                    <div id="settings-account-spinner" class="d-none spinner-border"> </div>
+                    <img id="settings-image-image" class="img-fluid shadow border rounded-circle pointer" src="<?= $parameters["user"]["image"]; ?>" alt="<?= $parameters["getText"]("settings-account-user"); ?>"/>
+                    <input id="settings-image-input" class="d-none" type="file" accept=".jpg, .jpeg, .png"/>
+                    <div id="settings-image-spinner" class="d-none spinner-border"> </div>
                 </div>
                 <div class="col-12 col-md-6 my-auto px-0 ps-md-5">
                     <input id="settings-account-email" class="mb-5 form-control text-center" type="email" value="<?= $parameters["user"]["email"]; ?>" placeholder="<?= $parameters["getText"]("settings-account-email"); ?>" required/>

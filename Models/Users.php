@@ -40,7 +40,7 @@
                 "user-password" => $password,
             ));
 
-            return $query->execute() && copy("Public/Images/Users/0.jpeg", "Public/Images/Users/" . parent::$pdo->lastInsertId() . ".jpeg") && \Static\Emails::send($email, $title, $content) ? "success" : "error";
+            return $query->execute() && copy("Public/Images/Users/" . sha1(\Static\Kernel::getSalt() . "0") . ".jpeg", "Public/Images/Users/" . sha1(\Static\Kernel::getSalt() . parent::$pdo->lastInsertId()) . ".jpeg") && \Static\Emails::send($email, $title, $content) ? "success" : "error";
         }
 
         public static function logIn($email, $password) {
@@ -64,7 +64,7 @@
             if($userID < 1) return "email";
             else if($results["password"] == $password) {
                 $_SESSION["userID"] = $userID;
-                $_SESSION["language"] = $results["language"];
+                $_SESSION["language"] = htmlspecialchars($results["language"]);
 
                 $query = parent::$pdo->prepare("UPDATE Users SET reset = NULL WHERE id = :userID AND deleted IS NULL");
                 $query->bindValue(":userID", $userID, PDO::PARAM_INT);
@@ -72,7 +72,7 @@
                 return \Static\Models\Logs::create($userID, "success") && $query->execute() ? "success" : "error";
             } else if($results["reset"] == $password) {
                 $_SESSION["userID"] = $userID;
-                $_SESSION["language"] = $results["language"];
+                $_SESSION["language"] = htmlspecialchars($results["language"]);
 
                 $query = parent::$pdo->prepare("UPDATE Users SET password = reset, reset = NULL WHERE id = :userID AND deleted IS NULL");
                 $query->bindValue(":userID", $userID, PDO::PARAM_INT);
@@ -90,8 +90,8 @@
 
             $userID = (int)\Static\Kernel::getValue($_SESSION, "userID");
 
-            if(self::isEmail($email) != "used") return "email";
-            else if($userID != 0) return "error";
+            if($userID != 0) return "error";
+            else if(self::isEmail($email) != "used") return "email";
 
             $reset = self::createPassword();
 
@@ -119,7 +119,11 @@
             $query->bindValue(":userID", $userID, PDO::PARAM_INT);
             $query->execute();
 
-            return $query->fetch();
+            if($user = $query->fetch()) {
+                $user["image"] = \Static\Kernel::getPath("/Public/Images/Users/" . sha1(\Static\Kernel::getSalt() . $user["id"]) . ".jpeg?" . time());
+
+                return $user;
+            } else return array();
         }
 
         public static function update($email, $username, $language, $confirm) {
@@ -159,8 +163,8 @@
 
             $userID = (int)\Static\Kernel::getValue($_SESSION, "userID");
 
-            if(empty($notifications)) return "error";
-            else if($userID < 1) return "confirm";
+            if($userID < 1) return "confirm";
+            else if(empty($notifications)) return "error";
 
             $query = parent::$pdo->prepare("SELECT id FROM Users WHERE id = :userID AND password = :confirm AND deleted IS NULL");
             $query->bindValue(":userID", $userID, PDO::PARAM_INT);

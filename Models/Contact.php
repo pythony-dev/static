@@ -11,13 +11,15 @@
             $message = htmlspecialchars($message);
 
             $sessionID = (int)\Static\Kernel::getValue($_SESSION, "sessionID");
+            $userID = (int)\Static\Kernel::getValue($_SESSION, "userID");
 
-            if(empty($email)) return "email";
+            if(!in_array(\Static\Models\Users::isEmail($email), array("success", "used"))) return "email";
             else if(empty($message)) return "message";
-            else if($sessionID <= 0) return "error";
+            else if($sessionID <= 0 || $userID < 0) return "error";
 
-            $query = parent::$pdo->prepare("INSERT INTO Contact (created, sessionID, email, message) VALUES (NOW(), :sessionID, :email, :message)");
+            $query = parent::$pdo->prepare("INSERT INTO Contact (created, sessionID, userID, email, message) VALUES (NOW(), :sessionID, :userID, :email, :message)");
             $query->bindValue(":sessionID", $sessionID, PDO::PARAM_INT);
+            $query->bindValue(":userID", $userID, PDO::PARAM_INT);
             $query->bindValue(":email", $email, PDO::PARAM_STR);
             $query->bindValue(":message", $message, PDO::PARAM_STR);
 

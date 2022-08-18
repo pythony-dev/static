@@ -8,9 +8,9 @@ $(document).ready(() => {
                 "language" : $(event.target).attr("language"),
             }).then(response => {
                 if(response["status"] == "success") location.reload()
-                else alert($("#index-alert-language").val())
+                else showAlert("index-language")
             }).fail(() => {
-                alert($("#index-alert-language").val())
+                showAlert("index-language")
             })
         })
     })
@@ -23,9 +23,9 @@ $(document).ready(() => {
                 "action" : "logOut",
             }).then(response => {
                 if(response["status"] == "success") location.reload()
-                else alert($("#index-alert-logOut").val())
+                else showAlert("index-logOut")
             }).fail(() => {
-                alert($("#index-alert-logOut").val())
+                showAlert("index-logOut")
             })
         })
     })
@@ -37,8 +37,25 @@ const getToken = callback => {
         "action" : "create",
     }).then(response => {
         if(response["status"] == "success" && "token" in response) callback(response["token"])
-        else alert($("#index-alert-token").val())
+        else showAlert("index-token")
     }).fail(() => {
-        alert($("#index-alert-token").val())
+        showAlert("index-token")
     })
+}
+
+const showAlert = (id, closed = null, confirmed = null) => {
+    id += "-alert"
+    $("#" + id).modal("show")
+    $("#" + id).off("hide.bs.modal")
+    $("#" + id + " .confirm").off("click")
+
+    if(typeof(closed) == "function") $("#" + id).on("hide.bs.modal", closed)
+
+    if(typeof(confirmed) == "function") {
+        $("#" + id + " .confirm").on("click", event => {
+            $("#" + id).modal("hide")
+
+            confirmed(event)
+        })
+    }
 }

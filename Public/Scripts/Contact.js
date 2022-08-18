@@ -10,15 +10,31 @@ $(document).ready(() => {
                 "email" : $("#contact-email").val(),
                 "message" : $("#contact-message").val(),
             }).then(response => {
-                if(response["status"] == "email") alert($("#contact-alert-email").val())
-                else if(response["status"] == "message") alert($("#contact-alert-message").val())
+                if(response["status"] == "email") showAlert("contact-email")
+                else if(response["status"] == "message") showAlert("contact-message")
                 else if(response["status"] == "success") {
-                    alert($("#contact-alert-success").val())
-
-                    location.reload()
-                } else alert($("#contact-alert-error").val())
+                    showAlert("contact-success", event => {
+                        location.reload()
+                    })
+                } else showAlert("contact-error")
             }).fail(() => {
-                alert($("#contact-alert-error").val())
+                showAlert("contact-error")
+            })
+        })
+    })
+
+    $("#contact-email").blur(event => {
+        event.preventDefault()
+
+        getToken(token => {
+            $.post("", {
+                "token" : token,
+                "request" : "users",
+                "action" : "isEmail",
+                "email" : $("#contact-email").val(),
+            }).then(response => {
+                if(["success", "used"].includes(response["status"])) $("#contact-email").removeClass("is-invalid").addClass("is-valid")
+                else $("#contact-email").removeClass("is-valid").addClass("is-invalid")
             })
         })
     })

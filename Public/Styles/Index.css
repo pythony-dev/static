@@ -17,5 +17,7 @@
 } .zoom {
     font-size : 500%;
 } .pointer {
+    aspect-ratio : 1;
+    object-fit : cover;
     cursor : pointer;
 }

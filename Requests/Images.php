@@ -16,7 +16,7 @@
                 if(!in_array(pathinfo($image["name"])["extension"], array("JPG", "JPEG", "PNG", "jpg", "jpeg", "png"))) $parameters["status"] = "extension";
                 else if(!in_array($image["type"], array("image/jpg", "image/jpeg", "image/png"))) $parameters["status"] = "type";
                 else if($image["size"] >= 1048576) $parameters["status"] = "size";
-                else if(move_uploaded_file($image["tmp_name"], "Public/Images/Users/" . $id . ".jpeg")) $parameters["status"] = "success";
+                else if(move_uploaded_file($image["tmp_name"], "Public/Images/Users/" . sha1(\Static\Kernel::getSalt() . $id) . ".jpeg")) $parameters["status"] = "success";
                 else $parameters["status"] = "error";
             } else $parameters["status"] = "image";
 
