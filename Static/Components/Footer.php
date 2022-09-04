@@ -24,12 +24,12 @@
                         </div>
                         <div class="col-12 col-md-8 my-auto p-5 pt-0 pt-md-5">
                             <p class="text-light"> Copyright © <?= date("Y") . " " . $getSettings("project-name") . " - " . $getText("footer-rights") . " - Version " . $getSettings("project-version"); ?> </p>
-                            <div class="d-flex flex-column flex-md-row justify-content-around">
+                            <div class="d-flex flex-column flex-md-row justify-content-between">
                                 <a class="text-decoration-none link-light" href="<?= $getPath("/contact"); ?>"> <?= $getText("footer-contact"); ?> </a>
                                 <a class="text-decoration-none link-light" href="<?= $getPath("/terms"); ?>"> <?= $getText("footer-terms"); ?> </a>
                                 <a class="text-decoration-none link-light" href="<?= $getPath("/privacy"); ?>"> <?= $getText("footer-privacy"); ?> </a>
                             </div>
-                            <div class="d-flex justify-content-around pt-4">
+                            <div class="d-flex justify-content-between pt-4">
                                 <?php foreach(\Static\Kernel::getNetworks() as $network) if($getSettings("networks-" . strtolower($network))) { ?>
                                     <a href="<?= $getSettings("networks-" . strtolower($network)); ?>" target="_blank">
                                         <img class="img-fluid shadow border border-dark rounded-circle networks" src="<?= $getPath("/Public/Images/Networks/" . $network . ".png"); ?>" alt="<?= $network; ?>"/>

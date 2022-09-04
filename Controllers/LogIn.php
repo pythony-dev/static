@@ -15,7 +15,10 @@
             \Static\Kernel::addScript("/Public/Scripts/Reset.js");
 
             $parameters["modals"] = array_merge($parameters["modals"], array("reset"));
-            $parameters["alerts"] = array_merge($parameters["alerts"], array("logIn-alert-email", "logIn-alert-password", "logIn-alert-error", "reset-alert-email", "reset-alert-success", "reset-alert-error"));
+            $parameters["alerts"] = array_merge($parameters["alerts"], array(
+                "logIn-alert-email", "logIn-alert-password", "logIn-alert-error",
+                "reset-alert-email", "reset-alert-success", "reset-alert-error"
+            ));
 
             return $parameters;
         }

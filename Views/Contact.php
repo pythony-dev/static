@@ -3,7 +3,7 @@
     <p class="p-5 text-justify"> <?= $parameters["getText"]("contact-content"); ?> </p>
     <form id="contact-form" class="p-5">
         <input id="contact-email" class="mb-5 form-control text-center" type="email" placeholder="<?= $parameters["getText"]("contact-email"); ?>" required/>
-        <textarea id="contact-message" class="my-5 form-control text-center" rows="5" placeholder="<?= $parameters["getText"]("contact-message"); ?>" required></textarea>
+        <textarea id="contact-message" class="my-5 form-control text-center" placeholder="<?= $parameters["getText"]("contact-message"); ?>" rows="5" required></textarea>
         <input class="w-100 btn btn-primary" type="submit" value="<?= $parameters["getText"]("contact-submit"); ?>"/>
     </form>
 </article>

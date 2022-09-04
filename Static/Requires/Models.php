@@ -6,6 +6,9 @@
     require_once("Models/Tokens.php");
     require_once("Models/Features.php");
     require_once("Models/Articles.php");
+    require_once("Models/Threads.php");
+    require_once("Models/Posts.php");
+    require_once("Models/Reports.php");
     require_once("Models/Contact.php");
     require_once("Models/Users.php");
     require_once("Models/Updates.php");

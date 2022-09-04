@@ -8,6 +8,8 @@
     Static\Kernel::addRoute("features", "/features");
     Static\Kernel::addRoute("news", "/news/(page)");
     Static\Kernel::addRoute("article", "/article/(link)");
+    Static\Kernel::addRoute("forums", "/forums/(page)");
+    Static\Kernel::addRoute("thread", "/thread/(link)/(page)");
     Static\Kernel::addRoute("contact", "/contact");
     Static\Kernel::addRoute("signUp", "/sign-up");
     Static\Kernel::addRoute("logIn", "/log-in");
@@ -15,6 +17,9 @@
     Static\Kernel::addRoute("terms", "/terms");
     Static\Kernel::addRoute("privacy", "/privacy");
 
+    Static\Kernel::addRequest("threads");
+    Static\Kernel::addRequest("posts");
+    Static\Kernel::addRequest("reports");
     Static\Kernel::addRequest("contact");
     Static\Kernel::addRequest("users");
     Static\Kernel::addRequest("images");

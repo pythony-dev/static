@@ -4,7 +4,7 @@
 
     final class Kernel {
 
-        private static $version = "1.5.0";
+        private static $version = "1.5.1";
         private static $settings = array();
 
         private static $styles = array();
@@ -172,7 +172,7 @@
                         $action = self::getValue($_POST, "action");
 
                         if(!class_exists($request)) return self::setError(404, \Static\Languages\Translate::getText("error-class") . $request, true);
-                        if(!method_exists($request, $action)) return self::setError(404, \Static\Languages\Translate::getText("error-method") . $request . "::" . $action, true);
+                        else if(!method_exists($request, $action)) return self::setError(404, \Static\Languages\Translate::getText("error-method") . $request . "::" . $action, true);
 
                         $response = $request::$action();
 

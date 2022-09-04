@@ -27,8 +27,8 @@
             $parameters["modals"] = array_merge($parameters["modals"], array("change", "delete"));
             $parameters["alerts"] = array_merge($parameters["alerts"], array(
                 "settings-alert-account-email", "settings-alert-account-username", "settings-alert-account-confirm", "settings-alert-account-success", "settings-alert-account-error",
-                "settings-alert-image-userID", "settings-alert-image-extension", "settings-alert-image-type", "settings-alert-image-size", "settings-alert-image-image", "settings-alert-image-success", "settings-alert-image-error",
                 "settings-alert-notifications-confirm", "settings-alert-notifications-success", "settings-alert-notifications-error",
+                "upload-alert-userID", "upload-alert-extension", "upload-alert-type", "upload-alert-size", "upload-alert-image", "upload-alert-success", "upload-alert-error",
                 "change-alert-password", "change-alert-confirm", "change-alert-success", "change-alert-error",
                 "delete-alert-ask", "delete-alert-confirm", "delete-alert-success", "delete-alert-error",
             ));

@@ -19,7 +19,7 @@
         <form id="settings-account-form" class="tab-pane fade<?= $parameters["tabs"]["account"] ? " show active" : null; ?>">
             <div class="row mx-0">
                 <div class="col-12 col-md-6 my-auto px-0 pb-5 pb-md-0 pe-md-5">
-                    <img id="settings-image-image" class="img-fluid shadow border rounded-circle pointer" src="<?= $parameters["user"]["image"]; ?>" alt="<?= $parameters["getText"]("settings-account-user"); ?>"/>
+                    <img id="settings-image-image" class="img-fluid shadow border rounded-circle ratio-1 pointer" src="<?= $parameters["user"]["image"]; ?>" alt="<?= $parameters["getText"]("settings-account-user"); ?>"/>
                     <input id="settings-image-input" class="d-none" type="file" accept=".jpg, .jpeg, .png"/>
                     <div id="settings-image-spinner" class="d-none spinner-border"> </div>
                 </div>

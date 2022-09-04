@@ -2,9 +2,7 @@ $(document).ready(() => {
     $("#delete-form").submit(event => {
         event.preventDefault()
 
-        showAlert("delete-ask", event => {
-            $("#delete-confirm").val("")
-        }, event => {
+        showAlert("delete-ask", null, event => {
             getToken(token => {
                 $.post("", {
                     "token" : token,
@@ -12,6 +10,8 @@ $(document).ready(() => {
                     "action" : "delete",
                     "confirm" : $("#delete-confirm").val(),
                 }).then(response => {
+                    $("#delete-confirm").val("")
+
                     if(response["status"] == "confirm") {
                         $("#delete-confirm").removeClass("is-valid").addClass("is-invalid")
 

@@ -21,4 +21,20 @@ $(document).ready(() => {
             })
         })
     })
+
+    $("#logIn-email").blur(event => {
+        event.preventDefault()
+
+        getToken(token => {
+            $.post("", {
+                "token" : token,
+                "request" : "users",
+                "action" : "isEmail",
+                "email" : $("#logIn-email").val(),
+            }).then(response => {
+                if(response["status"] == "used") $("#logIn-email").removeClass("is-invalid").addClass("is-valid")
+                else $("#logIn-email").removeClass("is-valid").addClass("is-invalid")
+            })
+        })
+    })
 })

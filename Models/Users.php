@@ -40,7 +40,7 @@
                 "user-password" => $password,
             ));
 
-            return $query->execute() && copy("Public/Images/Users/" . sha1(\Static\Kernel::getSalt() . "0") . ".jpeg", "Public/Images/Users/" . sha1(\Static\Kernel::getSalt() . parent::$pdo->lastInsertId()) . ".jpeg") && \Static\Emails::send($email, $title, $content) ? "success" : "error";
+            return $query->execute() && copy("Public/Images/Users/" . sha1("User-0" . \Static\Kernel::getSalt()) . ".jpeg", "Public/Images/Users/" . sha1("User-" . parent::$pdo->lastInsertId() . \Static\Kernel::getSalt()) . ".jpeg") && \Static\Emails::send($email, $title, $content) ? "success" : "error";
         }
 
         public static function logIn($email, $password) {
@@ -120,7 +120,7 @@
             $query->execute();
 
             if($user = $query->fetch()) {
-                $user["image"] = \Static\Kernel::getPath("/Public/Images/Users/" . sha1(\Static\Kernel::getSalt() . $user["id"]) . ".jpeg?" . time());
+                $user["image"] = \Static\Kernel::getPath("/Public/Images/Users/" . sha1("User-" . $user["id"] . \Static\Kernel::getSalt()) . ".jpeg?" . time());
 
                 return $user;
             } else return array();

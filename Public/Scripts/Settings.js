@@ -77,39 +77,11 @@ $(document).ready(() => {
         $("#settings-image-image").addClass("d-none")
         $("#settings-image-spinner").removeClass("d-none")
 
-        getToken(token => {
-            const formData = new FormData()
-            formData.append("token", token)
-            formData.append("request", "images")
-            formData.append("action", "upload")
-            formData.append("image", $("#settings-image-input")[0].files[0])
-
-            $.ajax({
-                type : "POST",
-                url : "",
-                data : formData,
-                processData : false,
-                contentType : false,
-            }).done(response => {
-                if(response["status"] == "userID") showAlert("settings-image-userID")
-                else if(response["status"] == "extension") showAlert("settings-image-extension")
-                else if(response["status"] == "type") showAlert("settings-image-type")
-                else if(response["status"] == "size") showAlert("settings-image-size")
-                else if(response["status"] == "image") showAlert("settings-image-image")
-                else if(response["status"] == "success") {
-                    showAlert("settings-image-success", event => {
-                        location.reload()
-                    })
-                } else showAlert("settings-image-error")
-
-                $("#settings-image-spinner").addClass("d-none")
-                $("#settings-image-image").removeClass("d-none")
-            }).fail(() => {
-                showAlert("settings-image-error")
-
-                $("#settings-image-spinner").addClass("d-none")
-                $("#settings-image-image").removeClass("d-none")
-            })
+        uploadImage("users", "#settings-image-input", response => {
+            $("#settings-image-image").attr("src", response["path"])
+        }, () => {
+            $("#settings-image-spinner").addClass("d-none")
+            $("#settings-image-image").removeClass("d-none")
         })
     })
 

@@ -34,6 +34,9 @@
                             <a class="nav-link<?= !in_array(\Static\Kernel::getRoute(), array("News", "Article")) ? null : " active"; ?>" href="<?= $getPath("/news"); ?>"> <?= $getText("title-news"); ?> </a>
                         </li>
                         <li class="w-100 nav-item">
+                            <a class="nav-link<?= !in_array(\Static\Kernel::getRoute(), array("Forums", "Thread")) ? null : " active"; ?>" href="<?= $getPath("/forums"); ?>"> <?= $getText("title-forums"); ?> </a>
+                        </li>
+                        <li class="w-100 nav-item">
                             <a class="nav-link<?= \Static\Kernel::getRoute() != "Contact" ? null : " active"; ?>" href="<?= $getPath("/contact"); ?>"> <?= $getText("title-contact"); ?> </a>
                         </li>
                         <?php if($userID < 1) { ?>
