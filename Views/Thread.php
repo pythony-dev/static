@@ -22,7 +22,7 @@
             </div>
             <div class="row mx-0<?= $id != count($parameters["posts"]) - 1 ? " pb-5" : null; ?>">
                 <div class="col-12<?= !$post["image"] ? null : " col-md-8 pe-md-4"; ?> px-0 my-auto">
-                    <p class="mb-0 text-justify"> <?= nl2br($post["message"]); ?> </p>
+                    <p class="overflow-hidden mb-0 text-justify"> <?= nl2br($post["message"]); ?> </p>
                 </div>
                 <?php if($post["image"]) { ?>
                     <div class="col-12 col-md-4 px-0 pt-5 pt-md-0 ps-md-4 my-auto">

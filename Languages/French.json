@@ -31,11 +31,9 @@
     "index-alert-logOut" : "Impossible de se Déconnecter Actuellement !",
     "index-alert-token" : "Impossible d'Authentifier la Requête Actuellement !",
 
-    "upload-alert-userID" : "Vous n'êtes pas Connecté !",
     "upload-alert-extension" : "Veuillez utiliser une Image avec l'Extension .jpg, .jpeg ou .png !",
     "upload-alert-type" : "Veuillez utiliser une Image de Type JPG, JPEG ou PNG !",
     "upload-alert-size" : "Veuillez utiliser une Image de Moins de 1 MB !",
-    "upload-alert-image" : "Cette Image est Vide !",
     "upload-alert-success" : "Votre Image a bien été Mise à Jour",
     "upload-alert-error" : "Impossible de Mettre à Jour votre Image Actuellement !",
 

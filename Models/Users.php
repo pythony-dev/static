@@ -30,7 +30,7 @@
             $query->bindValue(":notifications", htmlspecialchars(json_encode([
                 "published" => "true",
             ])), PDO::PARAM_STR);
-            $query->bindValue(":password", sha1($password . \Static\Kernel::getSalt()), PDO::PARAM_STR);
+            $query->bindValue(":password", \Static\Kernel::getHash("Password", $password), PDO::PARAM_STR);
 
             $title = \Static\Languages\Translate::getText("emails-signUp-title");
             $content = \Static\Languages\Translate::getText("emails-signUp-content", true, array(
@@ -40,12 +40,12 @@
                 "user-password" => $password,
             ));
 
-            return $query->execute() && copy("Public/Images/Users/" . sha1("User-0" . \Static\Kernel::getSalt()) . ".jpeg", "Public/Images/Users/" . sha1("User-" . parent::$pdo->lastInsertId() . \Static\Kernel::getSalt()) . ".jpeg") && \Static\Emails::send($email, $title, $content) ? "success" : "error";
+            return $query->execute() && copy("Public/Images/Users/" . \Static\Kernel::getHash("User", 0) . ".jpeg", "Public/Images/Users/" . \Static\Kernel::getHash("User", parent::$pdo->lastInsertId()) . ".jpeg") && \Static\Emails::send($email, $title, $content) ? "success" : "error";
         }
 
         public static function logIn($email, $password) {
             $email = htmlspecialchars($email);
-            $password = sha1(htmlspecialchars($password) . \Static\Kernel::getSalt());
+            $password = \Static\Kernel::getHash("Password", htmlspecialchars($password));
 
             $userID = (int)\Static\Kernel::getValue($_SESSION, "userID");
 
@@ -96,7 +96,7 @@
             $reset = self::createPassword();
 
             $query = parent::$pdo->prepare("UPDATE Users SET reset = :reset WHERE email = :email AND deleted IS NULL");
-            $query->bindValue(":reset", sha1($reset . \Static\Kernel::getSalt()), PDO::PARAM_STR);
+            $query->bindValue(":reset", \Static\Kernel::getHash("Password", $reset), PDO::PARAM_STR);
             $query->bindValue(":email", $email, PDO::PARAM_STR);
 
             $title = \Static\Languages\Translate::getText("emails-reset-title");
@@ -120,7 +120,7 @@
             $query->execute();
 
             if($user = $query->fetch()) {
-                $user["image"] = \Static\Kernel::getPath("/Public/Images/Users/" . sha1("User-" . $user["id"] . \Static\Kernel::getSalt()) . ".jpeg?" . time());
+                $user["image"] = \Static\Kernel::getPath("/Public/Images/Users/" . \Static\Kernel::getHash("User", $user["id"]) . ".jpeg?" . time());
 
                 return $user;
             } else return array();
@@ -130,7 +130,7 @@
             $email = htmlspecialchars($email);
             $username = htmlspecialchars($username);
             $language = htmlspecialchars($language);
-            $confirm = sha1(htmlspecialchars($confirm) . \Static\Kernel::getSalt());
+            $confirm = \Static\Kernel::getHash("Password", htmlspecialchars($confirm));
 
             $userID = (int)\Static\Kernel::getValue($_SESSION, "userID");
 
@@ -159,7 +159,7 @@
 
         public static function notify($notifications, $confirm) {
             $notifications = htmlspecialchars($notifications);
-            $confirm = sha1(htmlspecialchars($confirm) . \Static\Kernel::getSalt());
+            $confirm = \Static\Kernel::getHash("Password", htmlspecialchars($confirm));
 
             $userID = (int)\Static\Kernel::getValue($_SESSION, "userID");
 
@@ -186,8 +186,8 @@
             if($userID < 1) return "confirm";
             else if(self::isPassword($password) != "success") return "password";
 
-            $password = sha1(htmlspecialchars($password) . \Static\Kernel::getSalt());
-            $confirm = sha1(htmlspecialchars($confirm) . \Static\Kernel::getSalt());
+            $password = \Static\Kernel::getHash("Password", htmlspecialchars($password));
+            $confirm = \Static\Kernel::getHash("Password", htmlspecialchars($confirm));
 
             $query = parent::$pdo->prepare("SELECT password FROM Users WHERE id = :userID AND password = :confirm AND deleted IS NULL");
             $query->bindValue(":userID", $userID, PDO::PARAM_INT);
@@ -208,7 +208,7 @@
 
             if($userID < 1) return "confirm";
 
-            $confirm = sha1(htmlspecialchars($confirm) . \Static\Kernel::getSalt());
+            $confirm = \Static\Kernel::getHash("Password", htmlspecialchars($confirm));
 
             $query = parent::$pdo->prepare("SELECT id FROM Users WHERE id = :userID AND password = :confirm AND deleted IS NULL");
             $query->bindValue(":userID", $userID, PDO::PARAM_INT);

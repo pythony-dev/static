@@ -4,7 +4,7 @@
 
     final class Kernel {
 
-        private static $version = "1.5.1";
+        private static $version = "1.5.2";
         private static $settings = array();
 
         private static $styles = array();
@@ -54,7 +54,8 @@
         }
 
         public static function getValue($array, $keys) {
-            if(!is_array($keys) && array_key_exists($keys, $array)) return htmlspecialchars($array[$keys]);
+            if(!is_array($array)) return null;
+            else if(!is_array($keys) && array_key_exists($keys, $array)) return htmlspecialchars($array[$keys]);
             else if(is_array($keys) && count($keys) == 1 && array_key_exists($keys[0], $array)) return htmlspecialchars($array[$keys[0]]);
             else if(is_array($keys) && count($keys) > 1) {
                 $key = array_shift($keys);
@@ -69,6 +70,10 @@
 
             if(empty($path) || (strlen($path) > 0 && $path[0] == "/")) return self::getSettings("settings-link") . $path;
             else return $path;
+        }
+
+        public static function getHash($folder, $id) {
+            return sha1(htmlspecialchars($folder) . "-" . (int)$id . "?" . self::$salt);
         }
 
         public static function getID($id) {

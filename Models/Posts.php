@@ -39,14 +39,14 @@
 
             while($post = $query->fetch()) {
                 array_push($results, array(
-                    "user" => \Static\Kernel::getPath("/Public/Images/Users/" . sha1("User-" . \Static\Kernel::getValue($post, "userID") . \Static\Kernel::getSalt()) . ".jpeg?" . time()),
+                    "user" => \Static\Kernel::getPath("/Public/Images/Users/" . \Static\Kernel::getHash("User", \Static\Kernel::getValue($post, "userID")) . ".jpeg?" . time()),
                     "username" => \Static\Kernel::getValue($post, "username"),
                     "date" => date_format(date_create(\Static\Kernel::getValue($post, "created")), substr(\Static\Kernel::getDateFormat(), 0, 5)),
                     "time" => date_format(date_create(\Static\Kernel::getValue($post, "created")), substr(\Static\Kernel::getDateFormat(), 5)),
                     "userID" => \Static\Kernel::getValue($post, "userID"),
                     "hash" => \Static\Kernel::getValue($post, "hash"),
                     "message" => \Static\Kernel::getValue($post, "message"),
-                    "image" => !\Static\Kernel::getValue($post, "image") ? null : \Static\Kernel::getPath("/Public/Images/Threads/" . \Static\Kernel::getValue($post, "image") . ".jpeg?" . time()),
+                    "image" => !\Static\Kernel::getValue($post, "image") ? null : \Static\Kernel::getPath("/Public/Images/Posts/" . \Static\Kernel::getValue($post, "image") . ".jpeg?" . time()),
                 ));
             }
 
@@ -96,15 +96,18 @@
             $query->bindValue(":message", $message, PDO::PARAM_STR);
             $query->bindValue(":image", empty($image) ? NULL : $image, PDO::PARAM_STR);
 
-            if($query->execute()) {
-                $postID = parent::$pdo->lastInsertId();
+            if(!$query->execute()) return "error";
 
-                $query = parent::$pdo->prepare("UPDATE Posts SET hash = :hash, deleted = NULL WHERE id = :postID AND hash IS NULL AND deleted IS NOT NULL");
-                $query->bindValue(":hash", sha1("Post-" . $postID . \Static\Kernel::getSalt()), PDO::PARAM_STR);
-                $query->bindValue(":postID", $postID, PDO::PARAM_INT);
+            $postID = parent::$pdo->lastInsertId();
 
-                return $query->execute() ? "success" : "error";
-            } else return "error";
+            $query = parent::$pdo->prepare("UPDATE Posts SET hash = :hash, deleted = NULL WHERE id = :postID AND hash IS NULL AND deleted IS NOT NULL");
+            $query->bindValue(":hash", \Static\Kernel::getHash("Post", $postID), PDO::PARAM_STR);
+            $query->bindValue(":postID", $postID, PDO::PARAM_INT);
+
+            return $query->execute() ? array(
+                "status" => "success",
+                "link" => \Static\Kernel::getPath("/thread/" . $link . "/" . ceil(\Static\Models\Posts::count($link) / 10)),
+            ) : "error";
         }
 
         public static function delete($link) {

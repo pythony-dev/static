@@ -194,6 +194,57 @@ INSERT INTO `Logs` (`id`, `created`, `sessionID`, `userID`, `status`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `Posts`
+--
+
+CREATE TABLE `Posts` (
+  `id` int(11) NOT NULL,
+  `hash` varchar(255) DEFAULT NULL,
+  `created` datetime NOT NULL,
+  `deleted` datetime DEFAULT NULL,
+  `sessionID` int(11) NOT NULL,
+  `userID` int(11) NOT NULL,
+  `threadID` int(11) NOT NULL,
+  `message` varchar(4095) NOT NULL,
+  `image` varchar(255) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `Posts`
+--
+
+INSERT INTO `Posts` (`id`, `hash`, `created`, `deleted`, `sessionID`, `userID`, `threadID`, `message`, `image`) VALUES
+(1, 'ee0f3838b49255130935e4f405d3f1864031de27', '2022-04-10 12:00:00', NULL, 1, 1, 1, 'Welcome !', 'ee0f3838b49255130935e4f405d3f1864031de27'),
+(2, 'da3653c8bfdb3d51977d8e5d75a53e7bda3f0de0', '2022-04-10 12:00:00', NULL, 1, 1, 2, 'Bienvenue !', 'da3653c8bfdb3d51977d8e5d75a53e7bda3f0de0');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `Reports`
+--
+
+CREATE TABLE `Reports` (
+  `id` int(11) NOT NULL,
+  `created` datetime NOT NULL,
+  `sessionID` int(11) NOT NULL,
+  `userID` int(11) NOT NULL,
+  `setting` varchar(255) NOT NULL,
+  `value` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `Reports`
+--
+
+INSERT INTO `Reports` (`id`, `created`, `sessionID`, `userID`, `setting`, `value`) VALUES
+(1, '2022-04-10 12:00:00', 1, 1, 'thread', 1),
+(2, '2022-04-10 12:00:00', 1, 1, 'thread', 2),
+(3, '2022-04-10 12:00:00', 1, 1, 'post', 1),
+(4, '2022-04-10 12:00:00', 1, 1, 'post', 2);
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `Requests`
 --
 
@@ -237,6 +288,29 @@ INSERT INTO `Sessions` (`id`, `created`, `ipAddress`, `userAgent`, `parameters`)
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `Threads`
+--
+
+CREATE TABLE `Threads` (
+  `id` int(11) NOT NULL,
+  `hash` varchar(255) DEFAULT NULL,
+  `created` datetime NOT NULL,
+  `deleted` datetime DEFAULT NULL,
+  `title` varchar(255) NOT NULL,
+  `language` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `Threads`
+--
+
+INSERT INTO `Threads` (`id`, `hash`, `created`, `deleted`, `title`, `language`) VALUES
+(1, '785066c6647df888c2ca1b0a789970f0affbefd3', '2022-04-10 12:00:00', NULL, 'Hello World from Static !', 'english'),
+(2, '90bda73b01fcf03a3690600be9cb3cf4025d0c87', '2022-04-10 12:00:00', NULL, 'Hello World de Static !', 'french');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `Tokens`
 --
 
@@ -254,7 +328,7 @@ CREATE TABLE `Tokens` (
 --
 
 INSERT INTO `Tokens` (`id`, `created`, `deleted`, `sessionID`, `userID`, `value`) VALUES
-(1, '2022-04-10 12:00:00', NULL, 1, 0, '4d857d2408b00c3dd17f0c4ffcf15b97f1049867');
+(1, '2022-04-10 12:00:00', NULL, 1, 0, 'a885ab870f0c919fa2452e7cfaaf7036f2121c92');
 
 -- --------------------------------------------------------
 
@@ -305,7 +379,7 @@ CREATE TABLE `Users` (
 --
 
 INSERT INTO `Users` (`id`, `created`, `deleted`, `sessionID`, `email`, `username`, `language`, `notifications`, `password`, `reset`) VALUES
-(1, '2022-04-10 12:00:00', NULL, 1, 'hello@pythony.dev', 'Pythony', 'english', '{"published":"true"}', 'd7c35a4da36a8fe3d0ebec8e5cc91b0816a18516', NULL);
+(1, '2022-04-10 12:00:00', NULL, 1, 'hello@pythony.dev', 'Pythony', 'english', '{"published":"true"}', '65e2ea4f025f942a7923c60f90ac16919c6eb3e1', NULL);
 
 --
 -- Indexes for dumped tables
@@ -342,6 +416,18 @@ ALTER TABLE `Logs`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `Posts`
+--
+ALTER TABLE `Posts`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `Reports`
+--
+ALTER TABLE `Reports`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `Requests`
 --
 ALTER TABLE `Requests`
@@ -351,6 +437,12 @@ ALTER TABLE `Requests`
 -- Indexes for table `Sessions`
 --
 ALTER TABLE `Sessions`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `Threads`
+--
+ALTER TABLE `Threads`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -406,6 +498,18 @@ ALTER TABLE `Logs`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
+-- AUTO_INCREMENT for table `Posts`
+--
+ALTER TABLE `Posts`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT for table `Reports`
+--
+ALTER TABLE `Reports`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
 -- AUTO_INCREMENT for table `Requests`
 --
 ALTER TABLE `Requests`
@@ -416,6 +520,12 @@ ALTER TABLE `Requests`
 --
 ALTER TABLE `Sessions`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `Threads`
+--
+ALTER TABLE `Threads`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `Tokens`

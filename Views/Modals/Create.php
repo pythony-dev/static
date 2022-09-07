@@ -1,8 +1,8 @@
 <div id="create-modal" class="modal fade p-5">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content px-4 py-5">
-            <h3 class="p-4"> <?= $parameters["getText"]("create-title-thread"); ?> </h3>
-            <p class="p-4 text-justify"> <?= $parameters["getText"]("create-content-thread"); ?> </p>
+            <h3 class="p-4"> <?= $parameters["getText"]("create-title-" . (!array_key_exists("link", $parameters) ? "thread" : "post")); ?> </h3>
+            <p class="p-4 text-justify"> <?= $parameters["getText"]("create-content-" . (!array_key_exists("link", $parameters) ? "thread" : "post")); ?> </p>
             <form id="create-form" class="p-4">
                 <input id="create-type" class="d-none" value="<?= !array_key_exists("link", $parameters) ? "threads" : "posts"; ?>"/>
                 <?php if(!array_key_exists("link", $parameters)) { ?>

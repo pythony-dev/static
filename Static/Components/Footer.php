@@ -15,7 +15,7 @@
             <footer class="bg-dark shadow border border-dark rounded-bottom">
                 <article class="col-12 col-md-10 col-xl-8 offset-md-1 offset-xl-2">
                     <div class="row mx-0">
-                        <div class="col-8 col-md-4 offset-2 offset-md-0 my-auto p-5">
+                        <div class="col-6 col-md-4 offset-3 offset-md-0 my-auto p-5">
                             <div class="bg-light shadow border rounded-circle">
                                 <a href="<?= $getPath("/"); ?>">
                                     <img class="p-4 img-fluid" src="<?= $getPath("/Public/Images/Index/Icon.png"); ?>" alt="<?= $getSettings("project-name"); ?>"/>

@@ -14,9 +14,9 @@ $(document).ready(() => {
             }).then(response => {
                 if(response["status"] == "title") showAlert("create-title")
                 else if(response["status"] == "message") showAlert("create-message")
-                else if(response["status"] == "success") {
+                else if(response["status"] == "success" && "link" in response) {
                     showAlert("create-success-" + ($("#create-type").val() != "posts" ? "thread" : "post"), event => {
-                        location.reload()
+                        location.assign(response["link"])
                     })
                 } else showAlert("create-error-" + ($("#create-type").val() != "posts" ? "thread" : "post"))
             }).fail(() => {
@@ -33,13 +33,15 @@ $(document).ready(() => {
         $("#create-add, #create-image").addClass("d-none")
         $("#create-spinner").removeClass("d-none")
 
-        uploadImage("threads", "#create-input", response => {
+        uploadImage("posts", "#create-input", response => {
             $("#create-add").addClass("d-none")
             $("#create-image").attr("src", response["path"]).removeClass("d-none")
             $("#create-value").val(response["hash"])
         }, () => {
             $("#create-spinner").addClass("d-none")
-            $("#create-add").removeClass("d-none")
+
+            if($("#create-value").val()) $("#create-image").removeClass("d-none")
+            else $("#create-add").removeClass("d-none")
         })
     })
 })

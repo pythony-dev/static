@@ -11,7 +11,7 @@
                     <div class="row mx-0">
                         <div class="col-9 col-md-5 my-auto px-0 p<?= $id == 0 ? "b" : ($id == count($parameters["threads"]) - 1 ? "t" : "y"); ?>-5">
                             <div class="d-flex">
-                                <img class="my-auto me-4 shadow border rounded-circle image-64 ratio-1" src="<?= $parameters["getPath"]("/Public/Images/Users/" . sha1("User-" . $thread["userID"] . \Static\Kernel::getSalt()) . ".jpeg?" . time()); ?>" alt="<?= $thread["author"]; ?>"/>
+                                <img class="my-auto me-4 shadow border rounded-circle image-64 ratio-1" src="<?= $thread["image"]; ?>" alt="<?= $thread["author"]; ?>"/>
                                 <div class="my-auto ps-4 text-start">
                                     <p class="overflow-hidden mb-0"> <?= $parameters["getText"]("forums-by") . " " . $thread["author"]; ?> </p>
                                     <p class="mb-0"> <?= $parameters["getText"]("forums-on") . " " . $thread["updated"]; ?> </p>

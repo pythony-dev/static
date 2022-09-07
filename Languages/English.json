@@ -31,11 +31,9 @@
     "index-alert-logOut" : "Unable to Log Out for Now !",
     "index-alert-token" : "Unable to Authenticate the Request for Now !",
 
-    "upload-alert-userID" : "You are not Logged In !",
     "upload-alert-extension" : "Please use a Image with the Extension .jpg, .jpeg or .png !",
     "upload-alert-type" : "Please use a JPG, JPEG or PNG Image Type !",
     "upload-alert-size" : "Please use a Image Smaller than 1 MB !",
-    "upload-alert-image" : "This Image is Empty !",
     "upload-alert-success" : "Your Image has been Updated",
     "upload-alert-error" : "Unable to Update your Image for Now !",
 

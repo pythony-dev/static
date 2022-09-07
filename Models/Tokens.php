@@ -12,7 +12,7 @@
 
             if($sessionID <= 0 || $userID < 0) return 0;
 
-            $value = sha1(\Static\Models\Users::createPassword() . \Static\Kernel::getSalt());
+            $value = \Static\Kernel::getHash("Token", \Static\Models\Users::createPassword());
 
             $query = parent::$pdo->prepare("INSERT INTO Tokens (created, deleted, sessionID, userID, value) VALUES (NOW(), NULL, :sessionID, :userID, :value)");
             $query->bindValue(":sessionID", $sessionID, PDO::PARAM_INT);

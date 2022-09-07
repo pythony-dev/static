@@ -9,8 +9,10 @@
             $message = \Static\Kernel::getValue($_POST, "message");
             $image = \Static\Kernel::getValue($_POST, "image");
 
-            return array(
-                "status" => \Static\Models\Posts::create($link, $message, $image),
+            $response = \Static\Models\Posts::create($link, $message, $image);
+
+            return is_array($response) ? $response : array(
+                "status" => $response,
             );
         }
 

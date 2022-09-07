@@ -60,10 +60,11 @@
             while($thread = $query->fetch()) {
                 array_push($results, array(
                     "hash" => \Static\Kernel::getValue($thread, "hash"),
-                    "userID" => \Static\Kernel::getValue($thread, "userID"),
+                    "image" => \Static\Kernel::getPath("/Public/Images/Users/" . \Static\Kernel::getHash("User", \Static\Kernel::getValue($thread, "userID")) . ".jpeg?" . time()),
                     "author" => \Static\Kernel::getValue($thread, "author"),
                     "updated" => date_format(date_create($thread["updated"]), substr(\Static\Kernel::getDateFormat(), 0, 5)),
                     "count" => \Static\Kernel::getValue($thread, "count"),
+                    "userID" => \Static\Kernel::getValue($thread, "userID"),
                     "title" => \Static\Kernel::getValue($thread, "title"),
                 ));
             }
@@ -116,21 +117,27 @@
             $query->bindValue(":title", $title, PDO::PARAM_STR);
             $query->bindValue(":language", \Static\Languages\Translate::getLanguage(), PDO::PARAM_STR);
 
-            if($query->execute()) {
-                $threadID = parent::$pdo->lastInsertId();
-                $hash = sha1("Thread-" . $threadID . \Static\Kernel::getSalt());
+            if(!$query->execute()) return "error";
 
-                $query = parent::$pdo->prepare("UPDATE Threads SET hash = :hash, deleted = NULL WHERE id = :threadID AND hash IS NULL AND deleted IS NOT NULL");
-                $query->bindValue(":hash", $hash, PDO::PARAM_STR);
-                $query->bindValue(":threadID", $threadID, PDO::PARAM_INT);
+            $threadID = parent::$pdo->lastInsertId();
+            $hash = \Static\Kernel::getHash("Thread", $threadID);
 
-                if($query->execute()) return \Static\Models\Posts::create($hash, $message, $image);
-                else return "error";
-            } else return "error";
+            $query = parent::$pdo->prepare("UPDATE Threads SET hash = :hash, deleted = NULL WHERE id = :threadID AND hash IS NULL AND deleted IS NOT NULL");
+            $query->bindValue(":hash", $hash, PDO::PARAM_STR);
+            $query->bindValue(":threadID", $threadID, PDO::PARAM_INT);
+
+            if(!$query->execute()) return "error";
+
+            $response = \Static\Models\Posts::create($hash, $message, $image);
+
+            return \Static\Kernel::getValue($response, "status") == "success" ? array(
+                "status" => "success",
+                "link" => \Static\Kernel::getPath("/thread/" . $hash),
+            ) : $response;
         }
 
-        public static function delete($link) {
-            $threadID = self::getThreadID(htmlspecialchars($link));
+        public static function delete($hash) {
+            $threadID = self::getThreadID(htmlspecialchars($hash));
 
             if($threadID <= 0) return "threadID";
 
