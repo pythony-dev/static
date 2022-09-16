@@ -45,8 +45,9 @@
                     "time" => date_format(date_create(\Static\Kernel::getValue($post, "created")), substr(\Static\Kernel::getDateFormat(), 5)),
                     "userID" => \Static\Kernel::getValue($post, "userID"),
                     "hash" => \Static\Kernel::getValue($post, "hash"),
-                    "message" => \Static\Kernel::getValue($post, "message"),
+                    "chat" => \Static\Kernel::getPath("/chat/" . \Static\Kernel::getHash("User", \Static\Kernel::getValue($post, "userID"))),
                     "image" => !\Static\Kernel::getValue($post, "image") ? null : \Static\Kernel::getPath("/Public/Images/Posts/" . \Static\Kernel::getValue($post, "image") . ".jpeg?" . time()),
+                    "message" => \Static\Kernel::getValue($post, "message"),
                 ));
             }
 

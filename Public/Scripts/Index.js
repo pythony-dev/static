@@ -78,11 +78,9 @@ const uploadImage = (folder, file, success, done) => {
         }).done(response => {
             if(typeof(done) == "function") done()
 
-            if(response["status"] == "userID") showAlert("upload-userID")
-            else if(response["status"] == "extension") showAlert("upload-extension")
+            if(response["status"] == "extension") showAlert("upload-extension")
             else if(response["status"] == "type") showAlert("upload-type")
             else if(response["status"] == "size") showAlert("upload-size")
-            else if(response["status"] == "image") showAlert("upload-image")
             else if(response["status"] == "success") {
                 showAlert("upload-success", event => {
                     if(typeof(success) == "function") success(response)

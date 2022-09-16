@@ -5,7 +5,7 @@
     final class Settings extends Main {
 
         public static function start($parameters) {
-            if($parameters["userID"] < 1 || !($parameters["user"] = \Static\Models\Users::getUser())) {
+            if($parameters["userID"] < 1 || !($parameters["user"] = \Static\Models\Users::getUser($parameters["userID"]))) {
                 $_SESSION["userID"] = 0;
 
                 header("Location: " . \Static\Kernel::getPath("/log-in"));

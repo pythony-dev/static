@@ -57,25 +57,30 @@
                                 </div>
                             </li>
                         <?php } else { ?>
-                            <li class="w-100 my-auto pt-4 pt-md-0 dropdown">
-                                <button class="w-100 btn btn-outline-primary dropdown-toggle" data-bs-toggle="dropdown"> <?= $getText("title-settings"); ?> </button>
-                                <ul class="w-100 dropdown-menu text-center">
-                                    <li>
-                                        <a class="dropdown-item" href="<?= $getPath("/settings"); ?>"> <?= $getText("title-settings-account"); ?> </a>
-                                    </li>
-                                    <li>
-                                        <a class="dropdown-item" href="<?= $getPath("/settings?notifications"); ?>"> <?= $getText("title-settings-notifications"); ?> </a>
-                                    </li>
-                                    <li>
-                                        <a class="dropdown-item" href="<?= $getPath("/settings?others"); ?>"> <?= $getText("title-settings-others"); ?> </a>
-                                    </li>
-                                    <li>
-                                        <div class="dropdown-divider"> </div>
-                                    </li>
-                                    <li>
-                                        <button id="navbar-logOut" class="dropdown-item"> <?= $getText("title-settings-logOut"); ?> </button>
-                                    </li>
-                                </ul>
+                            <li class="w-200 my-auto pt-4 pt-md-0">
+                                <div class="flex-column flex-lg-row input-group">
+                                    <a class="w-50 btn btn-outline-primary" href="<?= $getPath("/messages"); ?>"> <?= $getText("title-messages"); ?> </a>
+                                    <div class="w-50">
+                                        <button class="w-100 btn btn-outline-primary dropdown-toggle border-left-0" data-bs-toggle="dropdown"> <?= $getText("title-settings"); ?> </button>
+                                        <ul class="w-100 dropdown-menu text-center">
+                                            <li>
+                                                <a class="dropdown-item" href="<?= $getPath("/settings"); ?>"> <?= $getText("title-settings-account"); ?> </a>
+                                            </li>
+                                            <li>
+                                                <a class="dropdown-item" href="<?= $getPath("/settings?notifications"); ?>"> <?= $getText("title-settings-notifications"); ?> </a>
+                                            </li>
+                                            <li>
+                                                <a class="dropdown-item" href="<?= $getPath("/settings?others"); ?>"> <?= $getText("title-settings-others"); ?> </a>
+                                            </li>
+                                            <li>
+                                                <div class="dropdown-divider"> </div>
+                                            </li>
+                                            <li>
+                                                <button id="navbar-logOut" class="dropdown-item"> <?= $getText("title-settings-logOut"); ?> </button>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
                             </li>
                         <?php } ?>
                     </ul>

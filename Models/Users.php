@@ -110,8 +110,8 @@
             return $query->execute() && \Static\Emails::send($email, $title, $content) ? "success" : "error";
         }
 
-        public static function getUser() {
-            $userID = (int)\Static\Kernel::getValue($_SESSION, "userID");
+        public static function getUser($userID) {
+            $userID = (int)$userID;
 
             if($userID < 1) return array();
 
@@ -225,6 +225,20 @@
 
                 return "success";
             } else return "error";
+        }
+
+        public static function getUserID($hash) {
+            $hash = htmlspecialchars($hash);
+
+            if(empty($hash)) return 0;
+
+            $query = parent::$pdo->query("SELECT id FROM Users WHERE deleted IS NULL ORDER BY ID DESC");
+
+            while($response = $query->fetch()) {
+                if(\Static\Kernel::getHash("User", $response["id"]) == $hash) return $response["id"];
+            }
+
+            return 0;
         }
 
         public static function isEmail($email) {

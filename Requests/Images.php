@@ -10,7 +10,9 @@
             $imageID = \Static\Kernel::getValue($_SESSION, "userID");
             $folder = ucfirst(\Static\Kernel::getValue($_POST, "folder"));
 
-            if($imageID >= 1 && in_array($folder, array("Posts", "Users")) && array_key_exists("image", $_FILES)) {
+            if($imageID >= 1 && in_array($folder, array("Threads", "Posts", "Messages", "Users")) && array_key_exists("image", $_FILES)) {
+                if($folder == "Threads") $folder = "Posts";
+
                 if($folder != "Users") $imageID = \Static\Models\Users::createPassword();
 
                 $path = "Public/Images/" . $folder . "/" . \Static\Kernel::getHash(substr($folder, 0, -1), $imageID) . ".jpeg";

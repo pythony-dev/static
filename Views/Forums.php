@@ -11,7 +11,7 @@
                     <div class="row mx-0">
                         <div class="col-9 col-md-5 my-auto px-0 p<?= $id == 0 ? "b" : ($id == count($parameters["threads"]) - 1 ? "t" : "y"); ?>-5">
                             <div class="d-flex">
-                                <img class="my-auto me-4 shadow border rounded-circle image-64 ratio-1" src="<?= $thread["image"]; ?>" alt="<?= $thread["author"]; ?>"/>
+                                <img class="my-auto shadow border rounded-circle image-64 ratio-1" src="<?= $thread["image"]; ?>" alt="<?= $thread["author"]; ?>"/>
                                 <div class="my-auto ps-4 text-start">
                                     <p class="overflow-hidden mb-0"> <?= $parameters["getText"]("forums-by") . " " . $thread["author"]; ?> </p>
                                     <p class="mb-0"> <?= $parameters["getText"]("forums-on") . " " . $thread["updated"]; ?> </p>
@@ -26,7 +26,7 @@
                                 <input class="my-auto btn btn-outline-danger rounded-circle image-48 ratio-1 thread-delete" type="image" src="<?= $parameters["getPath"]("/Public/Images/Icons/Delete.png"); ?>" alt="<?= $parameters["getText"]("forums-delete"); ?>" thread="<?= $thread["hash"]; ?>"/>
                             <?php } ?>
                         </div>
-                        <div class="col-12 col-md-5 my-auto px-0 <?= $id == 0 ? "pb-5" : ($id == count($parameters["threads"]) - 1 ? "pt-5" : "pb-5 pt-md-5"); ?>">
+                        <div class="col-12 col-md-5 my-auto px-0 p<?= $id == 0 ? "b" : ($id == count($parameters["threads"]) - 1 ? "t" : "b-5 pt-md"); ?>-5">
                             <p class="overflow-hidden mb-0 text-justify fw-bold"> <?= $thread["title"]; ?> </p>
                         </div>
                     </div>

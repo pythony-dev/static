@@ -15,12 +15,12 @@ $(document).ready(() => {
                 if(response["status"] == "title") showAlert("create-title")
                 else if(response["status"] == "message") showAlert("create-message")
                 else if(response["status"] == "success" && "link" in response) {
-                    showAlert("create-success-" + ($("#create-type").val() != "posts" ? "thread" : "post"), event => {
+                    showAlert("create-success-" + $("#create-type").val().slice(0, -1), event => {
                         location.assign(response["link"])
                     })
-                } else showAlert("create-error-" + ($("#create-type").val() != "posts" ? "thread" : "post"))
+                } else showAlert("create-error-" + $("#create-type").val().slice(0, -1))
             }).fail(() => {
-                showAlert("create-error-" + ($("#create-type").val() != "posts" ? "thread" : "post"))
+                showAlert("create-error-" + $("#create-type").val().slice(0, -1))
             })
         })
     })
@@ -33,7 +33,7 @@ $(document).ready(() => {
         $("#create-add, #create-image").addClass("d-none")
         $("#create-spinner").removeClass("d-none")
 
-        uploadImage("posts", "#create-input", response => {
+        uploadImage($("#create-type").val(), "#create-input", response => {
             $("#create-add").addClass("d-none")
             $("#create-image").attr("src", response["path"]).removeClass("d-none")
             $("#create-value").val(response["hash"])

@@ -1,5 +1,6 @@
 <article class="col-12 col-md-10 col-xl-8 offset-md-1 offset-xl-2 py-5">
     <h1 class="p-5 fw-bold"> <?= $parameters["title"]; ?> </h1>
+    <p class="p-5 text-justify"> <?= $parameters["getText"]("thread-content"); ?> </p>
     <div class="p-5">
         <?php foreach($parameters["posts"] as $id => $post) { ?>
             <?php if($id != 0) { ?>
@@ -8,17 +9,26 @@
             <div class="d-flex justify-content-between p<?= $id != 0 ? "y" : "b"; ?>-5">
                 <div class="d-flex">
                     <img class="my-auto shadow border rounded-circle image-64 ratio-1" src="<?= $post["user"]; ?>" alt="<?= $post["username"]; ?>"/>
-                    <div class="d-flex flex-column">
-                        <p class="px-4 mb-0 text-start"> <?= $parameters["getText"]("thread-by") . " " . $post["username"]; ?> </p>
-                        <p class="px-4 mb-0 text-start"> <?= $parameters["getText"]("thread-on") . " " . $post["date"]; ?> </p>
-                        <p class="px-4 mb-0 text-start"> <?= $parameters["getText"]("thread-at") . " " . $post["time"]; ?> </p>
+                    <div class="my-auto ps-4 text-start">
+                        <p class="mb-0"> <?= $parameters["getText"]("thread-by") . " " . $post["username"]; ?> </p>
+                        <p class="mb-0"> <?= $parameters["getText"]("thread-on") . " " . $post["date"]; ?> </p>
+                        <p class="mb-0"> <?= $parameters["getText"]("thread-at") . " " . $post["time"]; ?> </p>
                     </div>
                 </div>
-                <?php if($parameters["userID"] != $post["userID"]) { ?>
-                    <input class="my-auto btn btn-outline-warning rounded-circle image-48 ratio-1 post-report" type="image" src="<?= $parameters["getPath"]("/Public/Images/Icons/Report.png"); ?>" alt="<?= $parameters["getText"]("thread-report"); ?>" post="<?= $post["hash"]; ?>"/>
-                <?php } else if($id != 0) { ?>
-                    <input class="my-auto btn btn-outline-danger rounded-circle image-48 ratio-1 post-delete" type="image" src="<?= $parameters["getPath"]("/Public/Images/Icons/Delete.png"); ?>" alt="<?= $parameters["getText"]("thread-delete"); ?>" post="<?= $post["hash"]; ?>"/>
-                <?php } ?>
+                <div class="d-flex flex-column flex-md-row-reverse">
+                    <?php if($parameters["userID"] != $post["userID"]) { ?>
+                        <div class="my-auto">
+                            <input class="btn btn-outline-warning rounded-circle image-48 ratio-1 post-report" type="image" src="<?= $parameters["getPath"]("/Public/Images/Icons/Report.png"); ?>" alt="<?= $parameters["getText"]("thread-report"); ?>" post="<?= $post["hash"]; ?>"/>
+                        </div>
+                        <a class="my-auto me-md-4 mt-4 mt-md-auto" href="<?= $post["chat"]; ?>">
+                            <input class="btn btn-outline-success rounded-circle image-48 ratio-1" type="image" src="<?= $parameters["getPath"]("/Public/Images/Icons/Chat.png"); ?>" alt="<?= $parameters["getText"]("thread-chat"); ?>"/>
+                        </a>
+                    <?php } else if($id != 0) { ?>
+                        <div class="my-auto">
+                            <input class="btn btn-outline-danger rounded-circle image-48 ratio-1 post-delete" type="image" src="<?= $parameters["getPath"]("/Public/Images/Icons/Delete.png"); ?>" alt="<?= $parameters["getText"]("thread-delete"); ?>" post="<?= $post["hash"]; ?>"/>
+                        </div>
+                    <?php } ?>
+                </div>
             </div>
             <div class="row mx-0<?= $id != count($parameters["posts"]) - 1 ? " pb-5" : null; ?>">
                 <div class="col-12<?= !$post["image"] ? null : " col-md-8 pe-md-4"; ?> px-0 my-auto">

@@ -10,6 +10,8 @@
     require_once("Controllers/Contact.php");
     require_once("Controllers/SignUp.php");
     require_once("Controllers/LogIn.php");
+    require_once("Controllers/Messages.php");
+    require_once("Controllers/Chat.php");
     require_once("Controllers/Settings.php");
     require_once("Controllers/Terms.php");
     require_once("Controllers/Privacy.php");

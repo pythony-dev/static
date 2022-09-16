@@ -1,11 +1,12 @@
 <div id="create-modal" class="modal fade p-5">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content px-4 py-5">
-            <h3 class="p-4"> <?= $parameters["getText"]("create-title-" . (!array_key_exists("link", $parameters) ? "thread" : "post")); ?> </h3>
-            <p class="p-4 text-justify"> <?= $parameters["getText"]("create-content-" . (!array_key_exists("link", $parameters) ? "thread" : "post")); ?> </p>
+            <?php $type = \Static\Kernel::getRoute() == "Forums" ? "thread" : (\Static\Kernel::getRoute() == "Thread" ? "post" : "message"); ?>
+            <h3 class="p-4"> <?= $parameters["getText"]("create-title-" . $type); ?> </h3>
+            <p class="p-4 text-justify"> <?= $parameters["getText"]("create-content-" . $type); ?> </p>
             <form id="create-form" class="p-4">
-                <input id="create-type" class="d-none" value="<?= !array_key_exists("link", $parameters) ? "threads" : "posts"; ?>"/>
-                <?php if(!array_key_exists("link", $parameters)) { ?>
+                <input id="create-type" class="d-none" value="<?= $type; ?>s"/>
+                <?php if(\Static\Kernel::getRoute() == "Forums") { ?>
                     <input id="create-title" class="mb-4 form-control text-center" placeholder="<?= $parameters["getText"]("create-title"); ?>" required/>
                 <?php } else { ?>
                     <input id="create-link" class="d-none" value="<?= $parameters["link"]; ?>"/>

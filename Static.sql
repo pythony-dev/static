@@ -194,6 +194,30 @@ INSERT INTO `Logs` (`id`, `created`, `sessionID`, `userID`, `status`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `Messages`
+--
+
+CREATE TABLE `Messages` (
+  `id` int(11) NOT NULL,
+  `created` datetime NOT NULL,
+  `deleted` datetime DEFAULT NULL,
+  `sessionID` int(11) NOT NULL,
+  `senderID` int(11) NOT NULL,
+  `receiverID` int(11) NOT NULL,
+  `message` varchar(4095) NOT NULL,
+  `image` varchar(255) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `Messages`
+--
+
+INSERT INTO `Messages` (`id`, `created`, `deleted`, `sessionID`, `senderID`, `receiverID`, `message`, `image`) VALUES
+(1, '2022-04-10 12:00:00', NULL, 1, 1, 2, 'Hi Tim, it\'s Anthony !', 'd8397777745ff12ce87a4c8e0a136f1ec4f0e737');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `Posts`
 --
 
@@ -416,6 +440,12 @@ ALTER TABLE `Logs`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `Messages`
+--
+ALTER TABLE `Messages`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `Posts`
 --
 ALTER TABLE `Posts`
@@ -496,6 +526,12 @@ ALTER TABLE `Features`
 --
 ALTER TABLE `Logs`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT for table `Messages`
+--
+ALTER TABLE `Messages`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `Posts`

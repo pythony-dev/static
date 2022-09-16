@@ -4,6 +4,9 @@
     height : 6.25vh;
 } .w-200 {
     width : 200%;
+} .border-left-0 {
+    border-top-left-radius : 0px;
+    border-bottom-left-radius : 0px;
 } .section {
     margin-top : 12.5vh;
 } .networks {
