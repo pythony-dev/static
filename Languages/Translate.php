@@ -18,6 +18,12 @@
             self::$translations = (array)json_decode(file_get_contents(file_exists($file) ? $file : "Languages/English.json"));
         }
 
+        public static function getUserLanguage() {
+            $user = \Static\Models\Users::getUser((int)\Static\Kernel::getValue($_SESSION, "userID"));
+
+            return $user ? \Static\Kernel::getValue(json_decode(htmlspecialchars_decode($user["others"]), true), "languages") : self::getLanguage();
+        }
+
         public static function getLanguage() {
             return htmlspecialchars(self::$language);
         }

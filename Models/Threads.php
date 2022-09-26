@@ -34,7 +34,7 @@
                 WHERE
                     deleted IS NULL
                     AND
-                    language = :language
+                    LOCATE (language, :languages)
                     AND
                     (
                         SELECT COUNT(Posts.id)
@@ -51,7 +51,7 @@
                 ORDER BY updated DESC
                 LIMIT :page, 10
             ");
-            $query->bindValue(":language", \Static\Languages\Translate::getLanguage(), PDO::PARAM_STR);
+            $query->bindValue(":languages", \Static\Languages\Translate::getUserLanguage(), PDO::PARAM_STR);
             $query->bindValue(":page", $page * 10 - 10, PDO::PARAM_INT);
             $query->execute();
 
@@ -79,7 +79,7 @@
                 WHERE
                     deleted IS NULL
                     AND
-                    language = :language
+                    LOCATE (language, :languages)
                     AND
                     (
                         SELECT COUNT(Posts.id)
@@ -94,7 +94,7 @@
                             Users.deleted IS NULL
                     ) >= 1
             ");
-            $query->bindValue(":language", \Static\Languages\Translate::getLanguage(), PDO::PARAM_STR);
+            $query->bindValue(":languages", \Static\Languages\Translate::getUserLanguage(), PDO::PARAM_STR);
             $query->execute();
 
             return $query->fetch()["count"] ?? 0;

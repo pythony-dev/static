@@ -42,14 +42,27 @@
             );
         }
 
-        public static function notify() {
+        public static function notifications() {
             $notifications = json_encode([
+                "message" => \Static\Kernel::getValue($_POST, "message"),
                 "published" => \Static\Kernel::getValue($_POST, "published"),
             ]);
             $confirm = \Static\Kernel::getValue($_POST, "confirm");
 
             return array(
-                "status" => \Static\Models\Users::notify($notifications, $confirm),
+                "status" => \Static\Models\Users::notifications($notifications, $confirm),
+            );
+        }
+
+        public static function others() {
+            $others = json_encode([
+                "languages" => \Static\Kernel::getValue($_POST, "languages"),
+                "contact" => \Static\Kernel::getValue($_POST, "contact"),
+            ]);
+            $confirm = \Static\Kernel::getValue($_POST, "confirm");
+
+            return array(
+                "status" => \Static\Models\Users::others($others, $confirm),
             );
         }
 

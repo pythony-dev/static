@@ -45,7 +45,7 @@
                     "time" => date_format(date_create(\Static\Kernel::getValue($post, "created")), substr(\Static\Kernel::getDateFormat(), 5)),
                     "userID" => \Static\Kernel::getValue($post, "userID"),
                     "hash" => \Static\Kernel::getValue($post, "hash"),
-                    "chat" => \Static\Kernel::getPath("/chat/" . \Static\Kernel::getHash("User", \Static\Kernel::getValue($post, "userID"))),
+                    "chat" => \Static\Models\Messages::isContact(\Static\Kernel::getValue($post, "userID")) == "success" ? \Static\Kernel::getPath("/chat/" . \Static\Kernel::getHash("User", \Static\Kernel::getValue($post, "userID"))) : null,
                     "image" => !\Static\Kernel::getValue($post, "image") ? null : \Static\Kernel::getPath("/Public/Images/Posts/" . \Static\Kernel::getValue($post, "image") . ".jpeg?" . time()),
                     "message" => \Static\Kernel::getValue($post, "message"),
                 ));

@@ -25,6 +25,7 @@
     Static\Kernel::addRequest("contact");
     Static\Kernel::addRequest("users");
     Static\Kernel::addRequest("messages");
+    Static\Kernel::addRequest("blocks");
     Static\Kernel::addRequest("images");
 
     Static\Kernel::start();

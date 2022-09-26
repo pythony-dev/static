@@ -29,6 +29,8 @@ $(document).ready(() => {
             })
         })
     })
+
+    $(".open").modal("show").addClass("fade")
 })
 
 const getToken = callback => {

@@ -17,7 +17,7 @@
     </ul>
     <div class="p-5 tab-content">
         <form id="settings-account-form" class="tab-pane fade<?= $parameters["tabs"]["account"] ? " show active" : null; ?>">
-            <div class="row mx-0">
+            <div class="row mx-0 pb-5">
                 <div class="col-12 col-md-6 my-auto px-0 pb-5 pb-md-0 pe-md-5">
                     <img id="settings-image-image" class="img-fluid shadow border rounded-circle ratio-1 pointer" src="<?= $parameters["user"]["image"]; ?>" alt="<?= $parameters["getText"]("settings-account-user"); ?>"/>
                     <input id="settings-image-input" class="d-none" type="file" accept=".jpg, .jpeg, .png"/>
@@ -36,20 +36,46 @@
                     <input class="w-100 btn btn-primary" type="submit" value="<?= $parameters["getText"]("settings-account-submit"); ?>"/>
                 </div>
             </div>
+            <button class="w-100 mt-5 btn btn-outline-secondary" type="button" data-bs-toggle="modal" data-bs-target="#blocks-modal"> <?= $parameters["getText"]("settings-account-blocks"); ?> </button>
+            <button class="w-100 mt-5 btn btn-outline-primary" type="button" data-bs-toggle="modal" data-bs-target="#change-modal"> <?= $parameters["getText"]("settings-account-change"); ?> </button>
+            <button class="w-100 mt-5 btn btn-outline-danger" type="button" data-bs-toggle="modal" data-bs-target="#delete-modal"> <?= $parameters["getText"]("settings-account-delete"); ?> </button>
         </form>
         <form id="settings-notifications-form" class="tab-pane fade<?= $parameters["tabs"]["notifications"] ? " show active" : null; ?>">
-            <div class="d-flex justify-content-center align-items-center">
-                <div class="pe-4">
-                    <input id="settings-notifications-published" class="form-check-input" type="checkbox"<?= $parameters["notifications"]["published"] == "true" ? " checked" : null; ?>/>
+            <?php foreach($parameters["notifications"] as $id => $notification) { ?>
+                <div class="d-flex justify-content-center align-items-center<?= $id != 0 ? " pt-5" : null; ?>">
+                    <div>
+                        <input id="settings-notifications-<?= $notification; ?>" class="form-check-input" type="checkbox"<?= \Static\Kernel::getValue($parameters, array("user", "notifications", $notification)) != "false" ? " checked" : null; ?>/>
+                    </div>
+                    <label class="ps-4 text-justify" for="settings-notifications-<?= $notification; ?>"> <?= $parameters["getText"]("settings-notifications-" . $notification); ?> </label>
                 </div>
-                <label class="ps-4 text-justify" for="settings-notifications-published"> <?= $parameters["getText"]("settings-notifications-published"); ?> </label>
-            </div>
+            <?php } ?>
             <input id="settings-notifications-confirm" class="my-5 form-control text-center" type="password" placeholder="<?= $parameters["getText"]("settings-notifications-confirm"); ?>" required/>
             <input class="w-100 btn btn-primary" type="submit" value="<?= $parameters["getText"]("settings-notifications-submit"); ?>"/>
         </form>
-        <div id="settings-others-form" class="tab-pane fade<?= $parameters["tabs"]["others"] ? " show active" : null; ?>">
-            <button class="w-100 mb-5 btn btn-outline-primary" type="button" data-bs-toggle="modal" data-bs-target="#change-modal"> <?= $parameters["getText"]("settings-others-change"); ?> </button>
-            <button class="w-100 btn btn-outline-danger" type="button" data-bs-toggle="modal" data-bs-target="#delete-modal"> <?= $parameters["getText"]("settings-others-delete"); ?> </button>
-        </div>
+        <form id="settings-others-form" class="tab-pane fade<?= $parameters["tabs"]["others"] ? " show active" : null; ?>">
+            <div class="d-flex">
+                <div class="w-50 my-auto pe-4">
+                    <p class="text-end mb-0"> <?= $parameters["getText"]("settings-others-languages"); ?> : </p>
+                </div>
+                <div class="w-50 my-auto ps-4">
+                    <?php foreach(\Static\Languages\Translate::getAllLanguages() as $language) { ?>
+                        <div class="d-flex justify-content-start align-items-center">
+                            <div>
+                                <input id="settings-others-languages-<?= $language; ?>" class="form-check-input settings-others-languages" type="checkbox"<?= str_contains(\Static\Kernel::getValue($parameters, array("user", "others", "languages")), $language) ? " checked" : null; ?>/>
+                            </div>
+                            <label class="ps-4 text-justify" for="settings-others-languages-<?= $language; ?>"> <?= ucfirst($language); ?> </label>
+                        </div>
+                    <?php } ?>
+                </div>
+            </div>
+            <div class="d-flex justify-content-center align-items-center pt-5">
+                <div>
+                    <input id="settings-others-contact" class="form-check-input" type="checkbox"<?= \Static\Kernel::getValue($parameters, array("user", "others", "contact")) != "false" ? " checked" : null; ?>/>
+                </div>
+                <label class="ps-4 text-justify" for="settings-others-contact"> <?= $parameters["getText"]("settings-others-contact"); ?> </label>
+            </div>
+            <input id="settings-others-confirm" class="my-5 form-control text-center" type="password" placeholder="<?= $parameters["getText"]("settings-others-confirm"); ?>" required/>
+            <input class="w-100 btn btn-primary" type="submit" value="<?= $parameters["getText"]("settings-others-submit"); ?>"/>
+        </form>
     </div>
 </article>

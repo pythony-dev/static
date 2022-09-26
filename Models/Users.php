@@ -22,14 +22,19 @@
 
             $password = self::createPassword();
 
-            $query = parent::$pdo->prepare("INSERT INTO Users (created, deleted, sessionID, email, username, language, notifications, password, reset) VALUES (NOW(), NULL, :sessionID, :email, :username, :language, :notifications, :password, NULL)");
+            $query = parent::$pdo->prepare("INSERT INTO Users (created, deleted, sessionID, email, username, language, notifications, others, password, reset) VALUES (NOW(), NULL, :sessionID, :email, :username, :language, :notifications, :others, :password, NULL)");
             $query->bindValue(":sessionID", $sessionID, PDO::PARAM_INT);
             $query->bindValue(":email", $email, PDO::PARAM_STR);
             $query->bindValue(":username", $username, PDO::PARAM_STR);
             $query->bindValue(":language", $language, PDO::PARAM_STR);
-            $query->bindValue(":notifications", htmlspecialchars(json_encode([
+            $query->bindValue(":notifications", htmlspecialchars(json_encode(array(
+                "message" => "true",
                 "published" => "true",
-            ])), PDO::PARAM_STR);
+            ))), PDO::PARAM_STR);
+            $query->bindValue(":others", htmlspecialchars(json_encode(array(
+                "languages" => implode(",", \Static\Languages\Translate::getAllLanguages()),
+                "contact" => "true",
+            ))), PDO::PARAM_STR);
             $query->bindValue(":password", \Static\Kernel::getHash("Password", $password), PDO::PARAM_STR);
 
             $title = \Static\Languages\Translate::getText("emails-signUp-title");
@@ -115,7 +120,7 @@
 
             if($userID < 1) return array();
 
-            $query = parent::$pdo->prepare("SELECT id, email, username, language, notifications FROM Users WHERE id = :userID AND deleted IS NULL");
+            $query = parent::$pdo->prepare("SELECT id, email, username, language, notifications, others FROM Users WHERE id = :userID AND deleted IS NULL");
             $query->bindValue(":userID", $userID, PDO::PARAM_INT);
             $query->execute();
 
@@ -157,14 +162,15 @@
             return \Static\Models\Updates::create("email", $results["email"]) && \Static\Models\Updates::create("username", $results["username"]) && $query->execute() ? "success" : "error";
         }
 
-        public static function notify($notifications, $confirm) {
+        public static function notifications($notifications, $confirm) {
             $notifications = htmlspecialchars($notifications);
             $confirm = \Static\Kernel::getHash("Password", htmlspecialchars($confirm));
+
+            if(empty($notifications)) return "error";
 
             $userID = (int)\Static\Kernel::getValue($_SESSION, "userID");
 
             if($userID < 1) return "confirm";
-            else if(empty($notifications)) return "error";
 
             $query = parent::$pdo->prepare("SELECT id FROM Users WHERE id = :userID AND password = :confirm AND deleted IS NULL");
             $query->bindValue(":userID", $userID, PDO::PARAM_INT);
@@ -175,6 +181,37 @@
 
             $query = parent::$pdo->prepare("UPDATE Users SET notifications = :notifications WHERE id = :userID");
             $query->bindValue(":notifications", $notifications, PDO::PARAM_STR);
+            $query->bindValue(":userID", $userID, PDO::PARAM_INT);
+
+            return $query->execute() ? "success" : "error";
+        }
+
+        public static function others($others, $confirm) {
+            $others = htmlspecialchars($others);
+            $confirm = \Static\Kernel::getHash("Password", htmlspecialchars($confirm));
+
+            $languages = \Static\Kernel::getValue(json_decode(htmlspecialchars_decode($others), true), "languages");
+            $found = false;
+
+            foreach(\Static\Languages\Translate::getAllLanguages() as $language) {
+                if(str_contains($languages, $language)) $found = true;
+            }
+
+            if(!$found) return "languages";
+
+            $userID = (int)\Static\Kernel::getValue($_SESSION, "userID");
+
+            if($userID < 1) return "confirm";
+
+            $query = parent::$pdo->prepare("SELECT id FROM Users WHERE id = :userID AND password = :confirm AND deleted IS NULL");
+            $query->bindValue(":userID", $userID, PDO::PARAM_INT);
+            $query->bindValue(":confirm", $confirm, PDO::PARAM_STR);
+            $query->execute();
+
+            if(!$query->fetch()) return "confirm";
+
+            $query = parent::$pdo->prepare("UPDATE Users SET others = :others WHERE id = :userID");
+            $query->bindValue(":others", $others, PDO::PARAM_STR);
             $query->bindValue(":userID", $userID, PDO::PARAM_INT);
 
             return $query->execute() ? "success" : "error";

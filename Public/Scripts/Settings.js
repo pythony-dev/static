@@ -92,7 +92,8 @@ $(document).ready(() => {
             $.post("", {
                 "token" : token,
                 "request" : "users",
-                "action" : "notify",
+                "action" : "notifications",
+                "message" : $("#settings-notifications-message").is(":checked").toString(),
                 "published" : $("#settings-notifications-published").is(":checked").toString(),
                 "confirm" : $("#settings-notifications-confirm").val(),
             }).then(response => {
@@ -111,5 +112,47 @@ $(document).ready(() => {
                 showAlert("settings-notifications-error")
             })
         })
+    })
+
+    $("#settings-others-form").submit(event => {
+        event.preventDefault()
+
+        let languages = ""
+
+        if($("#settings-others-languages-english").is(":checked")) languages += "english,"
+        if($("#settings-others-languages-french").is(":checked")) languages += "french,"
+
+        getToken(token => {
+            $.post("", {
+                "token" : token,
+                "request" : "users",
+                "action" : "others",
+                "languages" : languages,
+                "contact" : $("#settings-others-contact").is(":checked").toString(),
+                "confirm" : $("#settings-others-confirm").val(),
+            }).then(response => {
+                $("#settings-others-confirm").val("")
+
+                if(response["status"] == "languages") {
+                    $(".settings-others-languages").addClass("is-invalid")
+
+                    showAlert("settings-others-languages")
+                } else if(response["status"] == "confirm") {
+                    $("#settings-others-confirm").addClass("is-invalid")
+
+                    showAlert("settings-others-confirm")
+                } else if(response["status"] == "success") {
+                    showAlert("settings-others-success", event => {
+                        location.replace("settings?others")
+                    })
+                } else showAlert("settings-others-error")
+            }).fail(() => {
+                showAlert("settings-others-error")
+            })
+        })
+    })
+
+    $(".settings-others-languages").on("change", event => {
+        $(".settings-others-languages").removeClass("is-invalid")
     })
 })

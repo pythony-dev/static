@@ -20,9 +20,11 @@
                         <div class="my-auto">
                             <input class="btn btn-outline-warning rounded-circle image-48 ratio-1 post-report" type="image" src="<?= $parameters["getPath"]("/Public/Images/Icons/Report.png"); ?>" alt="<?= $parameters["getText"]("thread-report"); ?>" post="<?= $post["hash"]; ?>"/>
                         </div>
-                        <a class="my-auto me-md-4 mt-4 mt-md-auto" href="<?= $post["chat"]; ?>">
-                            <input class="btn btn-outline-success rounded-circle image-48 ratio-1" type="image" src="<?= $parameters["getPath"]("/Public/Images/Icons/Chat.png"); ?>" alt="<?= $parameters["getText"]("thread-chat"); ?>"/>
-                        </a>
+                        <?php if($post["chat"]) { ?>
+                            <a class="my-auto me-md-4 mt-4 mt-md-auto" href="<?= $post["chat"]; ?>">
+                                <input class="btn btn-outline-success rounded-circle image-48 ratio-1" type="image" src="<?= $parameters["getPath"]("/Public/Images/Icons/Chat.png"); ?>" alt="<?= $parameters["getText"]("thread-chat"); ?>"/>
+                            </a>
+                        <?php } ?>
                     <?php } else if($id != 0) { ?>
                         <div class="my-auto">
                             <input class="btn btn-outline-danger rounded-circle image-48 ratio-1 post-delete" type="image" src="<?= $parameters["getPath"]("/Public/Images/Icons/Delete.png"); ?>" alt="<?= $parameters["getText"]("thread-delete"); ?>" post="<?= $post["hash"]; ?>"/>

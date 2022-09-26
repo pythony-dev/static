@@ -45,10 +45,10 @@ const loadMessages = () => {
                                 <div class=\"order-md-1 col-3 col-md-2 my-auto px-0 p" + (id == 0 && $("#messages-page").val() == 0 ? "b" : (id == last ? "t-5 add-py" : "y")) + "-5 text-end\">\
                                     <div class=\"d-flex flex-column flex-md-row-reverse\">\
                                         <div class=\"my-auto\">\
-                                            <input class=\"btn btn-outline-secondary rounded-circle image-48 ratio-1 chat-block\" type=\"image\" src=\"" + $("#messages-block-src").val() + "\" alt=\"" + $("#messages-block-alt").val() + "\" chat=\"" + message["hash"] + "\"/>\
+                                            <input class=\"btn btn-outline-secondary rounded-circle image-48 ratio-1 user-block\" type=\"image\" src=\"" + $("#messages-block-src").val() + "\" alt=\"" + $("#messages-block-alt").val() + "\" user=\"" + message["hash"] + "\"/>\
                                         </div>\
                                         <div class=\"my-auto me-md-4 mt-4 mt-md-auto\">\
-                                            <input class=\"btn btn-outline-danger rounded-circle image-48 ratio-1 chat-delete\" type=\"image\" src=\"" + $("#messages-delete-src").val() + "\" alt=\"" + $("#messages-delete-alt").val() + "\" chat=\"" + message["hash"] + "\"/>\
+                                            <input class=\"btn btn-outline-danger rounded-circle image-48 ratio-1 user-delete\" type=\"image\" src=\"" + $("#messages-delete-src").val() + "\" alt=\"" + $("#messages-delete-alt").val() + "\" user=\"" + message["hash"] + "\"/>\
                                         </div>\
                                     </div>\
                                 </div>\
@@ -62,7 +62,29 @@ const loadMessages = () => {
 
                 $("#messages-page").val(parseInt($("#messages-page").val()) + 1)
 
-                $(".messages-delete").off("click").on("click", event => {
+                $(".user-block").off("click").on("click", event => {
+                    event.preventDefault()
+
+                    const user = $(event.target).attr("user")
+
+                    showAlert("messages-block-ask", null, event => {
+                        getToken(token => {
+                            $.post("", {
+                                "token" : token,
+                                "request" : "blocks",
+                                "action" : "create",
+                                "user" : user,
+                            }).then(response => {
+                                if(response["status"] == "success") showAlert("messages-block-success")
+                                else showAlert("messages-block-error")
+                            }).fail(() => {
+                                showAlert("messages-block-error")
+                            })
+                        })
+                    })
+                })
+
+                $(".user-delete").off("click").on("click", event => {
                     event.preventDefault()
 
                     const user = $(event.target).attr("user")

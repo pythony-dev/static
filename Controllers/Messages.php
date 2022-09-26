@@ -15,6 +15,7 @@
 
             $parameters["alerts"] = array_merge($parameters["alerts"], array(
                 "messages-alert-message-error",
+                "messages-alert-block-ask", "messages-alert-block-success", "messages-alert-block-error",
                 "messages-alert-delete-ask", "messages-alert-delete-success", "messages-alert-delete-error",
             ));
 

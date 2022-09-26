@@ -5,7 +5,7 @@
         <input id="signUp-email" class="mb-5 form-control text-center" type="email" placeholder="<?= $parameters["getText"]("signUp-email"); ?>" required/>
         <input id="signUp-username" class="mt-5 form-control text-center" type="text" placeholder="<?= $parameters["getText"]("signUp-username"); ?>" required/>
         <div class="d-flex justify-content-center align-items-center py-5">
-            <div class="pe-4">
+            <div>
                 <input id="signUp-agree" class="form-check-input" type="checkbox" required/>
             </div>
             <label class="ps-4 text-justify" for="signUp-agree"> <?= $parameters["getText"]("signUp-agree", true); ?> </label>
