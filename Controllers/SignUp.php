@@ -13,7 +13,7 @@
 
             \Static\Kernel::addScript("/Public/Scripts/SignUp.js");
 
-            $parameters["alerts"] = array_merge($parameters["alerts"], array("signUp-alert-email", "signUp-alert-username", "signUp-alert-agree", "signUp-alert-success", "signUp-alert-error"));
+            $parameters["alerts"] = array_merge($parameters["alerts"], array("signUp-alert-email", "signUp-alert-username", "signUp-alert-success", "signUp-alert-error"));
 
             return $parameters;
         }

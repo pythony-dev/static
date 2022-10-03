@@ -13,7 +13,7 @@
 
             $query = parent::$pdo->prepare("
                 SELECT
-                    hash,
+                    id,
                     title,
                     (SELECT userID FROM Posts WHERE threadID = Threads.id LIMIT 1) AS userID,
                     (SELECT username FROM Users WHERE id = userID) AS author,
@@ -58,11 +58,15 @@
             $results = array();
 
             while($thread = $query->fetch()) {
+                $today = date_format(date_create(), substr(\Static\Kernel::getDateFormat(), 0, 5));
+                $date = date_format(date_create($thread["updated"]), substr(\Static\Kernel::getDateFormat(), 0, 5));
+                $time = date_format(date_create($thread["updated"]), substr(\Static\Kernel::getDateFormat(), 5));
+
                 array_push($results, array(
-                    "hash" => \Static\Kernel::getValue($thread, "hash"),
+                    "hash" => \Static\Kernel::getHash("Thread", (int)\Static\Kernel::getValue($thread, "id")),
                     "image" => \Static\Kernel::getPath("/Public/Images/Users/" . \Static\Kernel::getHash("User", \Static\Kernel::getValue($thread, "userID")) . ".jpeg?" . time()),
                     "author" => \Static\Kernel::getValue($thread, "author"),
-                    "updated" => date_format(date_create($thread["updated"]), substr(\Static\Kernel::getDateFormat(), 0, 5)),
+                    "updated" => $today != $date ? $date : $time,
                     "count" => \Static\Kernel::getValue($thread, "count"),
                     "userID" => \Static\Kernel::getValue($thread, "userID"),
                     "title" => \Static\Kernel::getValue($thread, "title"),
@@ -105,46 +109,32 @@
             $message = htmlspecialchars($message);
             $image = htmlspecialchars($image);
 
-            if(empty($title)) return "title";
-            else if(empty($message)) return "message";
-
             $sessionID = (int)\Static\Kernel::getValue($_SESSION, "sessionID");
             $userID = (int)\Static\Kernel::getValue($_SESSION, "userID");
 
-            if($sessionID <= 0 || $userID <= 0) return "error";
+            if(empty($title) || empty($message) || $sessionID <= 0 || $userID <= 0) return "error";
 
-            $query = parent::$pdo->prepare("INSERT INTO Threads (hash, created, deleted, title, language) VALUES (NULL, NOW(), NOW(), :title, :language)");
+            $query = parent::$pdo->prepare("INSERT INTO Threads (created, deleted, title, language) VALUES (NOW(), NULL, :title, :language)");
             $query->bindValue(":title", $title, PDO::PARAM_STR);
             $query->bindValue(":language", \Static\Languages\Translate::getLanguage(), PDO::PARAM_STR);
 
             if(!$query->execute()) return "error";
 
-            $threadID = parent::$pdo->lastInsertId();
-            $hash = \Static\Kernel::getHash("Thread", $threadID);
+            $hash = \Static\Kernel::getHash("Thread", parent::$pdo->lastInsertId());
 
-            $query = parent::$pdo->prepare("UPDATE Threads SET hash = :hash, deleted = NULL WHERE id = :threadID AND hash IS NULL AND deleted IS NOT NULL");
-            $query->bindValue(":hash", $hash, PDO::PARAM_STR);
-            $query->bindValue(":threadID", $threadID, PDO::PARAM_INT);
-
-            if(!$query->execute()) return "error";
-
-            $response = \Static\Models\Posts::create($hash, $message, $image);
-
-            return \Static\Kernel::getValue($response, "status") == "success" ? array(
+            return \Static\Kernel::getValue(\Static\Models\Posts::create($hash, $message, $image), "status") == "success" ? array(
                 "status" => "success",
                 "link" => \Static\Kernel::getPath("/thread/" . $hash),
-            ) : $response;
+            ) : "error";
         }
 
         public static function delete($hash) {
-            $threadID = self::getThreadID(htmlspecialchars($hash));
-
-            if($threadID <= 0) return "threadID";
+            $threadID = self::getID(htmlspecialchars($hash));
 
             $sessionID = (int)\Static\Kernel::getValue($_SESSION, "sessionID");
             $userID = (int)\Static\Kernel::getValue($_SESSION, "userID");
 
-            if($sessionID <= 0 || $userID <= 0) return "error";
+            if($threadID <= 0 || $sessionID <= 0 || $userID <= 0) return "error";
 
             $query = parent::$pdo->prepare("SELECT userID FROM Posts WHERE threadID = :threadID LIMIT 1");
             $query->bindValue(":threadID", $threadID, PDO::PARAM_INT);
@@ -155,31 +145,21 @@
             $query = parent::$pdo->prepare("UPDATE Threads SET deleted = NOW() WHERE id = :threadID AND deleted IS NULL");
             $query->bindValue(":threadID", $threadID, PDO::PARAM_INT);
 
-            return $query->execute() ? "success" : "error";
+            return $query->execute() && (int)$query->rowCount() >= 1 ? "success" : "error";
         }
 
-        public static function getThreadID($hash) {
+        public static function getID($hash, $title = false) {
             $hash = htmlspecialchars($hash);
 
             if(empty($hash)) return 0;
 
-            $query = parent::$pdo->prepare("SELECT id FROM Threads WHERE hash = :hash AND deleted IS NULL");
-            $query->bindValue(":hash", $hash, PDO::PARAM_STR);
-            $query->execute();
+            $query = parent::$pdo->query("SELECT id, title FROM Threads WHERE deleted IS NULL ORDER BY ID DESC");
 
-            return $query->fetch()["id"] ?? 0;
-        }
+            while($response = $query->fetch()) {
+                if(\Static\Kernel::getHash("Thread", $response["id"]) == $hash) return !$title ? $response["id"] : $response["title"];
+            }
 
-        public static function getTitle($hash) {
-            $hash = htmlspecialchars($hash);
-
-            if(empty($hash)) return null;
-
-            $query = parent::$pdo->prepare("SELECT title FROM Threads WHERE hash = :hash AND deleted IS NULL");
-            $query->bindValue(":hash", $hash, PDO::PARAM_STR);
-            $query->execute();
-
-            return $query->fetch()["title"] ?? null;
+            return 0;
         }
 
     }

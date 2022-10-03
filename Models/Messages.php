@@ -9,11 +9,9 @@
         public static function getMessages($page) {
             $page = (int)$page;
 
-            if($page < 1) return "error";
-
             $userID = (int)\Static\Kernel::getValue($_SESSION, "userID");
 
-            if($userID < 1) return "error";
+            if($page < 1 || $userID < 1) return "error";
 
             $query = parent::$pdo->prepare("
                 SELECT
@@ -57,11 +55,15 @@
             while($message = $query->fetch()) {
                 $hash = \Static\Kernel::getHash("User", (int)\Static\Kernel::getValue($message, "userID"));
 
+                $today = date_format(date_create(), substr(\Static\Kernel::getDateFormat(), 0, 5));
+                $date = date_format(date_create($message["updated"]), substr(\Static\Kernel::getDateFormat(), 0, 5));
+                $time = date_format(date_create($message["updated"]), substr(\Static\Kernel::getDateFormat(), 5));
+
                 array_push($results, array(
                     "link" => \Static\Kernel::getPath("/chat/" . $hash),
                     "sender" => \Static\Kernel::getPath("/Public/Images/Users/" . $hash . ".jpeg?" . time()),
                     "username" => \Static\Kernel::getValue($message, "username"),
-                    "updated" => date_format(date_create(\Static\Kernel::getValue($message, "updated")), \Static\Kernel::getDateFormat()),
+                    "updated" => $today != $date ? $date : $time,
                     "count" => self::count((int)\Static\Kernel::getValue($message, "userID")),
                     "hash" => $hash,
                     "message" => \Static\Kernel::getValue($message, "message"),
@@ -75,14 +77,12 @@
         }
 
         public static function getMessagesByUser($link, $page) {
-            $otherID = (int)\Static\Models\Users::getUserID($link);
+            $otherID = (int)\Static\Models\Users::getID($link);
             $page = (int)$page;
-
-            if($otherID < 1 || $page < 1) return "error";
 
             $userID = (int)\Static\Kernel::getValue($_SESSION, "userID");
 
-            if($userID < 1) return "error";
+            if($otherID < 1 || $page < 1 || $userID < 1) return "error";
 
             $query = parent::$pdo->prepare("
                 SELECT
@@ -134,21 +134,16 @@
         }
 
         public static function create($link, $message, $image) {
-            $receiverID = (int)\Static\Models\Users::getUserID($link);
+            $receiverID = (int)\Static\Models\Users::getID($link);
             $message = htmlspecialchars($message);
             $image = htmlspecialchars($image);
-
-            if($receiverID <= 0) return "error";
-            else if(empty($message)) return "message";
+            $status = self::isContact($receiverID);
 
             $sessionID = (int)\Static\Kernel::getValue($_SESSION, "sessionID");
             $userID = (int)\Static\Kernel::getValue($_SESSION, "userID");
 
-            if($sessionID <= 0 || $userID <= 0) return "error";
-
-            $status = self::isContact($receiverID);
-
             if($status != "success") return $status;
+            else if($receiverID <= 0 || empty($message) || $sessionID <= 0 || $userID <= 0 || $receiverID == $userID) return "error";
 
             $query = parent::$pdo->prepare("INSERT INTO Messages (created, deleted, sessionID, senderID, receiverID, message, image) VALUES (NOW(), NULL, :sessionID, :senderID, :receiverID, :message, :image)");
             $query->bindValue(":sessionID", $sessionID, PDO::PARAM_INT);
@@ -179,13 +174,11 @@
         }
 
         public static function delete($link) {
-            $messageID = (int)self::getMessageID($link);
-
-            if($messageID <= 0) return "error";
+            $messageID = (int)self::getID($link);
 
             $userID = (int)\Static\Kernel::getValue($_SESSION, "userID");
 
-            if($userID <= 0) return "error";
+            if($messageID <= 0 || $userID <= 0) return "error";
 
             $query = parent::$pdo->prepare("UPDATE Messages SET deleted = NOW() WHERE id = :messageID AND deleted IS NULL AND senderID = :userID");
             $query->bindValue(":messageID", $messageID, PDO::PARAM_INT);
@@ -195,13 +188,11 @@
         }
 
         public static function deleteByUser($link) {
-            $otherID = (int)\Static\Models\Users::getUserID($link);
-
-            if($otherID <= 0) return "error";
+            $otherID = (int)\Static\Models\Users::getID($link);
 
             $userID = (int)\Static\Kernel::getValue($_SESSION, "userID");
 
-            if($userID <= 0) return "error";
+            if($otherID <= 0 || $userID <= 0) return "error";
 
             $query = parent::$pdo->prepare("
                 UPDATE Messages
@@ -221,14 +212,23 @@
             return $query->execute() && (int)$query->rowCount() >= 1 ? "success" : "error";
         }
 
+        public static function deleteUser() {
+            $userID = (int)\Static\Kernel::getValue($_SESSION, "userID");
+
+            if($userID <= 0) return false;
+
+            $query = parent::$pdo->prepare("UPDATE Messages SET deleted = NOW() WHERE deleted IS NULL AND (senderID = :userID OR receiverID = :userID)");
+            $query->bindValue(":userID", $userID, PDO::PARAM_INT);
+
+            return $query->execute();
+        }
+
         public static function isContact($otherID) {
             $otherID = (int)$otherID;
 
-            if($otherID <= 0) return "error";
-
             $userID = (int)\Static\Kernel::getValue($_SESSION, "userID");
 
-            if($userID <= 0) return "error";
+            if($otherID <= 0 || $userID <= 0) return "error";
 
             $query = parent::$pdo->prepare("
                 SELECT
@@ -253,17 +253,15 @@
         public static function count($otherID) {
             $otherID = (int)$otherID;
 
-            if($otherID <= 0) return 0;
-
             $userID = (int)\Static\Kernel::getValue($_SESSION, "userID");
 
-            if($userID <= 0) return 0;
+            if($otherID <= 0 || $userID <= 0) return 0;
 
             $query = parent::$pdo->prepare("
                 SELECT COUNT(id) AS count
                 FROM Messages
                 WHERE
-                    Messages.deleted IS NULL
+                    deleted IS NULL
                     AND
                     (
                         (senderID = :userID AND receiverID = :otherID)
@@ -278,7 +276,7 @@
             return $query->fetch()["count"] ?? 0;
         }
 
-        public static function getMessageID($hash) {
+        public static function getID($hash) {
             $hash = htmlspecialchars($hash);
 
             if(empty($hash)) return 0;

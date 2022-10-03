@@ -1,5 +1,5 @@
 $(document).ready(() => {
-    $(".block-delete").on("click", event => {
+    $(".block-delete").click(event => {
         event.preventDefault()
 
         const user = $(event.target).attr("user")
@@ -12,9 +12,9 @@ $(document).ready(() => {
                     "action" : "delete",
                     "user" : user,
                 }).then(response => {
-                    if(response["status"] == "success") {
+                    if(response["status"] == "success" && "link" in response) {
                         showAlert("blocks-success", event => {
-                            location.replace("settings?account&blocks")
+                            location.replace(response["link"])
                         })
                     } else showAlert("blocks-error")
                 }).fail(() => {

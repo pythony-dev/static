@@ -14,8 +14,7 @@
             $userID = (int)\Static\Kernel::getValue($_SESSION, "userID");
 
             if(!in_array(\Static\Models\Users::isEmail($email), array("success", "used"))) return "email";
-            else if(empty($message)) return "message";
-            else if($sessionID <= 0 || $userID < 0) return "error";
+            else if(empty($message) || $sessionID <= 0 || $userID < 0) return "error";
 
             $query = parent::$pdo->prepare("INSERT INTO Contact (created, sessionID, userID, email, message) VALUES (NOW(), :sessionID, :userID, :email, :message)");
             $query->bindValue(":sessionID", $sessionID, PDO::PARAM_INT);

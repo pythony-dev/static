@@ -16,7 +16,7 @@
                         </div>
                     </div>
                 </div>
-            <?php } if(count($parameters["blocks"]) == 0) { ?>
+            <?php } if(!count($parameters["blocks"])) { ?>
                 <p class="p-4 mb-0"> <?= $parameters["getText"]("blocks-empty"); ?> </p>
             <?php } ?>
             <div class="p-4">

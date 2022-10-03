@@ -12,7 +12,7 @@
 
             $parameters["posts"] = \Static\Models\Posts::getPosts($parameters["link"], $parameters["page"]);
 
-            if(!($parameters["title"] = \Static\Models\Threads::getTitle($parameters["link"])) || !count($parameters["posts"])) {
+            if(!($parameters["title"] = \Static\Models\Threads::getID($parameters["link"], true)) || !count($parameters["posts"])) {
                 header("Location: " . \Static\Kernel::getPath("/forums"));
 
                 exit();
@@ -27,7 +27,7 @@
             $parameters["alerts"] = array_merge($parameters["alerts"], array(
                 "thread-alert-report-success", "thread-alert-report-error",
                 "thread-alert-delete-ask", "thread-alert-delete-success", "thread-alert-delete-error",
-                "create-alert-title", "create-alert-message", "create-alert-success-post", "create-alert-error-post",
+                "create-alert-success-post", "create-alert-error-post",
                 "upload-alert-extension", "upload-alert-type", "upload-alert-size", "upload-alert-success", "upload-alert-error",
             ));
 

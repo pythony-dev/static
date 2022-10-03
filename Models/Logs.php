@@ -12,7 +12,7 @@
 
             $sessionID = (int)\Static\Kernel::getValue($_SESSION, "sessionID");
 
-            if($userID <= 0 || empty($status) || $sessionID <= 0) return false;
+            if($userID <= 0 || !in_array($status, array("success", "reset", "error")) || $sessionID <= 0) return false;
 
             $query = parent::$pdo->prepare("INSERT INTO Logs (created, sessionID, userID, status) VALUES (NOW(), :sessionID, :userID, :status)");
             $query->bindValue(":sessionID", $sessionID, PDO::PARAM_INT);

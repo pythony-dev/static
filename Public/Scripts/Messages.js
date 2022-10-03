@@ -17,8 +17,8 @@ const loadMessages = () => {
             "page" : parseInt($("#messages-page").val()) + 1,
         }).then(response => {
             if(response["status"] == "success" && "messages" in response) {
-                if($("#messages-page").val() == 0) $("div:has(#messages-more)").removeClass("d-none")
-                if(response["messages"].length != 10) $("div:has(#messages-more)").addClass("d-none")
+                if($("#messages-page").val() == 0) $("#messages-more").removeClass("d-none")
+                if(response["messages"].length != 10) $("#messages-more").addClass("d-none")
                 if(response["messages"].length != 0) {
                     $("#messages-empty").addClass("d-none")
                     $(".add-py-5").removeClass("pt-5").addClass("py-5")
@@ -37,7 +37,7 @@ const loadMessages = () => {
                                         <img class=\"my-auto shadow border rounded-circle image-64 ratio-1\" src=\"" + message["sender"] + "\" alt=\"" + message["username"] + "\"/>\
                                         <div class=\"my-auto ps-4 text-start\">\
                                             <p class=\"overflow-hidden mb-0\"> " + $("#messages-by").val() + " " + message["username"] + " </p>\
-                                            <p class=\"mb-0\"> " + $("#messages-on").val() + " " + message["updated"] + " </p>\
+                                            <p class=\"mb-0\"> " + $("#messages-" + (message["updated"].includes("/") ? "on" : "at")).val() + " " + message["updated"] + " </p>\
                                             <p class=\"mb-0\"> " + message["count"] + " " + $("#messages-messages").val() + " </p>\
                                         </div>\
                                     </div>\
@@ -62,7 +62,7 @@ const loadMessages = () => {
 
                 $("#messages-page").val(parseInt($("#messages-page").val()) + 1)
 
-                $(".user-block").off("click").on("click", event => {
+                $(".user-block").off("click").click(event => {
                     event.preventDefault()
 
                     const user = $(event.target).attr("user")
@@ -84,7 +84,7 @@ const loadMessages = () => {
                     })
                 })
 
-                $(".user-delete").off("click").on("click", event => {
+                $(".user-delete").off("click").click(event => {
                     event.preventDefault()
 
                     const user = $(event.target).attr("user")

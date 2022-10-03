@@ -9,24 +9,24 @@
                 <?php } ?>
                 <a class="text-decoration-none text-dark" href="<?= $parameters["getPath"]("/thread/" . $thread["hash"]); ?>">
                     <div class="row mx-0">
-                        <div class="col-9 col-md-5 my-auto px-0 p<?= $id == 0 ? "b" : ($id == count($parameters["threads"]) - 1 ? "t" : "y"); ?>-5">
+                        <div class="col-9 col-md-5 my-auto px-0 p<?= $id == 0 ? "b" : ($id == array_key_last($parameters["threads"]) ? "t" : "y"); ?>-5">
                             <div class="d-flex">
                                 <img class="my-auto shadow border rounded-circle image-64 ratio-1" src="<?= $thread["image"]; ?>" alt="<?= $thread["author"]; ?>"/>
                                 <div class="my-auto ps-4 text-start">
                                     <p class="overflow-hidden mb-0"> <?= $parameters["getText"]("forums-by") . " " . $thread["author"]; ?> </p>
-                                    <p class="mb-0"> <?= $parameters["getText"]("forums-on") . " " . $thread["updated"]; ?> </p>
+                                    <p class="mb-0"> <?= $parameters["getText"]("forums-" . (str_contains($thread["updated"], "/") ? "on" : "at")) . " " . $thread["updated"]; ?> </p>
                                     <p class="mb-0"> <?= $thread["count"] . " " . $parameters["getText"]("forums-posts"); ?> </p>
                                 </div>
                             </div>
                         </div>
-                        <div class="order-md-1 col-3 col-md-2 my-auto px-0 p<?= $id == 0 ? "b" : ($id == count($parameters["threads"]) - 1 ? "t" : "y"); ?>-5 text-end">
+                        <div class="order-md-1 col-3 col-md-2 my-auto px-0 p<?= $id == 0 ? "b" : ($id == array_key_last($parameters["threads"]) ? "t" : "y"); ?>-5 text-end">
                             <?php if($parameters["userID"] != $thread["userID"]) { ?>
                                 <input class="my-auto btn btn-outline-warning rounded-circle image-48 ratio-1 thread-report" type="image" src="<?= $parameters["getPath"]("/Public/Images/Icons/Report.png"); ?>" alt="<?= $parameters["getText"]("forums-report"); ?>" thread="<?= $thread["hash"]; ?>"/>
                             <?php } else { ?>
                                 <input class="my-auto btn btn-outline-danger rounded-circle image-48 ratio-1 thread-delete" type="image" src="<?= $parameters["getPath"]("/Public/Images/Icons/Delete.png"); ?>" alt="<?= $parameters["getText"]("forums-delete"); ?>" thread="<?= $thread["hash"]; ?>"/>
                             <?php } ?>
                         </div>
-                        <div class="col-12 col-md-5 my-auto px-0 p<?= $id == 0 ? "b" : ($id == count($parameters["threads"]) - 1 ? "t" : "b-5 pt-md"); ?>-5">
+                        <div class="col-12 col-md-5 my-auto px-0 p<?= $id == 0 ? "b" : ($id == array_key_last($parameters["threads"]) ? "t" : "b-5 pt-md"); ?>-5">
                             <p class="overflow-hidden mb-0 text-justify fw-bold"> <?= $thread["title"]; ?> </p>
                         </div>
                     </div>

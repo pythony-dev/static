@@ -13,7 +13,7 @@
             $sessionID = (int)\Static\Kernel::getValue($_SESSION, "sessionID");
             $userID = (int)\Static\Kernel::getValue($_SESSION, "userID");
 
-            if(empty($setting) || empty($value) || $sessionID <= 0 || $userID <= 0) return false;
+            if(!in_array($setting, array("email", "username", "password", "reset")) || empty($value) || $sessionID <= 0 || $userID <= 0) return false;
 
             $query = parent::$pdo->prepare("INSERT INTO Updates (created, sessionID, userID, setting, value) VALUES (NOW(), :sessionID, :userID, :setting, :value)");
             $query->bindValue(":sessionID", $sessionID, PDO::PARAM_INT);

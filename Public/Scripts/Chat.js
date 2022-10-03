@@ -58,7 +58,7 @@ const loadMessages = () => {
 
                 $("#chat-page").val(parseInt($("#chat-page").val()) + 1)
 
-                $(".chat-delete").off("click").on("click", event => {
+                $(".message-delete").off("click").click(event => {
                     event.preventDefault()
 
                     const message = $(event.target).attr("message")

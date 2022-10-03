@@ -10,9 +10,11 @@ $(document).ready(() => {
                 "email" : $("#contact-email").val(),
                 "message" : $("#contact-message").val(),
             }).then(response => {
-                if(response["status"] == "email") showAlert("contact-email")
-                else if(response["status"] == "message") showAlert("contact-message")
-                else if(response["status"] == "success") {
+                if(response["status"] == "email") {
+                    $("#contact-email").removeClass("is-valid").addClass("is-invalid")
+
+                    showAlert("contact-email")
+                } else if(response["status"] == "success") {
                     showAlert("contact-success", event => {
                         location.reload()
                     })

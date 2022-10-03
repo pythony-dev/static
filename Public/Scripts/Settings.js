@@ -26,9 +26,9 @@ $(document).ready(() => {
                     $("#settings-account-confirm").addClass("is-invalid")
 
                     showAlert("settings-account-confirm")
-                } else if(response["status"] == "success") {
+                } else if(response["status"] == "success" && "link" in response) {
                     showAlert("settings-account-success", event => {
-                        location.replace("settings")
+                        location.replace(response["link"])
                     })
                 } else showAlert("settings-account-error")
             }).fail(() => {
@@ -103,9 +103,9 @@ $(document).ready(() => {
                     $("#settings-notifications-confirm").addClass("is-invalid")
 
                     showAlert("settings-notifications-confirm")
-                } else if(response["status"] == "success") {
+                } else if(response["status"] == "success" && "link" in response) {
                     showAlert("settings-notifications-success", event => {
-                        location.replace("settings?notifications")
+                        location.replace(response["link"])
                     })
                 } else showAlert("settings-notifications-error")
             }).fail(() => {
@@ -141,9 +141,9 @@ $(document).ready(() => {
                     $("#settings-others-confirm").addClass("is-invalid")
 
                     showAlert("settings-others-confirm")
-                } else if(response["status"] == "success") {
+                } else if(response["status"] == "success" && "link" in response) {
                     showAlert("settings-others-success", event => {
-                        location.replace("settings?others")
+                        location.replace(response["link"])
                     })
                 } else showAlert("settings-others-error")
             }).fail(() => {
@@ -152,7 +152,7 @@ $(document).ready(() => {
         })
     })
 
-    $(".settings-others-languages").on("change", event => {
+    $(".settings-others-languages").change(event => {
         $(".settings-others-languages").removeClass("is-invalid")
     })
 })

@@ -11,12 +11,17 @@ $(document).ready(() => {
                 "username" : $("#signUp-username").val(),
                 "agree" : String($("#signUp-agree").is(":checked")),
             }).then(response => {
-                if(response["status"] == "email") showAlert("signUp-email")
-                else if(response["status"] == "username") showAlert("signUp-username")
-                else if(response["status"] == "agree") showAlert("signUp-agree")
-                else if(response["status"] == "success") {
+                if(response["status"] == "email") {
+                    $("#signUp-email").removeClass("is-valid").addClass("is-invalid")
+
+                    showAlert("signUp-email")
+                } else if(response["status"] == "username") {
+                    $("#signUp-username").removeClass("is-valid").addClass("is-invalid")
+
+                    showAlert("signUp-username")
+                } else if(response["status"] == "success" && "link" in response) {
                     showAlert("signUp-success", event => {
-                        location.replace("log-in")
+                        location.replace(response["link"])
                     })
                 } else showAlert("signUp-error")
             }).fail(() => {

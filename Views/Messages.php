@@ -6,6 +6,7 @@
             <input id="messages-page" value="0"/>
             <input id="messages-by" value="<?= $parameters["getText"]("messages-by"); ?>"/>
             <input id="messages-on" value="<?= $parameters["getText"]("messages-on"); ?>"/>
+            <input id="messages-at" value="<?= $parameters["getText"]("messages-at"); ?>"/>
             <input id="messages-messages" value="<?= $parameters["getText"]("messages-messages"); ?>"/>
             <input id="messages-block-src" value="<?= $parameters["getPath"]("/Public/Images/Icons/Block.png"); ?>"/>
             <input id="messages-block-alt" value="<?= $parameters["getText"]("messages-block"); ?>"/>
@@ -14,7 +15,8 @@
         </div>
         <p id="messages-empty" class="mb-0"> <?= $parameters["getText"]("messages-empty"); ?> </p>
     </div>
-    <div class="d-none p-5">
-        <button id="messages-more" class="w-100 btn btn-primary"> <?= $parameters["getText"]("messages-more"); ?> </button>
+    <div class="p-5">
+        <button id="messages-more" class="d-none w-100 mb-5 btn btn-primary"> <?= $parameters["getText"]("messages-more"); ?> </button>
+        <button class="w-100 btn btn-outline-success" type="button" data-bs-toggle="modal" data-bs-target="#search-modal"> <?= $parameters["getText"]("messages-search"); ?> </button>
     </div>
 </article>

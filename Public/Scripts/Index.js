@@ -54,7 +54,7 @@ const showAlert = (id, closed = null, confirmed = null) => {
     if(typeof(closed) == "function") $("#" + id).on("hide.bs.modal", closed)
 
     if(typeof(confirmed) == "function") {
-        $("#" + id + " .confirm").on("click", event => {
+        $("#" + id + " .confirm").click(event => {
             $("#" + id).modal("hide")
 
             confirmed(event)
@@ -80,10 +80,12 @@ const uploadImage = (folder, file, success, done) => {
         }).done(response => {
             if(typeof(done) == "function") done()
 
-            if(response["status"] == "extension") showAlert("upload-extension")
-            else if(response["status"] == "type") showAlert("upload-type")
-            else if(response["status"] == "size") showAlert("upload-size")
-            else if(response["status"] == "success") {
+            if("error" in response) {
+                if(response["error"] == "extension") showAlert("upload-extension")
+                else if(response["error"] == "type") showAlert("upload-type")
+                else if(response["error"] == "size") showAlert("upload-size")
+                else showAlert("upload-error")
+            } else if(response["status"] == "success") {
                 showAlert("upload-success", event => {
                     if(typeof(success) == "function") success(response)
                 })

@@ -12,9 +12,15 @@ $(document).ready(() => {
             }).then(response => {
                 $("#logIn-password").val("")
 
-                if(response["status"] == "email") showAlert("logIn-email")
-                else if(response["status"] == "password") showAlert("logIn-password")
-                else if(response["status"] == "success") location.replace("settings")
+                if(response["status"] == "email") {
+                    $("#logIn-email").removeClass("is-valid").addClass("is-invalid")
+
+                    showAlert("logIn-email")
+                } else if(response["status"] == "password") {
+                    $("#logIn-password").addClass("is-invalid")
+
+                    showAlert("logIn-password")
+                } else if(response["status"] == "success" && "link" in response) location.replace(response["link"])
                 else showAlert("logIn-error")
             }).fail(() => {
                 showAlert("logIn-error")

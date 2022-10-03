@@ -4,7 +4,7 @@
 
     final class Kernel {
 
-        private static $version = "1.5.4";
+        private static $version = "1.5.5";
         private static $settings = array();
 
         private static $styles = array();
@@ -74,6 +74,12 @@
 
         public static function getHash($folder, $id) {
             return sha1(htmlspecialchars($folder) . "-" . (int)$id . "?" . self::$salt);
+        }
+
+        public static function getRequest($response) {
+            return is_array($response) ? $response : array(
+                "status" => $response,
+            );
         }
 
         public static function getID($id) {

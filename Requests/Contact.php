@@ -8,9 +8,7 @@
             $email = \Static\Kernel::getValue($_POST, "email");
             $message = \Static\Kernel::getValue($_POST, "message");
 
-            return array(
-                "status" => \Static\Models\Contact::create($email, $message),
-            );
+            return \Static\Kernel::getRequest(\Static\Models\Contact::create($email, $message));
         }
 
     }

@@ -39,8 +39,12 @@
         }
 
         public static function getArticle($link) {
+            $link = htmlspecialchars($link);
+
+            if(empty($link)) return array();
+
             $query = parent::$pdo->prepare("SELECT id, published, title, overview, content, networks FROM Articles WHERE NOW() >= published AND link = :link AND language = :language");
-            $query->bindValue(":link", htmlspecialchars($link), PDO::PARAM_STR);
+            $query->bindValue(":link", $link, PDO::PARAM_STR);
             $query->bindValue(":language", \Static\Languages\Translate::getLanguage(), PDO::PARAM_STR);
             $query->execute();
 
@@ -48,8 +52,12 @@
         }
 
         public static function getRandomArticles($link) {
+            $link = htmlspecialchars($link);
+
+            if(empty($link)) return array();
+
             $query = parent::$pdo->prepare("SELECT id, title, overview, link FROM Articles WHERE NOW() >= published AND link != :link AND language = :language ORDER BY RAND() LIMIT 3");
-            $query->bindValue(":link", htmlspecialchars($link), PDO::PARAM_STR);
+            $query->bindValue(":link", $link, PDO::PARAM_STR);
             $query->bindValue(":language", \Static\Languages\Translate::getLanguage(), PDO::PARAM_STR);
             $query->execute();
 

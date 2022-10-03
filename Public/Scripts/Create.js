@@ -12,9 +12,7 @@ $(document).ready(() => {
                 "image" : $("#create-value").val(),
                 "link" : $("#create-link").val(),
             }).then(response => {
-                if(response["status"] == "title") showAlert("create-title")
-                else if(response["status"] == "message") showAlert("create-message")
-                else if(response["status"] == "contact") showAlert("create-contact")
+                if(response["status"] == "contact") showAlert("create-contact")
                 else if(response["status"] == "blocked") showAlert("create-blocked")
                 else if(response["status"] == "success" && "link" in response) {
                     showAlert("create-success-" + $("#create-type").val().slice(0, -1), event => {

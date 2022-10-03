@@ -34,10 +34,10 @@
 
             if(!($results = $query->fetch())) return false;
 
-            $query = parent::$pdo->prepare("UPDATE Tokens SET deleted = NOW() WHERE id = :id");
+            $query = parent::$pdo->prepare("UPDATE Tokens SET deleted = NOW() WHERE id = :id AND deleted IS NULL");
             $query->bindValue(":id", (int)$results["id"], PDO::PARAM_INT);
 
-            return $query->execute();
+            return $query->execute() && (int)$query->rowCount() >= 1;
         }
 
     }

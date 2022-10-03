@@ -9,19 +9,13 @@
             $message = \Static\Kernel::getValue($_POST, "message");
             $image = \Static\Kernel::getValue($_POST, "image");
 
-            $response = \Static\Models\Threads::create($title, $message, $image);
-
-            return is_array($response) ? $response : array(
-                "status" => $response,
-            );
+            return \Static\Kernel::getRequest(\Static\Models\Threads::create($title, $message, $image));
         }
 
         public static function delete() {
             $thread = \Static\Kernel::getValue($_POST, "thread");
 
-            return array(
-                "status" => \Static\Models\Threads::delete($thread),
-            );
+            return \Static\Kernel::getRequest(\Static\Models\Threads::delete($thread));
         }
 
     }

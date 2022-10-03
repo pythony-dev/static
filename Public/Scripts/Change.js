@@ -20,9 +20,9 @@ $(document).ready(() => {
                     $("#change-confirm").removeClass("is-valid").addClass("is-invalid")
 
                     showAlert("change-confirm")
-                } else if(response["status"] == "success") {
+                } else if(response["status"] == "success" && "link" in response) {
                     showAlert("change-success", event => {
-                        location.replace("settings?others")
+                        location.replace(response["link"])
                     })
                 } else showAlert("change-error")
             }).fail(() => {

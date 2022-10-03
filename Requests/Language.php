@@ -5,18 +5,14 @@
     final class Language {
 
         public static function update() {
-            $parameters = array();
-
             $language = \Static\Kernel::getValue($_POST, "language");
             $userID = (int)\Static\Kernel::getValue($_SESSION, "userID");
 
-            if(in_array($language, \Static\Languages\Translate::getAllLanguages()) && $userID == 0) {
-                $_SESSION["language"] = $language;
+            if(!in_array($language, \Static\Languages\Translate::getAllLanguages()) || $userID != 0) return \Static\Kernel::getRequest("error");
 
-                $parameters["status"] = "success";
-            } else $parameters["status"] = "error";
+            $_SESSION["language"] = $language;
 
-            return $parameters;
+            return \Static\Kernel::getRequest("success");
         }
 
     }
