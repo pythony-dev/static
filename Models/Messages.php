@@ -11,7 +11,7 @@
 
             $userID = (int)\Static\Kernel::getValue($_SESSION, "userID");
 
-            if($page < 1 || $userID < 1) return "error";
+            if($page <= 0 || $userID <= 0) return "error";
 
             $query = parent::$pdo->prepare("
                 SELECT
@@ -82,7 +82,7 @@
 
             $userID = (int)\Static\Kernel::getValue($_SESSION, "userID");
 
-            if($otherID < 1 || $page < 1 || $userID < 1) return "error";
+            if($otherID <= 0 || $page <= 0 || $userID <= 0) return "error";
 
             $query = parent::$pdo->prepare("
                 SELECT
@@ -160,7 +160,7 @@
                 $email = \Static\Kernel::getValue($user, "email");
                 $title = \Static\Languages\Translate::getText("emails-message-title");
                 $content = \Static\Languages\Translate::getText("emails-message-content", true, array(
-                    "username" => \Static\Kernel::getValue($user, "username"),
+                    "username" => \Static\Kernel::getValue(\Static\Models\Users::getUser($userID), "username"),
                     "messages" => \Static\Kernel::getPath("/messages"),
                 ));
 
@@ -184,7 +184,7 @@
             $query->bindValue(":messageID", $messageID, PDO::PARAM_INT);
             $query->bindValue(":userID", $userID, PDO::PARAM_INT);
 
-            return $query->execute() && (int)$query->rowCount() >= 1 ? "success" : "error";
+            return $query->execute() && (int)$query->rowCount() == 1 ? "success" : "error";
         }
 
         public static function deleteByUser($link) {

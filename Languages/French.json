@@ -17,7 +17,8 @@
     "title-privacy" : "Politique de Confidentialité",
     "title-error" : "Erreur",
 
-    "footer-rights" : "Tous Droits Réservés",
+    "footer-copyright" : "Copyright © @year @project - Tous Droits Réservés - Version @version",
+    "footer-developed" : "Développé par <a class=\"text-decoration-none text-light\" href=\"https://www.pythony.dev?static\" target=\"_blank\"> Anthony Khelil </a> avec <a class=\"text-decoration-none text-light\" href=\"https://www.github.com/pythony-dev/static\" target=\"_blank\"> Static </a>",
     "footer-contact" : "Contact",
     "footer-terms" : "Termes et Conditions",
     "footer-privacy" : "Politique de Confidentialité",
@@ -299,6 +300,7 @@
     "terms-agreement-content" : "Ces conditions constituent l'intégralité de l'accord entre @name et vous en ce qui concerne votre utilisation de ce site web, et remplacent tous les accords et arrangements antérieurs.",
     "terms-law-title" : "Loi Applicable et Juridiction",
     "terms-law-content" : "Les présentes conditions seront régies et interprétées conformément aux lois de l'État Français, et vous vous soumettez à la juridiction non exclusive des tribunaux d'État et fédéraux situés en France pour la résolution de tout litige.",
+    "terms-button" : "Retourner à l'Accueil",
 
     "privacy-title" : "Politique de Confidentialité pour @name",
     "privacy-introduction-title" : "Introduction",
@@ -317,6 +319,13 @@
     "privacy-online-content" : "Notre politique de confidentialité s'applique uniquement à nos activités en ligne et est valable pour les visiteurs de notre site web en ce qui concerne les informations qu'ils ont partagées et/ou collectées dans @name. Cette politique n'est pas applicable aux informations collectées hors ligne ou via des canaux autres que ce site web.",
     "privacy-consent-title" : "Consentement",
     "privacy-consent-content" : "En utilisant notre site web, vous consentez par la présente à notre Politique de Confidentialité et acceptez ses <a href=\"@terms\"> Termes et Conditions. </a>",
+    "privacy-button" : "Retourner à l'Accueil",
+
+    "email-web" : "Voir la Version Web de cet Email",
+    "email-sent" : "Envoyé à",
+    "email-on" : "le",
+    "email-at" : "à",
+    "email-button" : "Retourner à l'Accueil",
 
     "error-button" : "Retourner à l'Accueil",
     "error-requests" : "Trop de Requêtes",

@@ -46,7 +46,7 @@
 
             return $query->execute() && copy("Public/Images/Users/" . \Static\Kernel::getHash("User", 0) . ".jpeg", "Public/Images/Users/" . \Static\Kernel::getHash("User", parent::$pdo->lastInsertId()) . ".jpeg") && \Static\Emails::send($email, $title, $content) ? array(
                 "status" => "success",
-                "link" => \Static\Kernel::getPath("/sign-up"),
+                "link" => \Static\Kernel::getPath("/log-in"),
             ) : "error";
         }
 
@@ -68,7 +68,7 @@
 
             $userID = (int)$results["id"];
 
-            if($userID < 1) return "email";
+            if($userID <= 0) return "email";
             else if($results["password"] == $password) {
                 $_SESSION["userID"] = $userID;
                 $_SESSION["language"] = htmlspecialchars($results["language"]);
@@ -87,7 +87,7 @@
                 $query = parent::$pdo->prepare("UPDATE Users SET password = reset, reset = NULL WHERE id = :userID AND deleted IS NULL");
                 $query->bindValue(":userID", $userID, PDO::PARAM_INT);
 
-                return \Static\Models\Logs::create($userID, "reset") && \Static\Models\Updates::create("reset", $results["password"]) && $query->execute() ? array(
+                return \Static\Models\Logs::create($userID, "reset") && \Static\Models\Updates::create("reset", $results["password"]) && $query->execute() && (int)$query->rowCount() == 1 ? array(
                     "status" => "success",
                     "link" => \Static\Kernel::getPath("/settings"),
                 ) : "error";
@@ -116,7 +116,7 @@
                 "user-password" => $reset,
             ));
 
-            return $query->execute() && \Static\Emails::send($email, $title, $content) ? "success" : "error";
+            return $query->execute() && (int)$query->rowCount() >= 1 && \Static\Emails::send($email, $title, $content) ? "success" : "error";
         }
 
         public static function search($search) {
@@ -124,7 +124,7 @@
 
             $userID = (int)\Static\Kernel::getValue($_SESSION, "userID");
 
-            if(empty($search) || $userID < 1) return "error";
+            if(empty($search) || $userID <= 0) return "error";
 
             $query = parent::$pdo->prepare("SELECT id, username FROM Users WHERE id != :userID AND deleted IS NULL AND username LIKE :username ORDER BY ID DESC LIMIT 10");
             $query->bindValue(":userID", $userID, PDO::PARAM_INT);
@@ -153,7 +153,7 @@
         public static function getUser($userID) {
             $userID = (int)$userID;
 
-            if($userID < 1) return array();
+            if($userID <= 0) return array();
 
             $query = parent::$pdo->prepare("SELECT id, email, username, language, notifications, others FROM Users WHERE id = :userID AND deleted IS NULL");
             $query->bindValue(":userID", $userID, PDO::PARAM_INT);
@@ -176,7 +176,7 @@
 
             if(self::isEmail($email) != "success") return "email";
             else if(self::isUsername($username) != "success") return "username";
-            else if(!in_array($language, \Static\Languages\Translate::getAllLanguages()) || empty($confirm) || $userID < 1) return "error";
+            else if(!in_array($language, \Static\Languages\Translate::getAllLanguages()) || empty($confirm) || $userID <= 0) return "error";
 
             $confirm = \Static\Kernel::getHash("Password", $confirm);
 
@@ -207,7 +207,7 @@
 
             $userID = (int)\Static\Kernel::getValue($_SESSION, "userID");
 
-            if(empty($notifications) || empty($confirm) || $userID < 1) return "error";
+            if(empty($notifications) || empty($confirm) || $userID <= 0) return "error";
 
             $confirm = \Static\Kernel::getHash("Password", $confirm);
 
@@ -240,7 +240,7 @@
             $userID = (int)\Static\Kernel::getValue($_SESSION, "userID");
 
             if(!$found) return "languages";
-            else if(empty($others) || empty($confirm) || $userID < 1) return "error";
+            else if(empty($others) || empty($confirm) || $userID <= 0) return "error";
 
             $confirm = \Static\Kernel::getHash("Password", $confirm);
 
@@ -269,7 +269,7 @@
 
             if(self::isPassword($password) != "success") return "password";
             else if(self::isPassword($confirm) != "success") return "confirm";
-            else if($userID < 1) return "error";
+            else if($userID <= 0) return "error";
 
             $password = \Static\Kernel::getHash("Password", $password);
             $confirm = \Static\Kernel::getHash("Password", $confirm);
@@ -297,7 +297,7 @@
             $userID = (int)\Static\Kernel::getValue($_SESSION, "userID");
 
             if(self::isPassword($confirm) != "success") return "confirm";
-            else if($userID < 1) return "error";
+            else if($userID <= 0) return "error";
 
             $confirm = \Static\Kernel::getHash("Password", $confirm);
 
@@ -312,7 +312,7 @@
             $query = parent::$pdo->prepare("UPDATE Users SET deleted = NOW() WHERE id = :userID");
             $query->bindValue(":userID", $userID, PDO::PARAM_INT);
 
-            if($query->execute() && (int)$query->rowCount() >= 1) {
+            if($query->execute() && (int)$query->rowCount() == 1) {
                 $_SESSION["userID"] = 0;
 
                 $title = \Static\Languages\Translate::getText("emails-delete-title");
@@ -386,8 +386,8 @@
                 $random = rand(0, 61);
 
                 if(strlen($password) % 4 == 3) $password .= "-";
-                else if($random < 10) $password .= $random;
-                else if($random < 36) $password .= chr($random + 55);
+                else if($random <= 9) $password .= $random;
+                else if($random <= 35) $password .= chr($random + 55);
                 else $password .= chr($random + 61);
             }
 

@@ -38,7 +38,7 @@
     <?php } ?>
     <?= Static\Components\Pagination::create($parameters["page"], $parameters["limit"], $parameters["getPath"]("/forums")); ?>
     <div class="p-5">
-        <?php if($parameters["userID"] < 1) { ?>
+        <?php if($parameters["userID"] <= 0) { ?>
             <a class="w-100 btn btn-primary" href="<?= $parameters["getPath"]("/log-in"); ?>"> <?= $parameters["getText"]("forums-logIn"); ?> </a>
         <?php } else { ?>
             <button class="w-100 btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#create-modal"> <?= $parameters["getText"]("forums-create"); ?> </button>

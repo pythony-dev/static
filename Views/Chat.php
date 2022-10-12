@@ -14,7 +14,8 @@
         <p id="chat-empty" class="mb-0"> <?= $parameters["getText"]("chat-empty"); ?> </p>
     </div>
     <div class="p-5">
-        <button id="chat-more" class="d-none w-100 mb-5 btn btn-primary"> <?= $parameters["getText"]("chat-more"); ?> </button>
+        <button id="chat-more" class="w-100 mb-5 btn btn-primary"> <?= $parameters["getText"]("chat-more"); ?> </button>
+        <div id="chat-spinner" class="d-none mb-5 spinner-border"> </div>
         <button class="w-100 btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#create-modal"> <?= $parameters["getText"]("chat-create"); ?> </button>
         <a class="w-100 mt-5 btn btn-outline-secondary" href="<?= $parameters["getPath"]("/messages"); ?>"> <?= $parameters["getText"]("chat-back"); ?> </a>
     </div>

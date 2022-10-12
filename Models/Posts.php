@@ -10,7 +10,7 @@
             $threadID = \Static\Models\Threads::getID(htmlspecialchars($link));
             $page = (int)$page;
 
-            if($threadID <= 0 || $page < 1) return array();
+            if($threadID <= 0 || $page <= 0) return array();
 
             $query = parent::$pdo->prepare("
                 SELECT
@@ -118,7 +118,7 @@
             $query->bindValue(":postID", $postID, PDO::PARAM_INT);
             $query->bindValue(":userID", $userID, PDO::PARAM_INT);
 
-            return $query->execute() && (int)$query->rowCount() >= 1 ? "success" : "error";
+            return $query->execute() && (int)$query->rowCount() == 1 ? "success" : "error";
         }
 
         public static function getID($hash) {

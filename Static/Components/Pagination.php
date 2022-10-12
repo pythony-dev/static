@@ -10,7 +10,7 @@
             $path = htmlspecialchars($path);
 
             if($limit < 2) return null;
-            else if($page < 1 || $page > $limit) {
+            else if($page <= 0 || $page > $limit) {
                 header("Location: " . $path);
 
                 exit();

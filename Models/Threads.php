@@ -9,7 +9,7 @@
         public static function getThreads($page) {
             $page = (int)$page;
 
-            if($page < 1) return array();
+            if($page <= 0) return array();
 
             $query = parent::$pdo->prepare("
                 SELECT
@@ -145,7 +145,7 @@
             $query = parent::$pdo->prepare("UPDATE Threads SET deleted = NOW() WHERE id = :threadID AND deleted IS NULL");
             $query->bindValue(":threadID", $threadID, PDO::PARAM_INT);
 
-            return $query->execute() && (int)$query->rowCount() >= 1 ? "success" : "error";
+            return $query->execute() && (int)$query->rowCount() == 1 ? "success" : "error";
         }
 
         public static function getID($hash, $title = false) {

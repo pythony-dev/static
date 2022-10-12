@@ -14,18 +14,18 @@
         <?php } ?>
     </head>
     <body class="container text-center" style="background-image : url('<?= $parameters["getPath"]("/Public/Images/Index/Background.png"); ?>')">
-        <?= \Static\Components\Navbar::create(); ?>
-        <section class="bg-white shadow border section"> <?= $body; ?> </section>
+        <?php if(!$parameters["hash"]) echo \Static\Components\Navbar::create(); ?>
+        <section class="bg-white shadow border<?= !$parameters["hash"] ? " section" : null; ?>"> <?= $body; ?> </section>
         <?= \Static\Components\Footer::create(); ?>
         <div>
             <?php
-                if(is_array($parameters["modals"])) {
+                if(!$parameters["hash"] && is_array($parameters["modals"])) {
                     foreach($parameters["modals"] as $modal) {
                         if(file_exists("Views/Modals/" . ucfirst($modal) . ".php")) require_once("Views/Modals/" . ucfirst($modal) . ".php");
                     }
                 }
 
-                if(is_array($parameters["alerts"])) {
+                if(!$parameters["hash"] && is_array($parameters["alerts"])) {
                     foreach($parameters["alerts"] as $alert) {
                         $state = "success";
                         $color = "success";

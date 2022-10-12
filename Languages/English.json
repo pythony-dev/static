@@ -17,7 +17,8 @@
     "title-privacy" : "Privacy Policy",
     "title-error" : "Error",
 
-    "footer-rights" : "All Rights Reserved",
+    "footer-copyright" : "Copyright © @year @project - All Rights Reserved - Version @version",
+    "footer-developed" : "Developed by <a class=\"text-decoration-none text-light\" href=\"https://www.pythony.dev?static\" target=\"_blank\"> Anthony Khelil </a> with <a class=\"text-decoration-none text-light\" href=\"https://www.github.com/pythony-dev/static\" target=\"_blank\"> Static </a>",
     "footer-contact" : "Contact",
     "footer-terms" : "Terms and Conditions",
     "footer-privacy" : "Privacy Policy",
@@ -299,6 +300,7 @@
     "terms-agreement-content" : "These terms constitute the entire agreement between @name and you with respect to your use of this website, and supersede all prior agreements and arrangements.",
     "terms-law-title" : "Governing Law & Jurisdiction",
     "terms-law-content" : "These Terms shall be governed by and construed in accordance with the laws of the French State, and you submit to the non-exclusive jurisdiction of the state and federal courts located in France for the resolution of any dispute.",
+    "terms-button" : "Back to Home",
 
     "privacy-title" : "Privacy Policy for @name",
     "privacy-introduction-title" : "Introduction",
@@ -317,6 +319,13 @@
     "privacy-online-content" : "Our privacy policy applies only to our online activities and is valid for visitors to our website with respect to information they have shared and/or collected in @name. This policy does not apply to information collected offline or through channels other than this website.",
     "privacy-consent-title" : "Consent",
     "privacy-consent-content" : "By using our website, you hereby consent to our Privacy Policy and accept its <a href=\"@terms\"> Terms and Conditions. </a>",
+    "privacy-button" : "Back to Home",
+
+    "email-web" : "See the Web Version of this Email",
+    "email-sent" : "Sent to",
+    "email-on" : "on",
+    "email-at" : "at",
+    "email-button" : "Back to Home",
 
     "error-button" : "Back to Home",
     "error-requests" : "Too Many Requests",

@@ -4,4 +4,7 @@
         <h3 class="p-5"> <?= $parameters["getText"]("privacy-" . strtolower($privacy) . "-title"); ?> </h3>
         <p class="p-5 text-justify"> <?= $parameters["getText"]("privacy-" . strtolower($privacy) . "-content", true); ?> </p>
     <?php } ?>
+    <div class="p-5">
+        <a class="w-100 btn btn-primary" href="<?= $parameters["getPath"]("/"); ?>"> <?= $parameters["getText"]("privacy-button"); ?> </a>
+    </div>
 </article>

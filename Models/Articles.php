@@ -9,7 +9,7 @@
         public static function getArticles($page) {
             $page = (int)$page;
 
-            if($page < 1) return array();
+            if($page <= 0) return array();
 
             $query = parent::$pdo->prepare("SELECT id, title, overview, link FROM Articles WHERE NOW() >= published AND language = :language ORDER BY id DESC LIMIT :page, 5");
             $query->bindValue(":language", \Static\Languages\Translate::getLanguage(), PDO::PARAM_STR);

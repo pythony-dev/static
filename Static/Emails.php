@@ -4,26 +4,25 @@
 
     final class Emails {
 
-        private static $emails = array();
-
         public static function send($email, $title, $content, $copy = false) {
             $email = htmlspecialchars($email);
-            $title = \Static\Kernel::getSettings("project-name") . " - " . htmlspecialchars($title);
+            $title = htmlspecialchars($title);
             $content = \Static\Languages\Translate::getText("emails-start", true) . $content . \Static\Languages\Translate::getText("emails-end", true);
             $headers = htmlspecialchars_decode(\Static\Kernel::getSettings("emails-" . ($copy ? "copy" : "header")));
 
-            array_push(self::$emails, array(
-                "email" => $email,
-                "title" => $title,
-                "content" => $content,
-            ));
+            if(!($hash = \Static\Models\Emails::create($email, $title, $content))) return false;
 
-            if(\Static\Kernel::getSettings("project-environment") == "production") return mail($email, $title, $content, $headers);
-            else return true;
-        }
+            $_SERVER["REDIRECT_URL"] = substr(\Static\Kernel::getSettings("settings-link"), (array_key_exists("HTTPS", $_SERVER) ? 8 : 7) + strlen(\Static\Kernel::getValue($_SERVER, "HTTP_HOST"))) . "/email/" . $hash;
 
-        public static function getEmails() {
-            return self::$emails;
+            ob_start();
+
+            \Static\Kernel::start($hash);
+
+            $content = ob_get_contents();
+            ob_end_clean();
+
+            if(\Static\Kernel::getSettings("project-environment") == "production") return mail($email, \Static\Kernel::getSettings("project-name") . " - " . $title, $content, $headers);
+            else return \Static\Kernel::getSettings("project-environment") == "development";
         }
 
     }

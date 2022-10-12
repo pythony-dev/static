@@ -4,7 +4,8 @@
 
     final class Kernel {
 
-        private static $version = "1.5.5";
+        private static $version = "1.6.0";
+        private static $salt = "0123456789ABCDEF";
         private static $settings = array();
 
         private static $styles = array();
@@ -13,7 +14,17 @@
         private static $requests = array();
         private static $route = "";
 
-        private static $salt = "0123456789ABCDEF";
+        public static function getSalt() {
+            return self::$salt;
+        }
+
+        public static function getSettings($settings) {
+            $settings = \Static\Kernel::getValue(self::$settings, $settings);
+
+            foreach(self::$settings as $key => $value) $settings = str_replace("@" . $key, htmlspecialchars($value), $settings);
+
+            return $settings;
+        }
 
         public static function addStyle($style, $encode = true) {
             array_push(self::$styles, $encode ? htmlspecialchars($style) : $style);
@@ -37,74 +48,11 @@
             ));
         }
 
-        public static function getSettings($settings) {
-            $settings = \Static\Kernel::getValue(self::$settings, $settings);
-
-            foreach(self::$settings as $key => $value) $settings = str_replace("@" . $key, htmlspecialchars($value), $settings);
-
-            return $settings;
-        }
-
         public static function getRoute() {
             return self::$route;
         }
 
-        public static function getSalt() {
-            return self::$salt;
-        }
-
-        public static function getValue($array, $keys) {
-            if(!is_array($array)) return null;
-            else if(!is_array($keys) && array_key_exists($keys, $array)) return htmlspecialchars($array[$keys]);
-            else if(is_array($keys) && count($keys) == 1 && array_key_exists($keys[0], $array)) return htmlspecialchars($array[$keys[0]]);
-            else if(is_array($keys) && count($keys) > 1) {
-                $key = array_shift($keys);
-
-                if(array_key_exists($key, $array)) return self::getValue($array[$key], $keys);
-                else return null;
-            } else return null;
-        }
-
-        public static function getPath($path, $encode = true) {
-            $path = $encode ? htmlspecialchars($path) : $path;
-
-            if(empty($path) || (strlen($path) > 0 && $path[0] == "/")) return self::getSettings("settings-link") . $path;
-            else return $path;
-        }
-
-        public static function getHash($folder, $id) {
-            return sha1(htmlspecialchars($folder) . "-" . (int)$id . "?" . self::$salt);
-        }
-
-        public static function getRequest($response) {
-            return is_array($response) ? $response : array(
-                "status" => $response,
-            );
-        }
-
-        public static function getID($id) {
-            return (int)(($id - 1) / count(\Static\Languages\Translate::getAllLanguages())) + 1;
-        }
-
-        public static function getParameters() {
-            return array(
-                "userID" => self::getValue($_SESSION, "userID"),
-                "title" => \Static\Languages\Translate::getText("title-" . lcfirst(self::$route)),
-                "getSettings" => "\Static\Kernel::getSettings",
-                "getPath" => "\Static\Kernel::getPath",
-                "getText" => "\Static\Languages\Translate::getText",
-            );
-        }
-
-        public static function getNetworks() {
-            return array("Facebook", "YouTube", "Instagram", "TikTok", "Twitter");
-        }
-
-        public static function getDateFormat() {
-            return "d/m/Y H:i:s";
-        }
-
-        public static function start() {
+        public static function start($hash = null) {
             if(file_exists("Static/Settings.json")) self::$settings = (array)json_decode(file_get_contents("Static/Settings.json"));
             else exit();
 
@@ -112,7 +60,8 @@
             \Static\Languages\Translate::setLanguage();
 
             if(!\Static\Models\Sessions::start() || !\Static\Models\Requests::start()) return self::setError(429, \Static\Languages\Translate::getText("error-requests"), false);
-            else if(!array_key_exists("request", $_POST)) {
+            else if(!array_key_exists("request", $_POST) || $hash) {
+                self::addRoute("email", "/email/(link)");
                 self::addRoute("error", "/error/(error)");
 
                 $start = strlen(self::getSettings("settings-link")) + 1;
@@ -148,8 +97,14 @@
                         if(!file_exists($view)) return self::setError(404, \Static\Languages\Translate::getText("error-view") . $view, false);
                         else if(!class_exists($controller)) return self::setError(404, \Static\Languages\Translate::getText("error-controller") . $controller, false);
 
-                        $parameters = \Static\Controllers\Main::start($parameters);
-                        $parameters = $controller::start(array_merge(self::getParameters(), $parameters));
+                        $parameters = $controller::start(\Static\Controllers\Main::start(array_merge($parameters, array(
+                            "userID" => self::getValue($_SESSION, "userID"),
+                            "title" => \Static\Languages\Translate::getText("title-" . lcfirst(self::$route)),
+                            "hash" => $hash,
+                            "getSettings" => "\Static\Kernel::getSettings",
+                            "getPath" => "\Static\Kernel::getPath",
+                            "getText" => "\Static\Languages\Translate::getText",
+                        ))));
 
                         ob_start();
                         require_once($view);
@@ -185,10 +140,7 @@
                         if(!class_exists($request)) return self::setError(404, \Static\Languages\Translate::getText("error-class") . $request, true);
                         else if(!method_exists($request, $action)) return self::setError(404, \Static\Languages\Translate::getText("error-method") . $request . "::" . $action, true);
 
-                        $response = $request::$action();
-
-                        if(self::getSettings("project-environment") == "development" && array_key_exists("debug", $_POST)) print_r(\Static\Emails::getEmails());
-                        else echo json_encode($response);
+                        echo json_encode($request::$action());
 
                         return;
                     }
@@ -199,11 +151,15 @@
         }
 
         public static function setError($error, $response, $request) {
-            $parameters = \Static\Controllers\Main::start(array(
+            $parameters = \Static\Controllers\Error::start(\Static\Controllers\Main::start(array(
                 "error" => (int)$error,
                 "response" => htmlspecialchars($response),
-            ));
-            $parameters = \Static\Controllers\Error::start(array_merge(self::getParameters(), $parameters));
+                "userID" => self::getValue($_SESSION, "userID"),
+                "hash" => false,
+                "getSettings" => "\Static\Kernel::getSettings",
+                "getPath" => "\Static\Kernel::getPath",
+                "getText" => "\Static\Languages\Translate::getText",
+            )));
 
             http_response_code(array_key_exists("error", $parameters) ? (int)$parameters["error"] : 500);
 
@@ -228,6 +184,47 @@
             \Static\Models\Errors::create((int)$parameters["error"], htmlspecialchars($parameters["response"]));
 
             exit();
+        }
+
+        public static function getValue($array, $keys) {
+            if(!is_array($array)) return null;
+            else if(!is_array($keys) && array_key_exists($keys, $array)) return htmlspecialchars($array[$keys]);
+            else if(is_array($keys) && count($keys) == 1 && array_key_exists($keys[0], $array)) return htmlspecialchars($array[$keys[0]]);
+            else if(is_array($keys) && count($keys) > 1) {
+                $key = array_shift($keys);
+
+                if(array_key_exists($key, $array)) return self::getValue($array[$key], $keys);
+                else return null;
+            } else return null;
+        }
+
+        public static function getPath($path, $encode = true) {
+            $path = $encode ? htmlspecialchars($path) : $path;
+
+            if(empty($path) || (strlen($path) > 0 && $path[0] == "/")) return self::getSettings("settings-link") . $path;
+            else return $path;
+        }
+
+        public static function getHash($folder, $id) {
+            return sha1(htmlspecialchars($folder) . "-" . htmlspecialchars($id) . "?" . self::$salt);
+        }
+
+        public static function getID($id) {
+            return (int)(($id - 1) / count(\Static\Languages\Translate::getAllLanguages())) + 1;
+        }
+
+        public static function getRequest($response) {
+            return is_array($response) ? $response : array(
+                "status" => $response,
+            );
+        }
+
+        public static function getDateFormat() {
+            return (\Static\Languages\Translate::getLanguage() == "english" ? "m/d" : "d/m") . "/Y H:i:s";
+        }
+
+        public static function getNetworks() {
+            return array("Facebook", "YouTube", "Instagram", "TikTok", "Twitter");
         }
 
     }

@@ -16,7 +16,8 @@
         <p id="messages-empty" class="mb-0"> <?= $parameters["getText"]("messages-empty"); ?> </p>
     </div>
     <div class="p-5">
-        <button id="messages-more" class="d-none w-100 mb-5 btn btn-primary"> <?= $parameters["getText"]("messages-more"); ?> </button>
+        <button id="messages-more" class="w-100 mb-5 btn btn-primary"> <?= $parameters["getText"]("messages-more"); ?> </button>
+        <div id="messages-spinner" class="d-none mb-5 spinner-border"> </div>
         <button class="w-100 btn btn-outline-success" type="button" data-bs-toggle="modal" data-bs-target="#search-modal"> <?= $parameters["getText"]("messages-search"); ?> </button>
     </div>
 </article>

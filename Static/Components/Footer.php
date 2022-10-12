@@ -5,9 +5,11 @@
     final class Footer {
 
         static function create() {
-            $getText = \Static\Kernel::getParameters()["getText"];
-            $getSettings = \Static\Kernel::getParameters()["getSettings"];
-            $getPath = \Static\Kernel::getParameters()["getPath"];
+            $copyright = array(
+                "year" => date("Y"),
+                "project" => \Static\Kernel::getSettings("project-name"),
+                "version" => \Static\Kernel::getSettings("project-version"),
+            );
 
             ob_start();
             ?>
@@ -17,22 +19,23 @@
                     <div class="row mx-0">
                         <div class="col-6 col-md-4 offset-3 offset-md-0 my-auto p-5">
                             <div class="bg-light shadow border rounded-circle">
-                                <a href="<?= $getPath("/"); ?>">
-                                    <img class="p-4 img-fluid" src="<?= $getPath("/Public/Images/Index/Icon.png"); ?>" alt="<?= $getSettings("project-name"); ?>"/>
+                                <a href="<?= \Static\Kernel::getPath("/"); ?>">
+                                    <img class="p-4 img-fluid" src="<?= \Static\Kernel::getPath("/Public/Images/Index/Icon.png"); ?>" alt="<?= \Static\Kernel::getSettings("project-name"); ?>"/>
                                 </a>
                             </div>
                         </div>
                         <div class="col-12 col-md-8 my-auto p-5 pt-0 pt-md-5">
-                            <p class="text-light"> Copyright © <?= date("Y") . " " . $getSettings("project-name") . " - " . $getText("footer-rights") . " - Version " . $getSettings("project-version"); ?> </p>
+                            <p class="mb-0 text-light"> <?= \Static\Languages\Translate::getText("footer-copyright", false, $copyright); ?> </p>
+                            <p class="text-light"> <?= \Static\Languages\Translate::getText("footer-developed", true); ?> </p>
                             <div class="d-flex flex-column flex-md-row justify-content-between">
-                                <a class="text-decoration-none link-light" href="<?= $getPath("/contact"); ?>"> <?= $getText("footer-contact"); ?> </a>
-                                <a class="text-decoration-none link-light" href="<?= $getPath("/terms"); ?>"> <?= $getText("footer-terms"); ?> </a>
-                                <a class="text-decoration-none link-light" href="<?= $getPath("/privacy"); ?>"> <?= $getText("footer-privacy"); ?> </a>
+                                <a class="text-decoration-none link-light" href="<?= \Static\Kernel::getPath("/contact"); ?>"> <?= \Static\Languages\Translate::getText("footer-contact"); ?> </a>
+                                <a class="text-decoration-none link-light" href="<?= \Static\Kernel::getPath("/terms"); ?>"> <?= \Static\Languages\Translate::getText("footer-terms"); ?> </a>
+                                <a class="text-decoration-none link-light" href="<?= \Static\Kernel::getPath("/privacy"); ?>"> <?= \Static\Languages\Translate::getText("footer-privacy"); ?> </a>
                             </div>
                             <div class="d-flex justify-content-between pt-4">
-                                <?php foreach(\Static\Kernel::getNetworks() as $network) if($getSettings("networks-" . strtolower($network))) { ?>
-                                    <a href="<?= $getSettings("networks-" . strtolower($network)); ?>" target="_blank">
-                                        <img class="img-fluid shadow border border-dark rounded-circle networks" src="<?= $getPath("/Public/Images/Networks/" . $network . ".png"); ?>" alt="<?= $network; ?>"/>
+                                <?php foreach(\Static\Kernel::getNetworks() as $network) if(\Static\Kernel::getSettings("networks-" . strtolower($network))) { ?>
+                                    <a href="<?= \Static\Kernel::getSettings("networks-" . strtolower($network)); ?>" target="_blank">
+                                        <img class="img-fluid shadow border border-dark rounded-circle networks" src="<?= \Static\Kernel::getPath("/Public/Images/Networks/" . $network . ".png"); ?>" alt="<?= $network; ?>"/>
                                     </a>
                                 <?php } ?>
                             </div>

@@ -15,6 +15,7 @@
     require_once("Models/Logs.php");
     require_once("Models/Messages.php");
     require_once("Models/Blocks.php");
+    require_once("Models/Emails.php");
     require_once("Models/Errors.php");
 
 ?>

@@ -25,7 +25,7 @@
                                 <input class="btn btn-outline-success rounded-circle image-48 ratio-1" type="image" src="<?= $parameters["getPath"]("/Public/Images/Icons/Chat.png"); ?>" alt="<?= $parameters["getText"]("thread-chat"); ?>"/>
                             </a>
                         <?php } ?>
-                    <?php } else if($id != 0) { ?>
+                    <?php } else if($id != 0 || $parameters["page"] != 1) { ?>
                         <div class="my-auto">
                             <input class="btn btn-outline-danger rounded-circle image-48 ratio-1 post-delete" type="image" src="<?= $parameters["getPath"]("/Public/Images/Icons/Delete.png"); ?>" alt="<?= $parameters["getText"]("thread-delete"); ?>" post="<?= $post["hash"]; ?>"/>
                         </div>
@@ -46,7 +46,7 @@
     </div>
     <?= Static\Components\Pagination::create($parameters["page"], $parameters["limit"], $parameters["getPath"]("/thread/" . $parameters["link"])); ?>
     <div class="p-5">
-        <?php if($parameters["userID"] < 1) { ?>
+        <?php if($parameters["userID"] <= 0) { ?>
             <a class="w-100 btn btn-primary" href="<?= $parameters["getPath"]("/log-in"); ?>"> <?= $parameters["getText"]("thread-logIn"); ?> </a>
         <?php } else { ?>
             <button class="w-100 btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#create-modal"> <?= $parameters["getText"]("thread-create"); ?> </button>

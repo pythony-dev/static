@@ -5,7 +5,7 @@
     final class Messages extends Main {
 
         public static function start($parameters) {
-            if($parameters["userID"] < 1) {
+            if($parameters["userID"] <= 0) {
                 header("Location: " . \Static\Kernel::getPath("/log-in"));
 
                 exit();

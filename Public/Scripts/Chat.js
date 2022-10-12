@@ -9,6 +9,9 @@ $(document).ready(() => {
 })
 
 const loadMessages = () => {
+    $("#chat-more").addClass("d-none")
+    $("#chat-spinner").removeClass("d-none")
+
     getToken(token => {
         $.post("", {
             "token" : token,
@@ -17,8 +20,10 @@ const loadMessages = () => {
             "user" : $("#chat-user").val(),
             "page" : parseInt($("#chat-page").val()) + 1,
         }).then(response => {
+            $("#chat-spinner").addClass("d-none")
+            $("#chat-more").removeClass("d-none")
+
             if(response["status"] == "success" && "messages" in response) {
-                if($("#chat-page").val() == 0) $("#chat-more").removeClass("d-none")
                 if(response["messages"].length != 10) $("#chat-more").addClass("d-none")
                 if(response["messages"].length != 0) {
                     $("#chat-empty").addClass("d-none")
@@ -84,6 +89,9 @@ const loadMessages = () => {
                 })
             } else showAlert("chat-message-error")
         }).fail(() => {
+            $("#chat-spinner").addClass("d-none")
+            $("#chat-more").removeClass("d-none")
+
             showAlert("chat-message-error")
         })
     })

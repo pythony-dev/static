@@ -9,6 +9,9 @@ $(document).ready(() => {
 })
 
 const loadMessages = () => {
+    $("#messages-more").addClass("d-none")
+    $("#messages-spinner").removeClass("d-none")
+
     getToken(token => {
         $.post("", {
             "token" : token,
@@ -16,8 +19,10 @@ const loadMessages = () => {
             "action" : "getMessages",
             "page" : parseInt($("#messages-page").val()) + 1,
         }).then(response => {
+            $("#messages-spinner").addClass("d-none")
+            $("#messages-more").removeClass("d-none")
+
             if(response["status"] == "success" && "messages" in response) {
-                if($("#messages-page").val() == 0) $("#messages-more").removeClass("d-none")
                 if(response["messages"].length != 10) $("#messages-more").addClass("d-none")
                 if(response["messages"].length != 0) {
                     $("#messages-empty").addClass("d-none")
@@ -110,6 +115,9 @@ const loadMessages = () => {
                 })
             } else showAlert("messages-message-error")
         }).fail(() => {
+            $("#messages-spinner").addClass("d-none")
+            $("#messages-more").removeClass("d-none")
+
             showAlert("messages-message-error")
         })
     })
