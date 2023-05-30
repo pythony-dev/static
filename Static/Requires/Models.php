@@ -11,10 +11,11 @@
     require_once("Models/Reports.php");
     require_once("Models/Contact.php");
     require_once("Models/Users.php");
-    require_once("Models/Updates.php");
+    require_once("Models/Confirmations.php");
     require_once("Models/Logs.php");
     require_once("Models/Messages.php");
     require_once("Models/Blocks.php");
+    require_once("Models/Updates.php");
     require_once("Models/Emails.php");
     require_once("Models/Errors.php");
 

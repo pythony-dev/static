@@ -108,6 +108,28 @@ INSERT INTO `Blocks` (`id`, `created`, `deleted`, `sessionID`, `blockerID`, `blo
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `Confirmations`
+--
+
+CREATE TABLE `Confirmations` (
+  `id` int(11) NOT NULL,
+  `created` datetime NOT NULL,
+  `deleted` datetime DEFAULT NULL,
+  `sessionID` int(11) NOT NULL,
+  `email` varchar(255) NOT NULL,
+  `code` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `Confirmations`
+--
+
+INSERT INTO `Confirmations` (`id`, `created`, `deleted`, `sessionID`, `email`, `code`) VALUES
+(1, '2022-10-12 12:30:00', NULL, 1, 'hello@pythony.dev', '1A2B3C4D');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `Contact`
 --
 
@@ -233,8 +255,7 @@ CREATE TABLE `Logs` (
 
 INSERT INTO `Logs` (`id`, `created`, `sessionID`, `userID`, `status`) VALUES
 (1, '2022-10-12 12:30:00', 1, 1, 'success'),
-(2, '2022-10-12 12:30:00', 1, 1, 'reset'),
-(3, '2022-10-12 12:30:00', 1, 1, 'error');
+(2, '2022-10-12 12:30:00', 1, 1, 'error');
 
 -- --------------------------------------------------------
 
@@ -456,25 +477,24 @@ CREATE TABLE `Users` (
   `language` varchar(255) NOT NULL,
   `notifications` varchar(4095) NOT NULL,
   `others` varchar(4095) NOT NULL,
-  `password` varchar(255) NOT NULL,
-  `reset` varchar(255) DEFAULT NULL
+  `password` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `Users`
 --
 
-INSERT INTO `Users` (`id`, `created`, `deleted`, `sessionID`, `email`, `username`, `language`, `notifications`, `others`, `password`, `reset`) VALUES
-(1, '2022-10-12 12:30:00', NULL, 1, 'hello@pythony.dev', 'Pythony', 'english', '{"message":"true","published":"true"}', '{"languages":"english,french","contact":"true"}', '65e2ea4f025f942a7923c60f90ac16919c6eb3e1', NULL),
-(2, '2022-10-12 12:30:00', NULL, 1, 'julie@pythony.dev', 'Julie', 'english', '{"message":"true","published":"true"}', '{"languages":"english,french","contact":"true"}', '65e2ea4f025f942a7923c60f90ac16919c6eb3e1', NULL),
-(3, '2022-10-12 12:30:00', NULL, 1, 'marc@pythony.dev', 'Marc', 'english', '{"message":"true","published":"true"}', '{"languages":"english,french","contact":"true"}', '65e2ea4f025f942a7923c60f90ac16919c6eb3e1', NULL),
-(4, '2022-10-12 12:30:00', NULL, 1, 'mathilde@pythony.dev', 'Mathilde', 'english', '{"message":"true","published":"true"}', '{"languages":"english,french","contact":"true"}', '65e2ea4f025f942a7923c60f90ac16919c6eb3e1', NULL),
-(5, '2022-10-12 12:30:00', NULL, 1, 'robert@pythony.dev', 'Robert', 'english', '{"message":"true","published":"true"}', '{"languages":"english,french","contact":"true"}', '65e2ea4f025f942a7923c60f90ac16919c6eb3e1', NULL),
-(6, '2022-10-12 12:30:00', NULL, 1, 'johanna@pythony.dev', 'Johanna', 'english', '{"message":"true","published":"true"}', '{"languages":"english,french","contact":"true"}', '65e2ea4f025f942a7923c60f90ac16919c6eb3e1', NULL),
-(7, '2022-10-12 12:30:00', NULL, 1, 'pascal@pythony.dev', 'Pascal', 'english', '{"message":"true","published":"true"}', '{"languages":"english,french","contact":"true"}', '65e2ea4f025f942a7923c60f90ac16919c6eb3e1', NULL),
-(8, '2022-10-12 12:30:00', NULL, 1, 'vanessa@pythony.dev', 'Vanessa', 'english', '{"message":"true","published":"true"}', '{"languages":"english,french","contact":"true"}', '65e2ea4f025f942a7923c60f90ac16919c6eb3e1', NULL),
-(9, '2022-10-12 12:30:00', NULL, 1, 'albert@pythony.dev', 'Albert', 'english', '{"message":"true","published":"true"}', '{"languages":"english,french","contact":"true"}', '65e2ea4f025f942a7923c60f90ac16919c6eb3e1', NULL),
-(10, '2022-10-12 12:30:00', NULL, 1, 'valentine@pythony.dev', 'Valentine', 'english', '{"message":"true","published":"true"}', '{"languages":"english,french","contact":"true"}', '65e2ea4f025f942a7923c60f90ac16919c6eb3e1', NULL);
+INSERT INTO `Users` (`id`, `created`, `deleted`, `sessionID`, `email`, `username`, `language`, `notifications`, `others`, `password`) VALUES
+(1, '2022-10-12 12:30:00', NULL, 1, 'hello@pythony.dev', 'Pythony', 'english', '{"message":"true","published":"true"}', '{"languages":"english,french","contact":"true"}', '65e2ea4f025f942a7923c60f90ac16919c6eb3e1'),
+(2, '2022-10-12 12:30:00', NULL, 1, 'julie@pythony.dev', 'Julie', 'english', '{"message":"true","published":"true"}', '{"languages":"english,french","contact":"true"}', '65e2ea4f025f942a7923c60f90ac16919c6eb3e1'),
+(3, '2022-10-12 12:30:00', NULL, 1, 'marc@pythony.dev', 'Marc', 'english', '{"message":"true","published":"true"}', '{"languages":"english,french","contact":"true"}', '65e2ea4f025f942a7923c60f90ac16919c6eb3e1'),
+(4, '2022-10-12 12:30:00', NULL, 1, 'mathilde@pythony.dev', 'Mathilde', 'english', '{"message":"true","published":"true"}', '{"languages":"english,french","contact":"true"}', '65e2ea4f025f942a7923c60f90ac16919c6eb3e1'),
+(5, '2022-10-12 12:30:00', NULL, 1, 'robert@pythony.dev', 'Robert', 'english', '{"message":"true","published":"true"}', '{"languages":"english,french","contact":"true"}', '65e2ea4f025f942a7923c60f90ac16919c6eb3e1'),
+(6, '2022-10-12 12:30:00', NULL, 1, 'johanna@pythony.dev', 'Johanna', 'english', '{"message":"true","published":"true"}', '{"languages":"english,french","contact":"true"}', '65e2ea4f025f942a7923c60f90ac16919c6eb3e1'),
+(7, '2022-10-12 12:30:00', NULL, 1, 'pascal@pythony.dev', 'Pascal', 'english', '{"message":"true","published":"true"}', '{"languages":"english,french","contact":"true"}', '65e2ea4f025f942a7923c60f90ac16919c6eb3e1'),
+(8, '2022-10-12 12:30:00', NULL, 1, 'vanessa@pythony.dev', 'Vanessa', 'english', '{"message":"true","published":"true"}', '{"languages":"english,french","contact":"true"}', '65e2ea4f025f942a7923c60f90ac16919c6eb3e1'),
+(9, '2022-10-12 12:30:00', NULL, 1, 'albert@pythony.dev', 'Albert', 'english', '{"message":"true","published":"true"}', '{"languages":"english,french","contact":"true"}', '65e2ea4f025f942a7923c60f90ac16919c6eb3e1'),
+(10, '2022-10-12 12:30:00', NULL, 1, 'valentine@pythony.dev', 'Valentine', 'english', '{"message":"true","published":"true"}', '{"languages":"english,french","contact":"true"}', '65e2ea4f025f942a7923c60f90ac16919c6eb3e1');
 
 --
 -- Indexes for dumped tables
@@ -490,6 +510,12 @@ ALTER TABLE `Articles`
 -- Indexes for table `Blocks`
 --
 ALTER TABLE `Blocks`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `Confirmations`
+--
+ALTER TABLE `Confirmations`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -593,6 +619,12 @@ ALTER TABLE `Blocks`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
+-- AUTO_INCREMENT for table `Confirmations`
+--
+ALTER TABLE `Confirmations`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
 -- AUTO_INCREMENT for table `Contact`
 --
 ALTER TABLE `Contact`
@@ -620,7 +652,7 @@ ALTER TABLE `Features`
 -- AUTO_INCREMENT for table `Logs`
 --
 ALTER TABLE `Logs`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `Messages`

@@ -6,10 +6,12 @@
 
         public static function signUp() {
             $email = \Static\Kernel::getValue($_POST, "email");
+            $code = \Static\Kernel::getValue($_POST, "code");
             $username = \Static\Kernel::getValue($_POST, "username");
+            $password = \Static\Kernel::getValue($_POST, "password");
             $agree = \Static\Kernel::getValue($_POST, "agree");
 
-            return \Static\Kernel::getRequest(\Static\Models\Users::signUp($email, $username, $agree));
+            return \Static\Kernel::getRequest(\Static\Models\Users::signUp($email, $code, $username, $password, $agree));
         }
 
         public static function logIn() {
@@ -21,8 +23,10 @@
 
         public static function reset() {
             $email = \Static\Kernel::getValue($_POST, "email");
+            $code = \Static\Kernel::getValue($_POST, "code");
+            $password = \Static\Kernel::getValue($_POST, "password");
 
-            return \Static\Kernel::getRequest(\Static\Models\Users::reset($email));
+            return \Static\Kernel::getRequest(\Static\Models\Users::reset($email, $code, $password));
         }
 
         public static function search() {

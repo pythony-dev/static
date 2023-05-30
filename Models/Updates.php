@@ -6,12 +6,13 @@
 
     final class Updates extends Database {
 
-        public static function create($setting, $value) {
+        public static function create($setting, $value, $userID = null) {
             $setting = htmlspecialchars($setting);
             $value = htmlspecialchars($value);
 
             $sessionID = (int)\Static\Kernel::getValue($_SESSION, "sessionID");
-            $userID = (int)\Static\Kernel::getValue($_SESSION, "userID");
+
+            if($userID == null) $userID = (int)\Static\Kernel::getValue($_SESSION, "userID");
 
             if(!in_array($setting, array("email", "username", "password", "reset")) || empty($value) || $sessionID <= 0 || $userID <= 0) return false;
 

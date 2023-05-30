@@ -2,8 +2,13 @@
     <h1 class="p-5 fw-bold"> <?= $parameters["getText"]("signUp-title"); ?> </h1>
     <p class="p-5 text-justify"> <?= $parameters["getText"]("signUp-content"); ?> </p>
     <form id="signUp-form" class="p-5">
-        <input id="signUp-email" class="mb-5 form-control text-center" type="email" placeholder="<?= $parameters["getText"]("signUp-email"); ?>" required/>
+        <div class="input-group">
+            <input id="signUp-email" class="w-67 form-control text-center" type="email" placeholder="<?= $parameters["getText"]("signUp-email"); ?>" required/>
+            <input id="signUp-confirm" class="w-33 btn btn-primary" type="button" value="<?= $parameters["getText"]("signUp-confirm"); ?>"/>
+        </div>
+        <input id="signUp-code" class="d-none mt-5 form-control text-center" type="text" placeholder="<?= $parameters["getText"]("signUp-code"); ?>"/>
         <input id="signUp-username" class="mt-5 form-control text-center" type="text" placeholder="<?= $parameters["getText"]("signUp-username"); ?>" required/>
+        <input id="signUp-password" class="mt-5 form-control text-center" type="password" placeholder="<?= $parameters["getText"]("signUp-password"); ?>" required/>
         <div class="d-flex justify-content-center align-items-center py-5">
             <div>
                 <input id="signUp-agree" class="form-check-input" type="checkbox" required/>

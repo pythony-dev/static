@@ -12,7 +12,7 @@
 
             if($sessionID <= 0 || $userID < 0) return 0;
 
-            $value = \Static\Kernel::getHash("Token", \Static\Models\Users::createPassword());
+            $value = \Static\Kernel::getHash("Token", rand(0, PHP_INT_MAX));
 
             $query = parent::$pdo->prepare("INSERT INTO Tokens (created, deleted, sessionID, userID, value) VALUES (NOW(), NULL, :sessionID, :userID, :value)");
             $query->bindValue(":sessionID", $sessionID, PDO::PARAM_INT);
@@ -34,7 +34,7 @@
 
             if(!($results = $query->fetch())) return false;
 
-            $query = parent::$pdo->prepare("UPDATE Tokens SET deleted = NOW() WHERE id = :id AND deleted IS NULL");
+            $query = parent::$pdo->prepare("UPDATE Tokens SET deleted = NOW() WHERE id = :id");
             $query->bindValue(":id", (int)$results["id"], PDO::PARAM_INT);
 
             return $query->execute() && (int)$query->rowCount() == 1;

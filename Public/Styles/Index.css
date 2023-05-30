@@ -26,6 +26,10 @@
     width : 64px;
 } .image-256 {
     width : 256px;
+} .w-67 {
+    width : 67%;
+} .w-33 {
+    width : 33%;
 } .pointer {
     cursor : pointer;
 } .zoom {

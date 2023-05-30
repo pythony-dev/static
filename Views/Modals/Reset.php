@@ -4,7 +4,12 @@
             <h3 class="p-4"> <?= $parameters["getText"]("reset-title"); ?> </h3>
             <p class="p-4 text-justify"> <?= $parameters["getText"]("reset-content"); ?> </p>
             <form id="reset-form" class="p-4">
-                <input id="reset-email" class="form-control text-center" type="email" placeholder="<?= $parameters["getText"]("reset-email"); ?>" required/>
+                <div class="input-group">
+                    <input id="reset-email" class="w-67 form-control text-center" type="email" placeholder="<?= $parameters["getText"]("reset-email"); ?>" required/>
+                    <input id="reset-confirm" class="w-33 btn btn-primary" type="button" value="<?= $parameters["getText"]("reset-confirm"); ?>"/>
+                </div>
+                <input id="reset-code" class="d-none mt-4 form-control text-center" type="text" placeholder="<?= $parameters["getText"]("reset-code"); ?>"/>
+                <input id="reset-password" class="mt-4 form-control text-center" type="password" placeholder="<?= $parameters["getText"]("reset-password"); ?>" required/>
                 <input class="w-100 mt-4 btn btn-primary" type="submit" value="<?= $parameters["getText"]("reset-submit"); ?>"/>
                 <button class="w-100 mt-4 btn btn-outline-secondary" type="button" data-bs-dismiss="modal"> <?= $parameters["getText"]("reset-cancel"); ?> </button>
             </form>

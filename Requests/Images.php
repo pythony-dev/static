@@ -11,7 +11,7 @@
             $folder = ucfirst(\Static\Kernel::getValue($_POST, "folder"));
 
             if($imageID >= 1 && in_array($folder, array("Threads", "Posts", "Messages", "Users")) && array_key_exists("image", $_FILES)) {
-                if($folder != "Users") $imageID = \Static\Models\Users::createPassword();
+                if($folder != "Users") $imageID = rand(0, PHP_INT_MAX);
                 if($folder == "Threads") $folder = "Posts";
 
                 $path = "Public/Images/" . $folder . "/" . \Static\Kernel::getHash(substr($folder, 0, -1), $imageID) . ".jpeg";
