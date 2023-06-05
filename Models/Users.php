@@ -60,7 +60,7 @@
 
             $password = \Static\Kernel::getHash("Password", $password);
 
-            $query = parent::$pdo->prepare("SELECT id, language, password, reset FROM Users WHERE email = :email AND deleted IS NULL");
+            $query = parent::$pdo->prepare("SELECT id, language, password FROM Users WHERE email = :email AND deleted IS NULL");
             $query->bindValue(":email", $email, PDO::PARAM_STR);
             $query->execute();
 
@@ -273,7 +273,7 @@
 
             if(!($results = $query->fetch())) return "confirm";
 
-            $query = parent::$pdo->prepare("UPDATE Users SET password = :password, reset = NULL WHERE id = :userID");
+            $query = parent::$pdo->prepare("UPDATE Users SET password = :password WHERE id = :userID");
             $query->bindValue(":password", $password, PDO::PARAM_STR);
             $query->bindValue(":userID", $userID, PDO::PARAM_INT);
 
