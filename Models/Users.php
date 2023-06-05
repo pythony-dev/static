@@ -44,7 +44,7 @@
                 "settings" => \Static\Kernel::getPath("/settings"),
             ));
 
-            return $query->execute() && copy("Public/Images/Users/" . \Static\Kernel::getHash("User", 0) . ".jpeg", "Public/Images/Users/" . \Static\Kernel::getHash("User", parent::$pdo->lastInsertId()) . ".jpeg") && \Static\Models\Confirmations::delete($email) && \Static\Emails::send($email, $title, $content) ? array(
+            return \Static\Models\Confirmations::delete($email) && $query->execute() && copy("Public/Images/Users/" . \Static\Kernel::getHash("User", 0) . ".jpeg", "Public/Images/Users/" . \Static\Kernel::getHash("User", parent::$pdo->lastInsertId()) . ".jpeg") && \Static\Emails::send($email, $title, $content) ? array(
                 "status" => "success",
                 "link" => \Static\Kernel::getPath("/log-in"),
             ) : "error";
@@ -108,7 +108,7 @@
                 "settings" => \Static\Kernel::getPath("/settings"),
             ));
 
-            return $query->execute() && \Static\Models\Updates::create("reset", $results["password"], $results["id"]) && \Static\Emails::send($email, $title, $content) ? "success" : "error";
+            return \Static\Models\Confirmations::delete($email) && $query->execute() && \Static\Models\Updates::create("reset", $results["password"], $results["id"]) && \Static\Emails::send($email, $title, $content) ? "success" : "error";
         }
 
         public static function search($search) {
