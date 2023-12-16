@@ -15,6 +15,7 @@
     "title-settings-logOut" : "Déconnexion",
     "title-terms" : "Termes et Conditions",
     "title-privacy" : "Politique de Confidentialité",
+    "title-siteMap" : "Plan du Site",
     "title-error" : "Erreur",
 
     "footer-copyright" : "Copyright © @year @project - Tous Droits Réservés - Version @version",
@@ -22,6 +23,7 @@
     "footer-contact" : "Contact",
     "footer-terms" : "Termes et Conditions",
     "footer-privacy" : "Politique de Confidentialité",
+    "footer-sitemap" : "Plan du Site",
 
     "index-alert-success" : "Succès",
     "index-alert-error" : "Erreur",
@@ -338,6 +340,9 @@
     "privacy-consent-title" : "Consentement",
     "privacy-consent-content" : "En utilisant notre site web, vous consentez par la présente à notre Politique de Confidentialité et acceptez ses <a href=\"@terms\"> Termes et Conditions. </a>",
     "privacy-button" : "Retourner à l'Accueil",
+
+    "siteMap-title" : "Plan du Site",
+    "siteMap-content" : "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi luctus metus eu dolor viverra accumsan. Aliquam dapibus dolor vitae posuere vulputate. In posuere augue nibh, vitae pretium ipsum tincidunt sed. Curabitur elit risus, pharetra a egestas in, rutrum eget velit. Quisque maximus sit amet quam ac blandit. Suspendisse interdum molestie libero non tristique. Praesent at risus pretium, feugiat odio ut, molestie urna. In varius quam volutpat, egestas odio non, vehicula sem. Cras pellentesque eros ex, a molestie quam ultricies eu. Nunc mollis ligula id efficitur sagittis. Cras rutrum aliquet sem, ac feugiat elit luctus sit amet. Nam ut purus ut orci luctus ultricies ac sed eros.",
 
     "email-web" : "Voir la Version Web de cet Email",
     "email-sent" : "Envoyé à",

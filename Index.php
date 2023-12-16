@@ -18,6 +18,7 @@
     Static\Kernel::addRoute("settings", "/settings");
     Static\Kernel::addRoute("terms", "/terms");
     Static\Kernel::addRoute("privacy", "/privacy");
+    Static\Kernel::addRoute("siteMap", "/site-map");
 
     Static\Kernel::addRequest("threads");
     Static\Kernel::addRequest("posts");

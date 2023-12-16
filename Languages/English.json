@@ -15,6 +15,7 @@
     "title-settings-logOut" : "Log Out",
     "title-terms" : "Terms and Conditions",
     "title-privacy" : "Privacy Policy",
+    "title-siteMap" : "Site Map",
     "title-error" : "Error",
 
     "footer-copyright" : "Copyright © @year @project - All Rights Reserved - Version @version",
@@ -22,6 +23,7 @@
     "footer-contact" : "Contact",
     "footer-terms" : "Terms and Conditions",
     "footer-privacy" : "Privacy Policy",
+    "footer-sitemap" : "Site Map",
 
     "index-alert-success" : "Success",
     "index-alert-error" : "Error",
@@ -338,6 +340,9 @@
     "privacy-consent-title" : "Consent",
     "privacy-consent-content" : "By using our website, you hereby consent to our Privacy Policy and accept its <a href=\"@terms\"> Terms and Conditions. </a>",
     "privacy-button" : "Back to Home",
+
+    "siteMap-title" : "Site Map",
+    "siteMap-content" : "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi luctus metus eu dolor viverra accumsan. Aliquam dapibus dolor vitae posuere vulputate. In posuere augue nibh, vitae pretium ipsum tincidunt sed. Curabitur elit risus, pharetra a egestas in, rutrum eget velit. Quisque maximus sit amet quam ac blandit. Suspendisse interdum molestie libero non tristique. Praesent at risus pretium, feugiat odio ut, molestie urna. In varius quam volutpat, egestas odio non, vehicula sem. Cras pellentesque eros ex, a molestie quam ultricies eu. Nunc mollis ligula id efficitur sagittis. Cras rutrum aliquet sem, ac feugiat elit luctus sit amet. Nam ut purus ut orci luctus ultricies ac sed eros.",
 
     "email-web" : "See the Web Version of this Email",
     "email-sent" : "Sent to",

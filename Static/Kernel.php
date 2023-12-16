@@ -4,7 +4,7 @@
 
     final class Kernel {
 
-        private static $version = "1.6.0";
+        private static $version = "1.6.4";
         private static $salt = "0123456789ABCDEF";
         private static $settings = array();
 

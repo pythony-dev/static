@@ -27,10 +27,11 @@
                         <div class="col-12 col-md-8 my-auto p-5 pt-0 pt-md-5">
                             <p class="mb-0 text-light"> <?= \Static\Languages\Translate::getText("footer-copyright", false, $copyright); ?> </p>
                             <p class="text-light"> <?= \Static\Languages\Translate::getText("footer-developed", true); ?> </p>
-                            <div class="d-flex flex-column flex-md-row justify-content-between">
+                            <div class="d-flex flex-column flex-md-row justify-content-between align-items-center">
                                 <a class="text-decoration-none link-light" href="<?= \Static\Kernel::getPath("/contact"); ?>"> <?= \Static\Languages\Translate::getText("footer-contact"); ?> </a>
                                 <a class="text-decoration-none link-light" href="<?= \Static\Kernel::getPath("/terms"); ?>"> <?= \Static\Languages\Translate::getText("footer-terms"); ?> </a>
                                 <a class="text-decoration-none link-light" href="<?= \Static\Kernel::getPath("/privacy"); ?>"> <?= \Static\Languages\Translate::getText("footer-privacy"); ?> </a>
+                                <a class="text-decoration-none link-light" href="<?= \Static\Kernel::getPath("/site-map"); ?>"> <?= \Static\Languages\Translate::getText("footer-sitemap"); ?> </a>
                             </div>
                             <div class="d-flex justify-content-between pt-4">
                                 <?php foreach(\Static\Kernel::getNetworks() as $network) if(\Static\Kernel::getSettings("networks-" . strtolower($network))) { ?>
