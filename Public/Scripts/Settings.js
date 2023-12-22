@@ -50,7 +50,7 @@ $(document).ready(() => {
                 if(response["status"] == "success") $("#settings-account-email").removeClass("is-invalid").addClass("is-valid")
                 else $("#settings-account-email").removeClass("is-valid").addClass("is-invalid")
             })
-        })
+        }, false)
     })
 
     $("#settings-account-username").blur(event => {
@@ -67,7 +67,7 @@ $(document).ready(() => {
                 else $("#settings-account-username").removeClass("is-valid").addClass("is-invalid")
             })
         })
-    })
+    }, false)
 
     $("#settings-image-image").click(event => {
         $("#settings-image-input").click()

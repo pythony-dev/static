@@ -44,6 +44,6 @@ $(document).ready(() => {
                 if(response["status"] == "success") $("#change-password").removeClass("is-invalid").addClass("is-valid")
                 else $("#change-password").removeClass("is-valid").addClass("is-invalid")
             })
-        })
+        }, false)
     })
 })

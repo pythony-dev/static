@@ -38,6 +38,6 @@ $(document).ready(() => {
                 if(["success", "used"].includes(response["status"])) $("#contact-email").removeClass("is-invalid").addClass("is-valid")
                 else $("#contact-email").removeClass("is-valid").addClass("is-invalid")
             })
-        })
+        }, false)
     })
 })

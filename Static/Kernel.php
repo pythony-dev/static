@@ -4,7 +4,7 @@
 
     final class Kernel {
 
-        private static $version = "1.6.4";
+        private static $version = "1.6.5";
         private static $salt = "0123456789ABCDEF";
         private static $settings = array();
 
@@ -107,7 +107,7 @@
                         ))));
 
                         ob_start();
-                        require_once($view);
+                        require($view);
                         $body = ob_get_contents();
                         ob_end_clean();
 
@@ -115,7 +115,7 @@
                         $styles = self::$styles;
                         $scripts = self::$scripts;
 
-                        require_once("Views/Index.php");
+                        require("Views/Index.php");
 
                         return;
                     }
@@ -224,7 +224,7 @@
         }
 
         public static function getNetworks() {
-            return array("Facebook", "YouTube", "Instagram", "TikTok", "Twitter");
+            return array("Facebook", "Instagram", "Threads", "YouTube", "TikTok");
         }
 
     }

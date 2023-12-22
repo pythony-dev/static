@@ -7,7 +7,7 @@
     final class Features extends Database {
 
         public static function getFeatures() {
-            $query = parent::$pdo->prepare("SELECT id, title, subtitle, content FROM Features WHERE language = :language ORDER BY id DESC");
+            $query = parent::$pdo->prepare("SELECT id, title, subtitle, content FROM Features WHERE language = :language");
             $query->bindValue(":language", \Static\Languages\Translate::getLanguage(), PDO::PARAM_STR);
             $query->execute();
 

@@ -65,7 +65,7 @@ $(document).ready(() => {
                 if(response["status"] == "success") $("#signUp-email").removeClass("is-invalid").addClass("is-valid")
                 else $("#signUp-email").removeClass("is-valid").addClass("is-invalid")
             })
-        })
+        }, false)
     })
 
     $("#signUp-confirm").click(event => {
@@ -103,6 +103,6 @@ $(document).ready(() => {
                 if(response["status"] == "success") $("#signUp-username").removeClass("is-invalid").addClass("is-valid")
                 else $("#signUp-username").removeClass("is-valid").addClass("is-invalid")
             })
-        })
+        }, false)
     })
 })

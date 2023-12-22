@@ -13,7 +13,7 @@
             <script src="<?= $parameters["getPath"]($script); ?>" defer> </script>
         <?php } ?>
     </head>
-    <body class="container text-center" style="background-image : url('<?= $parameters["getPath"]("/Public/Images/Index/Background.png"); ?>')">
+    <body class="container text-center" style="background-image : url('<?= $parameters["getPath"]("/Public/Images/Index/Background.jpeg"); ?>')">
         <?php if(!$parameters["hash"]) echo \Static\Components\Navbar::create(); ?>
         <section class="bg-white shadow border<?= !$parameters["hash"] ? " section" : null; ?>"> <?= $body; ?> </section>
         <?= \Static\Components\Footer::create(); ?>

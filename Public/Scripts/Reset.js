@@ -59,7 +59,7 @@ $(document).ready(() => {
                 if(response["status"] == "used") $("#reset-email").removeClass("is-invalid").addClass("is-valid")
                 else $("#reset-email").removeClass("is-valid").addClass("is-invalid")
             })
-        })
+        }, false)
     })
 
     $("#reset-confirm").click(event => {

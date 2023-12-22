@@ -72,6 +72,6 @@ $(document).ready(() => {
 
                 showAlert("search-search-error")
             })
-        })
+        }, false)
     })
 })

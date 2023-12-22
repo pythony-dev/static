@@ -33,15 +33,15 @@ $(document).ready(() => {
     $(".open").modal("show").addClass("fade")
 })
 
-const getToken = callback => {
+const getToken = (callback, error = true) => {
     $.post("", {
         "request" : "tokens",
         "action" : "create",
     }).then(response => {
         if(response["status"] == "success" && "token" in response && typeof(callback) == "function") callback(response["token"])
-        else showAlert("index-token")
+        else if(error) showAlert("index-token")
     }).fail(() => {
-        showAlert("index-token")
+        if(error) showAlert("index-token")
     })
 }
 

@@ -41,6 +41,6 @@ $(document).ready(() => {
                 if(response["status"] == "used") $("#logIn-email").removeClass("is-invalid").addClass("is-valid")
                 else $("#logIn-email").removeClass("is-valid").addClass("is-invalid")
             })
-        })
+        }, false)
     })
 })

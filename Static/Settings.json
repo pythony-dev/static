@@ -1,16 +1,16 @@
 {
     "project-name" : "Static",
-    "project-version" : "1.6.4",
+    "project-version" : "1.6.5",
     "project-environment" : "production",
 
     "settings-link" : "https://www.pythony.dev/Static",
     "settings-email" : "hello@pythony.dev",
 
     "networks-facebook" : "https://www.facebook.com",
-    "networks-youtube" : "https://www.youtube.com",
     "networks-instagram" : "https://www.instagram.com",
+    "networks-threads" : "https://www.threads.net",
+    "networks-youtube" : "https://www.youtube.com",
     "networks-tiktok" : "https://www.tiktok.com",
-    "networks-twitter" : "https://www.twitter.com",
 
     "emails-header" : "MIME-Version : 1.0\nContent-type : text/html; charset=utf-8\nFrom : \"The @project-name Team\" <@settings-email>",
     "emails-copy" : "MIME-Version : 1.0\nContent-type : text/html; charset=utf-8\nFrom : \"The @project-name Team\" <@settings-email>\nBcc : @settings-email"
