@@ -4,7 +4,7 @@
 
     final class Kernel {
 
-        private static $version = "1.6.5";
+        private static $version = "1.7.0";
         private static $salt = "0123456789ABCDEF";
         private static $settings = array();
 
@@ -61,6 +61,7 @@
 
             if(!\Static\Models\Sessions::start() || !\Static\Models\Requests::start()) return self::setError(429, \Static\Languages\Translate::getText("error-requests"), false);
             else if(!array_key_exists("request", $_POST) || $hash) {
+                self::addRoute("manifest", "/manifest");
                 self::addRoute("email", "/email/(link)");
                 self::addRoute("error", "/error/(error)");
 
@@ -89,7 +90,23 @@
                     if($found) {
                         self::$route = ucfirst($route["name"]);
 
-                        if(self::$route == "Error") return self::setError(array_key_exists("error", $parameters) ? $parameters["error"] : 500, \Static\Languages\Translate::getText("error-internal"), false);
+                        if(self::$route == "Manifest") {
+                            echo json_encode(array(
+                                "name" => \Static\Kernel::getSettings("project-name"),
+                                "version" => \Static\Kernel::getSettings("project-version"),
+                                "start_url" => \Static\Kernel::getSettings("settings-link"),
+                                "display" => "standalone",
+                                "icons" => array(
+                                    array(
+                                        "src" => \Static\Kernel::getSettings("settings-link") . "/Public/Images/Index/Icon.png",
+                                        "type" => "image/png",
+                                        "sizes" => "512x512",
+                                    ),
+                                ),
+                            ));
+
+                            return;
+                        } else if(self::$route == "Error") return self::setError(array_key_exists("error", $parameters) ? $parameters["error"] : 500, \Static\Languages\Translate::getText("error-internal"), false);
 
                         $view = "Views/" . self::$route . ".php";
                         $controller = "\Static\Controllers\\" . self::$route;
@@ -126,6 +143,7 @@
                 header("Content-Type: application/json");
 
                 self::addRequest("tokens", false);
+                self::addRequest("siteMap");
                 self::addRequest("language");
 
                 $search = htmlspecialchars($_POST["request"]);
@@ -161,7 +179,7 @@
                 "getText" => "\Static\Languages\Translate::getText",
             )));
 
-            http_response_code(array_key_exists("error", $parameters) ? (int)$parameters["error"] : 500);
+            http_response_code(self::getValue($_GET, "error") != "false" ? (int)$parameters["error"] : 200);
 
             if($request) {
                 echo json_encode(array(
@@ -174,7 +192,7 @@
                 $body = ob_get_contents();
                 ob_end_clean();
 
-                $title = array_key_exists("title", $parameters) ? $parameters["title"] : "Error";
+                $title = array_key_exists("title", $parameters) ? $parameters["title"] : $parameters["getText"]("title-error");
                 $styles = self::$styles;
                 $scripts = self::$scripts;
 

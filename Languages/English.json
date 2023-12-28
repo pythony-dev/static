@@ -33,7 +33,7 @@
     "index-alert-ok" : "OK",
     "index-alert-language" : "Unable to Change Language for Now !",
     "index-alert-logOut" : "Unable to Log Out for Now !",
-    "index-alert-token" : "Unable to Authenticate the Request for Now !",
+    "index-alert-token" : "Unable to Connect to @name for Now !",
 
     "upload-alert-extension" : "Please use a Image with the Extension .jpg, .jpeg or .png !",
     "upload-alert-type" : "Please use a JPG, JPEG or PNG Image Type !",

@@ -20,7 +20,7 @@
                         <div class="col-6 col-md-4 offset-3 offset-md-0 my-auto p-5">
                             <div class="bg-light shadow border rounded-circle">
                                 <a href="<?= \Static\Kernel::getPath("/"); ?>">
-                                    <img class="p-4 img-fluid" src="<?= \Static\Kernel::getPath("/Public/Images/Index/Icon.png"); ?>" alt="<?= \Static\Kernel::getSettings("project-name"); ?>"/>
+                                    <img class="img-fluid" src="<?= \Static\Kernel::getPath("/Public/Images/Index/Icon.png"); ?>" alt="<?= \Static\Kernel::getSettings("project-name"); ?>"/>
                                 </a>
                             </div>
                         </div>

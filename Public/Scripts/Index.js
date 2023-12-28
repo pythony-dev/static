@@ -1,4 +1,28 @@
 $(document).ready(() => {
+    if("serviceWorker" in navigator && !navigator.serviceWorker.controller) {
+        getToken(token => {
+            $.post("", {
+                "token" : token,
+                "request" : "siteMap",
+                "action" : "fetch",
+            }).then(response => {
+                if(response["status"] == "success" && "name" in response && "link" in response && "links" in response) {
+                    navigator.serviceWorker.register(response["link"].toString() + "/Worker.js").then(() => {
+                        navigator.serviceWorker.ready.then(async serviceWorker => {
+                            await serviceWorker.active.postMessage({
+                                "name" : response["name"].toString(),
+                                "link" : response["link"].toString(),
+                                "links" : response["links"],
+                            })
+
+                            location.reload()
+                        })
+                    })
+                }
+            })
+        }, false)
+    }
+
     $(".language").click(event => {
         getToken(token => {
             $.post("", {
@@ -38,7 +62,7 @@ const getToken = (callback, error = true) => {
         "request" : "tokens",
         "action" : "create",
     }).then(response => {
-        if(response["status"] == "success" && "token" in response && typeof(callback) == "function") callback(response["token"])
+        if(response["status"] == "success" && "token" in response && typeof(callback) == "function") callback(response["token"].toString())
         else if(error) showAlert("index-token")
     }).fail(() => {
         if(error) showAlert("index-token")

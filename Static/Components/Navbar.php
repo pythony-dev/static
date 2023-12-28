@@ -10,8 +10,8 @@
             ob_start();
             ?>
 
-            <nav class="fixed-top p-4 navbar navbar-expand-lg navbar-light bg-light shadow border rounded-bottom">
-                <a class="d-flex me-0 navbar-brand" href="<?= \Static\Kernel::getPath("/"); ?>">
+            <nav class="fixed-top px-4 py-0 navbar navbar-expand-lg navbar-light bg-light shadow border rounded-bottom">
+                <a class="d-flex py-0 navbar-brand" href="<?= \Static\Kernel::getPath("/"); ?>">
                     <img class="icon" src="<?= \Static\Kernel::getPath("/Public/Images/Index/Icon.png"); ?>" alt="<?= \Static\Kernel::getSettings("project-name"); ?>"/>
                     <p class="h1 my-auto"> <?= \Static\Kernel::getSettings("project-name"); ?> </p>
                 </a>
@@ -20,7 +20,7 @@
                 </button>
                 <div id="navbar-collapse" class="navbar-collapse collapse">
                     <ul class="navbar-nav w-100">
-                        <li class="w-100 pt-4 pt-md-0 nav-item">
+                        <li class="w-100 nav-item">
                             <a class="nav-link<?= \Static\Kernel::getRoute() != "Home" ? null : " active"; ?>" href="<?= \Static\Kernel::getPath("/"); ?>"> <?= \Static\Languages\Translate::getText("title-home"); ?> </a>
                         </li>
                         <?php if($userID <= 0) { ?>
@@ -48,14 +48,14 @@
                                     <?php } ?>
                                 </ul>
                             </li>
-                            <li class="w-200 my-auto pt-4 pt-md-0">
+                            <li class="w-200 my-auto pt-3 pb-4 py-md-0">
                                 <div class="flex-column flex-lg-row input-group">
                                     <a class="w-50 btn btn-outline-primary" href="<?= \Static\Kernel::getPath("/sign-up"); ?>"> <?= \Static\Languages\Translate::getText("title-signUp"); ?> </a>
                                     <a class="w-50 btn btn-outline-primary" href="<?= \Static\Kernel::getPath("/log-in"); ?>"> <?= \Static\Languages\Translate::getText("title-logIn"); ?> </a>
                                 </div>
                             </li>
                         <?php } else { ?>
-                            <li class="w-200 my-auto pt-4 pt-md-0">
+                            <li class="w-200 my-auto pt-3 pb-4 py-md-0">
                                 <div class="flex-column flex-lg-row input-group">
                                     <a class="w-50 btn btn-outline-primary" href="<?= \Static\Kernel::getPath("/messages"); ?>"> <?= \Static\Languages\Translate::getText("title-messages"); ?> </a>
                                     <div class="w-50">

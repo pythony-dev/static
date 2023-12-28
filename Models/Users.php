@@ -368,7 +368,9 @@
         public static function isPassword($password) {
             $password = htmlspecialchars($password);
 
-            return !empty($password) && preg_match("#^[0-9A-Za-z-_.]{3,16}$#", $password) ? "success" : "invalid";
+            foreach(str_split($password) as $character) if(ord($character) < 32 || ord($character) > 126) return "invalid";
+
+            return !empty($password) && strlen($password) >= 3 && strlen($password) <= 16 ? "success" : "invalid";
         }
 
     }

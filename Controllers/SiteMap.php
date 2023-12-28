@@ -57,9 +57,9 @@
                     $parameters["getText"]("title-messages") . " - Array" => $chats,
                     $parameters["getText"]("title-settings") => "/settings",
                     $parameters["getText"]("title-settings") . " - Array" => array(
-                        $parameters["getText"]("title-settings-account") => "settings?account",
-                        $parameters["getText"]("title-settings-notifications") => "settings?notifications",
-                        $parameters["getText"]("title-settings-others") => "settings?others",
+                        $parameters["getText"]("title-settings-account") => "/settings?account",
+                        $parameters["getText"]("title-settings-notifications") => "/settings?notifications",
+                        $parameters["getText"]("title-settings-others") => "/settings?others",
                     ),
                     $parameters["getText"]("title-terms") => "/terms",
                     $parameters["getText"]("title-privacy") => "/privacy",
