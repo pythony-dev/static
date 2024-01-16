@@ -21,9 +21,9 @@
                         </div>
                         <div class="order-md-1 col-3 col-md-2 my-auto px-0 p<?= $id == 0 ? "b" : ($id == array_key_last($parameters["threads"]) ? "t" : "y"); ?>-5 text-end">
                             <?php if($parameters["userID"] != $thread["userID"]) { ?>
-                                <input class="my-auto btn btn-outline-warning rounded-circle image-48 ratio-1 thread-report" type="image" src="<?= $parameters["getPath"]("/Public/Images/Icons/Report.png"); ?>" alt="<?= $parameters["getText"]("forums-report"); ?>" thread="<?= $thread["hash"]; ?>"/>
+                                <input class="my-auto btn rounded-circle image-48 ratio-1 button-outline thread-report" type="image" src="<?= $parameters["getPath"]("/Public/Images/Icons/Report.png"); ?>" alt="<?= $parameters["getText"]("forums-report"); ?>" thread="<?= $thread["hash"]; ?>"/>
                             <?php } else { ?>
-                                <input class="my-auto btn btn-outline-danger rounded-circle image-48 ratio-1 thread-delete" type="image" src="<?= $parameters["getPath"]("/Public/Images/Icons/Delete.png"); ?>" alt="<?= $parameters["getText"]("forums-delete"); ?>" thread="<?= $thread["hash"]; ?>"/>
+                                <input class="my-auto btn rounded-circle image-48 ratio-1 button-outline thread-delete" type="image" src="<?= $parameters["getPath"]("/Public/Images/Icons/Delete.png"); ?>" alt="<?= $parameters["getText"]("forums-delete"); ?>" thread="<?= $thread["hash"]; ?>"/>
                             <?php } ?>
                         </div>
                         <div class="col-12 col-md-5 my-auto px-0 p<?= $id == 0 ? "b" : ($id == array_key_last($parameters["threads"]) ? "t" : "b-5 pt-md"); ?>-5">
@@ -39,9 +39,9 @@
     <?= Static\Components\Pagination::create($parameters["page"], $parameters["limit"], $parameters["getPath"]("/forums")); ?>
     <div class="p-5">
         <?php if($parameters["userID"] <= 0) { ?>
-            <a class="w-100 btn btn-primary" href="<?= $parameters["getPath"]("/log-in"); ?>"> <?= $parameters["getText"]("forums-logIn"); ?> </a>
+            <a class="w-100 btn rounded-pill button-normal" href="<?= $parameters["getPath"]("/log-in"); ?>"> <?= $parameters["getText"]("forums-logIn"); ?> </a>
         <?php } else { ?>
-            <button class="w-100 btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#create-modal"> <?= $parameters["getText"]("forums-create"); ?> </button>
+            <button class="w-100 btn rounded-pill button-normal" data-bs-toggle="modal" data-bs-target="#create-modal"> <?= $parameters["getText"]("forums-create"); ?> </button>
         <?php } ?>
     </div>
 </article>

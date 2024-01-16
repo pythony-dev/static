@@ -10,12 +10,12 @@
             ob_start();
             ?>
 
-            <nav class="fixed-top px-4 py-0 navbar navbar-expand-lg navbar-light bg-light shadow border rounded-bottom">
+            <nav class="fixed-top px-4 py-0 navbar navbar-expand-lg shadow border rounded-bottom">
                 <a class="d-flex py-0 navbar-brand" href="<?= \Static\Kernel::getPath("/"); ?>">
                     <img class="icon" src="<?= \Static\Kernel::getPath("/Public/Images/Index/Icon.png"); ?>" alt="<?= \Static\Kernel::getSettings("project-name"); ?>"/>
                     <p class="h1 my-auto"> <?= \Static\Kernel::getSettings("project-name"); ?> </p>
                 </a>
-                <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbar-collapse">
+                <button class="navbar-toggler bg-light" data-bs-toggle="collapse" data-bs-target="#navbar-collapse">
                     <div class="navbar-toggler-icon"> </div>
                 </button>
                 <div id="navbar-collapse" class="navbar-collapse collapse">
@@ -48,18 +48,28 @@
                                     <?php } ?>
                                 </ul>
                             </li>
+                            <li class="w-100 nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown"> <?= \Static\Languages\Translate::getText("title-theme"); ?> </a>
+                                <ul class="w-100 dropdown-menu text-center">
+                                    <?php foreach(\Static\Kernel::getThemes() as $theme => $colors) { ?>
+                                        <li>
+                                            <a class="dropdown-item theme<?= \Static\Kernel::getValue($_SESSION, "theme") != $theme ? null : " active"; ?>" theme="<?= $theme; ?>"> <?= ucfirst($theme); ?> </a>
+                                        </li>
+                                    <?php } ?>
+                                </ul>
+                            </li>
                             <li class="w-200 my-auto pt-3 pb-4 py-md-0">
-                                <div class="flex-column flex-lg-row input-group">
-                                    <a class="w-50 btn btn-outline-primary" href="<?= \Static\Kernel::getPath("/sign-up"); ?>"> <?= \Static\Languages\Translate::getText("title-signUp"); ?> </a>
-                                    <a class="w-50 btn btn-outline-primary" href="<?= \Static\Kernel::getPath("/log-in"); ?>"> <?= \Static\Languages\Translate::getText("title-logIn"); ?> </a>
+                                <div class="position-relative d-flex flex-column flex-lg-row">
+                                    <a class="w-50 btn rounded-left button-outline" href="<?= \Static\Kernel::getPath("/sign-up"); ?>"> <?= \Static\Languages\Translate::getText("title-signUp"); ?> </a>
+                                    <a class="w-50 btn rounded-right button-outline" href="<?= \Static\Kernel::getPath("/log-in"); ?>"> <?= \Static\Languages\Translate::getText("title-logIn"); ?> </a>
                                 </div>
                             </li>
                         <?php } else { ?>
                             <li class="w-200 my-auto pt-3 pb-4 py-md-0">
-                                <div class="flex-column flex-lg-row input-group">
-                                    <a class="w-50 btn btn-outline-primary" href="<?= \Static\Kernel::getPath("/messages"); ?>"> <?= \Static\Languages\Translate::getText("title-messages"); ?> </a>
+                                <div class="position-relative d-flex flex-column flex-lg-row">
+                                    <a class="w-50 btn rounded-left button-outline" href="<?= \Static\Kernel::getPath("/messages"); ?>"> <?= \Static\Languages\Translate::getText("title-messages"); ?> </a>
                                     <div class="w-50">
-                                        <button class="w-100 btn btn-outline-primary dropdown-toggle border-left-0" data-bs-toggle="dropdown"> <?= \Static\Languages\Translate::getText("title-settings"); ?> </button>
+                                        <button class="w-100 btn rounded-right dropdown-toggle button-outline" data-bs-toggle="dropdown"> <?= \Static\Languages\Translate::getText("title-settings"); ?> </button>
                                         <ul class="w-100 dropdown-menu text-center">
                                             <li>
                                                 <a class="dropdown-item" href="<?= \Static\Kernel::getPath("/settings"); ?>"> <?= \Static\Languages\Translate::getText("title-settings-account"); ?> </a>

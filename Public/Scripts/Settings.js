@@ -127,6 +127,7 @@ $(document).ready(() => {
                 "token" : token,
                 "request" : "users",
                 "action" : "others",
+                "theme" : $("#settings-others-theme").val(),
                 "languages" : languages,
                 "contact" : $("#settings-others-contact").is(":checked").toString(),
                 "confirm" : $("#settings-others-confirm").val(),

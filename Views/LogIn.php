@@ -2,9 +2,9 @@
     <h1 class="p-5 fw-bold"> <?= $parameters["getText"]("logIn-title"); ?> </h1>
     <p class="p-5 text-justify"> <?= $parameters["getText"]("logIn-content"); ?> </p>
     <form id="logIn-form" class="p-5">
-        <input id="logIn-email" class="mb-5 form-control text-center" type="email" placeholder="<?= $parameters["getText"]("logIn-email"); ?>" required/>
-        <input id="logIn-password" class="my-5 form-control text-center" type="password" placeholder="<?= $parameters["getText"]("logIn-password"); ?>" required/>
-        <input class="w-100 btn btn-primary" type="submit" value="<?= $parameters["getText"]("logIn-submit"); ?>"/>
-        <button class="w-100 mt-5 btn btn-outline-primary" type="button" data-bs-toggle="modal" data-bs-target="#reset-modal"> <?= $parameters["getText"]("logIn-reset"); ?> </button>
+        <input id="logIn-email" class="mb-5 form-control text-center rounded-pill" type="email" placeholder="<?= $parameters["getText"]("logIn-email"); ?>" required/>
+        <input id="logIn-password" class="my-5 form-control text-center rounded-pill" type="password" placeholder="<?= $parameters["getText"]("logIn-password"); ?>" required/>
+        <input class="w-100 mb-5 btn rounded-pill button-normal" type="submit" value="<?= $parameters["getText"]("logIn-submit"); ?>"/>
+        <button class="w-100 mt-5 btn rounded-pill button-outline" type="button" data-bs-toggle="modal" data-bs-target="#reset-modal"> <?= $parameters["getText"]("logIn-reset"); ?> </button>
     </form>
 </article>

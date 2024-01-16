@@ -9,7 +9,7 @@
     <?php if(!$parameters["hash"]) { ?>
         <p class="p-5 text-end"> <?= $parameters["getText"]("email-sent") . " "  . $parameters["email"] . ", " . $parameters["getText"]("email-on") . " "  . $parameters["date"] . " " . $parameters["getText"]("email-at") . " "  . $parameters["time"]; ?> </p>
         <div class="p-5">
-            <a class="w-100 btn btn-primary" href="<?= $parameters["getPath"]("/"); ?>"> <?= $parameters["getText"]("email-button"); ?> </a>
+            <a class="w-100 btn rounded-pill button-normal" href="<?= $parameters["getPath"]("/"); ?>"> <?= $parameters["getText"]("email-button"); ?> </a>
         </div>
     <?php } ?>
 </article>

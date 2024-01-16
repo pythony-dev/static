@@ -27,14 +27,30 @@ $(document).ready(() => {
         getToken(token => {
             $.post("", {
                 "token" : token,
-                "request" : "language",
-                "action" : "update",
+                "request" : "settings",
+                "action" : "language",
                 "language" : $(event.target).attr("language"),
             }).then(response => {
                 if(response["status"] == "success") location.reload()
                 else showAlert("index-language")
             }).fail(() => {
                 showAlert("index-language")
+            })
+        })
+    })
+
+    $(".theme").click(event => {
+        getToken(token => {
+            $.post("", {
+                "token" : token,
+                "request" : "settings",
+                "action" : "theme",
+                "theme" : $(event.target).attr("theme"),
+            }).then(response => {
+                if(response["status"] == "success") location.reload()
+                else showAlert("index-theme")
+            }).fail(() => {
+                showAlert("index-theme")
             })
         })
     })

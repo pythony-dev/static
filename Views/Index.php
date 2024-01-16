@@ -11,13 +11,14 @@
             <link rel="stylesheet" href="<?= $parameters["getPath"]($style); ?>"/>
         <?php } ?>
         <link rel="icon" href="<?= $parameters["getPath"]("/Public/Images/Index/Icon.png"); ?>"/>
+        <style> <?php require("Public/Styles/Index.php"); ?> </style>
         <?php foreach($scripts as $script) { ?>
             <script src="<?= $parameters["getPath"]($script); ?>" defer> </script>
         <?php } ?>
     </head>
-    <body class="container text-center" style="background-image : url('<?= $parameters["getPath"]("/Public/Images/Index/Background.jpeg"); ?>')">
+    <body class="container text-center">
         <?php if(!$parameters["hash"]) echo \Static\Components\Navbar::create(); ?>
-        <section class="bg-white shadow border<?= !$parameters["hash"] ? " section" : null; ?>"> <?= $body; ?> </section>
+        <section class="bg-light shadow border<?= !$parameters["hash"] ? " section" : null; ?>"> <?= $body; ?> </section>
         <?= \Static\Components\Footer::create(); ?>
         <div>
             <?php
@@ -44,15 +45,15 @@
                     <div id="<?= str_replace("-alert", "", $alert); ?>-alert" class="modal fade p-5">
                         <div class="modal-dialog modal-dialog-centered">
                             <div class="modal-content">
-                                <div class="px-4 py-5 mb-0 alert alert-<?= $color; ?>">
+                                <div class="px-4 py-5 mb-0 alert">
                                     <h3 class="p-4"> <?= $parameters["getText"]("index-alert-" . $state); ?> </h3>
                                     <p class="p-4"> <?= $parameters["getText"]($alert); ?> </p>
                                     <div class="p-4">
                                         <?php if($color != "warning") { ?>
-                                            <button class="w-100 btn btn-outline-secondary" data-bs-dismiss="modal"> <?= $parameters["getText"]("index-alert-close"); ?> </button>
+                                            <button class="w-100 btn rounded-pill button-outline" data-bs-dismiss="modal"> <?= $parameters["getText"]("index-alert-close"); ?> </button>
                                         <?php } else { ?>
-                                            <button class="w-100 btn btn-outline-primary" data-bs-dismiss="modal"> <?= $parameters["getText"]("index-alert-cancel"); ?> </button>
-                                            <button class="w-100 mt-4 btn btn-outline-secondary confirm"> <?= $parameters["getText"]("index-alert-ok"); ?> </button>
+                                            <button class="w-100 btn rounded-pill button-normal confirm"> <?= $parameters["getText"]("index-alert-ok"); ?> </button>
+                                            <button class="w-100 mt-4 btn rounded-pill button-outline" data-bs-dismiss="modal"> <?= $parameters["getText"]("index-alert-cancel"); ?> </button>
                                         <?php } ?>
                                     </div>
                                 </div>

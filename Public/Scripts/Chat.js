@@ -35,7 +35,7 @@ $(document).ready(() => {
                                 </div>\
                                 " + (message["hash"] ? "\
                                     <div class=\"my-auto\">\
-                                        <input class=\"btn btn-outline-danger rounded-circle image-48 ratio-1 message-delete\" type=\"image\" src=\"" + $("#chat-delete-src").val() + "\" alt=\"" + $("#chat-delete-alt").val() + "\" message=\"" + message["hash"] + "\"/>\
+                                        <input class=\"btn rounded-circle image-48 ratio-1 button-outline message-delete\" type=\"image\" src=\"" + $("#chat-delete-src").val() + "\" alt=\"" + $("#chat-delete-alt").val() + "\" message=\"" + message["hash"] + "\"/>\
                                     </div>\
                                 " : "") + "\
                             </div>\

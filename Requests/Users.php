@@ -56,6 +56,7 @@
 
         public static function others() {
             $others = json_encode([
+                "theme" => \Static\Kernel::getValue($_POST, "theme"),
                 "languages" => \Static\Kernel::getValue($_POST, "languages"),
                 "contact" => \Static\Kernel::getValue($_POST, "contact"),
             ]);

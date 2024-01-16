@@ -2,7 +2,7 @@
 
     require_once("Requests/Tokens.php");
     require_once("Requests/SiteMap.php");
-    require_once("Requests/Language.php");
+    require_once("Requests/Settings.php");
     require_once("Requests/Threads.php");
     require_once("Requests/Posts.php");
     require_once("Requests/Reports.php");

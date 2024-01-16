@@ -485,16 +485,16 @@ CREATE TABLE `Users` (
 --
 
 INSERT INTO `Users` (`id`, `created`, `deleted`, `sessionID`, `email`, `username`, `language`, `notifications`, `others`, `password`) VALUES
-(1, '2022-10-12 12:30:00', NULL, 1, 'hello@pythony.dev', 'Pythony', 'english', '{"message":"true","published":"true"}', '{"languages":"english,french","contact":"true"}', '65e2ea4f025f942a7923c60f90ac16919c6eb3e1'),
-(2, '2022-10-12 12:30:00', NULL, 1, 'julie@pythony.dev', 'Julie', 'english', '{"message":"true","published":"true"}', '{"languages":"english,french","contact":"true"}', '65e2ea4f025f942a7923c60f90ac16919c6eb3e1'),
-(3, '2022-10-12 12:30:00', NULL, 1, 'marc@pythony.dev', 'Marc', 'english', '{"message":"true","published":"true"}', '{"languages":"english,french","contact":"true"}', '65e2ea4f025f942a7923c60f90ac16919c6eb3e1'),
-(4, '2022-10-12 12:30:00', NULL, 1, 'mathilde@pythony.dev', 'Mathilde', 'english', '{"message":"true","published":"true"}', '{"languages":"english,french","contact":"true"}', '65e2ea4f025f942a7923c60f90ac16919c6eb3e1'),
-(5, '2022-10-12 12:30:00', NULL, 1, 'robert@pythony.dev', 'Robert', 'english', '{"message":"true","published":"true"}', '{"languages":"english,french","contact":"true"}', '65e2ea4f025f942a7923c60f90ac16919c6eb3e1'),
-(6, '2022-10-12 12:30:00', NULL, 1, 'johanna@pythony.dev', 'Johanna', 'english', '{"message":"true","published":"true"}', '{"languages":"english,french","contact":"true"}', '65e2ea4f025f942a7923c60f90ac16919c6eb3e1'),
-(7, '2022-10-12 12:30:00', NULL, 1, 'pascal@pythony.dev', 'Pascal', 'english', '{"message":"true","published":"true"}', '{"languages":"english,french","contact":"true"}', '65e2ea4f025f942a7923c60f90ac16919c6eb3e1'),
-(8, '2022-10-12 12:30:00', NULL, 1, 'vanessa@pythony.dev', 'Vanessa', 'english', '{"message":"true","published":"true"}', '{"languages":"english,french","contact":"true"}', '65e2ea4f025f942a7923c60f90ac16919c6eb3e1'),
-(9, '2022-10-12 12:30:00', NULL, 1, 'albert@pythony.dev', 'Albert', 'english', '{"message":"true","published":"true"}', '{"languages":"english,french","contact":"true"}', '65e2ea4f025f942a7923c60f90ac16919c6eb3e1'),
-(10, '2022-10-12 12:30:00', NULL, 1, 'valentine@pythony.dev', 'Valentine', 'english', '{"message":"true","published":"true"}', '{"languages":"english,french","contact":"true"}', '65e2ea4f025f942a7923c60f90ac16919c6eb3e1');
+(1, '2022-10-12 12:30:00', NULL, 1, 'hello@pythony.dev', 'Pythony', 'english', '{"message":"true","published":"true"}', '{"theme":"aqua","languages":"english,french","contact":"true"}', '65e2ea4f025f942a7923c60f90ac16919c6eb3e1'),
+(2, '2022-10-12 12:30:00', NULL, 1, 'julie@pythony.dev', 'Julie', 'english', '{"message":"true","published":"true"}', '{"theme":"aqua","languages":"english,french","contact":"true"}', '65e2ea4f025f942a7923c60f90ac16919c6eb3e1'),
+(3, '2022-10-12 12:30:00', NULL, 1, 'marc@pythony.dev', 'Marc', 'english', '{"message":"true","published":"true"}', '{"theme":"aqua","languages":"english,french","contact":"true"}', '65e2ea4f025f942a7923c60f90ac16919c6eb3e1'),
+(4, '2022-10-12 12:30:00', NULL, 1, 'mathilde@pythony.dev', 'Mathilde', 'english', '{"message":"true","published":"true"}', '{"theme":"aqua","languages":"english,french","contact":"true"}', '65e2ea4f025f942a7923c60f90ac16919c6eb3e1'),
+(5, '2022-10-12 12:30:00', NULL, 1, 'robert@pythony.dev', 'Robert', 'english', '{"message":"true","published":"true"}', '{"theme":"aqua","languages":"english,french","contact":"true"}', '65e2ea4f025f942a7923c60f90ac16919c6eb3e1'),
+(6, '2022-10-12 12:30:00', NULL, 1, 'johanna@pythony.dev', 'Johanna', 'english', '{"message":"true","published":"true"}', '{"theme":"aqua","languages":"english,french","contact":"true"}', '65e2ea4f025f942a7923c60f90ac16919c6eb3e1'),
+(7, '2022-10-12 12:30:00', NULL, 1, 'pascal@pythony.dev', 'Pascal', 'english', '{"message":"true","published":"true"}', '{"theme":"aqua","languages":"english,french","contact":"true"}', '65e2ea4f025f942a7923c60f90ac16919c6eb3e1'),
+(8, '2022-10-12 12:30:00', NULL, 1, 'vanessa@pythony.dev', 'Vanessa', 'english', '{"message":"true","published":"true"}', '{"theme":"aqua","languages":"english,french","contact":"true"}', '65e2ea4f025f942a7923c60f90ac16919c6eb3e1'),
+(9, '2022-10-12 12:30:00', NULL, 1, 'albert@pythony.dev', 'Albert', 'english', '{"message":"true","published":"true"}', '{"theme":"aqua","languages":"english,french","contact":"true"}', '65e2ea4f025f942a7923c60f90ac16919c6eb3e1'),
+(10, '2022-10-12 12:30:00', NULL, 1, 'valentine@pythony.dev', 'Valentine', 'english', '{"message":"true","published":"true"}', '{"theme":"aqua","languages":"english,french","contact":"true"}', '65e2ea4f025f942a7923c60f90ac16919c6eb3e1');
 
 --
 -- Indexes for dumped tables

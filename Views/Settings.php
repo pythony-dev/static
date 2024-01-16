@@ -24,36 +24,42 @@
                     <div id="settings-image-spinner" class="d-none spinner-border"> </div>
                 </div>
                 <div class="col-12 col-md-6 my-auto px-0 ps-md-5">
-                    <input id="settings-account-email" class="mb-5 form-control text-center" type="email" value="<?= $parameters["user"]["email"]; ?>" placeholder="<?= $parameters["getText"]("settings-account-email"); ?>" required/>
-                    <input id="settings-account-username" class="my-5 form-control text-center" type="text" value="<?= $parameters["user"]["username"]; ?>" placeholder="<?= $parameters["getText"]("settings-account-username"); ?>" required/>
-                    <select id="settings-account-language" class="form-select">
+                    <input id="settings-account-email" class="mb-5 form-control text-center rounded-pill" type="email" value="<?= $parameters["user"]["email"]; ?>" placeholder="<?= $parameters["getText"]("settings-account-email"); ?>" required/>
+                    <input id="settings-account-username" class="my-5 form-control text-center rounded-pill" type="text" value="<?= $parameters["user"]["username"]; ?>" placeholder="<?= $parameters["getText"]("settings-account-username"); ?>" required/>
+                    <select id="settings-account-language" class="form-select rounded-pill">
                         <option disabled> <?= $parameters["getText"]("settings-account-language"); ?> </option>
                         <?php foreach(\Static\Languages\Translate::getAllLanguages() as $language) { ?>
-                            <option value="<?= $language; ?>"<?= $language != $parameters["user"]["language"] ? null : " selected"; ?>> <?= ucfirst($language); ?> </option>
+                            <option value="<?= $language; ?>"<?= $language != $parameters["user"]["language"] ? null : " selected"; ?>> <?= $parameters["getText"]("settings-account-language-" . $language); ?> </option>
                         <?php } ?>
                     </select>
-                    <input id="settings-account-confirm" class="my-5 form-control text-center" type="password" placeholder="<?= $parameters["getText"]("settings-account-confirm"); ?>" required/>
-                    <input class="w-100 btn btn-primary" type="submit" value="<?= $parameters["getText"]("settings-account-submit"); ?>"/>
+                    <input id="settings-account-confirm" class="my-5 form-control text-center rounded-pill" type="password" placeholder="<?= $parameters["getText"]("settings-account-confirm"); ?>" required/>
+                    <input class="w-100 btn rounded-pill button-normal" type="submit" value="<?= $parameters["getText"]("settings-account-submit"); ?>"/>
                 </div>
             </div>
-            <button class="w-100 mt-5 btn btn-outline-secondary" type="button" data-bs-toggle="modal" data-bs-target="#blocks-modal"> <?= $parameters["getText"]("settings-account-blocks"); ?> </button>
-            <button class="w-100 mt-5 btn btn-outline-primary" type="button" data-bs-toggle="modal" data-bs-target="#change-modal"> <?= $parameters["getText"]("settings-account-change"); ?> </button>
-            <button class="w-100 mt-5 btn btn-outline-danger" type="button" data-bs-toggle="modal" data-bs-target="#delete-modal"> <?= $parameters["getText"]("settings-account-delete"); ?> </button>
+            <button class="w-100 mt-5 btn rounded-pill button-outline" type="button" data-bs-toggle="modal" data-bs-target="#blocks-modal"> <?= $parameters["getText"]("settings-account-blocks"); ?> </button>
+            <button class="w-100 mt-5 btn rounded-pill button-outline" type="button" data-bs-toggle="modal" data-bs-target="#change-modal"> <?= $parameters["getText"]("settings-account-change"); ?> </button>
+            <button class="w-100 mt-5 btn rounded-pill button-outline" type="button" data-bs-toggle="modal" data-bs-target="#delete-modal"> <?= $parameters["getText"]("settings-account-delete"); ?> </button>
         </form>
         <form id="settings-notifications-form" class="tab-pane fade<?= $parameters["tabs"]["notifications"] ? " show active" : null; ?>">
             <?php foreach($parameters["notifications"] as $id => $notification) { ?>
                 <div class="d-flex justify-content-center align-items-center<?= $id != 0 ? " pt-5" : null; ?>">
                     <div>
-                        <input id="settings-notifications-<?= $notification; ?>" class="form-check-input" type="checkbox"<?= \Static\Kernel::getValue($parameters, array("user", "notifications", $notification)) != "false" ? " checked" : null; ?>/>
+                        <input id="settings-notifications-<?= $notification; ?>" class="form-check-input rounded-pill" type="checkbox"<?= \Static\Kernel::getValue($parameters, array("user", "notifications", $notification)) != "false" ? " checked" : null; ?>/>
                     </div>
                     <label class="ps-4 text-justify" for="settings-notifications-<?= $notification; ?>"> <?= $parameters["getText"]("settings-notifications-" . $notification); ?> </label>
                 </div>
             <?php } ?>
-            <input id="settings-notifications-confirm" class="my-5 form-control text-center" type="password" placeholder="<?= $parameters["getText"]("settings-notifications-confirm"); ?>" required/>
-            <input class="w-100 btn btn-primary" type="submit" value="<?= $parameters["getText"]("settings-notifications-submit"); ?>"/>
+            <input id="settings-notifications-confirm" class="my-5 form-control text-center rounded-pill" type="password" placeholder="<?= $parameters["getText"]("settings-notifications-confirm"); ?>" required/>
+            <input class="w-100 btn rounded-pill button-normal" type="submit" value="<?= $parameters["getText"]("settings-notifications-submit"); ?>"/>
         </form>
         <form id="settings-others-form" class="tab-pane fade<?= $parameters["tabs"]["others"] ? " show active" : null; ?>">
-            <div class="d-flex">
+            <select id="settings-others-theme" class="form-select rounded-pill">
+                <option disabled> <?= $parameters["getText"]("settings-others-theme"); ?> </option>
+                <?php foreach(\Static\Kernel::getThemes() as $theme => $colors) { ?>
+                    <option value="<?= $theme; ?>"<?= !str_contains(\Static\Kernel::getValue($parameters, array("user", "others", "theme")), $theme) ? null : " selected"; ?>> <?= $parameters["getText"]("settings-others-theme-" . $theme); ?> </option>
+                <?php } ?>
+            </select>
+            <div class="d-flex pt-5">
                 <div class="w-50 my-auto pe-4">
                     <p class="text-end mb-0"> <?= $parameters["getText"]("settings-others-languages"); ?> : </p>
                 </div>
@@ -61,7 +67,7 @@
                     <?php foreach(\Static\Languages\Translate::getAllLanguages() as $language) { ?>
                         <div class="d-flex justify-content-start align-items-center">
                             <div>
-                                <input id="settings-others-languages-<?= $language; ?>" class="form-check-input settings-others-languages" type="checkbox"<?= str_contains(\Static\Kernel::getValue($parameters, array("user", "others", "languages")), $language) ? " checked" : null; ?>/>
+                                <input id="settings-others-languages-<?= $language; ?>" class="form-check-input rounded-pill settings-others-languages" type="checkbox"<?= str_contains(\Static\Kernel::getValue($parameters, array("user", "others", "languages")), $language) ? " checked" : null; ?>/>
                             </div>
                             <label class="ps-4 text-justify" for="settings-others-languages-<?= $language; ?>"> <?= ucfirst($language); ?> </label>
                         </div>
@@ -70,12 +76,12 @@
             </div>
             <div class="d-flex justify-content-center align-items-center pt-5">
                 <div>
-                    <input id="settings-others-contact" class="form-check-input" type="checkbox"<?= \Static\Kernel::getValue($parameters, array("user", "others", "contact")) != "false" ? " checked" : null; ?>/>
+                    <input id="settings-others-contact" class="form-check-input rounded-pill" type="checkbox"<?= \Static\Kernel::getValue($parameters, array("user", "others", "contact")) != "false" ? " checked" : null; ?>/>
                 </div>
                 <label class="ps-4 text-justify" for="settings-others-contact"> <?= $parameters["getText"]("settings-others-contact"); ?> </label>
             </div>
-            <input id="settings-others-confirm" class="my-5 form-control text-center" type="password" placeholder="<?= $parameters["getText"]("settings-others-confirm"); ?>" required/>
-            <input class="w-100 btn btn-primary" type="submit" value="<?= $parameters["getText"]("settings-others-submit"); ?>"/>
+            <input id="settings-others-confirm" class="my-5 form-control text-center rounded-pill" type="password" placeholder="<?= $parameters["getText"]("settings-others-confirm"); ?>" required/>
+            <input class="w-100 btn rounded-pill button-normal" type="submit" value="<?= $parameters["getText"]("settings-others-submit"); ?>"/>
         </form>
     </div>
 </article>

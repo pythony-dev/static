@@ -33,6 +33,7 @@
                 "published" => "true",
             ))), PDO::PARAM_STR);
             $query->bindValue(":others", htmlspecialchars(json_encode(array(
+                "theme" => "aqua",
                 "languages" => implode(",", \Static\Languages\Translate::getAllLanguages()),
                 "contact" => "true",
             ))), PDO::PARAM_STR);
@@ -60,7 +61,7 @@
 
             $password = \Static\Kernel::getHash("Password", $password);
 
-            $query = parent::$pdo->prepare("SELECT id, language, password FROM Users WHERE email = :email AND deleted IS NULL");
+            $query = parent::$pdo->prepare("SELECT id, language, others, password FROM Users WHERE email = :email AND deleted IS NULL");
             $query->bindValue(":email", $email, PDO::PARAM_STR);
             $query->execute();
 
@@ -71,7 +72,12 @@
             if($userID <= 0) return "email";
             else if($results["password"] == $password) {
                 $_SESSION["userID"] = $userID;
-                $_SESSION["language"] = htmlspecialchars($results["language"]);
+
+                $language = $results["language"];
+                $theme = \Static\Kernel::getValue(json_decode(htmlspecialchars_decode(htmlspecialchars_decode($results["others"])), true), "theme");
+
+                if(in_array($language, \Static\Languages\Translate::getAllLanguages())) $_SESSION["language"] = $language;
+                if(in_array($theme, array_keys(\Static\Kernel::getThemes()))) $_SESSION["theme"] = $theme;
 
                 return \Static\Models\Logs::create($userID, "success") ? array(
                     "status" => "success",
@@ -179,7 +185,7 @@
 
             if(!($results = $query->fetch())) return "confirm";
 
-            $_SESSION["language"] = $language;
+            if(in_array($language, \Static\Languages\Translate::getAllLanguages())) $_SESSION["language"] = $language;
 
             $query = parent::$pdo->prepare("UPDATE Users SET email = :email, username = :username, language = :language WHERE id = :userID");
             $query->bindValue(":email", $email, PDO::PARAM_STR);
@@ -246,6 +252,10 @@
             $query = parent::$pdo->prepare("UPDATE Users SET others = :others WHERE id = :userID");
             $query->bindValue(":others", $others, PDO::PARAM_STR);
             $query->bindValue(":userID", $userID, PDO::PARAM_INT);
+
+            $theme = \Static\Kernel::getValue(json_decode(htmlspecialchars_decode(htmlspecialchars_decode($others)), true), "theme");
+
+            if(in_array($theme, array_keys(\Static\Kernel::getThemes()))) $_SESSION["theme"] = $theme;
 
             return $query->execute() ? array(
                 "status" => "success",

@@ -38,7 +38,7 @@
                         </li>
                     <?php } ?>
                     <li class="w-100 page-item active">
-                        <a class="page-link" href="#"> <?= $page; ?> </a>
+                        <div class="page-link"> <?= $page; ?> </div>
                     </li>
                     <?php if($page <= $limit - 1) { ?>
                         <li class="w-100 page-item">

@@ -2,8 +2,8 @@
     <h1 class="p-5 fw-bold"> <?= $parameters["getText"]("contact-title"); ?> </h1>
     <p class="p-5 text-justify"> <?= $parameters["getText"]("contact-content"); ?> </p>
     <form id="contact-form" class="p-5">
-        <input id="contact-email" class="mb-5 form-control text-center" type="email" placeholder="<?= $parameters["getText"]("contact-email"); ?>" required/>
-        <textarea id="contact-message" class="my-5 form-control text-center" placeholder="<?= $parameters["getText"]("contact-message"); ?>" rows="5" required></textarea>
-        <input class="w-100 btn btn-primary" type="submit" value="<?= $parameters["getText"]("contact-submit"); ?>"/>
+        <input id="contact-email" class="mb-5 form-control text-center rounded-pill" type="email" value="<?= $parameters["email"]; ?>" placeholder="<?= $parameters["getText"]("contact-email"); ?>" required/>
+        <textarea id="contact-message" class="my-5 form-control text-center rounded-textarea" placeholder="<?= $parameters["getText"]("contact-message"); ?>" rows="5" required></textarea>
+        <input class="w-100 btn rounded-pill button-normal" type="submit" value="<?= $parameters["getText"]("contact-submit"); ?>"/>
     </form>
 </article>
