@@ -74,10 +74,15 @@
                 $_SESSION["userID"] = $userID;
 
                 $language = $results["language"];
-                $theme = \Static\Kernel::getValue(json_decode(htmlspecialchars_decode(htmlspecialchars_decode($results["others"])), true), "theme");
 
                 if(in_array($language, \Static\Languages\Translate::getAllLanguages())) $_SESSION["language"] = $language;
-                if(in_array($theme, array_keys(\Static\Kernel::getThemes()))) $_SESSION["theme"] = $theme;
+
+                $color = \Static\Kernel::getValue(json_decode(htmlspecialchars_decode(htmlspecialchars_decode($results["others"])), true), "theme");
+
+                if(in_array($color, array_keys(\Static\Kernel::getThemes()))) $_SESSION["theme"] = array(
+                    "color" => $color,
+                    "mode" => \Static\Kernel::getValue($_SESSION, array("theme", "mode")),
+                );
 
                 return \Static\Models\Logs::create($userID, "success") ? array(
                     "status" => "success",
@@ -253,9 +258,12 @@
             $query->bindValue(":others", $others, PDO::PARAM_STR);
             $query->bindValue(":userID", $userID, PDO::PARAM_INT);
 
-            $theme = \Static\Kernel::getValue(json_decode(htmlspecialchars_decode(htmlspecialchars_decode($others)), true), "theme");
+            $color = \Static\Kernel::getValue(json_decode(htmlspecialchars_decode(htmlspecialchars_decode($others)), true), "theme");
 
-            if(in_array($theme, array_keys(\Static\Kernel::getThemes()))) $_SESSION["theme"] = $theme;
+            if(in_array($color, array_keys(\Static\Kernel::getThemes()))) $_SESSION["theme"] = array(
+                "color" => $color,
+                "mode" => \Static\Kernel::getValue($_SESSION, array("theme", "mode")),
+            );
 
             return $query->execute() ? array(
                 "status" => "success",

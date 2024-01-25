@@ -41,10 +41,16 @@
                 $link . "/Public/Images/Posts/" . \Static\Kernel::getHash("Post", 0) . ".jpeg",
                 $link . "/Public/Images/Messages/" . \Static\Kernel::getHash("Message", 0) . ".jpeg",
 
-                $link . "/Public/Images/Icons/Report.png",
-                $link . "/Public/Images/Icons/Delete.png",
-                $link . "/Public/Images/Icons/Chat.png",
-                $link . "/Public/Images/Icons/Block.png",
+                $link . "/Public/Images/Icons/Light/Report.png",
+                $link . "/Public/Images/Icons/Light/Delete.png",
+                $link . "/Public/Images/Icons/Light/Chat.png",
+                $link . "/Public/Images/Icons/Light/Block.png",
+                $link . "/Public/Images/Icons/Light/Unblock.png",
+                $link . "/Public/Images/Icons/Dark/Report.png",
+                $link . "/Public/Images/Icons/Dark/Delete.png",
+                $link . "/Public/Images/Icons/Dark/Chat.png",
+                $link . "/Public/Images/Icons/Dark/Block.png",
+                $link . "/Public/Images/Icons/Dark/Unblock.png",
             ));
 
             return array(

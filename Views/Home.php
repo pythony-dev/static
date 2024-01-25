@@ -6,7 +6,7 @@
         <a class="w-100 btn rounded-pill button-normal" href="<?= $parameters["getPath"]("/sign-up"); ?>"> <?= $parameters["getText"]("home-button"); ?> </a>
     </div>
     <?php foreach($parameters["themes"] as $id => $theme) {
-        if(!in_array($theme, $parameters["charts"])) echo \Static\Components\Article::create($id, $parameters["getPath"]("/Public/Images/Home/Light/" . $theme . ".png"), $parameters["getText"]("home-" . strtolower($theme) . "-title"), $parameters["getText"]("home-" . strtolower($theme) . "-content"));
+        if(!in_array($theme, $parameters["charts"])) echo \Static\Components\Article::create($id, $parameters["getPath"]("/Public/Images/Home/" . (\Static\Kernel::isLight() ? "Light" : "Dark") . "/" . $theme . ".png"), $parameters["getText"]("home-" . strtolower($theme) . "-title"), $parameters["getText"]("home-" . strtolower($theme) . "-content"));
         else { ?>
             <div class="d-md-none p-5">
                 <div class="line"> </div>

@@ -11,7 +11,7 @@
             <input id="chat-by" value="<?= $parameters["getText"]("chat-by"); ?>"/>
             <input id="chat-on" value="<?= $parameters["getText"]("chat-on"); ?>"/>
             <input id="chat-at" value="<?= $parameters["getText"]("chat-at"); ?>"/>
-            <input id="chat-delete-src" value="<?= $parameters["getPath"]("/Public/Images/Icons/Delete.png"); ?>"/>
+            <input id="chat-delete-src" value="<?= $parameters["getPath"]("/Public/Images/Icons/" . (\Static\Kernel::isLight() ? "Light" : "Dark") . "/Delete.png"); ?>"/>
             <input id="chat-delete-alt" value="<?= $parameters["getText"]("chat-delete"); ?>"/>
         </div>
         <p id="chat-empty" class="mb-0"> <?= $parameters["getText"]("chat-empty"); ?> </p>

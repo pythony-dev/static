@@ -1,6 +1,6 @@
 <div id="create-modal" class="modal fade p-5">
     <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content px-4 py-5 bg-light">
+        <div class="modal-content px-4 py-5 bg-<?= \Static\Kernel::isLight() ? "light" : "dark"; ?>">
             <?php $type = \Static\Kernel::getRoute() == "Forums" ? "thread" : (\Static\Kernel::getRoute() == "Thread" ? "post" : "message"); ?>
             <h3 class="p-4"> <?= $parameters["getText"]("create-title-" . $type); ?> </h3>
             <p class="p-4 text-justify"> <?= $parameters["getText"]("create-content-" . $type); ?> </p>

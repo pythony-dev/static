@@ -4,7 +4,7 @@
 
     final class Kernel {
 
-        private static $version = "1.7.2";
+        private static $version = "1.8.0";
         private static $salt = "0123456789ABCDEF";
         private static $settings = array();
 
@@ -240,6 +240,10 @@
 
         public static function getDateFormat() {
             return (\Static\Languages\Translate::getLanguage() == "english" ? "m/d" : "d/m") . "/Y H:i:s";
+        }
+
+        public static function isLight() {
+            return self::getValue($_SESSION, array("theme", "mode")) != "dark";
         }
 
         public static function getThemes() {

@@ -1,7 +1,7 @@
 
 <!DOCTYPE HTML>
 
-<html>
+<html data-bs-theme="<?= \Static\Kernel::isLight() ? "light" : "dark"; ?>">
     <head>
         <meta charset="utf-8"/>
         <meta name="viewport" content="width=device-width, initial-scale=1"/>
@@ -11,14 +11,14 @@
             <link rel="stylesheet" href="<?= $parameters["getPath"]($style); ?>"/>
         <?php } ?>
         <link rel="icon" href="<?= $parameters["getPath"]("/Public/Images/Index/Icon.png"); ?>"/>
-        <style> <?php require("Public/Styles/Index.php"); ?> </style>
+        <style> <?php require("Public/Styles/" . (\Static\Kernel::isLight() ? "Light" : "Dark") . ".php"); ?> </style>
         <?php foreach($scripts as $script) { ?>
             <script src="<?= $parameters["getPath"]($script); ?>" defer> </script>
         <?php } ?>
     </head>
     <body class="container text-center">
         <?php if(!$parameters["hash"]) echo \Static\Components\Navbar::create(); ?>
-        <section class="bg-light shadow border<?= !$parameters["hash"] ? " section" : null; ?>"> <?= $body; ?> </section>
+        <section class="bg-<?= \Static\Kernel::isLight() ? "light" : "dark"; ?> shadow border<?= !$parameters["hash"] ? " section" : null; ?>"> <?= $body; ?> </section>
         <?= \Static\Components\Footer::create(); ?>
         <div>
             <?php

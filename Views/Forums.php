@@ -7,7 +7,7 @@
                 <?php if($id != 0) { ?>
                     <div class="line"> </div>
                 <?php } ?>
-                <a class="text-decoration-none text-dark" href="<?= $parameters["getPath"]("/thread/" . $thread["hash"]); ?>">
+                <a class="text-decoration-none text-<?= \Static\Kernel::isLight() ? "dark" : "light"; ?>" href="<?= $parameters["getPath"]("/thread/" . $thread["hash"]); ?>">
                     <div class="row mx-0">
                         <div class="col-9 col-md-5 my-auto px-0 p<?= $id == 0 ? "b" : ($id == array_key_last($parameters["threads"]) ? "t" : "y"); ?>-5">
                             <div class="d-flex">
@@ -21,9 +21,9 @@
                         </div>
                         <div class="order-md-1 col-3 col-md-2 my-auto px-0 p<?= $id == 0 ? "b" : ($id == array_key_last($parameters["threads"]) ? "t" : "y"); ?>-5 text-end">
                             <?php if($parameters["userID"] != $thread["userID"]) { ?>
-                                <input class="my-auto btn rounded-circle image-48 ratio-1 button-outline thread-report" type="image" src="<?= $parameters["getPath"]("/Public/Images/Icons/Report.png"); ?>" alt="<?= $parameters["getText"]("forums-report"); ?>" thread="<?= $thread["hash"]; ?>"/>
+                                <input class="my-auto btn rounded-circle image-48 ratio-1 button-outline thread-report" type="image" src="<?= $parameters["getPath"]("/Public/Images/Icons/" . (\Static\Kernel::isLight() ? "Light" : "Dark") . "/Report.png"); ?>" alt="<?= $parameters["getText"]("forums-report"); ?>" thread="<?= $thread["hash"]; ?>"/>
                             <?php } else { ?>
-                                <input class="my-auto btn rounded-circle image-48 ratio-1 button-outline thread-delete" type="image" src="<?= $parameters["getPath"]("/Public/Images/Icons/Delete.png"); ?>" alt="<?= $parameters["getText"]("forums-delete"); ?>" thread="<?= $thread["hash"]; ?>"/>
+                                <input class="my-auto btn rounded-circle image-48 ratio-1 button-outline thread-delete" type="image" src="<?= $parameters["getPath"]("/Public/Images/Icons/" . (\Static\Kernel::isLight() ? "Light" : "Dark") . "/Delete.png"); ?>" alt="<?= $parameters["getText"]("forums-delete"); ?>" thread="<?= $thread["hash"]; ?>"/>
                             <?php } ?>
                         </div>
                         <div class="col-12 col-md-5 my-auto px-0 p<?= $id == 0 ? "b" : ($id == array_key_last($parameters["threads"]) ? "t" : "b-5 pt-md"); ?>-5">

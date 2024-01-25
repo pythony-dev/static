@@ -1,4 +1,17 @@
 $(document).ready(() => {
+    if(window.matchMedia && window.matchMedia("(prefers-color-scheme : dark)").matches != ($("html").attr("data-bs-theme") == "dark")) {
+        getToken(token => {
+            $.post("", {
+                "token" : token,
+                "request" : "settings",
+                "action" : "theme",
+                "mode" : window.matchMedia("(prefers-color-scheme : dark)").matches ? "dark" : "light",
+            }).then(response => {
+                if(response["status"] == "success" && !("serviceWorker" in navigator && !navigator.serviceWorker.controller)) location.reload()
+            })
+        })
+    }
+
     if("serviceWorker" in navigator && !navigator.serviceWorker.controller) {
         getToken(token => {
             $.post("", {
@@ -45,7 +58,7 @@ $(document).ready(() => {
                 "token" : token,
                 "request" : "settings",
                 "action" : "theme",
-                "theme" : $(event.target).attr("theme"),
+                "color" : $(event.target).attr("theme"),
             }).then(response => {
                 if(response["status"] == "success") location.reload()
                 else showAlert("index-theme")

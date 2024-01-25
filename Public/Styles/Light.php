@@ -1,6 +1,6 @@
 <?php if(class_exists("\Static\Kernel")) {
     $themes = \Static\Kernel::getThemes();
-    $theme = \Static\Kernel::getValue($_SESSION, "theme");
+    $theme = \Static\Kernel::getValue($_SESSION, array("theme", "color"));
 
     $colors = $themes["aqua"];
 

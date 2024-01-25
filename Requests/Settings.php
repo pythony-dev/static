@@ -16,12 +16,19 @@
         }
 
         public static function theme() {
-            $theme = \Static\Kernel::getValue($_POST, "theme");
+            $color = \Static\Kernel::getValue($_POST, "color");
+            $mode = \Static\Kernel::getValue($_POST, "mode");
             $userID = (int)\Static\Kernel::getValue($_SESSION, "userID");
 
-            if(!in_array($theme, array_keys(\Static\Kernel::getThemes())) || $userID != 0) return \Static\Kernel::getRequest("error");
+            if(in_array($color, array_keys(\Static\Kernel::getThemes())) && $userID == 0) $_SESSION["theme"] = array(
+                "color" => $color,
+                "mode" => \Static\Kernel::getValue($_SESSION, array("theme", "mode")),
+            );
 
-            $_SESSION["theme"] = $theme;
+            if(in_array($mode, array("light", "dark"))) $_SESSION["theme"] = array(
+                "color" => \Static\Kernel::getValue($_SESSION, array("theme", "color")),
+                "mode" => $mode,
+            );
 
             return \Static\Kernel::getRequest("success");
         }

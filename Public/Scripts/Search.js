@@ -33,11 +33,11 @@ $(document).ready(() => {
                                 </div>\
                                 <div class=\"d-flex flex-column flex-md-row-reverse\">\
                                     <div class=\"my-auto\">\
-                                        <input class=\"btn btn-outline-secondary rounded-circle image-48 ratio-1 user-block\" type=\"image\" src=\"" + $("#search-block-src").val() + "\" alt=\"" + $("#search-block-alt").val() + "\" user=\"" + user["hash"] + "\"/>\
+                                        <input class=\"btn rounded-circle image-48 ratio-1 button-outline user-block\" type=\"image\" src=\"" + $("#search-block-src").val() + "\" alt=\"" + $("#search-block-alt").val() + "\" user=\"" + user["hash"] + "\"/>\
                                     </div>\
                                     " + (user["chat"] ? "\
                                         <a class=\"my-auto me-md-4 mt-4 mt-md-auto\" href=\"" + user["chat"] + "\">\
-                                            <input class=\"btn btn-outline-success rounded-circle image-48 ratio-1\" type=\"image\" src=\"" + $("#search-chat-src").val() + "\" alt=\"" + $("#search-chat-alt").val() + "\"/>\
+                                            <input class=\"btn rounded-circle image-48 ratio-1 button-outline\" type=\"image\" src=\"" + $("#search-chat-src").val() + "\" alt=\"" + $("#search-chat-alt").val() + "\"/>\
                                         </a>\
                                     " : "") + "\
                                 </div>\

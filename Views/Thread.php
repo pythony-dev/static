@@ -18,16 +18,16 @@
                 <div class="d-flex flex-column flex-md-row-reverse">
                     <?php if($parameters["userID"] != $post["userID"]) { ?>
                         <div class="my-auto">
-                            <input class="btn rounded-circle image-48 ratio-1 button-outline post-report" type="image" src="<?= $parameters["getPath"]("/Public/Images/Icons/Report.png"); ?>" alt="<?= $parameters["getText"]("thread-report"); ?>" post="<?= $post["hash"]; ?>"/>
+                            <input class="btn rounded-circle image-48 ratio-1 button-outline post-report" type="image" src="<?= $parameters["getPath"]("/Public/Images/Icons/" . (\Static\Kernel::isLight() ? "Light" : "Dark") . "/Report.png"); ?>" alt="<?= $parameters["getText"]("thread-report"); ?>" post="<?= $post["hash"]; ?>"/>
                         </div>
                         <?php if($post["chat"]) { ?>
                             <a class="my-auto me-md-4 mt-4 mt-md-auto" href="<?= $post["chat"]; ?>">
-                                <input class="btn rounded-circle image-48 ratio-1 button-outline" type="image" src="<?= $parameters["getPath"]("/Public/Images/Icons/Chat.png"); ?>" alt="<?= $parameters["getText"]("thread-chat"); ?>"/>
+                                <input class="btn rounded-circle image-48 ratio-1 button-outline" type="image" src="<?= $parameters["getPath"]("/Public/Images/Icons/" . (\Static\Kernel::isLight() ? "Light" : "Dark") . "/Chat.png"); ?>" alt="<?= $parameters["getText"]("thread-chat"); ?>"/>
                             </a>
                         <?php } ?>
                     <?php } else if($id != 0 || $parameters["page"] != 1) { ?>
                         <div class="my-auto">
-                            <input class="btn rounded-circle image-48 ratio-1 button-outline post-delete" type="image" src="<?= $parameters["getPath"]("/Public/Images/Icons/Delete.png"); ?>" alt="<?= $parameters["getText"]("thread-delete"); ?>" post="<?= $post["hash"]; ?>"/>
+                            <input class="btn rounded-circle image-48 ratio-1 button-outline post-delete" type="image" src="<?= $parameters["getPath"]("/Public/Images/Icons/" . (\Static\Kernel::isLight() ? "Light" : "Dark") . "/Delete.png"); ?>" alt="<?= $parameters["getText"]("thread-delete"); ?>" post="<?= $post["hash"]; ?>"/>
                         </div>
                     <?php } ?>
                 </div>

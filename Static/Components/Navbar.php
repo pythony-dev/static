@@ -15,7 +15,7 @@
                     <img class="icon" src="<?= \Static\Kernel::getPath("/Public/Images/Index/Icon.png"); ?>" alt="<?= \Static\Kernel::getSettings("project-name"); ?>"/>
                     <p class="h1 my-auto"> <?= \Static\Kernel::getSettings("project-name"); ?> </p>
                 </a>
-                <button class="navbar-toggler bg-light" data-bs-toggle="collapse" data-bs-target="#navbar-collapse">
+                <button class="navbar-toggler bg-<?= \Static\Kernel::isLight() ? "light" : "dark"; ?>" data-bs-toggle="collapse" data-bs-target="#navbar-collapse">
                     <div class="navbar-toggler-icon"> </div>
                 </button>
                 <div id="navbar-collapse" class="navbar-collapse collapse">
@@ -53,7 +53,7 @@
                                 <ul class="w-100 dropdown-menu text-center">
                                     <?php foreach(\Static\Kernel::getThemes() as $theme => $colors) { ?>
                                         <li>
-                                            <a class="dropdown-item theme<?= \Static\Kernel::getValue($_SESSION, "theme") != $theme ? null : " active"; ?>" theme="<?= $theme; ?>"> <?= ucfirst($theme); ?> </a>
+                                            <a class="dropdown-item theme<?= \Static\Kernel::getValue($_SESSION, array("theme", "color")) != $theme ? null : " active"; ?>" theme="<?= $theme; ?>"> <?= ucfirst($theme); ?> </a>
                                         </li>
                                     <?php } ?>
                                 </ul>

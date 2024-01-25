@@ -1,6 +1,6 @@
 <div id="delete-modal" class="modal fade p-5">
     <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content px-4 py-5 bg-light">
+        <div class="modal-content px-4 py-5 bg-<?= \Static\Kernel::isLight() ? "light" : "dark"; ?>">
             <h3 class="p-4"> <?= $parameters["getText"]("delete-title"); ?> </h3>
             <p class="p-4 text-justify"> <?= $parameters["getText"]("delete-content"); ?> </p>
             <form id="delete-form" class="p-4">
