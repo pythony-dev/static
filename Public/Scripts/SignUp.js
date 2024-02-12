@@ -77,10 +77,12 @@ $(document).ready(() => {
                 "request" : "confirmations",
                 "action" : "create",
                 "email" : $("#signUp-email").val(),
+                "used" : "false",
             }).then(response => {
                 if(response["status"] == "email") showAlert("signUp-confirmations-email")
                 else if(response["status"] == "success") {
                     $("#signUp-code").removeClass("d-none").attr("required", true)
+                    $("#signUp-email").attr("disabled", true)
 
                     showAlert("signUp-confirmations-success")
                 } else showAlert("signUp-confirmations-error")

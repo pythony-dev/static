@@ -71,10 +71,12 @@ $(document).ready(() => {
                 "request" : "confirmations",
                 "action" : "create",
                 "email" : $("#reset-email").val(),
+                "used" : "true",
             }).then(response => {
                 if(response["status"] == "email") showAlert("reset-confirmations-email")
                 else if(response["status"] == "success") {
                     $("#reset-code").removeClass("d-none").attr("required", true)
+                    $("#reset-email").attr("disabled", true)
 
                     showAlert("reset-confirmations-success")
                 } else showAlert("reset-confirmations-error")

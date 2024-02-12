@@ -16,6 +16,7 @@
             $sessionID = (int)\Static\Kernel::getValue($_SESSION, "sessionID");
             $userID = (int)\Static\Kernel::getValue($_SESSION, "userID");
             $language = \Static\Languages\Translate::getLanguage();
+            $theme = \Static\Kernel::getValue($_SESSION, array("theme", "color"));
 
             if(self::isEmail($email) != "success") return "email";
             else if(!\Static\Models\Confirmations::check($email, $code)) return "code";
@@ -33,7 +34,7 @@
                 "published" => "true",
             ))), PDO::PARAM_STR);
             $query->bindValue(":others", htmlspecialchars(json_encode(array(
-                "theme" => "aqua",
+                "theme" => array_key_exists($theme, \Static\Kernel::getThemes()) ? $theme : "aqua",
                 "languages" => implode(",", \Static\Languages\Translate::getAllLanguages()),
                 "contact" => "true",
             ))), PDO::PARAM_STR);

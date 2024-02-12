@@ -6,12 +6,13 @@
 
     final class Confirmations extends Database {
 
-        public static function create($email) {
+        public static function create($email, $used) {
             $email = htmlspecialchars($email);
+            $used = boolval($used);
 
             $sessionID = (int)\Static\Kernel::getValue($_SESSION, "sessionID");
 
-            if(!in_array(\Static\Models\Users::isEmail($email), array("success", "used"))) return "email";
+            if(\Static\Models\Users::isEmail($email) != ($used ? "used" : "success")) return "email";
             else if($sessionID <= 0) return "error";
 
             $code = "";

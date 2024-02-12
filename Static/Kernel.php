@@ -4,7 +4,7 @@
 
     final class Kernel {
 
-        private static $version = "1.8.0";
+        private static $version = "1.8.1";
         private static $salt = "0123456789ABCDEF";
         private static $settings = array();
 
@@ -91,6 +91,13 @@
                         self::$route = ucfirst($route["name"]);
 
                         if(self::$route == "Manifest") {
+                            $themes = self::getThemes();
+                            $theme = self::getValue($_SESSION, array("theme", "color"));
+
+                            $colors = $themes["aqua"];
+
+                            if(array_key_exists($theme, $themes)) $colors = $themes[$theme];
+
                             echo json_encode(array(
                                 "name" => \Static\Kernel::getSettings("project-name"),
                                 "version" => \Static\Kernel::getSettings("project-version"),
@@ -98,11 +105,13 @@
                                 "display" => "standalone",
                                 "icons" => array(
                                     array(
-                                        "src" => \Static\Kernel::getSettings("settings-link") . "/Public/Images/Index/Icon.png",
+                                        "src" => \Static\Kernel::getSettings("settings-link") . "/Public/Images/Index/Icon.jpeg",
                                         "type" => "image/png",
                                         "sizes" => "512x512",
                                     ),
                                 ),
+                                "background_color" => $colors[0],
+                                "theme_color" => $colors[\Static\Kernel::isLight() ? 2 : 1],
                             ));
 
                             return;

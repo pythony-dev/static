@@ -35,6 +35,8 @@
                 $link . "/privacy",
                 $link . "/site-map",
 
+                $link . "/Public/Images/Home/Light/Default.png",
+                $link . "/Public/Images/Home/Dark/Default.png",
                 $link . "/Public/Images/Features/" . \Static\Kernel::getHash("Feature", 0) . ".jpeg",
                 $link . "/Public/Images/Articles/" . \Static\Kernel::getHash("Article", 0) . ".jpeg",
                 $link . "/Public/Images/Users/" . \Static\Kernel::getHash("User", 0) . ".jpeg",
