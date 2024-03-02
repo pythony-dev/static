@@ -4,7 +4,7 @@
 
     final class Kernel {
 
-        private static $version = "1.8.1";
+        private static $version = "1.8.2";
         private static $salt = "0123456789ABCDEF";
         private static $settings = array();
 
@@ -59,7 +59,7 @@
             \Static\Models\Database::connect();
             \Static\Languages\Translate::setLanguage();
 
-            if(!\Static\Models\Sessions::start() || !\Static\Models\Requests::start()) return self::setError(429, \Static\Languages\Translate::getText("error-requests"), false);
+            if(!$hash && (!\Static\Models\Sessions::start() || !\Static\Models\Requests::start())) return self::setError(429, \Static\Languages\Translate::getText("error-requests"), false);
             else if(!array_key_exists("request", $_POST) || $hash) {
                 self::addRoute("manifest", "/manifest");
                 self::addRoute("email", "/email/(link)");

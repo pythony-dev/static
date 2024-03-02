@@ -75,6 +75,32 @@
             return $results;
         }
 
+        public static function newsletter() {
+            $users = \Static\Models\Users::getUsers();
+
+            $query = parent::$pdo->query("SELECT title, overview, link, language FROM Articles WHERE DATE(NOW()) = DATE(published)");
+
+            while($article = $query->fetch()) {
+                foreach($users as $user) {
+                    if(\Static\Kernel::getValue($article, "language") == \Static\Kernel::getValue($user, "language") && \Static\Kernel::getValue($user, "published") == "true") {
+                        \Static\Languages\Translate::setLanguage(\Static\Kernel::getValue($user, "language"));
+
+                        $email = \Static\Kernel::getValue($user, "email");
+                        $title = \Static\Languages\Translate::getText("emails-newsletter-title");
+                        $content = \Static\Languages\Translate::getText("emails-newsletter-content", true, array(
+                            "title" => \Static\Kernel::getValue($article, "title"),
+                            "overview" => \Static\Kernel::getValue($article, "overview"),
+                            "read" => \Static\Kernel::getPath("/article/" . \Static\Kernel::getValue($article, "link") . "?" . \Static\Languages\Translate::getLanguage()),
+                        ));
+
+                        \Static\Emails::send($email, $title, $content);
+                    }
+                }
+            }
+
+            return true;
+        }
+
     }
 
 ?>

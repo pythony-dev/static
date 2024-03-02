@@ -29,6 +29,7 @@
     Static\Kernel::addRequest("messages");
     Static\Kernel::addRequest("blocks");
     Static\Kernel::addRequest("images");
+    Static\Kernel::addRequest("tasks");
 
     Static\Kernel::start();
 

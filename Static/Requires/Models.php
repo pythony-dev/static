@@ -18,5 +18,6 @@
     require_once("Models/Updates.php");
     require_once("Models/Emails.php");
     require_once("Models/Errors.php");
+    require_once("Models/Tasks.php");
 
 ?>

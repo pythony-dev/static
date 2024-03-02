@@ -170,6 +170,22 @@
             } else return array();
         }
 
+        public static function getUsers() {
+            $query = parent::$pdo->query("SELECT email, language, notifications FROM Users WHERE deleted IS NULL");
+
+            $results = array();
+
+            while($user = $query->fetch()) {
+                array_push($results, array(
+                    "email" => \Static\Kernel::getValue($user, "email"),
+                    "language" => \Static\Kernel::getValue($user, "language"),
+                    "published" => \Static\Kernel::getValue(json_decode(htmlspecialchars_decode(htmlspecialchars_decode(\Static\Kernel::getValue($user, "notifications"))), true), "published"),
+                ));
+            }
+
+            return $results;
+        }
+
         public static function update($email, $username, $language, $confirm) {
             $email = htmlspecialchars($email);
             $username = htmlspecialchars($username);

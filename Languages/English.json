@@ -403,5 +403,7 @@
     "emails-message-title" : "New Message",
     "emails-message-content" : "@username has sent you a new Message. You can check it on the <a href=\"@messages\"> Messages </a> page of your Account.",
     "emails-delete-title" : "Good Bye",
-    "emails-delete-content" : "Following your Request, we have just Deleted your Account. However, you can <a href=\"@sign-up\"> Sign Up </a> again at any time."
+    "emails-delete-content" : "Following your Request, we have just Deleted your Account. However, you can <a href=\"@sign-up\"> Sign Up </a> again at any time.",
+    "emails-newsletter-title" : "A New Article is Available",
+    "emails-newsletter-content" : "A New Article has been Published. <br/> <br/> @title <br/> <br/> @overview <br/> <br/> <a href=\"@read\"> Read the Full Article </a>"
 }
