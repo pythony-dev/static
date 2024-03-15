@@ -33,6 +33,7 @@
                 $parameters["getText"]("title-logIn") => "/log-in",
                 $parameters["getText"]("title-terms") => "/terms",
                 $parameters["getText"]("title-privacy") => "/privacy",
+                $parameters["getText"]("title-welcome") => "/welcome",
                 $parameters["getText"]("title-siteMap") => "/site-map",
             );
             else {
@@ -63,6 +64,7 @@
                     ),
                     $parameters["getText"]("title-terms") => "/terms",
                     $parameters["getText"]("title-privacy") => "/privacy",
+                    $parameters["getText"]("title-welcome") => "/welcome",
                     $parameters["getText"]("title-siteMap") => "/site-map",
                 );
             }

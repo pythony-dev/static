@@ -11,6 +11,7 @@
     require_once("Requests/Confirmations.php");
     require_once("Requests/Messages.php");
     require_once("Requests/Blocks.php");
+    require_once("Requests/Welcome.php");
     require_once("Requests/Images.php");
     require_once("Requests/Tasks.php");
 

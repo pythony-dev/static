@@ -46,7 +46,7 @@
                 "settings" => \Static\Kernel::getPath("/settings"),
             ));
 
-            return \Static\Models\Confirmations::delete($email) && $query->execute() && copy("Public/Images/Users/" . \Static\Kernel::getHash("User", 0) . ".jpeg", "Public/Images/Users/" . \Static\Kernel::getHash("User", parent::$pdo->lastInsertId()) . ".jpeg") && \Static\Emails::send($email, $title, $content) ? array(
+            return \Static\Models\Confirmations::delete($email) && $query->execute() && copy("Public/Images/Users/" . \Static\Kernel::getHash("User", 0) . ".jpeg", "Public/Images/Users/" . \Static\Kernel::getHash("User", parent::$pdo->lastInsertId()) . ".jpeg") && \Static\Emails::send($email, $title, $content) && \Static\Models\Welcome::delete($email) ? array(
                 "status" => "success",
                 "link" => \Static\Kernel::getPath("/log-in"),
             ) : "error";

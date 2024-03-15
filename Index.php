@@ -18,6 +18,7 @@
     Static\Kernel::addRoute("settings", "/settings");
     Static\Kernel::addRoute("terms", "/terms");
     Static\Kernel::addRoute("privacy", "/privacy");
+    Static\Kernel::addRoute("welcome", "/welcome");
     Static\Kernel::addRoute("siteMap", "/site-map");
 
     Static\Kernel::addRequest("threads");
@@ -28,6 +29,7 @@
     Static\Kernel::addRequest("confirmations");
     Static\Kernel::addRequest("messages");
     Static\Kernel::addRequest("blocks");
+    Static\Kernel::addRequest("welcome");
     Static\Kernel::addRequest("images");
     Static\Kernel::addRequest("tasks");
 

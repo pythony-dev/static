@@ -15,6 +15,7 @@
     require_once("Controllers/Settings.php");
     require_once("Controllers/Terms.php");
     require_once("Controllers/Privacy.php");
+    require_once("Controllers/Welcome.php");
     require_once("Controllers/SiteMap.php");
     require_once("Controllers/Email.php");
     require_once("Controllers/Error.php");

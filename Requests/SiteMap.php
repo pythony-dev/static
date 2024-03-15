@@ -33,6 +33,7 @@
                 $link . "/log-in",
                 $link . "/terms",
                 $link . "/privacy",
+                $link . "/welcome",
                 $link . "/site-map",
 
                 $link . "/Public/Images/Home/Light/Default.png",

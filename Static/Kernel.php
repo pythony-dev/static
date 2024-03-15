@@ -4,7 +4,7 @@
 
     final class Kernel {
 
-        private static $version = "1.8.2";
+        private static $version = "1.8.3";
         private static $salt = "0123456789ABCDEF";
         private static $settings = array();
 
@@ -110,8 +110,8 @@
                                         "sizes" => "512x512",
                                     ),
                                 ),
-                                "background_color" => $colors[0],
-                                "theme_color" => $colors[\Static\Kernel::isLight() ? 2 : 1],
+                                "background_color" => "#" . $colors[0],
+                                "theme_color" => "#" . $colors[\Static\Kernel::isLight() ? 2 : 1],
                             ));
 
                             return;

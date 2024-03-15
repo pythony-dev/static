@@ -30,6 +30,7 @@
     "title-settings-logOut" : "Déconnexion",
     "title-terms" : "Termes et Conditions",
     "title-privacy" : "Politique de Confidentialité",
+    "title-welcome" : "Bienvenue",
     "title-siteMap" : "Plan du Site",
     "title-error" : "Erreur",
 
@@ -370,6 +371,14 @@
     "privacy-consent-content" : "En utilisant notre site web, vous consentez par la présente à notre Politique de Confidentialité et acceptez ses <a href=\"@terms\"> Termes et Conditions. </a>",
     "privacy-button" : "Retourner à l'Accueil",
 
+    "welcome-title" : "Bienvenue",
+    "welcome-content" : "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi luctus metus eu dolor viverra accumsan. Aliquam dapibus dolor vitae posuere vulputate. In posuere augue nibh, vitae pretium ipsum tincidunt sed. Curabitur elit risus, pharetra a egestas in, rutrum eget velit. Quisque maximus sit amet quam ac blandit. Suspendisse interdum molestie libero non tristique. Praesent at risus pretium, feugiat odio ut, molestie urna. In varius quam volutpat, egestas odio non, vehicula sem. Cras pellentesque eros ex, a molestie quam ultricies eu. Nunc mollis ligula id efficitur sagittis. Cras rutrum aliquet sem, ac feugiat elit luctus sit amet. Nam ut purus ut orci luctus ultricies ac sed eros.",
+    "welcome-email" : "Adresse Email (steve@exemple.com)",
+    "welcome-submit" : "Envoyer",
+    "welcome-alert-email" : "Cette Adresse Email est Invalide !",
+    "welcome-alert-success" : "Vérifiez votre Boite Mail pour votre Lien de Bienvenue",
+    "welcome-alert-error" : "Impossible de Vous Envoyer un Email Actuellement !",
+
     "siteMap-title" : "Plan du Site",
     "siteMap-content" : "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi luctus metus eu dolor viverra accumsan. Aliquam dapibus dolor vitae posuere vulputate. In posuere augue nibh, vitae pretium ipsum tincidunt sed. Curabitur elit risus, pharetra a egestas in, rutrum eget velit. Quisque maximus sit amet quam ac blandit. Suspendisse interdum molestie libero non tristique. Praesent at risus pretium, feugiat odio ut, molestie urna. In varius quam volutpat, egestas odio non, vehicula sem. Cras pellentesque eros ex, a molestie quam ultricies eu. Nunc mollis ligula id efficitur sagittis. Cras rutrum aliquet sem, ac feugiat elit luctus sit amet. Nam ut purus ut orci luctus ultricies ac sed eros.",
 
@@ -404,6 +413,8 @@
     "emails-message-content" : "@username vous a envoyé un nouveau Message. Vous pouvez le consulter sur la page <a href=\"@messages\"> Messages </a> de votre Compte.",
     "emails-delete-title" : "Au Revoir",
     "emails-delete-content" : "Suite à votre Demande, nous venons de Supprimer votre Compte. Vous pouvez toutefois vous <a href=\"@messages\"> Inscrire </a> à nouveau à tout moment.",
+    "emails-welcome-title" : "S'Inscrire à @name",
+    "emails-welcome-content" : "Merci de votre Intérêt pour @name. N'Oubliez Pas de vous <a href=\"@sign-up\"> Inscrire </a> pour Profiter de toutes ses Fonctionnalités, Suivre ses Actualités, et rejoindre ses Forums Communautaires !",
     "emails-newsletter-title" : "Un Nouvel Article est Disponible",
     "emails-newsletter-content" : "Un Nouvel Article vient d'être Publié <br/> <br/> @title <br/> <br/> @overview <br/> <br/> <a href=\"@read\"> Lire l'Article Complet </a>"
 }

@@ -30,6 +30,7 @@
     "title-settings-logOut" : "Log Out",
     "title-terms" : "Terms and Conditions",
     "title-privacy" : "Privacy Policy",
+    "title-welcome" : "Welcome",
     "title-siteMap" : "Site Map",
     "title-error" : "Error",
 
@@ -370,6 +371,14 @@
     "privacy-consent-content" : "By using our website, you hereby consent to our Privacy Policy and accept its <a href=\"@terms\"> Terms and Conditions. </a>",
     "privacy-button" : "Back to Home",
 
+    "welcome-title" : "Welcome",
+    "welcome-content" : "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi luctus metus eu dolor viverra accumsan. Aliquam dapibus dolor vitae posuere vulputate. In posuere augue nibh, vitae pretium ipsum tincidunt sed. Curabitur elit risus, pharetra a egestas in, rutrum eget velit. Quisque maximus sit amet quam ac blandit. Suspendisse interdum molestie libero non tristique. Praesent at risus pretium, feugiat odio ut, molestie urna. In varius quam volutpat, egestas odio non, vehicula sem. Cras pellentesque eros ex, a molestie quam ultricies eu. Nunc mollis ligula id efficitur sagittis. Cras rutrum aliquet sem, ac feugiat elit luctus sit amet. Nam ut purus ut orci luctus ultricies ac sed eros.",
+    "welcome-email" : "Email Address (steve@example.com)",
+    "welcome-submit" : "Send",
+    "welcome-alert-email" : "This Email Address is Invalid !",
+    "welcome-alert-success" : "Check your Emails Inbox for your Welcome Link",
+    "welcome-alert-error" : "Unable to Send You an Email for Now !",
+
     "siteMap-title" : "Site Map",
     "siteMap-content" : "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi luctus metus eu dolor viverra accumsan. Aliquam dapibus dolor vitae posuere vulputate. In posuere augue nibh, vitae pretium ipsum tincidunt sed. Curabitur elit risus, pharetra a egestas in, rutrum eget velit. Quisque maximus sit amet quam ac blandit. Suspendisse interdum molestie libero non tristique. Praesent at risus pretium, feugiat odio ut, molestie urna. In varius quam volutpat, egestas odio non, vehicula sem. Cras pellentesque eros ex, a molestie quam ultricies eu. Nunc mollis ligula id efficitur sagittis. Cras rutrum aliquet sem, ac feugiat elit luctus sit amet. Nam ut purus ut orci luctus ultricies ac sed eros.",
 
@@ -404,6 +413,8 @@
     "emails-message-content" : "@username has sent you a new Message. You can check it on the <a href=\"@messages\"> Messages </a> page of your Account.",
     "emails-delete-title" : "Good Bye",
     "emails-delete-content" : "Following your Request, we have just Deleted your Account. However, you can <a href=\"@sign-up\"> Sign Up </a> again at any time.",
+    "emails-welcome-title" : "Sign In for @name",
+    "emails-welcome-content" : "Thanks for your Interest in @name. Remember to <a href=\"@sign-up\"> Sign Up </a> to Enjoy all its Features, Follow its News, and joint its Community Forums !",
     "emails-newsletter-title" : "A New Article is Available",
     "emails-newsletter-content" : "A New Article has been Published. <br/> <br/> @title <br/> <br/> @overview <br/> <br/> <a href=\"@read\"> Read the Full Article </a>"
 }
