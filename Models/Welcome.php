@@ -55,6 +55,9 @@
                 $title = \Static\Languages\Translate::getText("emails-welcome-title");
                 $content = \Static\Languages\Translate::getText("emails-welcome-content", true, array(
                     "sign-up" => \Static\Kernel::getPath("/sign-up?welcome=" . \Static\Kernel::getHash("Welcome", \Static\Kernel::getValue($welcome, "id"))),
+                    "features" => \Static\Kernel::getPath("/features"),
+                    "news" => \Static\Kernel::getPath("/news"),
+                    "forums" => \Static\Kernel::getPath("/forums"),
                 ));
 
                 \Static\Emails::send($email, $title, $content);
