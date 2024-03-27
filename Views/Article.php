@@ -15,9 +15,9 @@
                 </a>
             <?php } ?>
         </div>
-    <?php } ?>
-    <div class="p-5">
-        <div class="line"> </div>
-    </div>
-    <?php foreach($parameters["random"] as $id => $article) echo \Static\Components\Article::create($id, $article["image"], $article["title"], $article["overview"], $parameters["getText"]("article-button"), $article["link"]); ?>
+    <?php } if(count($parameters["random"])) { ?>
+        <div class="p-5">
+            <div class="line"> </div>
+        </div>
+    <?php } foreach($parameters["random"] as $id => $article) echo \Static\Components\Article::create($id, $article["image"], $article["title"], $article["overview"], $parameters["getText"]("article-button"), $article["link"]); ?>
 </article>

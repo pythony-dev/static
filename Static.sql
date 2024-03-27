@@ -514,6 +514,29 @@ INSERT INTO `Users` (`id`, `created`, `deleted`, `sessionID`, `email`, `username
 (9, '2022-10-12 12:30:00', NULL, 1, 'albert@pythony.dev', 'Albert', 'english', '{"message":"true","published":"true"}', '{"theme":"aqua","languages":"english,french","contact":"true"}', '65e2ea4f025f942a7923c60f90ac16919c6eb3e1'),
 (10, '2022-10-12 12:30:00', NULL, 1, 'valentine@pythony.dev', 'Valentine', 'english', '{"message":"true","published":"true"}', '{"theme":"aqua","languages":"english,french","contact":"true"}', '65e2ea4f025f942a7923c60f90ac16919c6eb3e1');
 
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `Welcome`
+--
+
+CREATE TABLE `Welcome` (
+  `id` int(11) NOT NULL,
+  `created` datetime NOT NULL,
+  `deleted` datetime DEFAULT NULL,
+  `sessionID` int(11) NOT NULL,
+  `userID` int(11) NOT NULL,
+  `email` varchar(255) NOT NULL,
+  `language` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `Welcome`
+--
+
+INSERT INTO `Welcome` (`id`, `created`, `deleted`, `sessionID`, `userID`, `email`, `language`) VALUES
+(1, '2022-10-12 12:30:00', NULL, 1, 0, 'hello@pythony.dev', 'english');
+
 --
 -- Indexes for dumped tables
 --
@@ -627,6 +650,12 @@ ALTER TABLE `Users`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `Welcome`
+--
+ALTER TABLE `Welcome`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- AUTO_INCREMENT for dumped tables
 --
 
@@ -737,3 +766,9 @@ ALTER TABLE `Updates`
 --
 ALTER TABLE `Users`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+
+--
+-- AUTO_INCREMENT for table `Welcome`
+--
+ALTER TABLE `Welcome`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;

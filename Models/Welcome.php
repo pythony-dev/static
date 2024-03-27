@@ -26,6 +26,9 @@
             $title = \Static\Languages\Translate::getText("emails-welcome-title");
             $content = \Static\Languages\Translate::getText("emails-welcome-content", true, array(
                 "sign-up" => \Static\Kernel::getPath("/sign-up?welcome=" . \Static\Kernel::getHash("Welcome", parent::$pdo->lastInsertId())),
+                "features" => \Static\Kernel::getPath("/features"),
+                "news" => \Static\Kernel::getPath("/news"),
+                "forums" => \Static\Kernel::getPath("/forums"),
             ));
 
             return \Static\Emails::send($email, $title, $content) ? "success" : "error";
@@ -40,6 +43,24 @@
             $query->bindValue(":email", $email, PDO::PARAM_STR);
 
             return $query->execute();
+        }
+
+        public static function newsletter() {
+            $query = parent::$pdo->query("SELECT id, email, language FROM Welcome WHERE deleted IS NULL AND DATEDIFF(NOW(), created) IN (1, 3, 7, 15, 31)");
+
+            while($welcome = $query->fetch()) {
+                \Static\Languages\Translate::setLanguage(\Static\Kernel::getValue($welcome, "language"));
+
+                $email = \Static\Kernel::getValue($welcome, "email");
+                $title = \Static\Languages\Translate::getText("emails-welcome-title");
+                $content = \Static\Languages\Translate::getText("emails-welcome-content", true, array(
+                    "sign-up" => \Static\Kernel::getPath("/sign-up?welcome=" . \Static\Kernel::getHash("Welcome", \Static\Kernel::getValue($welcome, "id"))),
+                ));
+
+                \Static\Emails::send($email, $title, $content);
+            }
+
+            return true;
         }
 
     }

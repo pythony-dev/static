@@ -168,7 +168,7 @@
     "signUp-alert-submit-success" : "Welcome to the @name's Community",
     "signUp-alert-submit-error" : "Unable to Sign Up for Now !",
     "signUp-alert-confirmations-email" : "This Email Address is Invalid !",
-    "signUp-alert-confirmations-success" : "Check your Emails Inbox for your Confirmation Code",
+    "signUp-alert-confirmations-success" : "Check your Email Inbox for your Confirmation Code",
     "signUp-alert-confirmations-error" : "Unable to Confirm this Email Address for Now !",
 
     "logIn-title" : "Log In",
@@ -196,7 +196,7 @@
     "reset-alert-submit-success" : "Your Password has just been Reset",
     "reset-alert-submit-error" : "Unable to Reset your Password for Now !",
     "reset-alert-confirmations-email" : "This Email Address is Invalid !",
-    "reset-alert-confirmations-success" : "Check your Emails Inbox for your Confirmation Code",
+    "reset-alert-confirmations-success" : "Check your Email Inbox for your Confirmation Code",
     "reset-alert-confirmations-error" : "Unable to Confirm this Email Address for Now !",
 
     "messages-title" : "Messages",
@@ -349,7 +349,7 @@
     "terms-agreement-title" : "Entire Agreement",
     "terms-agreement-content" : "These terms constitute the entire agreement between @name and you with respect to your use of this website, and supersede all prior agreements and arrangements.",
     "terms-law-title" : "Governing Law & Jurisdiction",
-    "terms-law-content" : "These Terms shall be governed by and construed in accordance with the laws of the French State, and you submit to the non-exclusive jurisdiction of the state and federal courts located in France for the resolution of any dispute.",
+    "terms-law-content" : "These Terms shall be governed by and construed in accordance with the laws of the European Union, and you submit to the non-exclusive jurisdiction of the state and federal courts located in European Union for the resolution of any dispute.",
     "terms-button" : "Back to Home",
 
     "privacy-title" : "Privacy Policy for @name",
@@ -376,7 +376,7 @@
     "welcome-email" : "Email Address (steve@example.com)",
     "welcome-submit" : "Send",
     "welcome-alert-email" : "This Email Address is Invalid !",
-    "welcome-alert-success" : "Check your Emails Inbox for your Welcome Link",
+    "welcome-alert-success" : "Check your Email Inbox for your Welcome Link",
     "welcome-alert-error" : "Unable to Send You an Email for Now !",
 
     "siteMap-title" : "Site Map",
@@ -414,7 +414,7 @@
     "emails-delete-title" : "Good Bye",
     "emails-delete-content" : "Following your Request, we have just Deleted your Account. However, you can <a href=\"@sign-up\"> Sign Up </a> again at any time.",
     "emails-welcome-title" : "Sign In for @name",
-    "emails-welcome-content" : "Thanks for your Interest in @name. Remember to <a href=\"@sign-up\"> Sign Up </a> to Enjoy all its Features, Follow its News, and joint its Community Forums !",
+    "emails-welcome-content" : "Thanks for your Interest in @name. Remember to <a href=\"@sign-up\"> Sign Up </a> to Enjoy all its <a href=\"@features\"> Features </a>, Follow its <a href=\"@news\"> News </a>, and joint its Community <a href=\"@forums\"> Forums </a> !",
     "emails-newsletter-title" : "A New Article is Available",
     "emails-newsletter-content" : "A New Article has been Published. <br/> <br/> @title <br/> <br/> @overview <br/> <br/> <a href=\"@read\"> Read the Full Article </a>"
 }

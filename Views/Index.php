@@ -1,7 +1,7 @@
 
 <!DOCTYPE HTML>
 
-<html data-bs-theme="<?= \Static\Kernel::isLight() ? "light" : "dark"; ?>">
+<html lang="<?= substr(\Static\Languages\Translate::getLanguage(), 0, 2); ?>" data-bs-theme="<?= \Static\Kernel::isLight() ? "light" : "dark"; ?>">
     <head>
         <meta charset="utf-8"/>
         <meta name="viewport" content="width=device-width, initial-scale=1"/>

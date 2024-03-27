@@ -137,7 +137,7 @@
     "create-alert-blocked" : "Cet Utilisateur Vous a Bloqué !",
     "create-alert-success-thread" : "Ce Sujet a bien été Créé",
     "create-alert-success-post" : "Cette Publication a bien été Créée",
-    "create-alert-success-message" : "Ce Message a bien été Créée",
+    "create-alert-success-message" : "Ce Message a bien été Créé",
     "create-alert-error-thread" : "Impossible de Créer un Sujet Actuellement !",
     "create-alert-error-post" : "Impossible de Créer une Publication Actuellement !",
     "create-alert-error-message" : "Impossible de Créer un Message Actuellement !",
@@ -349,7 +349,7 @@
     "terms-agreement-title" : "Accord Intégral",
     "terms-agreement-content" : "Ces conditions constituent l'intégralité de l'accord entre @name et vous en ce qui concerne votre utilisation de ce site web, et remplacent tous les accords et arrangements antérieurs.",
     "terms-law-title" : "Loi Applicable et Juridiction",
-    "terms-law-content" : "Les présentes conditions seront régies et interprétées conformément aux lois de l'État Français, et vous vous soumettez à la juridiction non exclusive des tribunaux d'État et fédéraux situés en France pour la résolution de tout litige.",
+    "terms-law-content" : "Les présentes conditions seront régies et interprétées conformément aux lois de l'Union Européenne, et vous vous soumettez à la juridiction non exclusive des tribunaux d'État et fédéraux situés dans l'Union Européenne pour la résolution de tout litige.",
     "terms-button" : "Retourner à l'Accueil",
 
     "privacy-title" : "Politique de Confidentialité pour @name",
@@ -414,7 +414,7 @@
     "emails-delete-title" : "Au Revoir",
     "emails-delete-content" : "Suite à votre Demande, nous venons de Supprimer votre Compte. Vous pouvez toutefois vous <a href=\"@messages\"> Inscrire </a> à nouveau à tout moment.",
     "emails-welcome-title" : "S'Inscrire à @name",
-    "emails-welcome-content" : "Merci de votre Intérêt pour @name. N'Oubliez Pas de vous <a href=\"@sign-up\"> Inscrire </a> pour Profiter de toutes ses Fonctionnalités, Suivre ses Actualités, et rejoindre ses Forums Communautaires !",
+    "emails-welcome-content" : "Merci de votre Intérêt pour @name. N'Oubliez Pas de vous <a href=\"@sign-up\"> Inscrire </a> pour Profiter de toutes ses <a href=\"@features\"> Fonctionnalités </a>, Suivre ses <a href=\"@news\"> Actualités </a>, et rejoindre ses <a href=\"@forums\"> Forums </a> Communautaires !",
     "emails-newsletter-title" : "Un Nouvel Article est Disponible",
     "emails-newsletter-content" : "Un Nouvel Article vient d'être Publié <br/> <br/> @title <br/> <br/> @overview <br/> <br/> <a href=\"@read\"> Lire l'Article Complet </a>"
 }
