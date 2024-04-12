@@ -39,9 +39,9 @@
 
             if(!is_array($parameters)) $parameters = array();
 
-            $parameters["name"] = \Static\Kernel::getSettings("project-name");
-            $parameters["link"] = \Static\Kernel::getSettings("settings-link");
-            $parameters["email"] = \Static\Kernel::getSettings("settings-email");
+            $parameters["name"] = \Static\Settings::getSettings("name");
+            $parameters["link"] = \Static\Settings::getSettings("link");
+            $parameters["email"] = \Static\Settings::getSettings("email");
             $parameters["contact"] = \Static\Kernel::getPath("/contact");
             $parameters["terms"] = \Static\Kernel::getPath("/terms");
             $parameters["privacy"] = \Static\Kernel::getPath("/privacy");

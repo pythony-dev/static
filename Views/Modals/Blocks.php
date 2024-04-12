@@ -9,7 +9,7 @@
                         <div class="line"> </div>
                     <?php } ?>
                     <div class="d-flex justify-content-between py-4">
-                        <img class="my-auto shadow border rounded-circle image-64 ratio-1" src="<?= $parameters["getPath"]("/Public/Images/Users/" . \Static\Kernel::getHash("User", $block["userID"]) . ".jpeg?" . time()); ?>" alt="<?= $block["username"]; ?>"/>
+                        <img class="my-auto shadow border rounded-circle image-64 ratio-1" src="<?= $parameters["getPath"]("/Public/Images/Users/" . \Static\Kernel::getHash("User", $block["userID"]) . ".jpeg"); ?>" alt="<?= $block["username"]; ?>"/>
                         <p class="my-auto"> <?= $block["username"]; ?> </p>
                         <div class="my-auto">
                             <input class="btn rounded-circle image-48 ratio-1 button-outline block-delete" type="image" src="<?= $parameters["getPath"]("/Public/Images/Icons/" . (\Static\Kernel::isLight() ? "Light" : "Dark") . "/Unblock.png"); ?>" alt="<?= $parameters["getText"]("blocks-unblock"); ?>" user="<?= \Static\Kernel::getHash("User", $block["userID"]); ?>"/>

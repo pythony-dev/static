@@ -4,10 +4,6 @@
 
     final class Kernel {
 
-        private static $version = "1.8.5";
-        private static $salt = "0123456789ABCDEF";
-        private static $settings = array();
-
         private static $styles = array();
         private static $scripts = array();
         private static $routes = array();
@@ -16,14 +12,6 @@
 
         public static function getSalt() {
             return self::$salt;
-        }
-
-        public static function getSettings($settings) {
-            $settings = \Static\Kernel::getValue(self::$settings, $settings);
-
-            foreach(self::$settings as $key => $value) $settings = str_replace("@" . $key, htmlspecialchars($value), $settings);
-
-            return $settings;
         }
 
         public static function addStyle($style, $encode = true) {
@@ -53,11 +41,8 @@
         }
 
         public static function start($hash = null) {
-            if(file_exists("Static/Settings.json")) self::$settings = (array)json_decode(file_get_contents("Static/Settings.json"));
-            else exit();
-
-            \Static\Models\Database::connect();
             \Static\Languages\Translate::setLanguage();
+            \Static\Models\Database::connect();
 
             if(!$hash && (!\Static\Models\Sessions::start() || !\Static\Models\Requests::start())) return self::setError(429, \Static\Languages\Translate::getText("error-requests"), false);
             else if(!array_key_exists("request", $_POST) || $hash) {
@@ -65,11 +50,11 @@
                 self::addRoute("email", "/email/(link)");
                 self::addRoute("error", "/error/(error)");
 
-                $start = strlen(self::getSettings("settings-link")) + 1;
+                $start = strlen(\Static\Settings::getSettings("link")) + 1;
                 $search = explode("/", substr((array_key_exists("HTTPS", $_SERVER) ? "https" : "http") . "://" . self::getValue($_SERVER, "HTTP_HOST") . self::getValue($_SERVER, "REDIRECT_URL"), $start));
 
                 foreach(self::$routes as $route) {
-                    $path = explode("/", substr(self::getSettings("settings-link") . $route["path"], $start));
+                    $path = explode("/", substr(\Static\Settings::getSettings("link") . $route["path"], $start));
 
                     if(count($path) < count($search)) continue;
 
@@ -99,23 +84,23 @@
                             if(array_key_exists($theme, $themes)) $colors = $themes[$theme];
 
                             echo json_encode(array(
-                                "name" => \Static\Kernel::getSettings("project-name"),
-                                "version" => \Static\Kernel::getSettings("project-version"),
-                                "start_url" => \Static\Kernel::getSettings("settings-link"),
+                                "name" => \Static\Settings::getSettings("name"),
+                                "version" => \Static\Settings::getSettings("version"),
+                                "start_url" => \Static\Settings::getSettings("link"),
                                 "display" => "standalone",
                                 "icons" => array(
                                     array(
-                                        "src" => \Static\Kernel::getSettings("settings-link") . "/Public/Images/Index/Icon.jpeg",
+                                        "src" => \Static\Settings::getSettings("link") . "/Public/Images/Index/Icon.jpeg",
                                         "type" => "image/png",
                                         "sizes" => "512x512",
                                     ),
                                 ),
                                 "background_color" => "#" . $colors[0],
-                                "theme_color" => "#" . $colors[\Static\Kernel::isLight() ? 2 : 1],
+                                "theme_color" => "#" . $colors[self::isLight() ? 2 : 1],
                             ));
 
                             return;
-                        } else if(self::$route == "Error") return self::setError(array_key_exists("error", $parameters) ? $parameters["error"] : 500, \Static\Languages\Translate::getText("error-internal"), false);
+                        } else if(self::$route == "Error") return self::setError(in_array(self::getValue($parameters, "error"), \Static\Controllers\Error::$errors) ? self::getValue($parameters, "error") : 500, \Static\Languages\Translate::getText("error-" . (in_array(self::getValue($parameters, "error"), \Static\Controllers\Error::$errors) ? self::getValue($parameters, "error") : "internal")), false);
 
                         $view = "Views/" . self::$route . ".php";
                         $controller = "\Static\Controllers\\" . self::$route;
@@ -127,7 +112,7 @@
                             "userID" => self::getValue($_SESSION, "userID"),
                             "title" => \Static\Languages\Translate::getText("title-" . lcfirst(self::$route)),
                             "hash" => $hash,
-                            "getSettings" => "\Static\Kernel::getSettings",
+                            "getSettings" => "\Static\Settings::getSettings",
                             "getPath" => "\Static\Kernel::getPath",
                             "getText" => "\Static\Languages\Translate::getText",
                         ))));
@@ -157,7 +142,7 @@
 
                 $search = htmlspecialchars($_POST["request"]);
 
-                if(\Static\Kernel::getSettings("project-environment") != "development" && self::$requests[array_search($search, array_column(self::$requests, "name"))]["secure"] && !\Static\Models\Tokens::check()) return self::setError(401, \Static\Languages\Translate::getText("error-token") . \Static\Kernel::getValue($_POST, "token"), true);
+                if(!\Static\Settings::getSettings("debug") && self::$requests[array_search($search, array_column(self::$requests, "name"))]["secure"] && !\Static\Models\Tokens::check()) return self::setError(401, \Static\Languages\Translate::getText("error-token") . self::getValue($_POST, "token"), true);
 
                 foreach(self::$requests as $request) {
                     if($search == $request["name"]) {
@@ -177,13 +162,13 @@
             }
         }
 
-        public static function setError($error, $response, $request) {
+        public static function setError($error, $response, $request, $save = true) {
             $parameters = \Static\Controllers\Error::start(\Static\Controllers\Main::start(array(
                 "error" => (int)$error,
                 "response" => htmlspecialchars($response),
                 "userID" => self::getValue($_SESSION, "userID"),
                 "hash" => false,
-                "getSettings" => "\Static\Kernel::getSettings",
+                "getSettings" => "\Static\Settings::getSettings",
                 "getPath" => "\Static\Kernel::getPath",
                 "getText" => "\Static\Languages\Translate::getText",
             )));
@@ -209,7 +194,7 @@
                 require_once("Views/Index.php");
             }
 
-            \Static\Models\Errors::create((int)$parameters["error"], htmlspecialchars($parameters["response"]));
+            if($save) \Static\Models\Errors::create((int)$parameters["error"], htmlspecialchars($parameters["response"]));
 
             exit();
         }
@@ -229,12 +214,12 @@
         public static function getPath($path, $encode = true) {
             $path = $encode ? htmlspecialchars($path) : $path;
 
-            if(empty($path) || (strlen($path) > 0 && $path[0] == "/")) return self::getSettings("settings-link") . $path;
+            if(empty($path) || (strlen($path) > 0 && $path[0] == "/")) return \Static\Settings::getSettings("link") . $path;
             else return $path;
         }
 
         public static function getHash($folder, $id) {
-            return sha1(htmlspecialchars($folder) . "-" . htmlspecialchars($id) . "?" . self::$salt);
+            return sha1(htmlspecialchars($folder) . "-" . htmlspecialchars($id) . "?" . \Static\Settings::getSettings("salt"));
         }
 
         public static function getID($id) {

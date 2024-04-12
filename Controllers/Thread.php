@@ -7,18 +7,16 @@
         public static function start($parameters) {
             \Static\Kernel::addScript("/Public/Scripts/Thread.js");
 
-            $parameters["page"] = array_key_exists("page", $parameters) && (int)$parameters["page"] >= 1 ? (int)$parameters["page"] : 1;
+            $parameters["page"] = array_key_exists("page", $parameters) ? (int)$parameters["page"] : 1;
             $parameters["limit"] = ceil(\Static\Models\Posts::count($parameters["link"]) / 10);
 
             $parameters["posts"] = \Static\Models\Posts::getPosts($parameters["link"], $parameters["page"]);
 
-            if(!($parameters["title"] = \Static\Models\Threads::getID($parameters["link"], true)) || !count($parameters["posts"])) {
+            if($parameters["page"] > $parameters["limit"] || $parameters["page"] < 1 || !($parameters["title"] = \Static\Models\Threads::getID($parameters["link"], true))) {
                 header("Location: " . \Static\Kernel::getPath("/forums"));
 
                 exit();
-            }
-
-            if($parameters["userID"] >= 1) {
+            } else if($parameters["userID"] >= 1) {
                 \Static\Kernel::addScript("/Public/Scripts/Create.js");
 
                 $parameters["modals"] = array_merge($parameters["modals"], array("create"));

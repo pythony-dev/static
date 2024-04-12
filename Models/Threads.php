@@ -64,7 +64,7 @@
 
                 array_push($results, array(
                     "hash" => \Static\Kernel::getHash("Thread", (int)\Static\Kernel::getValue($thread, "id")),
-                    "image" => \Static\Kernel::getPath("/Public/Images/Users/" . \Static\Kernel::getHash("User", \Static\Kernel::getValue($thread, "userID")) . ".jpeg?" . time()),
+                    "image" => \Static\Kernel::getPath("/Public/Images/Users/" . \Static\Kernel::getHash("User", \Static\Kernel::getValue($thread, "userID")) . ".jpeg"),
                     "author" => \Static\Kernel::getValue($thread, "author"),
                     "updated" => $today != $date ? $date : $time,
                     "count" => \Static\Kernel::getValue($thread, "count"),

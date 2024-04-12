@@ -12,8 +12,8 @@
 
             <nav class="fixed-top px-4 py-0 navbar navbar-expand-lg shadow border-bottom rounded-bottom">
                 <a class="d-flex py-0 navbar-brand" href="<?= \Static\Kernel::getPath("/"); ?>">
-                    <img class="icon" src="<?= \Static\Kernel::getPath("/Public/Images/Index/Icon.png"); ?>" alt="<?= \Static\Kernel::getSettings("project-name"); ?>"/>
-                    <p class="h1 my-auto"> <?= \Static\Kernel::getSettings("project-name"); ?> </p>
+                    <img class="icon" src="<?= \Static\Kernel::getPath("/Public/Images/Index/Icon.png"); ?>" alt="<?= \Static\Settings::getSettings("name"); ?>"/>
+                    <p class="h1 my-auto"> <?= \Static\Settings::getSettings("name"); ?> </p>
                 </a>
                 <button class="navbar-toggler bg-<?= \Static\Kernel::isLight() ? "light" : "dark"; ?>" data-bs-toggle="collapse" data-bs-target="#navbar-collapse">
                     <div class="navbar-toggler-icon"> </div>

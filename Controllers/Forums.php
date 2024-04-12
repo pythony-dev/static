@@ -7,8 +7,14 @@
         public static function start($parameters) {
             \Static\Kernel::addScript("/Public/Scripts/Forums.js");
 
-            $parameters["page"] = array_key_exists("page", $parameters) && (int)$parameters["page"] >= 1 ? (int)$parameters["page"] : 1;
+            $parameters["page"] = array_key_exists("page", $parameters) ? (int)$parameters["page"] : 1;
             $parameters["limit"] = ceil(\Static\Models\Threads::count() / 10);
+
+            if($parameters["page"] > $parameters["limit"] || $parameters["page"] < 1) {
+                header("Location: " . \Static\Kernel::getPath("/forums"));
+
+                exit();
+            }
 
             $parameters["threads"] = \Static\Models\Threads::getThreads($parameters["page"]);
 

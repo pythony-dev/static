@@ -1,5 +1,6 @@
 <?php
 
+    require_once("Static/Settings.php");
     require_once("Static/Kernel.php");
     require_once("Static/Emails.php");
     require_once("Static/Requires/Controllers.php");

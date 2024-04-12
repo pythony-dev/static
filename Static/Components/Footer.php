@@ -7,8 +7,8 @@
         static function create() {
             $copyright = array(
                 "year" => date("Y"),
-                "project" => \Static\Kernel::getSettings("project-name"),
-                "version" => \Static\Kernel::getSettings("project-version"),
+                "project" => \Static\Settings::getSettings("name"),
+                "version" => \Static\Settings::getSettings("version"),
             );
 
             ob_start();
@@ -20,7 +20,7 @@
                         <div class="col-6 col-md-4 offset-3 offset-md-0 my-auto p-5">
                             <div class="bg-light shadow border rounded-circle">
                                 <a href="<?= \Static\Kernel::getPath("/"); ?>">
-                                    <img class="img-fluid" src="<?= \Static\Kernel::getPath("/Public/Images/Index/Icon.png"); ?>" alt="<?= \Static\Kernel::getSettings("project-name"); ?>"/>
+                                    <img class="img-fluid" src="<?= \Static\Kernel::getPath("/Public/Images/Index/Icon.png"); ?>" alt="<?= \Static\Settings::getSettings("name"); ?>"/>
                                 </a>
                             </div>
                         </div>
@@ -34,8 +34,8 @@
                                 <a class="text-decoration-none link-light" href="<?= \Static\Kernel::getPath("/site-map"); ?>"> <?= \Static\Languages\Translate::getText("footer-sitemap"); ?> </a>
                             </div>
                             <div class="d-flex justify-content-between pt-4">
-                                <?php foreach(\Static\Kernel::getNetworks() as $network) if(\Static\Kernel::getSettings("networks-" . strtolower($network))) { ?>
-                                    <a href="<?= \Static\Kernel::getSettings("networks-" . strtolower($network)); ?>" target="_blank">
+                                <?php foreach(\Static\Kernel::getNetworks() as $network) { ?>
+                                    <a href="<?= \Static\Settings::getSettings(strtolower($network)); ?>" target="_blank">
                                         <img class="img-fluid shadow border border-dark rounded-circle networks" src="<?= \Static\Kernel::getPath("/Public/Images/Networks/" . $network . ".png"); ?>" alt="<?= $network; ?>"/>
                                     </a>
                                 <?php } ?>

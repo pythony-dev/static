@@ -1,11 +1,11 @@
 
 <!DOCTYPE HTML>
 
-<html lang="<?= substr(\Static\Languages\Translate::getLanguage(), 0, 2); ?>" data-bs-theme="<?= \Static\Kernel::isLight() ? "light" : "dark"; ?>">
+<html lang="<?= substr(\Static\Languages\Translate::getLanguage(), 0, 2); ?>" data-bs-theme="<?= \Static\Kernel::isLight() ? "light" : "dark"; ?>" link="<?= $parameters["getSettings"]("link"); ?>">
     <head>
         <meta charset="utf-8"/>
         <meta name="viewport" content="width=device-width, initial-scale=1"/>
-        <title> <?= htmlspecialchars($title) . " - " . $parameters["getSettings"]("project-name"); ?> </title>
+        <title> <?= htmlspecialchars($title) . " - " . $parameters["getSettings"]("name"); ?> </title>
         <link rel="manifest" href="<?= $parameters["getPath"]("/manifest"); ?>"/>
         <?php foreach($styles as $style) { ?>
             <link rel="stylesheet" href="<?= $parameters["getPath"]($style); ?>"/>

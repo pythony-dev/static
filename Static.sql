@@ -279,7 +279,7 @@ CREATE TABLE `Messages` (
 --
 
 INSERT INTO `Messages` (`id`, `created`, `deleted`, `sessionID`, `senderID`, `receiverID`, `message`, `image`) VALUES
-(1, '2022-10-12 12:30:00', NULL, 1, 1, 2, 'Hi Julie, it\'s Anthony !', '4372787e09f273bc07e1c239e6dbdac14c7b75bb');
+(1, '2022-10-12 12:30:00', NULL, 1, 1, 2, 'Hi Julie, it\'s Anthony !', 'bcc69d6a8f2dc7b02a951a4154136d29f745f51a');
 
 -- --------------------------------------------------------
 

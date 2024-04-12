@@ -10,11 +10,6 @@
             $path = htmlspecialchars($path);
 
             if($limit < 2) return null;
-            else if($page <= 0 || $page > $limit) {
-                header("Location: " . $path);
-
-                exit();
-            }
 
             $previous = $page - 1;
             $next = $page + 1;

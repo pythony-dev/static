@@ -12,29 +12,7 @@ $(document).ready(() => {
         })
     }
 
-    if("serviceWorker" in navigator && !navigator.serviceWorker.controller) {
-        getToken(token => {
-            $.post("", {
-                "token" : token,
-                "request" : "siteMap",
-                "action" : "fetch",
-            }).then(response => {
-                if(response["status"] == "success" && "name" in response && "link" in response && "links" in response) {
-                    navigator.serviceWorker.register(response["link"].toString() + "/Worker.js").then(() => {
-                        navigator.serviceWorker.ready.then(async serviceWorker => {
-                            await serviceWorker.active.postMessage({
-                                "name" : response["name"].toString(),
-                                "link" : response["link"].toString(),
-                                "links" : response["links"],
-                            })
-
-                            location.reload()
-                        })
-                    })
-                }
-            })
-        }, false)
-    }
+    if("serviceWorker" in navigator && !navigator.serviceWorker.controller) navigator.serviceWorker.register($("html").attr("link") + "/Worker.js").then(() => location.reload())
 
     $(".language").click(event => {
         getToken(token => {

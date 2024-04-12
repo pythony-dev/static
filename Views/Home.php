@@ -1,5 +1,5 @@
 <article class="col-12 col-md-10 col-xl-8 offset-md-1 offset-xl-2 py-5">
-    <h1 class="p-5 fw-bold zoom"> <?= $parameters["getSettings"]("project-name"); ?> </h1>
+    <h1 class="p-5 fw-bold zoom"> <?= $parameters["getSettings"]("name"); ?> </h1>
     <h2 class="p-5 fw-bold"> <?= $parameters["getText"]("home-title"); ?> </h2>
     <p class="p-5 text-justify"> <?= $parameters["getText"]("home-content"); ?> </p>
     <div class="p-5">
