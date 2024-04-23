@@ -5,6 +5,6 @@
         <p class="p-5 text-justify"> <?= $parameters["getText"]("privacy-" . strtolower($privacy) . "-content", true); ?> </p>
     <?php } ?>
     <div class="p-5">
-        <a class="w-100 btn rounded-pill button-normal" href="<?= $parameters["getPath"]("/"); ?>"> <?= $parameters["getText"]("privacy-button"); ?> </a>
+        <a class="w-100 btn rounded-pill button-classic" href="<?= $parameters["getPath"]("/"); ?>"> <?= $parameters["getText"]("privacy-button"); ?> </a>
     </div>
 </article>

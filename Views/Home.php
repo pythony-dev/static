@@ -3,7 +3,7 @@
     <h2 class="p-5 fw-bold"> <?= $parameters["getText"]("home-title"); ?> </h2>
     <p class="p-5 text-justify"> <?= $parameters["getText"]("home-content"); ?> </p>
     <div class="p-5">
-        <a class="w-100 btn rounded-pill button-normal" href="<?= $parameters["getPath"]("/sign-up"); ?>"> <?= $parameters["getText"]("home-button"); ?> </a>
+        <a class="w-100 btn rounded-pill button-classic" href="<?= $parameters["getPath"]("/sign-up"); ?>"> <?= $parameters["getText"]("home-button"); ?> </a>
     </div>
     <?php foreach($parameters["themes"] as $id => $theme) {
         if(!in_array($theme, $parameters["charts"])) echo \Static\Components\Article::create($id, $parameters["getPath"]("/Public/Images/Home/" . (\Static\Kernel::isLight() ? "Light" : "Dark") . "/" . $theme . ".png"), $parameters["getText"]("home-" . strtolower($theme) . "-title"), $parameters["getText"]("home-" . strtolower($theme) . "-content"));
@@ -17,6 +17,6 @@
         <?php } ?>
     <?php } ?>
     <div class="p-5">
-        <a class="w-100 btn rounded-pill button-normal" href="<?= $parameters["getPath"]("/sign-up"); ?>"> <?= $parameters["getText"]("home-button"); ?> </a>
+        <a class="w-100 btn rounded-pill button-classic" href="<?= $parameters["getPath"]("/sign-up"); ?>"> <?= $parameters["getText"]("home-button"); ?> </a>
     </div>
 </article>

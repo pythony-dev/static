@@ -4,7 +4,7 @@
     <form id="logIn-form" class="p-5">
         <input id="logIn-email" class="mb-5 form-control text-center rounded-pill" type="email" placeholder="<?= $parameters["getText"]("logIn-email"); ?>" required/>
         <input id="logIn-password" class="my-5 form-control text-center rounded-pill" type="password" placeholder="<?= $parameters["getText"]("logIn-password"); ?>" required/>
-        <input class="w-100 mb-5 btn rounded-pill button-normal" type="submit" value="<?= $parameters["getText"]("logIn-submit"); ?>"/>
+        <input class="w-100 mb-5 btn rounded-pill button-classic" type="submit" value="<?= $parameters["getText"]("logIn-submit"); ?>"/>
         <button class="w-100 mt-5 btn rounded-pill button-outline" type="button" data-bs-toggle="modal" data-bs-target="#reset-modal"> <?= $parameters["getText"]("logIn-reset"); ?> </button>
     </form>
 </article>

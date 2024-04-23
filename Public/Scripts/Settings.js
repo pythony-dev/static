@@ -15,11 +15,11 @@ $(document).ready(() => {
                 $("#settings-account-confirm").val("")
 
                 if(response["status"] == "email") {
-                    $("#settings-account-email").removeClass("is-valid").addClass("is-invalid")
+                    $("#settings-account-email").addClass("is-invalid")
 
                     showAlert("settings-account-email")
                 } else if(response["status"] == "username") {
-                    $("#settings-account-username").removeClass("is-valid").addClass("is-invalid")
+                    $("#settings-account-username").addClass("is-invalid")
 
                     showAlert("settings-account-username")
                 } else if(response["status"] == "confirm") {
@@ -47,8 +47,8 @@ $(document).ready(() => {
                 "action" : "isEmail",
                 "email" : $("#settings-account-email").val(),
             }).then(response => {
-                if(response["status"] == "success") $("#settings-account-email").removeClass("is-invalid").addClass("is-valid")
-                else $("#settings-account-email").removeClass("is-valid").addClass("is-invalid")
+                if(response["status"] == "success") $("#settings-account-email").removeClass("is-invalid")
+                else $("#settings-account-email").addClass("is-invalid")
             })
         }, false)
     })
@@ -63,11 +63,11 @@ $(document).ready(() => {
                 "action" : "isUsername",
                 "username" : $("#settings-account-username").val(),
             }).then(response => {
-                if(response["status"] == "success") $("#settings-account-username").removeClass("is-invalid").addClass("is-valid")
-                else $("#settings-account-username").removeClass("is-valid").addClass("is-invalid")
+                if(response["status"] == "success") $("#settings-account-username").removeClass("is-invalid")
+                else $("#settings-account-username").addClass("is-invalid")
             })
-        })
-    }, false)
+        }, false)
+    })
 
     $("#settings-image-image").click(event => {
         $("#settings-image-input").click()

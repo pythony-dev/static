@@ -6,11 +6,11 @@
             <form id="reset-form" class="p-4">
                 <div class="d-flex">
                     <input id="reset-email" class="w-67 form-control text-center rounded-left" type="email" placeholder="<?= $parameters["getText"]("reset-email"); ?>" required/>
-                    <input id="reset-confirm" class="w-33 btn rounded-right button-normal" type="button" value="<?= $parameters["getText"]("reset-confirm"); ?>"/>
+                    <input id="reset-confirm" class="w-33 btn rounded-right button-classic" type="button" value="<?= $parameters["getText"]("reset-confirm"); ?>"/>
                 </div>
                 <input id="reset-code" class="d-none mt-4 form-control text-center rounded-pill" type="text" placeholder="<?= $parameters["getText"]("reset-code"); ?>"/>
                 <input id="reset-password" class="mt-4 form-control text-center rounded-pill" type="password" placeholder="<?= $parameters["getText"]("reset-password"); ?>" required/>
-                <input class="w-100 my-4 btn rounded-pill button-normal" type="submit" value="<?= $parameters["getText"]("reset-submit"); ?>"/>
+                <input class="w-100 my-4 btn rounded-pill button-classic" type="submit" value="<?= $parameters["getText"]("reset-submit"); ?>"/>
                 <button class="w-100 mt-4 btn rounded-pill button-outline" type="button" data-bs-dismiss="modal"> <?= $parameters["getText"]("reset-cancel"); ?> </button>
             </form>
         </div>

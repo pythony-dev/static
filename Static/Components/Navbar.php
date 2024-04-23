@@ -10,7 +10,7 @@
             ob_start();
             ?>
 
-            <nav class="fixed-top px-4 py-0 navbar navbar-expand-lg shadow border-bottom rounded-bottom">
+            <nav class="fixed-top justify-content-lg-center px-4 py-0 navbar navbar-expand-lg shadow border-bottom rounded-bottom">
                 <a class="d-flex py-0 navbar-brand" href="<?= \Static\Kernel::getPath("/"); ?>">
                     <img class="icon" src="<?= \Static\Kernel::getPath("/Public/Images/Index/Icon.png"); ?>" alt="<?= \Static\Settings::getSettings("name"); ?>"/>
                     <p class="h1 my-auto"> <?= \Static\Settings::getSettings("name"); ?> </p>
@@ -60,8 +60,8 @@
                             </li>
                             <li class="w-200 my-auto pt-3 pb-4 py-lg-0">
                                 <div class="position-relative d-flex flex-column flex-lg-row">
-                                    <a class="w-50 btn rounded-left button-outline" href="<?= \Static\Kernel::getPath("/sign-up"); ?>"> <?= \Static\Languages\Translate::getText("title-signUp"); ?> </a>
-                                    <a class="w-50 btn rounded-right button-outline" href="<?= \Static\Kernel::getPath("/log-in"); ?>"> <?= \Static\Languages\Translate::getText("title-logIn"); ?> </a>
+                                    <a class="d-flex justify-content-center align-items-center w-50 btn rounded-left button-outline" href="<?= \Static\Kernel::getPath("/sign-up"); ?>"> <?= \Static\Languages\Translate::getText("title-signUp"); ?> </a>
+                                    <a class="d-flex justify-content-center align-items-center w-50 btn rounded-right button-outline" href="<?= \Static\Kernel::getPath("/log-in"); ?>"> <?= \Static\Languages\Translate::getText("title-logIn"); ?> </a>
                                 </div>
                             </li>
                         <?php } else { ?>

@@ -14,28 +14,28 @@ $(document).ready(() => {
                 "password" : $("#reset-password").val(),
             }).then(response => {
                 if(response["status"] == "email") {
-                    $("#reset-email").removeClass("is-valid").addClass("is-invalid")
+                    $("#reset-email").addClass("is-invalid")
 
                     showAlert("reset-submit-email")
                 } else if(response["status"] == "code") {
-                    $("#reset-code").removeClass("is-valid").addClass("is-invalid")
+                    $("#reset-code").addClass("is-invalid")
 
                     showAlert("reset-submit-code")
                 } else {
-                    $("#reset-code").removeClass("is-invalid").addClass("is-valid")
+                    $("#reset-code").removeClass("is-invalid")
 
                     if(response["status"] == "password") {
-                        $("#reset-password").removeClass("is-valid").addClass("is-invalid")
+                        $("#reset-password").addClass("is-invalid")
 
                         showAlert("reset-submit-password")
                     } else if(response["status"] == "success") {
-                        $("#reset-password").removeClass("is-invalid").addClass("is-valid")
+                        $("#reset-password").removeClass("is-invalid")
 
                         showAlert("reset-submit-success", event => {
                             location.reload()
                         })
                     } else {
-                        $("#reset-password").removeClass("is-invalid").addClass("is-valid")
+                        $("#reset-password").removeClass("is-invalid")
 
                         showAlert("reset-submit-error")
                     }
@@ -56,8 +56,8 @@ $(document).ready(() => {
                 "action" : "isEmail",
                 "email" : $("#reset-email").val(),
             }).then(response => {
-                if(response["status"] == "used") $("#reset-email").removeClass("is-invalid").addClass("is-valid")
-                else $("#reset-email").removeClass("is-valid").addClass("is-invalid")
+                if(response["status"] == "used") $("#reset-email").removeClass("is-invalid")
+                else $("#reset-email").addClass("is-invalid")
             })
         }, false)
     })

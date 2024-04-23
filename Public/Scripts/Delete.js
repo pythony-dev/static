@@ -13,7 +13,7 @@ $(document).ready(() => {
                     $("#delete-confirm").val("")
 
                     if(response["status"] == "confirm") {
-                        $("#delete-confirm").removeClass("is-valid").addClass("is-invalid")
+                        $("#delete-confirm").addClass("is-invalid")
 
                         showAlert("delete-confirm")
                     } else if(response["status"] == "success" && "link" in response) {

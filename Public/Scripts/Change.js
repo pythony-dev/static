@@ -13,11 +13,11 @@ $(document).ready(() => {
                 $("#change-confirm").val("")
 
                 if(response["status"] == "password") {
-                    $("#change-password").removeClass("is-valid").addClass("is-invalid")
+                    $("#change-password").addClass("is-invalid")
 
                     showAlert("change-password")
                 } else if(response["status"] == "confirm") {
-                    $("#change-confirm").removeClass("is-valid").addClass("is-invalid")
+                    $("#change-confirm").addClass("is-invalid")
 
                     showAlert("change-confirm")
                 } else if(response["status"] == "success" && "link" in response) {
@@ -41,8 +41,8 @@ $(document).ready(() => {
                 "action" : "isPassword",
                 "password" : $("#change-password").val(),
             }).then(response => {
-                if(response["status"] == "success") $("#change-password").removeClass("is-invalid").addClass("is-valid")
-                else $("#change-password").removeClass("is-valid").addClass("is-invalid")
+                if(response["status"] == "success") $("#change-password").removeClass("is-invalid")
+                else $("#change-password").addClass("is-invalid")
             })
         }, false)
     })

@@ -16,32 +16,32 @@ $(document).ready(() => {
                 "agree" : String($("#signUp-agree").is(":checked")),
             }).then(response => {
                 if(response["status"] == "email") {
-                    $("#signUp-email").removeClass("is-valid").addClass("is-invalid")
+                    $("#signUp-email").addClass("is-invalid")
 
                     showAlert("signUp-submit-email")
                 } else if(response["status"] == "code") {
-                    $("#signUp-code").removeClass("is-valid").addClass("is-invalid")
+                    $("#signUp-code").addClass("is-invalid")
 
                     showAlert("signUp-submit-code")
                 } else {
-                    $("#signUp-code").removeClass("is-invalid").addClass("is-valid")
+                    $("#signUp-code").removeClass("is-invalid")
 
                     if(response["status"] == "username") {
-                        $("#signUp-username").removeClass("is-valid").addClass("is-invalid")
+                        $("#signUp-username").addClass("is-invalid")
 
                         showAlert("signUp-submit-username")
                     } else if(response["status"] == "password") {
-                        $("#signUp-password").removeClass("is-valid").addClass("is-invalid")
+                        $("#signUp-password").addClass("is-invalid")
 
                         showAlert("signUp-submit-password")
                     } else if(response["status"] == "success" && "link" in response) {
-                        $("#signUp-password").removeClass("is-invalid").addClass("is-valid")
+                        $("#signUp-password").removeClass("is-invalid")
 
                         showAlert("signUp-submit-success", event => {
                             location.replace(response["link"])
                         })
                     } else {
-                        $("#signUp-password").removeClass("is-invalid").addClass("is-valid")
+                        $("#signUp-password").removeClass("is-invalid")
 
                         showAlert("signUp-submit-error")
                     }
@@ -62,8 +62,8 @@ $(document).ready(() => {
                 "action" : "isEmail",
                 "email" : $("#signUp-email").val(),
             }).then(response => {
-                if(response["status"] == "success") $("#signUp-email").removeClass("is-invalid").addClass("is-valid")
-                else $("#signUp-email").removeClass("is-valid").addClass("is-invalid")
+                if(response["status"] == "success") $("#signUp-email").removeClass("is-invalid")
+                else $("#signUp-email").addClass("is-invalid")
             })
         }, false)
     })
@@ -102,8 +102,8 @@ $(document).ready(() => {
                 "action" : "isUsername",
                 "username" : $("#signUp-username").val(),
             }).then(response => {
-                if(response["status"] == "success") $("#signUp-username").removeClass("is-invalid").addClass("is-valid")
-                else $("#signUp-username").removeClass("is-valid").addClass("is-invalid")
+                if(response["status"] == "success") $("#signUp-username").removeClass("is-invalid")
+                else $("#signUp-username").addClass("is-invalid")
             })
         }, false)
     })

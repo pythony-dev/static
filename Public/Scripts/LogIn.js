@@ -13,7 +13,7 @@ $(document).ready(() => {
                 $("#logIn-password").val("")
 
                 if(response["status"] == "email") {
-                    $("#logIn-email").removeClass("is-valid").addClass("is-invalid")
+                    $("#logIn-email").addClass("is-invalid")
 
                     showAlert("logIn-email")
                 } else if(response["status"] == "password") {
@@ -38,8 +38,8 @@ $(document).ready(() => {
                 "action" : "isEmail",
                 "email" : $("#logIn-email").val(),
             }).then(response => {
-                if(response["status"] == "used") $("#logIn-email").removeClass("is-invalid").addClass("is-valid")
-                else $("#logIn-email").removeClass("is-valid").addClass("is-invalid")
+                if(response["status"] == "used") $("#logIn-email").removeClass("is-invalid")
+                else $("#logIn-email").addClass("is-invalid")
             })
         }, false)
     })

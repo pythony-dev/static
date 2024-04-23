@@ -15,10 +15,10 @@
         background-color : #<?= $colors[1]; ?>;
     }
 
-    .button-normal {
+    .button-classic {
         color : black;
         background-color : #<?= $colors[0]; ?>;
-    } .button-normal:hover, .button-normal:focus {
+    } .button-classic:hover, .button-classic:focus {
         color : black;
         background-color : #<?= $colors[2]; ?>;
     }
@@ -30,6 +30,10 @@
     } .button-outline:hover, .button-outline:focus {
         color : black;
         background-color : #<?= $colors[1]; ?>;
+    }
+
+    .form-control {
+        background-color : black;
     }
 
     .article, .line {

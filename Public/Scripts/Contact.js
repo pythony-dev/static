@@ -11,7 +11,7 @@ $(document).ready(() => {
                 "message" : $("#contact-message").val(),
             }).then(response => {
                 if(response["status"] == "email") {
-                    $("#contact-email").removeClass("is-valid").addClass("is-invalid")
+                    $("#contact-email").addClass("is-invalid")
 
                     showAlert("contact-email")
                 } else if(response["status"] == "success") {
@@ -35,8 +35,8 @@ $(document).ready(() => {
                 "action" : "isEmail",
                 "email" : $("#contact-email").val(),
             }).then(response => {
-                if(["success", "used"].includes(response["status"])) $("#contact-email").removeClass("is-invalid").addClass("is-valid")
-                else $("#contact-email").removeClass("is-valid").addClass("is-invalid")
+                if(["success", "used"].includes(response["status"])) $("#contact-email").removeClass("is-invalid")
+                else $("#contact-email").addClass("is-invalid")
             })
         }, false)
     })

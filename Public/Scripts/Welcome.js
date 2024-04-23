@@ -10,7 +10,7 @@ $(document).ready(() => {
                 "email" : $("#welcome-email").val(),
             }).then(response => {
                 if(response["status"] == "email") {
-                    $("#welcome-email").removeClass("is-valid").addClass("is-invalid")
+                    $("#welcome-email").addClass("is-invalid")
 
                     showAlert("welcome-email")
                 } else if(response["status"] == "success") {
@@ -34,8 +34,8 @@ $(document).ready(() => {
                 "action" : "isEmail",
                 "email" : $("#welcome-email").val(),
             }).then(response => {
-                if(response["status"] == "success") $("#welcome-email").removeClass("is-invalid").addClass("is-valid")
-                else $("#welcome-email").removeClass("is-valid").addClass("is-invalid")
+                if(response["status"] == "success") $("#welcome-email").removeClass("is-invalid")
+                else $("#welcome-email").addClass("is-invalid")
             })
         }, false)
     })

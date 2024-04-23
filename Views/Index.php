@@ -52,7 +52,7 @@
                                         <?php if($color != "warning") { ?>
                                             <button class="w-100 btn rounded-pill button-outline" data-bs-dismiss="modal"> <?= $parameters["getText"]("index-alert-close"); ?> </button>
                                         <?php } else { ?>
-                                            <button class="w-100 btn rounded-pill button-normal confirm"> <?= $parameters["getText"]("index-alert-ok"); ?> </button>
+                                            <button class="w-100 btn rounded-pill button-classic confirm"> <?= $parameters["getText"]("index-alert-ok"); ?> </button>
                                             <button class="w-100 mt-4 btn rounded-pill button-outline" data-bs-dismiss="modal"> <?= $parameters["getText"]("index-alert-cancel"); ?> </button>
                                         <?php } ?>
                                     </div>
