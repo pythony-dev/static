@@ -34,7 +34,7 @@
                 "code" => $code,
             ));
 
-            return self::delete($email) && $query->execute() && \Static\Emails::send($email, $title, $content, true) ? "success" : "error";
+            return self::delete($email) && $query->execute() && \Static\Emails::send($email, $title, $content) ? "success" : "error";
         }
 
         public static function delete($email) {

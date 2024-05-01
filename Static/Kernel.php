@@ -76,6 +76,8 @@
                         self::$route = ucfirst($route["name"]);
 
                         if(self::$route == "Manifest") {
+                            header("Content-Type: application/json");
+
                             $themes = self::getThemes();
                             $theme = self::getValue($_SESSION, array("theme", "color"));
 

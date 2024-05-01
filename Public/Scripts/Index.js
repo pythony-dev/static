@@ -9,10 +9,10 @@ $(document).ready(() => {
             }).then(response => {
                 if(response["status"] == "success" && !("serviceWorker" in navigator && !navigator.serviceWorker.controller)) location.reload()
             })
-        })
+        }, false)
     }
 
-    if("serviceWorker" in navigator && !navigator.serviceWorker.controller) navigator.serviceWorker.register($("html").attr("link") + "/Worker.js").then(() => location.reload())
+    if("serviceWorker" in navigator && !navigator.serviceWorker.controller) navigator.serviceWorker.register($("html").attr("link") + "/Worker.js").then(() => navigator.serviceWorker.ready.then(() => location.reload()))
 
     $(".language").click(event => {
         getToken(token => {

@@ -1,14 +1,10 @@
 const settings = {
     "name" : "Static",
     "link" : "https://www.pythony.dev/Static",
-    "links" : [
-        "/manifest",
-        "/error/418?error=false",
-    ],
 }
 
 self.addEventListener("install", event => {
-    caches.open(settings["name"].toString()).then(cache => settings["links"].forEach((element, index) => setTimeout(() => cache.add(settings["link"].toString() + element.toString()), index * 1000 + 1000)))
+    caches.open(settings["name"].toString()).then(cache => cache.add(settings["link"].toString() + "/error/418?error=false"))
 })
 
 self.addEventListener("fetch", event => {

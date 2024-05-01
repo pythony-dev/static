@@ -8,6 +8,18 @@
     height : 10vh;
 } .w-200 {
     width : 200%;
+} .button-top {
+    border-radius : 20px 20px 0px 0px;
+
+    @media (min-width : 992px) {
+        border-radius : 20px 0px 0px 20px;
+    }
+} .button-bottom {
+    border-radius : 0px 0px 20px 20px;
+
+    @media (min-width : 992px) {
+        border-radius : 0px 20px 20px 0px;
+    }
 } .rounded-left {
     border-radius : 20px 0px 0px 20px;
 } .rounded-right {

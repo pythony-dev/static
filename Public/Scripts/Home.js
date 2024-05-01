@@ -1,4 +1,6 @@
 $(document).ready(() => {
+    const color = $("html").attr("data-bs-theme") != "dark" ? "#2125297F" : "#F8F9FA7F"
+
     new Chart($("#home-time")[0].getContext("2d"), {
         type : "line",
         data : {
@@ -18,9 +20,16 @@ $(document).ready(() => {
             }],
         }, options : {
             scales : {
-                y : {
+                x : {
+                    grid : {
+                        color : color,
+                    },
+                }, y : {
                     min : 0,
                     max : 100,
+                    grid : {
+                        color : color,
+                    },
                 },
             }, plugins : {
                 legend : {
@@ -43,9 +52,16 @@ $(document).ready(() => {
             }],
         }, options : {
             scales : {
-                y : {
+                x : {
+                    grid : {
+                        color : color,
+                    },
+                }, y : {
                     min : 0,
                     max : 100,
+                    grid : {
+                        color : color,
+                    },
                 },
             }, plugins : {
                 legend : {

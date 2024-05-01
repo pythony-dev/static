@@ -60,16 +60,16 @@
                             </li>
                             <li class="w-200 my-auto pt-3 pb-4 py-lg-0">
                                 <div class="position-relative d-flex flex-column flex-lg-row">
-                                    <a class="d-flex justify-content-center align-items-center w-50 btn rounded-left button-outline" href="<?= \Static\Kernel::getPath("/sign-up"); ?>"> <?= \Static\Languages\Translate::getText("title-signUp"); ?> </a>
-                                    <a class="d-flex justify-content-center align-items-center w-50 btn rounded-right button-outline" href="<?= \Static\Kernel::getPath("/log-in"); ?>"> <?= \Static\Languages\Translate::getText("title-logIn"); ?> </a>
+                                    <a class="d-flex justify-content-center align-items-center w-50 btn button-top button-outline" href="<?= \Static\Kernel::getPath("/sign-up"); ?>"> <?= \Static\Languages\Translate::getText("title-signUp"); ?> </a>
+                                    <a class="d-flex justify-content-center align-items-center w-50 btn button-bottom button-outline" href="<?= \Static\Kernel::getPath("/log-in"); ?>"> <?= \Static\Languages\Translate::getText("title-logIn"); ?> </a>
                                 </div>
                             </li>
                         <?php } else { ?>
                             <li class="w-200 my-auto pt-3 pb-4 py-lg-0">
                                 <div class="position-relative d-flex flex-column flex-lg-row">
-                                    <a class="w-50 btn rounded-left button-outline" href="<?= \Static\Kernel::getPath("/messages"); ?>"> <?= \Static\Languages\Translate::getText("title-messages"); ?> </a>
+                                    <a class="w-50 btn button-top button-outline" href="<?= \Static\Kernel::getPath("/messages"); ?>"> <?= \Static\Languages\Translate::getText("title-messages"); ?> </a>
                                     <div class="w-50">
-                                        <button class="w-100 btn rounded-right dropdown-toggle button-outline" data-bs-toggle="dropdown"> <?= \Static\Languages\Translate::getText("title-settings"); ?> </button>
+                                        <button class="w-100 btn button-bottom dropdown-toggle button-outline" data-bs-toggle="dropdown"> <?= \Static\Languages\Translate::getText("title-settings"); ?> </button>
                                         <ul class="w-100 dropdown-menu text-center">
                                             <li>
                                                 <a class="dropdown-item" href="<?= \Static\Kernel::getPath("/settings"); ?>"> <?= \Static\Languages\Translate::getText("title-settings-account"); ?> </a>
