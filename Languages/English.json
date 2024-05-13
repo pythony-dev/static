@@ -41,16 +41,11 @@
     "footer-privacy" : "Privacy Policy",
     "footer-sitemap" : "Site Map",
 
-    "index-alert-success" : "Success",
-    "index-alert-error" : "Error",
-    "index-alert-confirm" : "Confirm",
-    "index-alert-close" : "Close",
-    "index-alert-cancel" : "Cancel",
-    "index-alert-ok" : "OK",
+    "index-alert-yes" : "Yes",
+    "index-alert-token" : "Unable to Connect to @name for Now !",
     "index-alert-language" : "Unable to Change Language for Now !",
     "index-alert-theme" : "Unable to Change Theme for Now !",
     "index-alert-logOut" : "Unable to Log Out for Now !",
-    "index-alert-token" : "Unable to Connect to @name for Now !",
 
     "upload-alert-extension" : "Please use a Image with the Extension .jpg, .jpeg or .png !",
     "upload-alert-type" : "Please use a JPG, JPEG or PNG Image Type !",

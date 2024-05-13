@@ -41,10 +41,10 @@ $(document).ready(() => {
                                     <div class=\"order-md-1 col-3 col-md-2 my-auto px-0 p" + (id == 0 && $("#messages-page").val() == 0 ? "b" : (id == last ? "t-5 add-py" : "y")) + "-5 text-end\">\
                                         <div class=\"d-flex flex-column flex-md-row-reverse\">\
                                             <div class=\"my-auto\">\
-                                                <input class=\"btn rounded-circle image-48 ratio-1 button-outline user-block\" type=\"image\" src=\"" + $("#messages-block-src").val() + "\" alt=\"" + $("#messages-block-alt").val() + "\" user=\"" + message["hash"] + "\"/>\
+                                                <input class=\"btn rounded-circle image-48 ratio-1 button-outline user-block\" type=\"image\" src=\"" + $("html").attr("link") + "/Public/Images/Icons/" + ($("html").attr("data-bs-theme") != "dark" ? "Light" : "Dark") + "/Block.png\" alt=\"" + $("#messages-block").val() + "\" user=\"" + message["hash"] + "\"/>\
                                             </div>\
                                             <div class=\"my-auto me-md-4 mt-4 mt-md-auto\">\
-                                                <input class=\"btn rounded-circle image-48 ratio-1 button-outline user-delete\" type=\"image\" src=\"" + $("#messages-delete-src").val() + "\" alt=\"" + $("#messages-delete-alt").val() + "\" user=\"" + message["hash"] + "\"/>\
+                                                <input class=\"btn rounded-circle image-48 ratio-1 button-outline user-delete\" type=\"image\" src=\"" + $("html").attr("link") + "/Public/Images/Icons/" + ($("html").attr("data-bs-theme") != "dark" ? "Light" : "Dark") + "/Delete.png\" alt=\"" + $("#messages-delete").val() + "\" user=\"" + message["hash"] + "\"/>\
                                             </div>\
                                         </div>\
                                     </div>\

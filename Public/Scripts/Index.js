@@ -61,6 +61,8 @@ $(document).ready(() => {
         })
     })
 
+    $(".alert-close").click(event => $("#alert-" + $(event.target).attr("alert")).modal("hide"))
+
     $(".open").modal("show").addClass("fade")
 })
 
@@ -77,16 +79,15 @@ const getToken = (callback, error = true) => {
 }
 
 const showAlert = (id, closed = null, confirmed = null) => {
-    id += "-alert"
-    $("#" + id).modal("show")
-    $("#" + id).off("hide.bs.modal")
-    $("#" + id + " .confirm").off("click")
+    $("#alert-" + id).modal("show")
+    $("#alert-" + id).off("hide.bs.modal")
+    $("#alert-" + id + " .confirm").off("click")
 
-    if(typeof(closed) == "function") $("#" + id).on("hide.bs.modal", closed)
+    if(typeof(closed) == "function") $("#alert-" + id).on("hide.bs.modal", closed)
 
     if(typeof(confirmed) == "function") {
-        $("#" + id + " .confirm").click(event => {
-            $("#" + id).modal("hide")
+        $("#alert-" + id + " .alert-yes").click(event => {
+            $("#alert-" + id).modal("hide")
 
             confirmed(event)
         })

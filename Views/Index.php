@@ -29,32 +29,20 @@
                 }
 
                 if(!$parameters["hash"] && is_array($parameters["alerts"])) {
-                    foreach($parameters["alerts"] as $alert) {
-                        $state = "success";
-                        $color = "success";
+                    foreach($parameters["alerts"] as $alert) { ?>
 
-                        if(str_contains($parameters["getText"]($alert), "!")) {
-                            $state = "error";
-                            $color = "danger";
-                        } else if(str_contains($parameters["getText"]($alert), "?")) {
-                            $state = "confirm";
-                            $color = "warning";
-                        }
-                    ?>
-
-                    <div id="<?= str_replace("-alert", "", $alert); ?>-alert" class="modal fade p-5">
+                    <div id="alert-<?= str_replace("-alert", "", $alert); ?>" class="modal fade p-5">
                         <div class="modal-dialog modal-dialog-centered">
                             <div class="modal-content">
-                                <div class="px-4 py-5 mb-0 alert">
-                                    <h3 class="p-4"> <?= $parameters["getText"]("index-alert-" . $state); ?> </h3>
-                                    <p class="p-4"> <?= $parameters["getText"]($alert); ?> </p>
-                                    <div class="p-4">
-                                        <?php if($color != "warning") { ?>
-                                            <button class="w-100 btn rounded-pill button-outline" data-bs-dismiss="modal"> <?= $parameters["getText"]("index-alert-close"); ?> </button>
-                                        <?php } else { ?>
-                                            <button class="w-100 btn rounded-pill button-classic confirm"> <?= $parameters["getText"]("index-alert-ok"); ?> </button>
-                                            <button class="w-100 mt-4 btn rounded-pill button-outline" data-bs-dismiss="modal"> <?= $parameters["getText"]("index-alert-cancel"); ?> </button>
+                                <div class="row p-4 mx-0 mb-0 alert alert-<?= str_contains($parameters["getText"]($alert), "!") ? "danger" : (str_contains($parameters["getText"]($alert), "?") ? "warning" : "success"); ?>">
+                                    <div class="col-12 col-md-10 px-0">
+                                        <p class="mb-0"> <?= $parameters["getText"]($alert); ?> </p>
+                                        <?php if(str_contains($parameters["getText"]($alert), "?")) { ?>
+                                            <button class="w-50 mt-4 btn rounded-pill button-outline alert-yes"> <?= $parameters["getText"]("index-alert-yes"); ?> </button>
                                         <?php } ?>
+                                    </div>
+                                    <div class="d-flex justify-content-center align-items-center col-12 col-md-2 px-0 pt-4 pt-md-0">
+                                        <button class="btn-close alert-close" alert="<?= str_replace("-alert", "", $alert); ?>"> </button>
                                     </div>
                                 </div>
                             </div>

@@ -61,7 +61,7 @@
 
                 array_push($results, array(
                     "link" => \Static\Kernel::getPath("/chat/" . $hash),
-                    "sender" => \Static\Kernel::getPath("/Public/Images/Users/" . $hash . ".jpeg"),
+                    "sender" => \Static\Kernel::getPath("/Public/Images/Users/" . $hash . ".jpeg?" . time()),
                     "username" => \Static\Kernel::getValue($message, "username"),
                     "updated" => $today != $date ? $date : $time,
                     "count" => self::count((int)\Static\Kernel::getValue($message, "userID")),
@@ -117,7 +117,7 @@
                 $senderID = (int)\Static\Kernel::getValue($message, "userID");
 
                 array_push($results, array(
-                    "user" => \Static\Kernel::getPath("/Public/Images/Users/" . \Static\Kernel::getHash("User", $senderID) . ".jpeg"),
+                    "user" => \Static\Kernel::getPath("/Public/Images/Users/" . \Static\Kernel::getHash("User", $senderID) . ".jpeg?" . time()),
                     "username" => \Static\Kernel::getValue($message, "username"),
                     "date" => date_format(date_create(\Static\Kernel::getValue($message, "created")), substr(\Static\Kernel::getDateFormat(), 0, 5)),
                     "time" => date_format(date_create(\Static\Kernel::getValue($message, "created")), substr(\Static\Kernel::getDateFormat(), 5)),

@@ -11,10 +11,8 @@
             <input id="messages-on" value="<?= $parameters["getText"]("messages-on"); ?>"/>
             <input id="messages-at" value="<?= $parameters["getText"]("messages-at"); ?>"/>
             <input id="messages-messages" value="<?= $parameters["getText"]("messages-messages"); ?>"/>
-            <input id="messages-block-src" value="<?= $parameters["getPath"]("/Public/Images/Icons/" . (\Static\Kernel::isLight() ? "Light" : "Dark") . "/Block.png"); ?>"/>
-            <input id="messages-block-alt" value="<?= $parameters["getText"]("messages-block"); ?>"/>
-            <input id="messages-delete-src" value="<?= $parameters["getPath"]("/Public/Images/Icons/" . (\Static\Kernel::isLight() ? "Light" : "Dark") . "/Delete.png"); ?>"/>
-            <input id="messages-delete-alt" value="<?= $parameters["getText"]("messages-delete"); ?>"/>
+            <input id="messages-block" value="<?= $parameters["getText"]("messages-block"); ?>"/>
+            <input id="messages-delete" value="<?= $parameters["getText"]("messages-delete"); ?>"/>
         </div>
         <p id="messages-empty" class="mb-0"> <?= $parameters["getText"]("messages-empty"); ?> </p>
     </div>

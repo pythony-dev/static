@@ -41,16 +41,11 @@
     "footer-privacy" : "Politique de Confidentialité",
     "footer-sitemap" : "Plan du Site",
 
-    "index-alert-success" : "Succès",
-    "index-alert-error" : "Erreur",
-    "index-alert-confirm" : "Confirmation",
-    "index-alert-close" : "Fermer",
-    "index-alert-cancel" : "Annuler",
-    "index-alert-ok" : "OK",
+    "index-alert-yes" : "Oui",
+    "index-alert-token" : "Impossible de se Connecter à @name Actuellement !",
     "index-alert-language" : "Impossible de Changer de Langue Actuellement !",
     "index-alert-theme" : "Impossible de Changer de Thème Actuellement !",
     "index-alert-logOut" : "Impossible de se Déconnecter Actuellement !",
-    "index-alert-token" : "Impossible de se Connecter à @name Actuellement !",
 
     "upload-alert-extension" : "Veuillez utiliser une Image avec l'Extension .jpg, .jpeg ou .png !",
     "upload-alert-type" : "Veuillez utiliser une Image de Type JPG, JPEG ou PNG !",

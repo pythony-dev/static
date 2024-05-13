@@ -5,10 +5,8 @@
             <p class="p-4 text-justify"> <?= $parameters["getText"]("search-content"); ?> </p>
             <div class="p-4">
                 <div class="d-none">
-                    <input id="search-block-src" value="<?= $parameters["getPath"]("/Public/Images/Icons/" . (\Static\Kernel::isLight() ? "Light" : "Dark") . "/Block.png"); ?>"/>
-                    <input id="search-block-alt" value="<?= $parameters["getText"]("search-block"); ?>"/>
-                    <input id="search-chat-src" value="<?= $parameters["getPath"]("/Public/Images/Icons/" . (\Static\Kernel::isLight() ? "Light" : "Dark") . "/Chat.png"); ?>"/>
-                    <input id="search-chat-alt" value="<?= $parameters["getText"]("search-chat"); ?>"/>
+                    <input id="search-block" value="<?= $parameters["getText"]("search-block"); ?>"/>
+                    <input id="search-chat" value="<?= $parameters["getText"]("search-chat"); ?>"/>
                 </div>
                 <input id="search-username" class="form-control text-center rounded-pill" type="text" placeholder="<?= $parameters["getText"]("search-username"); ?>"/>
                 <div id="search-spinner" class="d-none mt-4 spinner-border"> </div>

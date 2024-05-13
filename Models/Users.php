@@ -141,7 +141,7 @@
                 $hash = \Static\Kernel::getHash("User", \Static\Kernel::getValue($user, "id"));
 
                 array_push($results, array(
-                    "image" => \Static\Kernel::getPath("/Public/Images/Users/" . $hash . ".jpeg"),
+                    "image" => \Static\Kernel::getPath("/Public/Images/Users/" . $hash . ".jpeg?" . time()),
                     "username" => \Static\Kernel::getValue($user, "username"),
                     "hash" => $hash,
                     "chat" => \Static\Models\Messages::isContact(\Static\Kernel::getValue($user, "id")) == "success" ? \Static\Kernel::getPath("/chat/" . $hash) : null,
@@ -164,7 +164,7 @@
             $query->execute();
 
             if($user = $query->fetch()) {
-                $user["image"] = \Static\Kernel::getPath("/Public/Images/Users/" . \Static\Kernel::getHash("User", $user["id"]) . ".jpeg");
+                $user["image"] = \Static\Kernel::getPath("/Public/Images/Users/" . \Static\Kernel::getHash("User", $user["id"]) . ".jpeg?" . time());
 
                 return $user;
             } else return array();

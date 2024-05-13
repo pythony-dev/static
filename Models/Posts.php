@@ -39,7 +39,7 @@
 
             while($post = $query->fetch()) {
                 array_push($results, array(
-                    "user" => \Static\Kernel::getPath("/Public/Images/Users/" . \Static\Kernel::getHash("User", \Static\Kernel::getValue($post, "userID")) . ".jpeg"),
+                    "user" => \Static\Kernel::getPath("/Public/Images/Users/" . \Static\Kernel::getHash("User", \Static\Kernel::getValue($post, "userID")) . ".jpeg?" . time()),
                     "username" => \Static\Kernel::getValue($post, "username"),
                     "date" => date_format(date_create(\Static\Kernel::getValue($post, "created")), substr(\Static\Kernel::getDateFormat(), 0, 5)),
                     "time" => date_format(date_create(\Static\Kernel::getValue($post, "created")), substr(\Static\Kernel::getDateFormat(), 5)),
