@@ -93,11 +93,8 @@ $(document).ready(() => {
                                     "action" : "deleteByUser",
                                     "user" : user,
                                 }).then(response => {
-                                    if(response["status"] == "success") {
-                                        showAlert("messages-delete-success", event => {
-                                            location.reload()
-                                        })
-                                    } else showAlert("messages-delete-error")
+                                    if(response["status"] == "success") location.reload()
+                                    else showAlert("messages-delete-error")
                                 }).fail(() => {
                                     showAlert("messages-delete-error")
                                 })

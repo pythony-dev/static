@@ -11,8 +11,6 @@
                 exit();
             }
 
-            $parameters["features"] = \Static\Models\Features::getFeatures();
-
             return $parameters;
         }
 

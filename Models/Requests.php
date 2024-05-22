@@ -19,10 +19,11 @@
             $count = $query->fetch()["count"] ?? 16;
 
             if($count <= 15) {
-                $query = parent::$pdo->prepare("INSERT INTO Requests (created, sessionID, userID, link, language) VALUES (NOW(), :sessionID, :userID, :link, :language)");
+                $query = parent::$pdo->prepare("INSERT INTO Requests (created, sessionID, userID, link, request, language) VALUES (NOW(), :sessionID, :userID, :link, :request, :language)");
                 $query->bindValue(":sessionID", $sessionID, PDO::PARAM_INT);
                 $query->bindValue(":userID", $userID, PDO::PARAM_INT);
                 $query->bindValue(":link", \Static\Kernel::getValue($_SERVER, "REQUEST_URI"), PDO::PARAM_STR);
+                $query->bindValue(":request", \Static\Kernel::getValue($_POST, "request"), PDO::PARAM_STR);
                 $query->bindValue(":language", \Static\Languages\Translate::getLanguage(), PDO::PARAM_STR);
 
                 return $query->execute();

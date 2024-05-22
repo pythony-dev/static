@@ -80,10 +80,13 @@ const getToken = (callback, error = true) => {
 
 const showAlert = (id, closed = null, confirmed = null) => {
     $("#alert-" + id).modal("show")
-    $("#alert-" + id).off("hide.bs.modal")
-    $("#alert-" + id + " .confirm").off("click")
 
-    if(typeof(closed) == "function") $("#alert-" + id).on("hide.bs.modal", closed)
+    $("#alert-" + id).on("hide.bs.modal", () => {
+        if(typeof(closed) == "function") closed()
+
+        $("#alert-" + id + " .alert-yes").off("click")
+        $("#alert-" + id).off("hide.bs.modal")
+    })
 
     if(typeof(confirmed) == "function") {
         $("#alert-" + id + " .alert-yes").click(event => {

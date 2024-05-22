@@ -12,11 +12,8 @@ $(document).ready(() => {
                     "action" : "delete",
                     "user" : user,
                 }).then(response => {
-                    if(response["status"] == "success" && "link" in response) {
-                        showAlert("blocks-success", event => {
-                            location.replace(response["link"])
-                        })
-                    } else showAlert("blocks-error")
+                    if(response["status"] == "success") location.replace($("html").attr("link") + "/settings?blocks")
+                    else showAlert("blocks-error")
                 }).fail(() => {
                     showAlert("blocks-error")
                 })

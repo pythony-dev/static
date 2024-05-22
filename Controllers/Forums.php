@@ -26,8 +26,8 @@
 
             $parameters["alerts"] = array_merge($parameters["alerts"], array(
                 "forums-alert-report-success", "forums-alert-report-error",
-                "forums-alert-delete-ask", "forums-alert-delete-success", "forums-alert-delete-error",
-                "create-alert-success-thread", "create-alert-error-thread",
+                "forums-alert-delete-ask", "forums-alert-delete-error",
+                "create-alert-error-thread",
                 "upload-alert-extension", "upload-alert-type", "upload-alert-size", "upload-alert-success", "upload-alert-error",
             ));
 

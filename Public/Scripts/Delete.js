@@ -16,9 +16,9 @@ $(document).ready(() => {
                         $("#delete-confirm").addClass("is-invalid")
 
                         showAlert("delete-confirm")
-                    } else if(response["status"] == "success" && "link" in response) {
+                    } else if(response["status"] == "success") {
                         showAlert("delete-success", event => {
-                            location.replace(response["link"])
+                            location.replace($("html").attr("link") + "/sign-up")
                         })
                     } else showAlert("delete-error")
                 }).fail(() => {

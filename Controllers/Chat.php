@@ -24,8 +24,8 @@
 
             $parameters["alerts"] = array_merge($parameters["alerts"], array(
                 "chat-alert-message-error",
-                "chat-alert-delete-ask", "chat-alert-delete-success", "chat-alert-delete-error",
-                "create-alert-contact", "create-alert-blocked", "create-alert-success-message", "create-alert-error-message",
+                "chat-alert-delete-ask", "chat-alert-delete-error",
+                "create-alert-contact", "create-alert-blocked", "create-alert-error-message",
                 "upload-alert-extension", "upload-alert-type", "upload-alert-size", "upload-alert-success", "upload-alert-error",
             ));
 

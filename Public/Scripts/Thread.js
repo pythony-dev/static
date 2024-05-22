@@ -31,11 +31,8 @@ $(document).ready(() => {
                     "action" : "delete",
                     "post" : post,
                 }).then(response => {
-                    if(response["status"] == "success") {
-                        showAlert("thread-delete-success", event => {
-                            location.reload()
-                        })
-                    } else showAlert("thread-delete-error")
+                    if(response["status"] == "success") location.reload()
+                    else showAlert("thread-delete-error")
                 }).fail(() => {
                     showAlert("thread-delete-error")
                 })

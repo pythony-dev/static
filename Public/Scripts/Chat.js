@@ -67,11 +67,8 @@ $(document).ready(() => {
                                     "action" : "delete",
                                     "message" : message,
                                 }).then(response => {
-                                    if(response["status"] == "success") {
-                                        showAlert("chat-delete-success", event => {
-                                            location.reload()
-                                        })
-                                    } else showAlert("chat-delete-error")
+                                    if(response["status"] == "success") location.reload()
+                                    else showAlert("chat-delete-error")
                                 }).fail(() => {
                                     showAlert("chat-delete-error")
                                 })

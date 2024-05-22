@@ -26,9 +26,9 @@ $(document).ready(() => {
                     $("#settings-account-confirm").addClass("is-invalid")
 
                     showAlert("settings-account-confirm")
-                } else if(response["status"] == "success" && "link" in response) {
+                } else if(response["status"] == "success") {
                     showAlert("settings-account-success", event => {
-                        location.replace(response["link"])
+                        location.replace($("html").attr("link") + "/settings")
                     })
                 } else showAlert("settings-account-error")
             }).fail(() => {
@@ -103,9 +103,9 @@ $(document).ready(() => {
                     $("#settings-notifications-confirm").addClass("is-invalid")
 
                     showAlert("settings-notifications-confirm")
-                } else if(response["status"] == "success" && "link" in response) {
+                } else if(response["status"] == "success") {
                     showAlert("settings-notifications-success", event => {
-                        location.replace(response["link"])
+                        location.replace($("html").attr("link") + "/settings?notifications")
                     })
                 } else showAlert("settings-notifications-error")
             }).fail(() => {
@@ -142,9 +142,9 @@ $(document).ready(() => {
                     $("#settings-others-confirm").addClass("is-invalid")
 
                     showAlert("settings-others-confirm")
-                } else if(response["status"] == "success" && "link" in response) {
+                } else if(response["status"] == "success") {
                     showAlert("settings-others-success", event => {
-                        location.replace(response["link"])
+                        location.replace($("html").attr("link") + "/settings?others")
                     })
                 } else showAlert("settings-others-error")
             }).fail(() => {

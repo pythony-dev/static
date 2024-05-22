@@ -34,11 +34,11 @@ $(document).ready(() => {
                         $("#signUp-password").addClass("is-invalid")
 
                         showAlert("signUp-submit-password")
-                    } else if(response["status"] == "success" && "link" in response) {
+                    } else if(response["status"] == "success") {
                         $("#signUp-password").removeClass("is-invalid")
 
                         showAlert("signUp-submit-success", event => {
-                            location.replace(response["link"])
+                            location.replace($("html").attr("link") + "/log-in")
                         })
                     } else {
                         $("#signUp-password").removeClass("is-invalid")

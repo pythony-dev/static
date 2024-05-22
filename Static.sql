@@ -198,46 +198,6 @@ INSERT INTO `Errors` (`id`, `created`, `sessionID`, `userID`, `link`, `error`, `
 -- --------------------------------------------------------
 
 --
--- Table structure for table `Features`
---
-
-CREATE TABLE `Features` (
-  `id` int(11) NOT NULL,
-  `title` varchar(255) NOT NULL,
-  `subtitle` varchar(255) NOT NULL,
-  `content` varchar(4095) NOT NULL,
-  `language` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- Dumping data for table `Features`
---
-
-INSERT INTO `Features` (`id`, `title`, `subtitle`, `content`, `language`) VALUES
-(1, 'Sample Feature 1', 'Sample Benefit 1', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam id convallis odio. Cras bibendum lacus vel sapien suscipit, lacinia pulvinar.', 'english'),
-(2, 'Exemple de Fonctionnalité 1', 'Exemple de Bénéfice 1', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam id convallis odio. Cras bibendum lacus vel sapien suscipit, lacinia pulvinar.', 'french'),
-(3, 'Sample Feature 2', 'Sample Benefit 2', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam id convallis odio. Cras bibendum lacus vel sapien suscipit, lacinia pulvinar.', 'english'),
-(4, 'Exemple de Fonctionnalité 2', 'Exemple de Bénéfice 2', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam id convallis odio. Cras bibendum lacus vel sapien suscipit, lacinia pulvinar.', 'french'),
-(5, 'Sample Feature 3', 'Sample Benefit 3', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam id convallis odio. Cras bibendum lacus vel sapien suscipit, lacinia pulvinar.', 'english'),
-(6, 'Exemple de Fonctionnalité 3', 'Exemple de Bénéfice 3', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam id convallis odio. Cras bibendum lacus vel sapien suscipit, lacinia pulvinar.', 'french'),
-(7, 'Sample Feature 4', 'Sample Benefit 4', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam id convallis odio. Cras bibendum lacus vel sapien suscipit, lacinia pulvinar.', 'english'),
-(8, 'Exemple de Fonctionnalité 4', 'Exemple de Bénéfice 4', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam id convallis odio. Cras bibendum lacus vel sapien suscipit, lacinia pulvinar.', 'french'),
-(9, 'Sample Feature 5', 'Sample Benefit 5', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam id convallis odio. Cras bibendum lacus vel sapien suscipit, lacinia pulvinar.', 'english'),
-(10, 'Exemple de Fonctionnalité 5', 'Exemple de Bénéfice 5', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam id convallis odio. Cras bibendum lacus vel sapien suscipit, lacinia pulvinar.', 'french'),
-(11, 'Sample Feature 6', 'Sample Benefit 6', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam id convallis odio. Cras bibendum lacus vel sapien suscipit, lacinia pulvinar.', 'english'),
-(12, 'Exemple de Fonctionnalité 6', 'Exemple de Bénéfice 6', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam id convallis odio. Cras bibendum lacus vel sapien suscipit, lacinia pulvinar.', 'french'),
-(13, 'Sample Feature 7', 'Sample Benefit 7', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam id convallis odio. Cras bibendum lacus vel sapien suscipit, lacinia pulvinar.', 'english'),
-(14, 'Exemple de Fonctionnalité 7', 'Exemple de Bénéfice 7', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam id convallis odio. Cras bibendum lacus vel sapien suscipit, lacinia pulvinar.', 'french'),
-(15, 'Sample Feature 8', 'Sample Benefit 8', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam id convallis odio. Cras bibendum lacus vel sapien suscipit, lacinia pulvinar.', 'english'),
-(16, 'Exemple de Fonctionnalité 8', 'Exemple de Bénéfice 8', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam id convallis odio. Cras bibendum lacus vel sapien suscipit, lacinia pulvinar.', 'french'),
-(17, 'Sample Feature 9', 'Sample Benefit 9', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam id convallis odio. Cras bibendum lacus vel sapien suscipit, lacinia pulvinar.', 'english'),
-(18, 'Exemple de Fonctionnalité 9', 'Exemple de Bénéfice 9', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam id convallis odio. Cras bibendum lacus vel sapien suscipit, lacinia pulvinar.', 'french'),
-(19, 'Sample Feature 10', 'Sample Benefit 10', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam id convallis odio. Cras bibendum lacus vel sapien suscipit, lacinia pulvinar.', 'english'),
-(20, 'Exemple de Fonctionnalité 10', 'Exemple de Bénéfice 10', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam id convallis odio. Cras bibendum lacus vel sapien suscipit, lacinia pulvinar.', 'french');
-
--- --------------------------------------------------------
-
---
 -- Table structure for table `Logs`
 --
 
@@ -361,6 +321,7 @@ CREATE TABLE `Requests` (
   `sessionID` int(11) NOT NULL,
   `userID` int(11) NOT NULL,
   `link` varchar(255) NOT NULL,
+  `request` varchar(255) DEFAULT NULL,
   `language` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -368,8 +329,8 @@ CREATE TABLE `Requests` (
 -- Dumping data for table `Requests`
 --
 
-INSERT INTO `Requests` (`id`, `created`, `sessionID`, `userID`, `link`, `language`) VALUES
-(1, '2024-04-12 12:00:00', 1, 0, '/Static/', 'english');
+INSERT INTO `Requests` (`id`, `created`, `sessionID`, `userID`, `link`, `request`, `language`) VALUES
+(1, '2024-04-12 12:00:00', 1, 0, '/Static/', NULL, 'english');
 
 -- --------------------------------------------------------
 
@@ -578,12 +539,6 @@ ALTER TABLE `Errors`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `Features`
---
-ALTER TABLE `Features`
-  ADD PRIMARY KEY (`id`);
-
---
 -- Indexes for table `Logs`
 --
 ALTER TABLE `Logs`
@@ -694,12 +649,6 @@ ALTER TABLE `Emails`
 --
 ALTER TABLE `Errors`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
-
---
--- AUTO_INCREMENT for table `Features`
---
-ALTER TABLE `Features`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
 -- AUTO_INCREMENT for table `Logs`

@@ -42,7 +42,6 @@
 
             return $query->execute() && (int)$query->rowCount() >= 1 ? array(
                 "status" => "success",
-                "link" => \Static\Kernel::getPath("/settings?blocks"),
             ) : "error";
         }
 

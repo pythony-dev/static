@@ -48,7 +48,6 @@
 
             return \Static\Models\Confirmations::delete($email) && $query->execute() && copy("Public/Images/Users/" . \Static\Kernel::getHash("User", 0) . ".jpeg", "Public/Images/Users/" . \Static\Kernel::getHash("User", parent::$pdo->lastInsertId()) . ".jpeg") && \Static\Emails::send($email, $title, $content) && \Static\Models\Welcome::delete($email) ? array(
                 "status" => "success",
-                "link" => \Static\Kernel::getPath("/log-in"),
             ) : "error";
         }
 
@@ -87,7 +86,6 @@
 
                 return \Static\Models\Logs::create($userID, "success") ? array(
                     "status" => "success",
-                    "link" => \Static\Kernel::getPath("/settings"),
                 ) : "error";
             } else return \Static\Models\Logs::create($userID, "error") ? "password" : "error";
         }
@@ -217,7 +215,6 @@
 
             return \Static\Models\Updates::create("email", $results["email"]) && \Static\Models\Updates::create("username", $results["username"]) && $query->execute() ? array(
                 "status" => "success",
-                "link" => \Static\Kernel::getPath("/settings"),
             ) : "error";
         }
 
@@ -244,7 +241,6 @@
 
             return $query->execute() ? array(
                 "status" => "success",
-                "link" => \Static\Kernel::getPath("/settings?notifications"),
             ) : "error";
         }
 
@@ -284,7 +280,6 @@
 
             return $query->execute() ? array(
                 "status" => "success",
-                "link" => \Static\Kernel::getPath("/settings?others"),
             ) : "error";
         }
 
@@ -314,7 +309,6 @@
 
             return \Static\Models\Updates::create("password", $results["password"]) && $query->execute() ? array(
                 "status" => "success",
-                "link" => \Static\Kernel::getPath("/settings"),
             ) : "error";
         }
 
@@ -349,7 +343,6 @@
 
                 return \Static\Emails::send($email, $title, $content) ? array(
                     "status" => "success",
-                    "link" => \Static\Kernel::getPath("/sign-up"),
                 ) : "error";
             } else return "error";
         }

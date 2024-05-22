@@ -36,7 +36,7 @@
                 "settings-alert-notifications-confirm", "settings-alert-notifications-success", "settings-alert-notifications-error",
                 "settings-alert-others-languages", "settings-alert-others-confirm", "settings-alert-others-success", "settings-alert-others-error",
                 "upload-alert-extension", "upload-alert-type", "upload-alert-size", "upload-alert-success", "upload-alert-error",
-                "blocks-alert-ask", "blocks-alert-success", "blocks-alert-error",
+                "blocks-alert-ask", "blocks-alert-error",
                 "change-alert-password", "change-alert-confirm", "change-alert-success", "change-alert-error",
                 "delete-alert-ask", "delete-alert-confirm", "delete-alert-success", "delete-alert-error",
             ));
