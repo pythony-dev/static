@@ -26,6 +26,10 @@
             return $query->execute() ? \Static\Kernel::getHash("Email", parent::$pdo->lastInsertId()) : null;
         }
 
+        public static function count() {
+            return parent::$pdo->query("SELECT COUNT(id) AS count FROM Emails")->fetch()["count"] ?? 0;
+        }
+
         public static function getEmail($hash) {
             $hash = htmlspecialchars($hash);
 

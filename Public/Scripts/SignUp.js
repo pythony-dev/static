@@ -38,7 +38,7 @@ $(document).ready(() => {
                         $("#signUp-password").removeClass("is-invalid")
 
                         showAlert("signUp-submit-success", event => {
-                            location.replace($("html").attr("link") + "/log-in")
+                            location.replace($("html").attr("link") + "/settings")
                         })
                     } else {
                         $("#signUp-password").removeClass("is-invalid")

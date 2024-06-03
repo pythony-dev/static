@@ -142,7 +142,7 @@
                 self::addRequest("siteMap");
                 self::addRequest("settings");
 
-                $search = htmlspecialchars($_POST["request"]);
+                $search = self::getValue($_POST, "request");
 
                 if(!\Static\Settings::getSettings("debug") && self::$requests[array_search($search, array_column(self::$requests, "name"))]["secure"] && !\Static\Models\Tokens::check()) return self::setError(401, \Static\Languages\Translate::getText("error-token") . self::getValue($_POST, "token"), true);
 

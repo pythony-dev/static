@@ -42,13 +42,17 @@
 
             $title = \Static\Languages\Translate::getText("emails-signUp-title");
             $content = \Static\Languages\Translate::getText("emails-signUp-content", true, array(
-                "log-in" => \Static\Kernel::getPath("/log-in"),
-                "settings" => \Static\Kernel::getPath("/settings"),
+                "log-in" => \Static\Kernel::getPath("/log-in?" . \Static\Emails::getParameters()),
+                "settings" => \Static\Kernel::getPath("/settings?" . \Static\Emails::getParameters()),
             ));
 
-            return \Static\Models\Confirmations::delete($email) && $query->execute() && copy("Public/Images/Users/" . \Static\Kernel::getHash("User", 0) . ".jpeg", "Public/Images/Users/" . \Static\Kernel::getHash("User", parent::$pdo->lastInsertId()) . ".jpeg") && \Static\Emails::send($email, $title, $content) && \Static\Models\Welcome::delete($email) ? array(
-                "status" => "success",
-            ) : "error";
+            if(\Static\Models\Confirmations::delete($email) && $query->execute()) {
+                $_SESSION["userID"] = (int)parent::$pdo->lastInsertId();
+
+                if(copy("Public/Images/Users/" . \Static\Kernel::getHash("User", 0) . ".jpeg", "Public/Images/Users/" . \Static\Kernel::getHash("User", (int)parent::$pdo->lastInsertId()) . ".jpeg") && \Static\Models\Logs::create((int)parent::$pdo->lastInsertId(), "success") && \Static\Emails::send($email, $title, $content) && \Static\Models\Welcome::delete($email)) return "success";
+            }
+
+            return "error";
         }
 
         public static function logIn($email, $password) {
@@ -84,9 +88,7 @@
                     "mode" => \Static\Kernel::getValue($_SESSION, array("theme", "mode")),
                 );
 
-                return \Static\Models\Logs::create($userID, "success") ? array(
-                    "status" => "success",
-                ) : "error";
+                return \Static\Models\Logs::create($userID, "success") ? "success" : "error";
             } else return \Static\Models\Logs::create($userID, "error") ? "password" : "error";
         }
 
@@ -114,8 +116,8 @@
 
             $title = \Static\Languages\Translate::getText("emails-reset-title");
             $content = \Static\Languages\Translate::getText("emails-reset-content", true, array(
-                "log-in" => \Static\Kernel::getPath("/log-in"),
-                "settings" => \Static\Kernel::getPath("/settings"),
+                "log-in" => \Static\Kernel::getPath("/log-in?" . \Static\Emails::getParameters()),
+                "settings" => \Static\Kernel::getPath("/settings?" . \Static\Emails::getParameters()),
             ));
 
             return \Static\Models\Confirmations::delete($email) && $query->execute() && \Static\Models\Updates::create("reset", $results["password"], $results["id"]) && \Static\Emails::send($email, $title, $content) ? "success" : "error";
@@ -338,13 +340,31 @@
 
                 $title = \Static\Languages\Translate::getText("emails-delete-title");
                 $content = \Static\Languages\Translate::getText("emails-delete-content", true, array(
-                    "sign-up" => \Static\Kernel::getPath("/sign-up"),
+                    "sign-up" => \Static\Kernel::getPath("/sign-up?" . \Static\Emails::getParameters()),
                 ));
 
                 return \Static\Emails::send($email, $title, $content) ? array(
                     "status" => "success",
                 ) : "error";
             } else return "error";
+        }
+
+        public static function resume() {
+            $query = parent::$pdo->query("SELECT email, language FROM Users WHERE deleted IS NULL AND DATEDIFF(NOW(), created) IN (1, 3, 7, 15, 31)");
+
+            while($user = $query->fetch()) {
+                \Static\Languages\Translate::setLanguage(\Static\Kernel::getValue($user, "language"));
+
+                $email = \Static\Kernel::getValue($user, "email");
+                $title = \Static\Languages\Translate::getText("emails-resume-title");
+                $content = \Static\Languages\Translate::getText("emails-resume-content", true, array(
+                    "contact" => \Static\Kernel::getPath("/contact?" . \Static\Emails::getParameters()),
+                ));
+
+                \Static\Emails::send($email, $title, $content);
+            }
+
+            return true;
         }
 
         public static function getID($hash) {

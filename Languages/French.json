@@ -450,6 +450,8 @@
     "emails-delete-content" : "Suite à votre Demande, nous venons de Supprimer votre Compte. Vous pouvez toutefois vous <a href=\"@messages\"> Inscrire </a> à nouveau à tout moment.",
     "emails-welcome-title" : "S'Inscrire à @name",
     "emails-welcome-content" : "Merci de votre Intérêt pour @name. N'Oubliez Pas de vous <a href=\"@sign-up\"> Inscrire </a> pour Profiter de toutes ses <a href=\"@features\"> Fonctionnalités </a>, Suivre ses <a href=\"@news\"> Actualités </a>, et rejoindre ses <a href=\"@forums\"> Forums </a> Communautaires !",
+    "emails-resume-title" : "Aimez-Vous @name ?",
+    "emails-resume-content" : "Vous utilisez @name depuis un moment et nous aimerions savoir ce que vous en pensez. <br/> <br/> N'Oubliez Pas de Nous Contacter <a href=\"mailto:@email\"> par Email </a> ou via <a href=\"@contact\"> notre Site Web </a> pour partager votre Opinion, vos Questions et même vos Suggestions d'Amélioration !",
     "emails-newsletter-title" : "Un Nouvel Article est Disponible",
     "emails-newsletter-content" : "Un Nouvel Article vient d'être Publié <br/> <br/> @title <br/> <br/> @overview <br/> <br/> <a href=\"@read\"> Lire l'Article Complet </a>"
 }

@@ -1,7 +1,7 @@
 <article class="col-12 col-md-10 col-xl-8 offset-md-1 offset-xl-2 py-5">
     <?php if($parameters["hash"]) { ?>
         <div class="p-5">
-            <a class="w-100 btn btn-primary" href="<?= $parameters["getPath"]("/email/" . $parameters["hash"]); ?>"> <?= $parameters["getText"]("email-web"); ?> </a>
+            <a class="w-100 btn btn-primary" href="<?= $parameters["getPath"]("/email/" . $parameters["hash"] . "?" . \Static\Languages\Translate::getLanguage()); ?>"> <?= $parameters["getText"]("email-web"); ?> </a>
         </div>
     <?php } ?>
     <h1 class="p-5 fw-bold"> <?= $parameters["title"]; ?> </h1>

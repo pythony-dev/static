@@ -25,6 +25,10 @@
             else return true;
         }
 
+        public static function getParameters() {
+            return \Static\Languages\Translate::getLanguage() . "&email=" . \Static\Kernel::getHash("Email", \Static\Models\Emails::count() + 1);
+        }
+
     }
 
 ?>

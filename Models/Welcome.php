@@ -25,10 +25,10 @@
 
             $title = \Static\Languages\Translate::getText("emails-welcome-title");
             $content = \Static\Languages\Translate::getText("emails-welcome-content", true, array(
-                "sign-up" => \Static\Kernel::getPath("/sign-up?welcome=" . \Static\Kernel::getHash("Welcome", parent::$pdo->lastInsertId())),
-                "features" => \Static\Kernel::getPath("/features"),
-                "news" => \Static\Kernel::getPath("/news"),
-                "forums" => \Static\Kernel::getPath("/forums"),
+                "sign-up" => \Static\Kernel::getPath("/sign-up?" . \Static\Emails::getParameters()),
+                "features" => \Static\Kernel::getPath("/features?" . \Static\Emails::getParameters()),
+                "news" => \Static\Kernel::getPath("/news?" . \Static\Emails::getParameters()),
+                "forums" => \Static\Kernel::getPath("/forums?" . \Static\Emails::getParameters()),
             ));
 
             return \Static\Emails::send($email, $title, $content) ? "success" : "error";
@@ -46,7 +46,7 @@
         }
 
         public static function newsletter() {
-            $query = parent::$pdo->query("SELECT id, email, language FROM Welcome WHERE deleted IS NULL AND DATEDIFF(NOW(), created) IN (1, 3, 7, 15, 31)");
+            $query = parent::$pdo->query("SELECT email, language FROM Welcome WHERE deleted IS NULL AND DATEDIFF(NOW(), created) IN (1, 3, 7, 15, 31)");
 
             while($welcome = $query->fetch()) {
                 \Static\Languages\Translate::setLanguage(\Static\Kernel::getValue($welcome, "language"));
@@ -54,10 +54,10 @@
                 $email = \Static\Kernel::getValue($welcome, "email");
                 $title = \Static\Languages\Translate::getText("emails-welcome-title");
                 $content = \Static\Languages\Translate::getText("emails-welcome-content", true, array(
-                    "sign-up" => \Static\Kernel::getPath("/sign-up?welcome=" . \Static\Kernel::getHash("Welcome", \Static\Kernel::getValue($welcome, "id"))),
-                    "features" => \Static\Kernel::getPath("/features"),
-                    "news" => \Static\Kernel::getPath("/news"),
-                    "forums" => \Static\Kernel::getPath("/forums"),
+                    "sign-up" => \Static\Kernel::getPath("/sign-up?" . \Static\Emails::getParameters()),
+                    "features" => \Static\Kernel::getPath("/features?" . \Static\Emails::getParameters()),
+                    "news" => \Static\Kernel::getPath("/news?" . \Static\Emails::getParameters()),
+                    "forums" => \Static\Kernel::getPath("/forums?" . \Static\Emails::getParameters()),
                 ));
 
                 \Static\Emails::send($email, $title, $content);

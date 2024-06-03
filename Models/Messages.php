@@ -161,7 +161,7 @@
                 $title = \Static\Languages\Translate::getText("emails-message-title");
                 $content = \Static\Languages\Translate::getText("emails-message-content", true, array(
                     "username" => \Static\Kernel::getValue(\Static\Models\Users::getUser($userID), "username"),
-                    "messages" => \Static\Kernel::getPath("/messages"),
+                    "messages" => \Static\Kernel::getPath("/messages?" . \Static\Emails::getParameters()),
                 ));
 
                 if(!\Static\Emails::send($email, $title, $content)) return "error";

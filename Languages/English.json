@@ -450,6 +450,8 @@
     "emails-delete-content" : "Following your Request, we have just Deleted your Account. However, you can <a href=\"@sign-up\"> Sign Up </a> again at any time.",
     "emails-welcome-title" : "Sign In for @name",
     "emails-welcome-content" : "Thanks for your Interest in @name. Remember to <a href=\"@sign-up\"> Sign Up </a> to Enjoy all its <a href=\"@features\"> Features </a>, Follow its <a href=\"@news\"> News </a>, and joint its Community <a href=\"@forums\"> Forums </a> !",
+    "emails-resume-title" : "Do You Love @name ?",
+    "emails-resume-content" : "You've been using @name for a while, and we'd like to know what you think of it. <br/> <br/> Remember to Contact Us <a href=\"mailto:@email\"> by Email </a> or via <a href=\"@contact\"> our Website </a> to share your Opinion, Questions and even Suggestions for Improvement !",
     "emails-newsletter-title" : "A New Article is Available",
     "emails-newsletter-content" : "A New Article has been Published. <br/> <br/> @title <br/> <br/> @overview <br/> <br/> <a href=\"@read\"> Read the Full Article </a>"
 }
