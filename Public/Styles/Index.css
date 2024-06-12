@@ -1,4 +1,10 @@
-.container {
+* {
+    font-family : "Chillax Light";
+} .h1, .h2, .h3, .nav-link, .button-classic, .button-outline {
+    font-family : "Chillax Medium";
+} h1, h2, h3 {
+    font-family : "Chillax Bold";
+} .container {
     background-attachment : fixed;
     background-size : cover;
     background-position : center;

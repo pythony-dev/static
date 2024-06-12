@@ -8,7 +8,7 @@
             if($parameters["userID"] <= 0 || !($parameters["user"] = \Static\Models\Users::getUser($parameters["userID"]))) {
                 $_SESSION["userID"] = 0;
 
-                header("Location: " . \Static\Kernel::getPath("/log-in"));
+                header("Location: " . \Static\Kernel::getPath("/?log-in"));
 
                 exit();
             }

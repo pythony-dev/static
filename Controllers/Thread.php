@@ -12,7 +12,7 @@
 
             $parameters["posts"] = \Static\Models\Posts::getPosts($parameters["link"], $parameters["page"]);
 
-            if($parameters["page"] > $parameters["limit"] || $parameters["page"] < 1 || !($parameters["title"] = \Static\Models\Threads::getID($parameters["link"], true))) {
+            if($parameters["page"] > $parameters["limit"] || $parameters["page"] < 1 || !($parameters["title"] = htmlspecialchars_decode(\Static\Models\Threads::getID($parameters["link"], true)))) {
                 header("Location: " . \Static\Kernel::getPath("/forums"));
 
                 exit();

@@ -6,7 +6,7 @@
 
         public static function start($parameters) {
             if($parameters["userID"] <= 0) {
-                header("Location: " . \Static\Kernel::getPath("/log-in"));
+                header("Location: " . \Static\Kernel::getPath("/?log-in"));
 
                 exit();
             } else if(!($user = \Static\Models\Users::getUser(\Static\Models\Users::getID($parameters["link"]))) || \Static\Kernel::getHash("User", $parameters["userID"]) == $parameters["link"]) {
@@ -18,7 +18,7 @@
             \Static\Kernel::addScript("/Public/Scripts/Chat.js");
             \Static\Kernel::addScript("/Public/Scripts/Create.js");
 
-            $parameters["title"] = $parameters["getText"]("chat-title") . " " . \Static\Kernel::getValue($user, "username");
+            $parameters["title"] = $parameters["getText"]("chat-title") . " " . htmlspecialchars_decode(\Static\Kernel::getValue($user, "username"));
 
             $parameters["modals"] = array_merge($parameters["modals"], array("create"));
 

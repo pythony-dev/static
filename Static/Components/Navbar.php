@@ -13,7 +13,7 @@
             <nav class="fixed-top justify-content-lg-center px-4 py-0 navbar navbar-expand-lg shadow border-bottom rounded-bottom">
                 <a class="d-flex py-0 navbar-brand" href="<?= \Static\Kernel::getPath("/"); ?>">
                     <img class="icon" src="<?= \Static\Kernel::getPath("/Public/Images/Index/Icon.png"); ?>" alt="<?= \Static\Settings::getSettings("name"); ?>"/>
-                    <p class="h1 my-auto"> <?= \Static\Settings::getSettings("name"); ?> </p>
+                    <p class="h3 my-auto text-uppercase"> <?= \Static\Settings::getSettings("name"); ?> </p>
                 </a>
                 <button class="navbar-toggler bg-<?= \Static\Kernel::isLight() ? "light" : "dark"; ?>" data-bs-toggle="collapse" data-bs-target="#navbar-collapse">
                     <div class="navbar-toggler-icon"> </div>
@@ -60,8 +60,8 @@
                             </li>
                             <li class="w-200 my-auto pt-3 pb-4 py-lg-0">
                                 <div class="position-relative d-flex flex-column flex-lg-row">
-                                    <a class="d-flex justify-content-center align-items-center w-50 btn button-top button-outline" href="<?= \Static\Kernel::getPath("/sign-up"); ?>"> <?= \Static\Languages\Translate::getText("title-signUp"); ?> </a>
-                                    <a class="d-flex justify-content-center align-items-center w-50 btn button-bottom button-outline" href="<?= \Static\Kernel::getPath("/log-in"); ?>"> <?= \Static\Languages\Translate::getText("title-logIn"); ?> </a>
+                                    <button class="w-50 btn button-top button-outline" type="button" data-bs-toggle="modal" data-bs-target="#signUp-modal"> <?= \Static\Languages\Translate::getText("title-signUp"); ?> </button>
+                                    <button class="w-50 btn button-bottom button-outline" type="button" data-bs-toggle="modal" data-bs-target="#logIn-modal"> <?= \Static\Languages\Translate::getText("title-logIn"); ?> </button>
                                 </div>
                             </li>
                         <?php } else { ?>

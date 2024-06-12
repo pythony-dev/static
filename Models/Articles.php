@@ -90,7 +90,7 @@
                         $content = \Static\Languages\Translate::getText("emails-newsletter-content", true, array(
                             "title" => \Static\Kernel::getValue($article, "title"),
                             "overview" => \Static\Kernel::getValue($article, "overview"),
-                            "read" => \Static\Kernel::getPath("/article/" . \Static\Kernel::getValue($article, "link") . "?" . \Static\Languages\Translate::getLanguage()),
+                            "read" => \Static\Kernel::getPath("/article/" . \Static\Kernel::getValue($article, "link") . "?" . \Static\Emails::getParameters()),
                         ));
 
                         \Static\Emails::send($email, $title, $content);

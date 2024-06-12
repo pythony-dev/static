@@ -10,7 +10,7 @@
             foreach(range(1, ceil(\Static\Models\Articles::count() / 5)) as $page) {
                 $news["Page " . $page] = "/news/" . $page;
 
-                foreach(\Static\Models\Articles::getArticles($page) as $article) $news["Page " . $page . " - Array"][\Static\Kernel::getValue($article, "title")] = \Static\Kernel::getValue($article, "link");
+                foreach(\Static\Models\Articles::getArticles($page) as $article) $news["Page " . $page . " - Array"][htmlspecialchars_decode(\Static\Kernel::getValue($article, "title"))] = \Static\Kernel::getValue($article, "link");
             }
 
             $forums = array();
@@ -18,7 +18,7 @@
             foreach(range(1, ceil(\Static\Models\Threads::count() / 10)) as $page) {
                 $forums["Page " . $page] = "/forums/" . $page;
 
-                foreach(\Static\Models\Threads::getThreads($page) as $thread) $forums["Page " . $page . " - Array"][\Static\Kernel::getValue($thread, "title")] = "/thread/" . \Static\Kernel::getValue($thread, "hash");
+                foreach(\Static\Models\Threads::getThreads($page) as $thread) $forums["Page " . $page . " - Array"][htmlspecialchars_decode(\Static\Kernel::getValue($thread, "title"))] = "/thread/" . \Static\Kernel::getValue($thread, "hash");
             }
 
             if($parameters["userID"] <= 0) $parameters["links"] = array(
@@ -29,8 +29,6 @@
                 $parameters["getText"]("title-forums") => "/forums",
                 $parameters["getText"]("title-forums") . " - Array" => $forums,
                 $parameters["getText"]("title-contact") => "/contact",
-                $parameters["getText"]("title-signUp") => "/sign-up",
-                $parameters["getText"]("title-logIn") => "/log-in",
                 $parameters["getText"]("title-terms") => "/terms",
                 $parameters["getText"]("title-privacy") => "/privacy",
                 $parameters["getText"]("title-welcome") => "/welcome",

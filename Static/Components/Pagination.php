@@ -7,7 +7,7 @@
         static function create($page, $limit, $path) {
             $page = (int)$page;
             $limit = (int)$limit;
-            $path = htmlspecialchars($path);
+            $path = strval($path);
 
             if($limit < 2) return null;
 

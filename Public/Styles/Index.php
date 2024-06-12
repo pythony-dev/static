@@ -67,4 +67,15 @@
         border-color : #<?= $colors[0]; ?>;
     }
 
+    @font-face {
+        font-family : "Chillax Light";
+        src : url("<?= \Static\Kernel::getPath("/Public/Fonts/Light.woff2"); ?>");
+    } @font-face {
+        font-family : "Chillax Medium";
+        src : url("<?= \Static\Kernel::getPath("/Public/Fonts/Medium.woff2"); ?>");
+    } @font-face {
+        font-family : "Chillax Bold";
+        src : url("<?= \Static\Kernel::getPath("/Public/Fonts/Bold.woff2"); ?>");
+    }
+
 <?php } ?>

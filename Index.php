@@ -11,8 +11,6 @@
     Static\Kernel::addRoute("forums", "/forums/(page)");
     Static\Kernel::addRoute("thread", "/thread/(link)/(page)");
     Static\Kernel::addRoute("contact", "/contact");
-    Static\Kernel::addRoute("signUp", "/sign-up");
-    Static\Kernel::addRoute("logIn", "/log-in");
     Static\Kernel::addRoute("messages", "/messages");
     Static\Kernel::addRoute("chat", "/chat/(link)");
     Static\Kernel::addRoute("settings", "/settings");

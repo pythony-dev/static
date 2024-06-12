@@ -15,6 +15,21 @@
             $parameters["modals"] = array();
             $parameters["alerts"] = array("index-alert-token", "index-alert-language", "index-alert-theme", "index-alert-logOut");
 
+            if($parameters["userID"] <= 0) {
+                \Static\Kernel::addScript("/Public/Scripts/SignUp.js");
+                \Static\Kernel::addScript("/Public/Scripts/LogIn.js");
+                \Static\Kernel::addScript("/Public/Scripts/Reset.js");
+
+                $parameters["modals"] = array_merge($parameters["modals"], array("signUp", "logIn", "reset"));
+                $parameters["alerts"] = array_merge($parameters["alerts"], array(
+                    "signUp-alert-submit-confirm", "signUp-alert-submit-email", "signUp-alert-submit-code", "signUp-alert-submit-username", "signUp-alert-submit-password", "signUp-alert-submit-success", "signUp-alert-submit-error",
+                    "signUp-alert-confirmations-email", "signUp-alert-confirmations-success", "signUp-alert-confirmations-error",
+                    "logIn-alert-email", "logIn-alert-password", "logIn-alert-error",
+                    "reset-alert-submit-confirm", "reset-alert-submit-email", "reset-alert-submit-code", "reset-alert-submit-password", "reset-alert-submit-success", "reset-alert-submit-error",
+                    "reset-alert-confirmations-email", "reset-alert-confirmations-success", "reset-alert-confirmations-error",
+                ));
+            }
+
             return $parameters;
         }
 

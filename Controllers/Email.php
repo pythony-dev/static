@@ -11,7 +11,7 @@
                 exit();
             }
 
-            $parameters["title"] = \Static\Kernel::getValue($email, "title");
+            $parameters["title"] = htmlspecialchars_decode(\Static\Kernel::getValue($email, "title"));
             $parameters["content"] = htmlspecialchars_decode(htmlspecialchars_decode(\Static\Kernel::getValue($email, "content")));
             $parameters["email"] = \Static\Kernel::getValue($email, "email");
             $parameters["date"] = date_format(date_create(\Static\Kernel::getValue($email, "created")), substr(\Static\Kernel::getDateFormat(), 0, 5));

@@ -20,7 +20,7 @@ $(document).ready(() => {
                     $("#logIn-password").addClass("is-invalid")
 
                     showAlert("logIn-password")
-                } else if(response["status"] == "success") location.replace($("html").attr("link") + "/settings")
+                } else if(response["status"] == "success") location.reload()
                 else showAlert("logIn-error")
             }).fail(() => {
                 showAlert("logIn-error")

@@ -6,11 +6,11 @@
 
         static function create($id, $image, $title, $content, $button = null, $link = null) {
             $id = (int)$id;
-            $image = htmlspecialchars($image);
-            $title = htmlspecialchars($title);
-            $content = htmlspecialchars($content);
-            $button = htmlspecialchars($button);
-            $link = htmlspecialchars($link);
+            $image = strval($image);
+            $title = strval($title);
+            $content = strval($content);
+            $button = strval($button);
+            $link = strval($link);
 
             ob_start();
             ?>

@@ -5,10 +5,10 @@
     final class Card {
 
         static function create($image, $title, $subtitle, $content) {
-            $image = htmlspecialchars($image);
-            $title = htmlspecialchars($title);
-            $subtitle = htmlspecialchars($subtitle);
-            $content = htmlspecialchars($content);
+            $image = strval($image);
+            $title = strval($title);
+            $subtitle = strval($subtitle);
+            $content = strval($content);
 
             ob_start();
             ?>

@@ -11,7 +11,7 @@
                 exit();
             }
 
-            $parameters["title"] = \Static\Kernel::getValue($article, "title");
+            $parameters["title"] = htmlspecialchars_decode(\Static\Kernel::getValue($article, "title"));
             $parameters["overview"] = \Static\Kernel::getValue($article, "overview");
             $parameters["image"] = \Static\Kernel::getPath("/Public/Images/Articles/" . \Static\Kernel::getHash("Article", \Static\Kernel::getID(\Static\Kernel::getValue($article, "id"))) . ".jpeg");
             $parameters["content"] = nl2br(\Static\Kernel::getValue($article, "content"));

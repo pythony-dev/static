@@ -25,7 +25,7 @@
 
             $title = \Static\Languages\Translate::getText("emails-welcome-title");
             $content = \Static\Languages\Translate::getText("emails-welcome-content", true, array(
-                "sign-up" => \Static\Kernel::getPath("/sign-up?" . \Static\Emails::getParameters()),
+                "sign-up" => \Static\Kernel::getPath("/?sign-up&" . \Static\Emails::getParameters()),
                 "features" => \Static\Kernel::getPath("/features?" . \Static\Emails::getParameters()),
                 "news" => \Static\Kernel::getPath("/news?" . \Static\Emails::getParameters()),
                 "forums" => \Static\Kernel::getPath("/forums?" . \Static\Emails::getParameters()),
@@ -54,7 +54,7 @@
                 $email = \Static\Kernel::getValue($welcome, "email");
                 $title = \Static\Languages\Translate::getText("emails-welcome-title");
                 $content = \Static\Languages\Translate::getText("emails-welcome-content", true, array(
-                    "sign-up" => \Static\Kernel::getPath("/sign-up?" . \Static\Emails::getParameters()),
+                    "sign-up" => \Static\Kernel::getPath("/?sign-up&" . \Static\Emails::getParameters()),
                     "features" => \Static\Kernel::getPath("/features?" . \Static\Emails::getParameters()),
                     "news" => \Static\Kernel::getPath("/news?" . \Static\Emails::getParameters()),
                     "forums" => \Static\Kernel::getPath("/forums?" . \Static\Emails::getParameters()),

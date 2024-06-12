@@ -18,7 +18,7 @@ $(document).ready(() => {
                         showAlert("delete-confirm")
                     } else if(response["status"] == "success") {
                         showAlert("delete-success", event => {
-                            location.replace($("html").attr("link") + "/sign-up")
+                            location.replace($("html").attr("link") + "/")
                         })
                     } else showAlert("delete-error")
                 }).fail(() => {

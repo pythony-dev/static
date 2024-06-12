@@ -8,8 +8,6 @@
     require_once("Controllers/Forums.php");
     require_once("Controllers/Thread.php");
     require_once("Controllers/Contact.php");
-    require_once("Controllers/SignUp.php");
-    require_once("Controllers/LogIn.php");
     require_once("Controllers/Messages.php");
     require_once("Controllers/Chat.php");
     require_once("Controllers/Settings.php");

@@ -39,7 +39,7 @@
     <?= Static\Components\Pagination::create($parameters["page"], $parameters["limit"], $parameters["getPath"]("/forums")); ?>
     <div class="p-5">
         <?php if($parameters["userID"] <= 0) { ?>
-            <a class="w-100 btn rounded-pill button-classic" href="<?= $parameters["getPath"]("/log-in"); ?>"> <?= $parameters["getText"]("forums-logIn"); ?> </a>
+            <button class="w-100 btn rounded-pill button-classic" type="button" data-bs-toggle="modal" data-bs-target="#signUp-modal"> <?= $parameters["getText"]("forums-signUp"); ?> </button>
         <?php } else { ?>
             <button class="w-100 btn rounded-pill button-classic" data-bs-toggle="modal" data-bs-target="#create-modal"> <?= $parameters["getText"]("forums-create"); ?> </button>
         <?php } ?>

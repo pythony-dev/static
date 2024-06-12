@@ -42,7 +42,7 @@
 
             $title = \Static\Languages\Translate::getText("emails-signUp-title");
             $content = \Static\Languages\Translate::getText("emails-signUp-content", true, array(
-                "log-in" => \Static\Kernel::getPath("/log-in?" . \Static\Emails::getParameters()),
+                "log-in" => \Static\Kernel::getPath("/?log-in&" . \Static\Emails::getParameters()),
                 "settings" => \Static\Kernel::getPath("/settings?" . \Static\Emails::getParameters()),
             ));
 
@@ -116,7 +116,7 @@
 
             $title = \Static\Languages\Translate::getText("emails-reset-title");
             $content = \Static\Languages\Translate::getText("emails-reset-content", true, array(
-                "log-in" => \Static\Kernel::getPath("/log-in?" . \Static\Emails::getParameters()),
+                "log-in" => \Static\Kernel::getPath("/?log-in&" . \Static\Emails::getParameters()),
                 "settings" => \Static\Kernel::getPath("/settings?" . \Static\Emails::getParameters()),
             ));
 
@@ -340,7 +340,7 @@
 
                 $title = \Static\Languages\Translate::getText("emails-delete-title");
                 $content = \Static\Languages\Translate::getText("emails-delete-content", true, array(
-                    "sign-up" => \Static\Kernel::getPath("/sign-up?" . \Static\Emails::getParameters()),
+                    "sign-up" => \Static\Kernel::getPath("/?sign-up&" . \Static\Emails::getParameters()),
                 ));
 
                 return \Static\Emails::send($email, $title, $content) ? array(

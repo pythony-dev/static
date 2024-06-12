@@ -170,7 +170,7 @@ CREATE TABLE `Emails` (
 --
 
 INSERT INTO `Emails` (`id`, `created`, `sessionID`, `userID`, `email`, `title`, `content`) VALUES
-(1, '2024-04-12 12:00:00', 1, 0, 'hello@pythony.dev', 'Static - Welcome', 'Hello, <br/> <br/> Thanks for Signing Up ! You can now <a href="https://www.pythony.dev/Static/log-in"> Log In </a> to your Account with your Credentials : <br/> <br/> Email Address : hello@pythony.dev <br/> Password : 123 <br/> <br/> You can change this information on the <a href="https://www.pythony.dev/Static/settings"> Settings </a> page of your Account. <br/> <br/> Sincerely, <br/> <br/> The Static Team <br/> <br/> To unsubscribe, you can Contact Us <a href="mailto:hello@pythony.dev"> by Email </a> or via <a href="https://www.pythony.dev/Static/contact"> our Website. </a>');
+(1, '2024-04-12 12:00:00', 1, 0, 'hello@pythony.dev', 'Static - Welcome', 'Hello, <br/> <br/> Thanks for Signing Up ! You can now <a href="https://www.pythony.dev/Static/?log-in"> Log In </a> to your Account with your Credentials : <br/> <br/> Email Address : hello@pythony.dev <br/> Password : 123 <br/> <br/> You can change this information on the <a href="https://www.pythony.dev/Static/settings"> Settings </a> page of your Account. <br/> <br/> Sincerely, <br/> <br/> The Static Team <br/> <br/> To unsubscribe, you can Contact Us <a href="mailto:hello@pythony.dev"> by Email </a> or via <a href="https://www.pythony.dev/Static/contact"> our Website. </a>');
 
 -- --------------------------------------------------------
 
