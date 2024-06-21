@@ -26,7 +26,7 @@ $(document).ready(() => {
                     response["messages"].forEach((message, id) => {
                         $("#messages-list").append("\
                             " + (id != 0 || $("#messages-page").val() != 0 ? "<div class=\"line\"> </div>" : "") + "\
-                            <a class=\"text-decoration-none text-" + ($("html").attr("data-bs-theme") != "dark" ? "dark" : "light") + "\" href=\"" + message["link"] + "\">\
+                            <a class=\"text-decoration-none text-" + ($("html").attr("data-bs-theme") != "dark" ? "dark" : "light") + "\" href=\"" + $("html").attr("link") + "/chat/" + message["hash"] + "\">\
                                 <div class=\"row mx-0\">\
                                     <div class=\"col-9 col-md-5 my-auto px-0 p" + (id == 0 && $("#messages-page").val() == 0 ? "b" : (id == last ? "t-5 add-py" : "y")) + "-5\">\
                                         <div class=\"d-flex\">\
@@ -90,7 +90,7 @@ $(document).ready(() => {
                                 $.post("", {
                                     "token" : token,
                                     "request" : "messages",
-                                    "action" : "deleteByUser",
+                                    "action" : "deleteChat",
                                     "user" : user,
                                 }).then(response => {
                                     if(response["status"] == "success") location.reload()

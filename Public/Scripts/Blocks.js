@@ -1,5 +1,5 @@
 $(document).ready(() => {
-    $(".block-delete").click(event => {
+    $(".block-unblock").click(event => {
         event.preventDefault()
 
         const user = $(event.target).attr("user")

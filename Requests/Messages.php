@@ -25,10 +25,10 @@
             return \Static\Kernel::getRequest(\Static\Models\Messages::create($link, $message, $image));
         }
 
-        public static function deleteByUser() {
+        public static function deleteChat() {
             $user = \Static\Kernel::getValue($_POST, "user");
 
-            return \Static\Kernel::getRequest(\Static\Models\Messages::deleteByUser($user));
+            return \Static\Kernel::getRequest(\Static\Models\Messages::deleteChat($user));
         }
 
         public static function delete() {

@@ -14,7 +14,7 @@ $(document).ready(() => {
             }).then(response => {
                 if(response["status"] == "contact") showAlert("create-contact")
                 else if(response["status"] == "blocked") showAlert("create-blocked")
-                else if(response["status"] == "success" && "link" in response) location.replace(response["link"])
+                else if(response["status"] == "success" && "link" in response) location.replace($("html").attr("link") + response["link"])
                 else showAlert("create-error-" + $("#create-type").val().slice(0, -1))
             }).fail(() => {
                 showAlert("create-error-" + $("#create-type").val().slice(0, -1))

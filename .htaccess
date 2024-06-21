@@ -3,5 +3,4 @@ RewriteEngine On
 RewriteCond %{SERVER_PORT} 80 [OR]
 RewriteCond %{HTTP_HOST} !^www.pythony.dev$
 RewriteRule ^.*$ https://www.pythony.dev/Static/$1 [QSA,R,L]
-RewriteRule ^[0-9A-Za-z-/]*$ /Static/Index.php [QSA]
-RewriteRule !^Index.php|Worker.js|Public/.*$ /Static/Index.php [QSA]
+RewriteRule !^(Index.php$)|(Worker.js$)|(Public/.*$) /Static/Index.php [QSA]

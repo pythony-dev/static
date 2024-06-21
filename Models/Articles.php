@@ -23,7 +23,7 @@
                     "image" => \Static\Kernel::getPath("/Public/Images/Articles/" . \Static\Kernel::getHash("Article", \Static\Kernel::getID(\Static\Kernel::getValue($article, "id"))) . ".jpeg"),
                     "title" => \Static\Kernel::getValue($article, "title"),
                     "overview" => \Static\Kernel::getValue($article, "overview"),
-                    "link" => \Static\Kernel::getPath("/article/" . \Static\Kernel::getValue($article, "link")),
+                    "link" => \Static\Kernel::getValue($article, "link"),
                 ));
             }
 
@@ -54,8 +54,6 @@
         public static function getRandomArticles($link) {
             $link = htmlspecialchars($link);
 
-            if(empty($link)) return array();
-
             $query = parent::$pdo->prepare("SELECT id, title, overview, link FROM Articles WHERE NOW() >= published AND link != :link AND language = :language ORDER BY RAND() LIMIT 3");
             $query->bindValue(":link", $link, PDO::PARAM_STR);
             $query->bindValue(":language", \Static\Languages\Translate::getLanguage(), PDO::PARAM_STR);
@@ -68,7 +66,7 @@
                     "image" => \Static\Kernel::getPath("/Public/Images/Articles/" . \Static\Kernel::getHash("Article", \Static\Kernel::getID(\Static\Kernel::getValue($article, "id"))) . ".jpeg"),
                     "title" => \Static\Kernel::getValue($article, "title"),
                     "overview" => \Static\Kernel::getValue($article, "overview"),
-                    "link" => \Static\Kernel::getPath("/article/" . \Static\Kernel::getValue($article, "link")),
+                    "link" => \Static\Kernel::getValue($article, "link"),
                 ));
             }
 
@@ -77,6 +75,7 @@
 
         public static function newsletter() {
             $users = \Static\Models\Users::getUsers();
+            $languages = array();
 
             $query = parent::$pdo->query("SELECT title, overview, link, language FROM Articles WHERE DATE(NOW()) = DATE(published)");
 
@@ -94,6 +93,32 @@
                         ));
 
                         \Static\Emails::send($email, $title, $content);
+                    }
+                }
+
+                if(!in_array(\Static\Kernel::getValue($article, "language"), $languages)) array_push($languages, \Static\Kernel::getValue($article, "language"));
+            }
+
+            if(date("w") == 6) {
+                foreach(array_diff(\Static\Languages\Translate::getAllLanguages(), $languages) as $language) {
+                    \Static\Languages\Translate::setLanguage($language);
+
+                    foreach($users as $user) {
+                        if(\Static\Kernel::getValue($user, "language") == $language && \Static\Kernel::getValue($user, "published") == "true") {
+                            $articles = self::getRandomArticles("");
+
+                            if(count($articles) >= 1) {
+                                $email = \Static\Kernel::getValue($user, "email");
+                                $title = \Static\Languages\Translate::getText("emails-newsletter-title");
+                                $content = \Static\Languages\Translate::getText("emails-newsletter-content", true, array(
+                                    "title" => \Static\Kernel::getValue($articles[0], "title"),
+                                    "overview" => \Static\Kernel::getValue($articles[0], "overview"),
+                                    "read" => \Static\Kernel::getPath("/article/" . \Static\Kernel::getValue($articles[0], "link") . "?" . \Static\Emails::getParameters()),
+                                ));
+
+                                \Static\Emails::send($email, $title, $content);
+                            }
+                        }
                     }
                 }
             }

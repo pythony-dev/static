@@ -3,16 +3,16 @@
     <p class="p-5 text-justify"> <?= $parameters["getText"]("settings-content"); ?> </p>
     <ul class="flex-column flex-md-row m-5 nav nav-tabs nav-fill">
         <li class="nav-item">
-            <button class="nav-link<?= $parameters["tabs"]["account"] ? " active" : null; ?>" data-bs-toggle="tab" data-bs-target="#settings-account-form"> <?= $parameters["getText"]("settings-account"); ?> </button>
+            <button class="nav-link<?= $parameters["tabs"]["account"] ? " active" : null; ?> color" data-bs-toggle="tab" data-bs-target="#settings-account-form"> <?= $parameters["getText"]("settings-account"); ?> </button>
         </li>
         <li class="nav-item">
-            <button class="nav-link<?= $parameters["tabs"]["notifications"] ? " active" : null; ?>" data-bs-toggle="tab" data-bs-target="#settings-notifications-form"> <?= $parameters["getText"]("settings-notifications"); ?> </button>
+            <button class="nav-link<?= $parameters["tabs"]["notifications"] ? " active" : null; ?> color" data-bs-toggle="tab" data-bs-target="#settings-notifications-form"> <?= $parameters["getText"]("settings-notifications"); ?> </button>
         </li>
         <li class="nav-item">
-            <button class="nav-link<?= $parameters["tabs"]["others"] ? " active" : null; ?>" data-bs-toggle="tab" data-bs-target="#settings-others-form"> <?= $parameters["getText"]("settings-others"); ?> </button>
+            <button class="nav-link<?= $parameters["tabs"]["others"] ? " active" : null; ?> color" data-bs-toggle="tab" data-bs-target="#settings-others-form"> <?= $parameters["getText"]("settings-others"); ?> </button>
         </li>
         <li class="nav-item">
-            <button id="settings-logOut" class="nav-link"> <?= $parameters["getText"]("settings-logOut"); ?> </button>
+            <button id="settings-logOut" class="nav-link color"> <?= $parameters["getText"]("settings-logOut"); ?> </button>
         </li>
     </ul>
     <div class="p-5 tab-content">

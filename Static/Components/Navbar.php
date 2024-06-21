@@ -53,7 +53,7 @@
                                 <ul class="w-100 dropdown-menu text-center">
                                     <?php foreach(\Static\Kernel::getThemes() as $theme => $colors) { ?>
                                         <li>
-                                            <a class="dropdown-item theme<?= \Static\Kernel::getValue($_SESSION, array("theme", "color")) != $theme ? null : " active"; ?>" theme="<?= $theme; ?>"> <?= \Static\Languages\Translate::getText("title-theme-" . $theme); ?> </a>
+                                            <a class="dropdown-item theme<?= \Static\Kernel::getValue($_SESSION, array("theme", "color")) != $theme && (\Static\Kernel::getValue($_SESSION, array("theme", "color")) != "" || $theme != "aqua") ? null : " active"; ?>" theme="<?= $theme; ?>"> <?= \Static\Languages\Translate::getText("title-theme-" . $theme); ?> </a>
                                         </li>
                                     <?php } ?>
                                 </ul>

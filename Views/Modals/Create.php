@@ -15,7 +15,7 @@
                 <button id="create-add" class="w-100 mt-4 btn rounded-pill button-outline" type="button"> <?= $parameters["getText"]("create-add"); ?> </button>
                 <input id="create-input" class="d-none" type="file" accept=".jpg, .jpeg, .png"/>
                 <input id="create-value" class="d-none"/>
-                <img id="create-image" class="d-none mt-4 img-fluid shadow border rounded image-256 ratio-1 pointer" src="#" alt="#"/>
+                <img id="create-image" class="d-none mt-4 img-fluid shadow border rounded image-256 ratio-1 pointer" alt="#"/>
                 <div id="create-spinner" class="d-none mt-4 spinner-border"> </div>
                 <input class="w-100 my-4 btn rounded-pill button-classic" type="submit" value="<?= $parameters["getText"]("create-submit"); ?>"/>
                 <button class="w-100 mt-4 btn rounded-pill button-outline" type="button" data-bs-dismiss="modal"> <?= $parameters["getText"]("create-cancel"); ?> </button>

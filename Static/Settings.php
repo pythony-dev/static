@@ -6,8 +6,8 @@
 
         private static $settings = array(
             "name" => "Static",
-            "version" => "2.1.0",
-            "static" => "2.1.0",
+            "version" => "2.1.1",
+            "static" => "2.1.1",
 
             "link" => "https://www.pythony.dev/Static",
             "email" => "hello@pythony.dev",

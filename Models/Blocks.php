@@ -45,6 +45,17 @@
             ) : "error";
         }
 
+        public static function deleteUser() {
+            $userID = (int)\Static\Kernel::getValue($_SESSION, "userID");
+
+            if($userID <= 0) return false;
+
+            $query = parent::$pdo->prepare("UPDATE Blocks SET deleted = NOW() WHERE deleted IS NULL AND (blockerID = :userID OR blockedID = :userID)");
+            $query->bindValue(":userID", $userID, PDO::PARAM_INT);
+
+            return $query->execute();
+        }
+
         public static function getBlocks() {
             $userID = (int)\Static\Kernel::getValue($_SESSION, "userID");
 

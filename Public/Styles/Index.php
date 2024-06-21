@@ -44,17 +44,13 @@
         background-color : <?= \Static\Kernel::isLight() ? "white" : "black"; ?> !important;
     }
 
-    .text-decoration-none {
-        color : #<?= $colors[0]; ?>;
-    }
-
     .article, .line {
         background-color : #<?= $colors[0]; ?>;
     }
 
-    .page-link {
+    .text-decoration-none, .page-link, .color {
         color : #<?= $colors[0]; ?>;
-    } .page-link:hover, .page-link:focus {
+    } .text-decoration-none:hover, .text-decoration-none:focus, .page-link:hover, .page-link:focus, .color:hover, .color:focus {
         color : #<?= $colors[\Static\Kernel::isLight() ? 1 : 2]; ?>;
     } .page-item.active .page-link {
         color : <?= \Static\Kernel::isLight() ? "white" : "black"; ?>;

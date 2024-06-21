@@ -330,7 +330,7 @@
             $query->execute();
 
             if(!($email = \Static\Kernel::getValue($query->fetch(), "email"))) return "confirm";
-            else if(!\Static\Models\Messages::deleteUser()) return "error";
+            else if(!\Static\Models\Messages::deleteUser() || !\Static\Models\Blocks::deleteUser()) return "error";
 
             $query = parent::$pdo->prepare("UPDATE Users SET deleted = NOW() WHERE id = :userID");
             $query->bindValue(":userID", $userID, PDO::PARAM_INT);

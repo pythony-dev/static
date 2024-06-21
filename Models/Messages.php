@@ -60,7 +60,6 @@
                 $time = date_format(date_create($message["updated"]), substr(\Static\Kernel::getDateFormat(), 5));
 
                 array_push($results, array(
-                    "link" => \Static\Kernel::getPath("/chat/" . $hash),
                     "sender" => \Static\Kernel::getPath("/Public/Images/Users/" . $hash . ".jpeg?" . time()),
                     "username" => \Static\Kernel::getValue($message, "username"),
                     "updated" => $today != $date ? $date : $time,
@@ -154,6 +153,8 @@
 
             if(!$query->execute()) return "error";
 
+            \Static\Models\Blocks::delete($link);
+
             $user = \Static\Models\Users::getUser($receiverID);
 
             if(\Static\Kernel::getValue(json_decode(htmlspecialchars_decode($user["notifications"]), true), "message") != "false") {
@@ -169,7 +170,7 @@
 
             return array(
                 "status" => "success",
-                "link" => \Static\Kernel::getPath("/chat/" . $link),
+                "link" => "/chat/" . $link,
             );
         }
 
@@ -187,7 +188,7 @@
             return $query->execute() && (int)$query->rowCount() == 1 ? "success" : "error";
         }
 
-        public static function deleteByUser($link) {
+        public static function deleteChat($link) {
             $otherID = (int)\Static\Models\Users::getID($link);
 
             $userID = (int)\Static\Kernel::getValue($_SESSION, "userID");

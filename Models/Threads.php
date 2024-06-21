@@ -124,7 +124,7 @@
 
             return \Static\Kernel::getValue(\Static\Models\Posts::create($hash, $message, $image), "status") == "success" ? array(
                 "status" => "success",
-                "link" => \Static\Kernel::getPath("/thread/" . $hash),
+                "link" => "/thread/" . $hash,
             ) : "error";
         }
 

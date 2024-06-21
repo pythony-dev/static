@@ -97,7 +97,7 @@
 
             return $query->execute() ? array(
                 "status" => "success",
-                "link" => \Static\Kernel::getPath("/thread/" . $link . "/" . ceil(\Static\Models\Posts::count($link) / 10)),
+                "link" => "/thread/" . $link . "/" . ceil(\Static\Models\Posts::count($link) / 10),
             ) : "error";
         }
 

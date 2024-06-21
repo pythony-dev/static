@@ -19,5 +19,5 @@
         <div class="p-5">
             <div class="line"> </div>
         </div>
-    <?php } foreach($parameters["random"] as $id => $article) echo \Static\Components\Article::create($id, $article["image"], $article["title"], $article["overview"], $parameters["getText"]("article-button"), $article["link"]); ?>
+    <?php } foreach($parameters["random"] as $id => $article) echo \Static\Components\Article::create($id, $article["image"], $article["title"], $article["overview"], $parameters["getText"]("article-button"), $parameters["getPath"]("/article/" . $article["link"])); ?>
 </article>
