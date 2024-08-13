@@ -10,10 +10,10 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `Articles`
+-- Table structure for table `Static__Articles`
 --
 
-CREATE TABLE `Articles` (
+CREATE TABLE `Static__Articles` (
   `id` int(11) NOT NULL,
   `published` datetime NOT NULL,
   `title` varchar(255) NOT NULL,
@@ -25,10 +25,10 @@ CREATE TABLE `Articles` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `Articles`
+-- Dumping data for table `Static__Articles`
 --
 
-INSERT INTO `Articles` (`id`, `published`, `title`, `overview`, `content`, `link`, `networks`, `language`) VALUES
+INSERT INTO `Static__Articles` (`id`, `published`, `title`, `overview`, `content`, `link`, `networks`, `language`) VALUES
 (1, '2024-04-12 12:00:00', 'Sample Article 1', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc quis dolor posuere, fringilla libero vel, vehicula leo. Curabitur eget dapibus magna. Pellentesque sit amet velit id mauris imperdiet pellentesque eget nec urna. Suspendisse potenti. Phasellus a est sed nunc consectetur mollis et nec neque. Proin maximus nibh sit amet nulla.', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla eu cursus diam. Ut rutrum sodales euismod. Phasellus cursus mi at odio molestie tincidunt. Vivamus a tempus mi. Mauris mattis vitae diam a pharetra. Nulla nec ex enim. Morbi sit amet quam tristique, ultrices urna in, rutrum lectus. Vivamus sed nisl nec purus lobortis cursus vel id elit. Cras in augue nisl.\n\nSed ac cursus erat. Maecenas vestibulum est et tincidunt dictum. Praesent eu justo tortor. Vestibulum posuere erat urna, sit amet maximus quam pulvinar eu. Sed porttitor maximus augue, vitae dictum eros vehicula ut. Aliquam ut volutpat nisi. Sed urna urna, finibus a mauris eu, tristique mollis arcu. Nulla ac risus augue.\n\nProin porta sapien cursus velit ullamcorper, sit amet consectetur augue pretium. Vestibulum fermentum malesuada nisi sit amet cursus. Aliquam auctor urna eget varius consequat. Vivamus non tortor suscipit, rutrum mi suscipit, ultrices nulla. Phasellus nec risus vel nunc suscipit suscipit. Vivamus egestas quis urna id consectetur. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Sed vel suscipit lacus, aliquet cursus odio. Sed eget fringilla ante. Nullam luctus eu metus id facilisis. Integer eu nulla fringilla, tempus lorem in, pulvinar tellus. Fusce pulvinar augue sed ante gravida tristique. Pellentesque sagittis tristique lobortis. Curabitur elit tellus, scelerisque a mollis vitae, euismod a enim. Mauris iaculis velit sit amet placerat porttitor. Ut sed massa eget lorem molestie ornare.\n\nCras ultricies facilisis est ac efficitur. In faucibus faucibus sapien eget efficitur. Morbi hendrerit arcu quis metus convallis, et aliquam metus eleifend. Maecenas a magna vitae enim vestibulum tincidunt in quis ante. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Fusce cursus eget felis ut finibus. Phasellus pharetra ultricies nunc, et varius ipsum lobortis eget. Cras in nulla lobortis massa imperdiet venenatis. In nunc libero, auctor quis tincidunt non, pretium quis magna. Donec quis orci nunc.\n\nOrci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Suspendisse lacinia accumsan nisl posuere iaculis. Etiam ultrices tincidunt pharetra. Sed nunc enim, sagittis a sapien ut, condimentum pellentesque tortor. Suspendisse potenti. Nullam in sem pharetra, consectetur lectus nec, volutpat leo. Vivamus at quam in ex tincidunt efficitur ac et nulla. Etiam pretium quis lacus feugiat sodales. Fusce enim metus, luctus id convallis at, luctus at arcu. Nullam vitae felis quis tellus hendrerit sollicitudin.', 'sample-article-1', '{"facebook":"https://www.facebook.com","instagram":"https://www.instagram.com","threads":"https://www.threads.net","youtube":"https://www.youtube.com","tiktok":"https://www.tiktok.com"}', 'english'),
 (2, '2024-04-12 12:00:00', 'Exemple d\'Article 1', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc quis dolor posuere, fringilla libero vel, vehicula leo. Curabitur eget dapibus magna. Pellentesque sit amet velit id mauris imperdiet pellentesque eget nec urna. Suspendisse potenti. Phasellus a est sed nunc consectetur mollis et nec neque. Proin maximus nibh sit amet nulla.', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla eu cursus diam. Ut rutrum sodales euismod. Phasellus cursus mi at odio molestie tincidunt. Vivamus a tempus mi. Mauris mattis vitae diam a pharetra. Nulla nec ex enim. Morbi sit amet quam tristique, ultrices urna in, rutrum lectus. Vivamus sed nisl nec purus lobortis cursus vel id elit. Cras in augue nisl.\r\n\r\nSed ac cursus erat. Maecenas vestibulum est et tincidunt dictum. Praesent eu justo tortor. Vestibulum posuere erat urna, sit amet maximus quam pulvinar eu. Sed porttitor maximus augue, vitae dictum eros vehicula ut. Aliquam ut volutpat nisi. Sed urna urna, finibus a mauris eu, tristique mollis arcu. Nulla ac risus augue.\r\n\r\nProin porta sapien cursus velit ullamcorper, sit amet consectetur augue pretium. Vestibulum fermentum malesuada nisi sit amet cursus. Aliquam auctor urna eget varius consequat. Vivamus non tortor suscipit, rutrum mi suscipit, ultrices nulla. Phasellus nec risus vel nunc suscipit suscipit. Vivamus egestas quis urna id consectetur. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Sed vel suscipit lacus, aliquet cursus odio. Sed eget fringilla ante. Nullam luctus eu metus id facilisis. Integer eu nulla fringilla, tempus lorem in, pulvinar tellus. Fusce pulvinar augue sed ante gravida tristique. Pellentesque sagittis tristique lobortis. Curabitur elit tellus, scelerisque a mollis vitae, euismod a enim. Mauris iaculis velit sit amet placerat porttitor. Ut sed massa eget lorem molestie ornare.\r\n\r\nCras ultricies facilisis est ac efficitur. In faucibus faucibus sapien eget efficitur. Morbi hendrerit arcu quis metus convallis, et aliquam metus eleifend. Maecenas a magna vitae enim vestibulum tincidunt in quis ante. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Fusce cursus eget felis ut finibus. Phasellus pharetra ultricies nunc, et varius ipsum lobortis eget. Cras in nulla lobortis massa imperdiet venenatis. In nunc libero, auctor quis tincidunt non, pretium quis magna. Donec quis orci nunc.\r\n\r\nOrci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Suspendisse lacinia accumsan nisl posuere iaculis. Etiam ultrices tincidunt pharetra. Sed nunc enim, sagittis a sapien ut, condimentum pellentesque tortor. Suspendisse potenti. Nullam in sem pharetra, consectetur lectus nec, volutpat leo. Vivamus at quam in ex tincidunt efficitur ac et nulla. Etiam pretium quis lacus feugiat sodales. Fusce enim metus, luctus id convallis at, luctus at arcu. Nullam vitae felis quis tellus hendrerit sollicitudin.', 'exemple-d-article-1', '{"facebook":"https://www.facebook.com","instagram":"https://www.instagram.com","threads":"https://www.threads.net","youtube":"https://www.youtube.com","tiktok":"https://www.tiktok.com"}', 'french'),
 (3, '2024-04-12 12:00:00', 'Sample Article 2', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc quis dolor posuere, fringilla libero vel, vehicula leo. Curabitur eget dapibus magna. Pellentesque sit amet velit id mauris imperdiet pellentesque eget nec urna. Suspendisse potenti. Phasellus a est sed nunc consectetur mollis et nec neque. Proin maximus nibh sit amet nulla.', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla eu cursus diam. Ut rutrum sodales euismod. Phasellus cursus mi at odio molestie tincidunt. Vivamus a tempus mi. Mauris mattis vitae diam a pharetra. Nulla nec ex enim. Morbi sit amet quam tristique, ultrices urna in, rutrum lectus. Vivamus sed nisl nec purus lobortis cursus vel id elit. Cras in augue nisl.\r\n\r\nSed ac cursus erat. Maecenas vestibulum est et tincidunt dictum. Praesent eu justo tortor. Vestibulum posuere erat urna, sit amet maximus quam pulvinar eu. Sed porttitor maximus augue, vitae dictum eros vehicula ut. Aliquam ut volutpat nisi. Sed urna urna, finibus a mauris eu, tristique mollis arcu. Nulla ac risus augue.\r\n\r\nProin porta sapien cursus velit ullamcorper, sit amet consectetur augue pretium. Vestibulum fermentum malesuada nisi sit amet cursus. Aliquam auctor urna eget varius consequat. Vivamus non tortor suscipit, rutrum mi suscipit, ultrices nulla. Phasellus nec risus vel nunc suscipit suscipit. Vivamus egestas quis urna id consectetur. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Sed vel suscipit lacus, aliquet cursus odio. Sed eget fringilla ante. Nullam luctus eu metus id facilisis. Integer eu nulla fringilla, tempus lorem in, pulvinar tellus. Fusce pulvinar augue sed ante gravida tristique. Pellentesque sagittis tristique lobortis. Curabitur elit tellus, scelerisque a mollis vitae, euismod a enim. Mauris iaculis velit sit amet placerat porttitor. Ut sed massa eget lorem molestie ornare.\r\n\r\nCras ultricies facilisis est ac efficitur. In faucibus faucibus sapien eget efficitur. Morbi hendrerit arcu quis metus convallis, et aliquam metus eleifend. Maecenas a magna vitae enim vestibulum tincidunt in quis ante. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Fusce cursus eget felis ut finibus. Phasellus pharetra ultricies nunc, et varius ipsum lobortis eget. Cras in nulla lobortis massa imperdiet venenatis. In nunc libero, auctor quis tincidunt non, pretium quis magna. Donec quis orci nunc.\r\n\r\nOrci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Suspendisse lacinia accumsan nisl posuere iaculis. Etiam ultrices tincidunt pharetra. Sed nunc enim, sagittis a sapien ut, condimentum pellentesque tortor. Suspendisse potenti. Nullam in sem pharetra, consectetur lectus nec, volutpat leo. Vivamus at quam in ex tincidunt efficitur ac et nulla. Etiam pretium quis lacus feugiat sodales. Fusce enim metus, luctus id convallis at, luctus at arcu. Nullam vitae felis quis tellus hendrerit sollicitudin.', 'sample-article-2', '{"facebook":"https://www.facebook.com","instagram":"https://www.instagram.com","threads":"https://www.threads.net","youtube":"https://www.youtube.com","tiktok":"https://www.tiktok.com"}', 'english'),
@@ -43,7 +43,7 @@ INSERT INTO `Articles` (`id`, `published`, `title`, `overview`, `content`, `link
 (12, '2024-04-12 12:00:00', 'Exemple d\'Article 6', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc quis dolor posuere, fringilla libero vel, vehicula leo. Curabitur eget dapibus magna. Pellentesque sit amet velit id mauris imperdiet pellentesque eget nec urna. Suspendisse potenti. Phasellus a est sed nunc consectetur mollis et nec neque. Proin maximus nibh sit amet nulla.', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla eu cursus diam. Ut rutrum sodales euismod. Phasellus cursus mi at odio molestie tincidunt. Vivamus a tempus mi. Mauris mattis vitae diam a pharetra. Nulla nec ex enim. Morbi sit amet quam tristique, ultrices urna in, rutrum lectus. Vivamus sed nisl nec purus lobortis cursus vel id elit. Cras in augue nisl.\r\n\r\nSed ac cursus erat. Maecenas vestibulum est et tincidunt dictum. Praesent eu justo tortor. Vestibulum posuere erat urna, sit amet maximus quam pulvinar eu. Sed porttitor maximus augue, vitae dictum eros vehicula ut. Aliquam ut volutpat nisi. Sed urna urna, finibus a mauris eu, tristique mollis arcu. Nulla ac risus augue.\r\n\r\nProin porta sapien cursus velit ullamcorper, sit amet consectetur augue pretium. Vestibulum fermentum malesuada nisi sit amet cursus. Aliquam auctor urna eget varius consequat. Vivamus non tortor suscipit, rutrum mi suscipit, ultrices nulla. Phasellus nec risus vel nunc suscipit suscipit. Vivamus egestas quis urna id consectetur. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Sed vel suscipit lacus, aliquet cursus odio. Sed eget fringilla ante. Nullam luctus eu metus id facilisis. Integer eu nulla fringilla, tempus lorem in, pulvinar tellus. Fusce pulvinar augue sed ante gravida tristique. Pellentesque sagittis tristique lobortis. Curabitur elit tellus, scelerisque a mollis vitae, euismod a enim. Mauris iaculis velit sit amet placerat porttitor. Ut sed massa eget lorem molestie ornare.\r\n\r\nCras ultricies facilisis est ac efficitur. In faucibus faucibus sapien eget efficitur. Morbi hendrerit arcu quis metus convallis, et aliquam metus eleifend. Maecenas a magna vitae enim vestibulum tincidunt in quis ante. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Fusce cursus eget felis ut finibus. Phasellus pharetra ultricies nunc, et varius ipsum lobortis eget. Cras in nulla lobortis massa imperdiet venenatis. In nunc libero, auctor quis tincidunt non, pretium quis magna. Donec quis orci nunc.\r\n\r\nOrci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Suspendisse lacinia accumsan nisl posuere iaculis. Etiam ultrices tincidunt pharetra. Sed nunc enim, sagittis a sapien ut, condimentum pellentesque tortor. Suspendisse potenti. Nullam in sem pharetra, consectetur lectus nec, volutpat leo. Vivamus at quam in ex tincidunt efficitur ac et nulla. Etiam pretium quis lacus feugiat sodales. Fusce enim metus, luctus id convallis at, luctus at arcu. Nullam vitae felis quis tellus hendrerit sollicitudin.', 'exemple-d-article-6', '{"facebook":"https://www.facebook.com","instagram":"https://www.instagram.com","threads":"https://www.threads.net","youtube":"https://www.youtube.com","tiktok":"https://www.tiktok.com"}', 'french'),
 (13, '2024-04-12 12:00:00', 'Sample Article 7', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc quis dolor posuere, fringilla libero vel, vehicula leo. Curabitur eget dapibus magna. Pellentesque sit amet velit id mauris imperdiet pellentesque eget nec urna. Suspendisse potenti. Phasellus a est sed nunc consectetur mollis et nec neque. Proin maximus nibh sit amet nulla.', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla eu cursus diam. Ut rutrum sodales euismod. Phasellus cursus mi at odio molestie tincidunt. Vivamus a tempus mi. Mauris mattis vitae diam a pharetra. Nulla nec ex enim. Morbi sit amet quam tristique, ultrices urna in, rutrum lectus. Vivamus sed nisl nec purus lobortis cursus vel id elit. Cras in augue nisl.\r\n\r\nSed ac cursus erat. Maecenas vestibulum est et tincidunt dictum. Praesent eu justo tortor. Vestibulum posuere erat urna, sit amet maximus quam pulvinar eu. Sed porttitor maximus augue, vitae dictum eros vehicula ut. Aliquam ut volutpat nisi. Sed urna urna, finibus a mauris eu, tristique mollis arcu. Nulla ac risus augue.\r\n\r\nProin porta sapien cursus velit ullamcorper, sit amet consectetur augue pretium. Vestibulum fermentum malesuada nisi sit amet cursus. Aliquam auctor urna eget varius consequat. Vivamus non tortor suscipit, rutrum mi suscipit, ultrices nulla. Phasellus nec risus vel nunc suscipit suscipit. Vivamus egestas quis urna id consectetur. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Sed vel suscipit lacus, aliquet cursus odio. Sed eget fringilla ante. Nullam luctus eu metus id facilisis. Integer eu nulla fringilla, tempus lorem in, pulvinar tellus. Fusce pulvinar augue sed ante gravida tristique. Pellentesque sagittis tristique lobortis. Curabitur elit tellus, scelerisque a mollis vitae, euismod a enim. Mauris iaculis velit sit amet placerat porttitor. Ut sed massa eget lorem molestie ornare.\r\n\r\nCras ultricies facilisis est ac efficitur. In faucibus faucibus sapien eget efficitur. Morbi hendrerit arcu quis metus convallis, et aliquam metus eleifend. Maecenas a magna vitae enim vestibulum tincidunt in quis ante. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Fusce cursus eget felis ut finibus. Phasellus pharetra ultricies nunc, et varius ipsum lobortis eget. Cras in nulla lobortis massa imperdiet venenatis. In nunc libero, auctor quis tincidunt non, pretium quis magna. Donec quis orci nunc.\r\n\r\nOrci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Suspendisse lacinia accumsan nisl posuere iaculis. Etiam ultrices tincidunt pharetra. Sed nunc enim, sagittis a sapien ut, condimentum pellentesque tortor. Suspendisse potenti. Nullam in sem pharetra, consectetur lectus nec, volutpat leo. Vivamus at quam in ex tincidunt efficitur ac et nulla. Etiam pretium quis lacus feugiat sodales. Fusce enim metus, luctus id convallis at, luctus at arcu. Nullam vitae felis quis tellus hendrerit sollicitudin.', 'sample-article-7', '{"facebook":"https://www.facebook.com","instagram":"https://www.instagram.com","threads":"https://www.threads.net","youtube":"https://www.youtube.com","tiktok":"https://www.tiktok.com"}', 'english'),
 (14, '2024-04-12 12:00:00', 'Exemple d\'Article 7', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc quis dolor posuere, fringilla libero vel, vehicula leo. Curabitur eget dapibus magna. Pellentesque sit amet velit id mauris imperdiet pellentesque eget nec urna. Suspendisse potenti. Phasellus a est sed nunc consectetur mollis et nec neque. Proin maximus nibh sit amet nulla.', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla eu cursus diam. Ut rutrum sodales euismod. Phasellus cursus mi at odio molestie tincidunt. Vivamus a tempus mi. Mauris mattis vitae diam a pharetra. Nulla nec ex enim. Morbi sit amet quam tristique, ultrices urna in, rutrum lectus. Vivamus sed nisl nec purus lobortis cursus vel id elit. Cras in augue nisl.\r\n\r\nSed ac cursus erat. Maecenas vestibulum est et tincidunt dictum. Praesent eu justo tortor. Vestibulum posuere erat urna, sit amet maximus quam pulvinar eu. Sed porttitor maximus augue, vitae dictum eros vehicula ut. Aliquam ut volutpat nisi. Sed urna urna, finibus a mauris eu, tristique mollis arcu. Nulla ac risus augue.\r\n\r\nProin porta sapien cursus velit ullamcorper, sit amet consectetur augue pretium. Vestibulum fermentum malesuada nisi sit amet cursus. Aliquam auctor urna eget varius consequat. Vivamus non tortor suscipit, rutrum mi suscipit, ultrices nulla. Phasellus nec risus vel nunc suscipit suscipit. Vivamus egestas quis urna id consectetur. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Sed vel suscipit lacus, aliquet cursus odio. Sed eget fringilla ante. Nullam luctus eu metus id facilisis. Integer eu nulla fringilla, tempus lorem in, pulvinar tellus. Fusce pulvinar augue sed ante gravida tristique. Pellentesque sagittis tristique lobortis. Curabitur elit tellus, scelerisque a mollis vitae, euismod a enim. Mauris iaculis velit sit amet placerat porttitor. Ut sed massa eget lorem molestie ornare.\r\n\r\nCras ultricies facilisis est ac efficitur. In faucibus faucibus sapien eget efficitur. Morbi hendrerit arcu quis metus convallis, et aliquam metus eleifend. Maecenas a magna vitae enim vestibulum tincidunt in quis ante. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Fusce cursus eget felis ut finibus. Phasellus pharetra ultricies nunc, et varius ipsum lobortis eget. Cras in nulla lobortis massa imperdiet venenatis. In nunc libero, auctor quis tincidunt non, pretium quis magna. Donec quis orci nunc.\r\n\r\nOrci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Suspendisse lacinia accumsan nisl posuere iaculis. Etiam ultrices tincidunt pharetra. Sed nunc enim, sagittis a sapien ut, condimentum pellentesque tortor. Suspendisse potenti. Nullam in sem pharetra, consectetur lectus nec, volutpat leo. Vivamus at quam in ex tincidunt efficitur ac et nulla. Etiam pretium quis lacus feugiat sodales. Fusce enim metus, luctus id convallis at, luctus at arcu. Nullam vitae felis quis tellus hendrerit sollicitudin.', 'exemple-d-article-7', '{"facebook":"https://www.facebook.com","instagram":"https://www.instagram.com","threads":"https://www.threads.net","youtube":"https://www.youtube.com","tiktok":"https://www.tiktok.com"}', 'french');
-INSERT INTO `Articles` (`id`, `published`, `title`, `overview`, `content`, `link`, `networks`, `language`) VALUES
+INSERT INTO `Static__Articles` (`id`, `published`, `title`, `overview`, `content`, `link`, `networks`, `language`) VALUES
 (15, '2024-04-12 12:00:00', 'Sample Article 8', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc quis dolor posuere, fringilla libero vel, vehicula leo. Curabitur eget dapibus magna. Pellentesque sit amet velit id mauris imperdiet pellentesque eget nec urna. Suspendisse potenti. Phasellus a est sed nunc consectetur mollis et nec neque. Proin maximus nibh sit amet nulla.', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla eu cursus diam. Ut rutrum sodales euismod. Phasellus cursus mi at odio molestie tincidunt. Vivamus a tempus mi. Mauris mattis vitae diam a pharetra. Nulla nec ex enim. Morbi sit amet quam tristique, ultrices urna in, rutrum lectus. Vivamus sed nisl nec purus lobortis cursus vel id elit. Cras in augue nisl.\r\n\r\nSed ac cursus erat. Maecenas vestibulum est et tincidunt dictum. Praesent eu justo tortor. Vestibulum posuere erat urna, sit amet maximus quam pulvinar eu. Sed porttitor maximus augue, vitae dictum eros vehicula ut. Aliquam ut volutpat nisi. Sed urna urna, finibus a mauris eu, tristique mollis arcu. Nulla ac risus augue.\r\n\r\nProin porta sapien cursus velit ullamcorper, sit amet consectetur augue pretium. Vestibulum fermentum malesuada nisi sit amet cursus. Aliquam auctor urna eget varius consequat. Vivamus non tortor suscipit, rutrum mi suscipit, ultrices nulla. Phasellus nec risus vel nunc suscipit suscipit. Vivamus egestas quis urna id consectetur. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Sed vel suscipit lacus, aliquet cursus odio. Sed eget fringilla ante. Nullam luctus eu metus id facilisis. Integer eu nulla fringilla, tempus lorem in, pulvinar tellus. Fusce pulvinar augue sed ante gravida tristique. Pellentesque sagittis tristique lobortis. Curabitur elit tellus, scelerisque a mollis vitae, euismod a enim. Mauris iaculis velit sit amet placerat porttitor. Ut sed massa eget lorem molestie ornare.\r\n\r\nCras ultricies facilisis est ac efficitur. In faucibus faucibus sapien eget efficitur. Morbi hendrerit arcu quis metus convallis, et aliquam metus eleifend. Maecenas a magna vitae enim vestibulum tincidunt in quis ante. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Fusce cursus eget felis ut finibus. Phasellus pharetra ultricies nunc, et varius ipsum lobortis eget. Cras in nulla lobortis massa imperdiet venenatis. In nunc libero, auctor quis tincidunt non, pretium quis magna. Donec quis orci nunc.\r\n\r\nOrci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Suspendisse lacinia accumsan nisl posuere iaculis. Etiam ultrices tincidunt pharetra. Sed nunc enim, sagittis a sapien ut, condimentum pellentesque tortor. Suspendisse potenti. Nullam in sem pharetra, consectetur lectus nec, volutpat leo. Vivamus at quam in ex tincidunt efficitur ac et nulla. Etiam pretium quis lacus feugiat sodales. Fusce enim metus, luctus id convallis at, luctus at arcu. Nullam vitae felis quis tellus hendrerit sollicitudin.', 'sample-article-8', '{"facebook":"https://www.facebook.com","instagram":"https://www.instagram.com","threads":"https://www.threads.net","youtube":"https://www.youtube.com","tiktok":"https://www.tiktok.com"}', 'english'),
 (16, '2024-04-12 12:00:00', 'Exemple d\'Article 8', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc quis dolor posuere, fringilla libero vel, vehicula leo. Curabitur eget dapibus magna. Pellentesque sit amet velit id mauris imperdiet pellentesque eget nec urna. Suspendisse potenti. Phasellus a est sed nunc consectetur mollis et nec neque. Proin maximus nibh sit amet nulla.', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla eu cursus diam. Ut rutrum sodales euismod. Phasellus cursus mi at odio molestie tincidunt. Vivamus a tempus mi. Mauris mattis vitae diam a pharetra. Nulla nec ex enim. Morbi sit amet quam tristique, ultrices urna in, rutrum lectus. Vivamus sed nisl nec purus lobortis cursus vel id elit. Cras in augue nisl.\r\n\r\nSed ac cursus erat. Maecenas vestibulum est et tincidunt dictum. Praesent eu justo tortor. Vestibulum posuere erat urna, sit amet maximus quam pulvinar eu. Sed porttitor maximus augue, vitae dictum eros vehicula ut. Aliquam ut volutpat nisi. Sed urna urna, finibus a mauris eu, tristique mollis arcu. Nulla ac risus augue.\r\n\r\nProin porta sapien cursus velit ullamcorper, sit amet consectetur augue pretium. Vestibulum fermentum malesuada nisi sit amet cursus. Aliquam auctor urna eget varius consequat. Vivamus non tortor suscipit, rutrum mi suscipit, ultrices nulla. Phasellus nec risus vel nunc suscipit suscipit. Vivamus egestas quis urna id consectetur. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Sed vel suscipit lacus, aliquet cursus odio. Sed eget fringilla ante. Nullam luctus eu metus id facilisis. Integer eu nulla fringilla, tempus lorem in, pulvinar tellus. Fusce pulvinar augue sed ante gravida tristique. Pellentesque sagittis tristique lobortis. Curabitur elit tellus, scelerisque a mollis vitae, euismod a enim. Mauris iaculis velit sit amet placerat porttitor. Ut sed massa eget lorem molestie ornare.\r\n\r\nCras ultricies facilisis est ac efficitur. In faucibus faucibus sapien eget efficitur. Morbi hendrerit arcu quis metus convallis, et aliquam metus eleifend. Maecenas a magna vitae enim vestibulum tincidunt in quis ante. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Fusce cursus eget felis ut finibus. Phasellus pharetra ultricies nunc, et varius ipsum lobortis eget. Cras in nulla lobortis massa imperdiet venenatis. In nunc libero, auctor quis tincidunt non, pretium quis magna. Donec quis orci nunc.\r\n\r\nOrci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Suspendisse lacinia accumsan nisl posuere iaculis. Etiam ultrices tincidunt pharetra. Sed nunc enim, sagittis a sapien ut, condimentum pellentesque tortor. Suspendisse potenti. Nullam in sem pharetra, consectetur lectus nec, volutpat leo. Vivamus at quam in ex tincidunt efficitur ac et nulla. Etiam pretium quis lacus feugiat sodales. Fusce enim metus, luctus id convallis at, luctus at arcu. Nullam vitae felis quis tellus hendrerit sollicitudin.', 'exemple-d-article-8', '{"facebook":"https://www.facebook.com","instagram":"https://www.instagram.com","threads":"https://www.threads.net","youtube":"https://www.youtube.com","tiktok":"https://www.tiktok.com"}', 'french'),
 (17, '2024-04-12 12:00:00', 'Sample Article 9', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc quis dolor posuere, fringilla libero vel, vehicula leo. Curabitur eget dapibus magna. Pellentesque sit amet velit id mauris imperdiet pellentesque eget nec urna. Suspendisse potenti. Phasellus a est sed nunc consectetur mollis et nec neque. Proin maximus nibh sit amet nulla.', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla eu cursus diam. Ut rutrum sodales euismod. Phasellus cursus mi at odio molestie tincidunt. Vivamus a tempus mi. Mauris mattis vitae diam a pharetra. Nulla nec ex enim. Morbi sit amet quam tristique, ultrices urna in, rutrum lectus. Vivamus sed nisl nec purus lobortis cursus vel id elit. Cras in augue nisl.\r\n\r\nSed ac cursus erat. Maecenas vestibulum est et tincidunt dictum. Praesent eu justo tortor. Vestibulum posuere erat urna, sit amet maximus quam pulvinar eu. Sed porttitor maximus augue, vitae dictum eros vehicula ut. Aliquam ut volutpat nisi. Sed urna urna, finibus a mauris eu, tristique mollis arcu. Nulla ac risus augue.\r\n\r\nProin porta sapien cursus velit ullamcorper, sit amet consectetur augue pretium. Vestibulum fermentum malesuada nisi sit amet cursus. Aliquam auctor urna eget varius consequat. Vivamus non tortor suscipit, rutrum mi suscipit, ultrices nulla. Phasellus nec risus vel nunc suscipit suscipit. Vivamus egestas quis urna id consectetur. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Sed vel suscipit lacus, aliquet cursus odio. Sed eget fringilla ante. Nullam luctus eu metus id facilisis. Integer eu nulla fringilla, tempus lorem in, pulvinar tellus. Fusce pulvinar augue sed ante gravida tristique. Pellentesque sagittis tristique lobortis. Curabitur elit tellus, scelerisque a mollis vitae, euismod a enim. Mauris iaculis velit sit amet placerat porttitor. Ut sed massa eget lorem molestie ornare.\r\n\r\nCras ultricies facilisis est ac efficitur. In faucibus faucibus sapien eget efficitur. Morbi hendrerit arcu quis metus convallis, et aliquam metus eleifend. Maecenas a magna vitae enim vestibulum tincidunt in quis ante. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Fusce cursus eget felis ut finibus. Phasellus pharetra ultricies nunc, et varius ipsum lobortis eget. Cras in nulla lobortis massa imperdiet venenatis. In nunc libero, auctor quis tincidunt non, pretium quis magna. Donec quis orci nunc.\r\n\r\nOrci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Suspendisse lacinia accumsan nisl posuere iaculis. Etiam ultrices tincidunt pharetra. Sed nunc enim, sagittis a sapien ut, condimentum pellentesque tortor. Suspendisse potenti. Nullam in sem pharetra, consectetur lectus nec, volutpat leo. Vivamus at quam in ex tincidunt efficitur ac et nulla. Etiam pretium quis lacus feugiat sodales. Fusce enim metus, luctus id convallis at, luctus at arcu. Nullam vitae felis quis tellus hendrerit sollicitudin.', 'sample-article-9', '{"facebook":"https://www.facebook.com","instagram":"https://www.instagram.com","threads":"https://www.threads.net","youtube":"https://www.youtube.com","tiktok":"https://www.tiktok.com"}', 'english'),
@@ -58,7 +58,7 @@ INSERT INTO `Articles` (`id`, `published`, `title`, `overview`, `content`, `link
 (26, '2024-04-12 12:00:00', 'Exemple d\'Article 13', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc quis dolor posuere, fringilla libero vel, vehicula leo. Curabitur eget dapibus magna. Pellentesque sit amet velit id mauris imperdiet pellentesque eget nec urna. Suspendisse potenti. Phasellus a est sed nunc consectetur mollis et nec neque. Proin maximus nibh sit amet nulla.', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla eu cursus diam. Ut rutrum sodales euismod. Phasellus cursus mi at odio molestie tincidunt. Vivamus a tempus mi. Mauris mattis vitae diam a pharetra. Nulla nec ex enim. Morbi sit amet quam tristique, ultrices urna in, rutrum lectus. Vivamus sed nisl nec purus lobortis cursus vel id elit. Cras in augue nisl.\r\n\r\nSed ac cursus erat. Maecenas vestibulum est et tincidunt dictum. Praesent eu justo tortor. Vestibulum posuere erat urna, sit amet maximus quam pulvinar eu. Sed porttitor maximus augue, vitae dictum eros vehicula ut. Aliquam ut volutpat nisi. Sed urna urna, finibus a mauris eu, tristique mollis arcu. Nulla ac risus augue.\r\n\r\nProin porta sapien cursus velit ullamcorper, sit amet consectetur augue pretium. Vestibulum fermentum malesuada nisi sit amet cursus. Aliquam auctor urna eget varius consequat. Vivamus non tortor suscipit, rutrum mi suscipit, ultrices nulla. Phasellus nec risus vel nunc suscipit suscipit. Vivamus egestas quis urna id consectetur. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Sed vel suscipit lacus, aliquet cursus odio. Sed eget fringilla ante. Nullam luctus eu metus id facilisis. Integer eu nulla fringilla, tempus lorem in, pulvinar tellus. Fusce pulvinar augue sed ante gravida tristique. Pellentesque sagittis tristique lobortis. Curabitur elit tellus, scelerisque a mollis vitae, euismod a enim. Mauris iaculis velit sit amet placerat porttitor. Ut sed massa eget lorem molestie ornare.\r\n\r\nCras ultricies facilisis est ac efficitur. In faucibus faucibus sapien eget efficitur. Morbi hendrerit arcu quis metus convallis, et aliquam metus eleifend. Maecenas a magna vitae enim vestibulum tincidunt in quis ante. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Fusce cursus eget felis ut finibus. Phasellus pharetra ultricies nunc, et varius ipsum lobortis eget. Cras in nulla lobortis massa imperdiet venenatis. In nunc libero, auctor quis tincidunt non, pretium quis magna. Donec quis orci nunc.\r\n\r\nOrci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Suspendisse lacinia accumsan nisl posuere iaculis. Etiam ultrices tincidunt pharetra. Sed nunc enim, sagittis a sapien ut, condimentum pellentesque tortor. Suspendisse potenti. Nullam in sem pharetra, consectetur lectus nec, volutpat leo. Vivamus at quam in ex tincidunt efficitur ac et nulla. Etiam pretium quis lacus feugiat sodales. Fusce enim metus, luctus id convallis at, luctus at arcu. Nullam vitae felis quis tellus hendrerit sollicitudin.', 'exemple-d-article-13', '{"facebook":"https://www.facebook.com","instagram":"https://www.instagram.com","threads":"https://www.threads.net","youtube":"https://www.youtube.com","tiktok":"https://www.tiktok.com"}', 'french'),
 (27, '2024-04-12 12:00:00', 'Sample Article 14', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc quis dolor posuere, fringilla libero vel, vehicula leo. Curabitur eget dapibus magna. Pellentesque sit amet velit id mauris imperdiet pellentesque eget nec urna. Suspendisse potenti. Phasellus a est sed nunc consectetur mollis et nec neque. Proin maximus nibh sit amet nulla.', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla eu cursus diam. Ut rutrum sodales euismod. Phasellus cursus mi at odio molestie tincidunt. Vivamus a tempus mi. Mauris mattis vitae diam a pharetra. Nulla nec ex enim. Morbi sit amet quam tristique, ultrices urna in, rutrum lectus. Vivamus sed nisl nec purus lobortis cursus vel id elit. Cras in augue nisl.\r\n\r\nSed ac cursus erat. Maecenas vestibulum est et tincidunt dictum. Praesent eu justo tortor. Vestibulum posuere erat urna, sit amet maximus quam pulvinar eu. Sed porttitor maximus augue, vitae dictum eros vehicula ut. Aliquam ut volutpat nisi. Sed urna urna, finibus a mauris eu, tristique mollis arcu. Nulla ac risus augue.\r\n\r\nProin porta sapien cursus velit ullamcorper, sit amet consectetur augue pretium. Vestibulum fermentum malesuada nisi sit amet cursus. Aliquam auctor urna eget varius consequat. Vivamus non tortor suscipit, rutrum mi suscipit, ultrices nulla. Phasellus nec risus vel nunc suscipit suscipit. Vivamus egestas quis urna id consectetur. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Sed vel suscipit lacus, aliquet cursus odio. Sed eget fringilla ante. Nullam luctus eu metus id facilisis. Integer eu nulla fringilla, tempus lorem in, pulvinar tellus. Fusce pulvinar augue sed ante gravida tristique. Pellentesque sagittis tristique lobortis. Curabitur elit tellus, scelerisque a mollis vitae, euismod a enim. Mauris iaculis velit sit amet placerat porttitor. Ut sed massa eget lorem molestie ornare.\r\n\r\nCras ultricies facilisis est ac efficitur. In faucibus faucibus sapien eget efficitur. Morbi hendrerit arcu quis metus convallis, et aliquam metus eleifend. Maecenas a magna vitae enim vestibulum tincidunt in quis ante. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Fusce cursus eget felis ut finibus. Phasellus pharetra ultricies nunc, et varius ipsum lobortis eget. Cras in nulla lobortis massa imperdiet venenatis. In nunc libero, auctor quis tincidunt non, pretium quis magna. Donec quis orci nunc.\r\n\r\nOrci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Suspendisse lacinia accumsan nisl posuere iaculis. Etiam ultrices tincidunt pharetra. Sed nunc enim, sagittis a sapien ut, condimentum pellentesque tortor. Suspendisse potenti. Nullam in sem pharetra, consectetur lectus nec, volutpat leo. Vivamus at quam in ex tincidunt efficitur ac et nulla. Etiam pretium quis lacus feugiat sodales. Fusce enim metus, luctus id convallis at, luctus at arcu. Nullam vitae felis quis tellus hendrerit sollicitudin.', 'sample-article-14', '{"facebook":"https://www.facebook.com","instagram":"https://www.instagram.com","threads":"https://www.threads.net","youtube":"https://www.youtube.com","tiktok":"https://www.tiktok.com"}', 'english'),
 (28, '2024-04-12 12:00:00', 'Exemple d\'Article 14', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc quis dolor posuere, fringilla libero vel, vehicula leo. Curabitur eget dapibus magna. Pellentesque sit amet velit id mauris imperdiet pellentesque eget nec urna. Suspendisse potenti. Phasellus a est sed nunc consectetur mollis et nec neque. Proin maximus nibh sit amet nulla.', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla eu cursus diam. Ut rutrum sodales euismod. Phasellus cursus mi at odio molestie tincidunt. Vivamus a tempus mi. Mauris mattis vitae diam a pharetra. Nulla nec ex enim. Morbi sit amet quam tristique, ultrices urna in, rutrum lectus. Vivamus sed nisl nec purus lobortis cursus vel id elit. Cras in augue nisl.\r\n\r\nSed ac cursus erat. Maecenas vestibulum est et tincidunt dictum. Praesent eu justo tortor. Vestibulum posuere erat urna, sit amet maximus quam pulvinar eu. Sed porttitor maximus augue, vitae dictum eros vehicula ut. Aliquam ut volutpat nisi. Sed urna urna, finibus a mauris eu, tristique mollis arcu. Nulla ac risus augue.\r\n\r\nProin porta sapien cursus velit ullamcorper, sit amet consectetur augue pretium. Vestibulum fermentum malesuada nisi sit amet cursus. Aliquam auctor urna eget varius consequat. Vivamus non tortor suscipit, rutrum mi suscipit, ultrices nulla. Phasellus nec risus vel nunc suscipit suscipit. Vivamus egestas quis urna id consectetur. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Sed vel suscipit lacus, aliquet cursus odio. Sed eget fringilla ante. Nullam luctus eu metus id facilisis. Integer eu nulla fringilla, tempus lorem in, pulvinar tellus. Fusce pulvinar augue sed ante gravida tristique. Pellentesque sagittis tristique lobortis. Curabitur elit tellus, scelerisque a mollis vitae, euismod a enim. Mauris iaculis velit sit amet placerat porttitor. Ut sed massa eget lorem molestie ornare.\r\n\r\nCras ultricies facilisis est ac efficitur. In faucibus faucibus sapien eget efficitur. Morbi hendrerit arcu quis metus convallis, et aliquam metus eleifend. Maecenas a magna vitae enim vestibulum tincidunt in quis ante. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Fusce cursus eget felis ut finibus. Phasellus pharetra ultricies nunc, et varius ipsum lobortis eget. Cras in nulla lobortis massa imperdiet venenatis. In nunc libero, auctor quis tincidunt non, pretium quis magna. Donec quis orci nunc.\r\n\r\nOrci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Suspendisse lacinia accumsan nisl posuere iaculis. Etiam ultrices tincidunt pharetra. Sed nunc enim, sagittis a sapien ut, condimentum pellentesque tortor. Suspendisse potenti. Nullam in sem pharetra, consectetur lectus nec, volutpat leo. Vivamus at quam in ex tincidunt efficitur ac et nulla. Etiam pretium quis lacus feugiat sodales. Fusce enim metus, luctus id convallis at, luctus at arcu. Nullam vitae felis quis tellus hendrerit sollicitudin.', 'exemple-d-article-14', '{"facebook":"https://www.facebook.com","instagram":"https://www.instagram.com","threads":"https://www.threads.net","youtube":"https://www.youtube.com","tiktok":"https://www.tiktok.com"}', 'french');
-INSERT INTO `Articles` (`id`, `published`, `title`, `overview`, `content`, `link`, `networks`, `language`) VALUES
+INSERT INTO `Static__Articles` (`id`, `published`, `title`, `overview`, `content`, `link`, `networks`, `language`) VALUES
 (29, '2024-04-12 12:00:00', 'Sample Article 15', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc quis dolor posuere, fringilla libero vel, vehicula leo. Curabitur eget dapibus magna. Pellentesque sit amet velit id mauris imperdiet pellentesque eget nec urna. Suspendisse potenti. Phasellus a est sed nunc consectetur mollis et nec neque. Proin maximus nibh sit amet nulla.', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla eu cursus diam. Ut rutrum sodales euismod. Phasellus cursus mi at odio molestie tincidunt. Vivamus a tempus mi. Mauris mattis vitae diam a pharetra. Nulla nec ex enim. Morbi sit amet quam tristique, ultrices urna in, rutrum lectus. Vivamus sed nisl nec purus lobortis cursus vel id elit. Cras in augue nisl.\r\n\r\nSed ac cursus erat. Maecenas vestibulum est et tincidunt dictum. Praesent eu justo tortor. Vestibulum posuere erat urna, sit amet maximus quam pulvinar eu. Sed porttitor maximus augue, vitae dictum eros vehicula ut. Aliquam ut volutpat nisi. Sed urna urna, finibus a mauris eu, tristique mollis arcu. Nulla ac risus augue.\r\n\r\nProin porta sapien cursus velit ullamcorper, sit amet consectetur augue pretium. Vestibulum fermentum malesuada nisi sit amet cursus. Aliquam auctor urna eget varius consequat. Vivamus non tortor suscipit, rutrum mi suscipit, ultrices nulla. Phasellus nec risus vel nunc suscipit suscipit. Vivamus egestas quis urna id consectetur. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Sed vel suscipit lacus, aliquet cursus odio. Sed eget fringilla ante. Nullam luctus eu metus id facilisis. Integer eu nulla fringilla, tempus lorem in, pulvinar tellus. Fusce pulvinar augue sed ante gravida tristique. Pellentesque sagittis tristique lobortis. Curabitur elit tellus, scelerisque a mollis vitae, euismod a enim. Mauris iaculis velit sit amet placerat porttitor. Ut sed massa eget lorem molestie ornare.\r\n\r\nCras ultricies facilisis est ac efficitur. In faucibus faucibus sapien eget efficitur. Morbi hendrerit arcu quis metus convallis, et aliquam metus eleifend. Maecenas a magna vitae enim vestibulum tincidunt in quis ante. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Fusce cursus eget felis ut finibus. Phasellus pharetra ultricies nunc, et varius ipsum lobortis eget. Cras in nulla lobortis massa imperdiet venenatis. In nunc libero, auctor quis tincidunt non, pretium quis magna. Donec quis orci nunc.\r\n\r\nOrci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Suspendisse lacinia accumsan nisl posuere iaculis. Etiam ultrices tincidunt pharetra. Sed nunc enim, sagittis a sapien ut, condimentum pellentesque tortor. Suspendisse potenti. Nullam in sem pharetra, consectetur lectus nec, volutpat leo. Vivamus at quam in ex tincidunt efficitur ac et nulla. Etiam pretium quis lacus feugiat sodales. Fusce enim metus, luctus id convallis at, luctus at arcu. Nullam vitae felis quis tellus hendrerit sollicitudin.', 'sample-article-15', '{"facebook":"https://www.facebook.com","instagram":"https://www.instagram.com","threads":"https://www.threads.net","youtube":"https://www.youtube.com","tiktok":"https://www.tiktok.com"}', 'english'),
 (30, '2024-04-12 12:00:00', 'Exemple d\'Article 15', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc quis dolor posuere, fringilla libero vel, vehicula leo. Curabitur eget dapibus magna. Pellentesque sit amet velit id mauris imperdiet pellentesque eget nec urna. Suspendisse potenti. Phasellus a est sed nunc consectetur mollis et nec neque. Proin maximus nibh sit amet nulla.', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla eu cursus diam. Ut rutrum sodales euismod. Phasellus cursus mi at odio molestie tincidunt. Vivamus a tempus mi. Mauris mattis vitae diam a pharetra. Nulla nec ex enim. Morbi sit amet quam tristique, ultrices urna in, rutrum lectus. Vivamus sed nisl nec purus lobortis cursus vel id elit. Cras in augue nisl.\r\n\r\nSed ac cursus erat. Maecenas vestibulum est et tincidunt dictum. Praesent eu justo tortor. Vestibulum posuere erat urna, sit amet maximus quam pulvinar eu. Sed porttitor maximus augue, vitae dictum eros vehicula ut. Aliquam ut volutpat nisi. Sed urna urna, finibus a mauris eu, tristique mollis arcu. Nulla ac risus augue.\r\n\r\nProin porta sapien cursus velit ullamcorper, sit amet consectetur augue pretium. Vestibulum fermentum malesuada nisi sit amet cursus. Aliquam auctor urna eget varius consequat. Vivamus non tortor suscipit, rutrum mi suscipit, ultrices nulla. Phasellus nec risus vel nunc suscipit suscipit. Vivamus egestas quis urna id consectetur. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Sed vel suscipit lacus, aliquet cursus odio. Sed eget fringilla ante. Nullam luctus eu metus id facilisis. Integer eu nulla fringilla, tempus lorem in, pulvinar tellus. Fusce pulvinar augue sed ante gravida tristique. Pellentesque sagittis tristique lobortis. Curabitur elit tellus, scelerisque a mollis vitae, euismod a enim. Mauris iaculis velit sit amet placerat porttitor. Ut sed massa eget lorem molestie ornare.\r\n\r\nCras ultricies facilisis est ac efficitur. In faucibus faucibus sapien eget efficitur. Morbi hendrerit arcu quis metus convallis, et aliquam metus eleifend. Maecenas a magna vitae enim vestibulum tincidunt in quis ante. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Fusce cursus eget felis ut finibus. Phasellus pharetra ultricies nunc, et varius ipsum lobortis eget. Cras in nulla lobortis massa imperdiet venenatis. In nunc libero, auctor quis tincidunt non, pretium quis magna. Donec quis orci nunc.\r\n\r\nOrci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Suspendisse lacinia accumsan nisl posuere iaculis. Etiam ultrices tincidunt pharetra. Sed nunc enim, sagittis a sapien ut, condimentum pellentesque tortor. Suspendisse potenti. Nullam in sem pharetra, consectetur lectus nec, volutpat leo. Vivamus at quam in ex tincidunt efficitur ac et nulla. Etiam pretium quis lacus feugiat sodales. Fusce enim metus, luctus id convallis at, luctus at arcu. Nullam vitae felis quis tellus hendrerit sollicitudin.', 'exemple-d-article-15', '{"facebook":"https://www.facebook.com","instagram":"https://www.instagram.com","threads":"https://www.threads.net","youtube":"https://www.youtube.com","tiktok":"https://www.tiktok.com"}', 'french'),
 (31, '2024-04-12 12:00:00', 'Sample Article 16', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc quis dolor posuere, fringilla libero vel, vehicula leo. Curabitur eget dapibus magna. Pellentesque sit amet velit id mauris imperdiet pellentesque eget nec urna. Suspendisse potenti. Phasellus a est sed nunc consectetur mollis et nec neque. Proin maximus nibh sit amet nulla.', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla eu cursus diam. Ut rutrum sodales euismod. Phasellus cursus mi at odio molestie tincidunt. Vivamus a tempus mi. Mauris mattis vitae diam a pharetra. Nulla nec ex enim. Morbi sit amet quam tristique, ultrices urna in, rutrum lectus. Vivamus sed nisl nec purus lobortis cursus vel id elit. Cras in augue nisl.\r\n\r\nSed ac cursus erat. Maecenas vestibulum est et tincidunt dictum. Praesent eu justo tortor. Vestibulum posuere erat urna, sit amet maximus quam pulvinar eu. Sed porttitor maximus augue, vitae dictum eros vehicula ut. Aliquam ut volutpat nisi. Sed urna urna, finibus a mauris eu, tristique mollis arcu. Nulla ac risus augue.\r\n\r\nProin porta sapien cursus velit ullamcorper, sit amet consectetur augue pretium. Vestibulum fermentum malesuada nisi sit amet cursus. Aliquam auctor urna eget varius consequat. Vivamus non tortor suscipit, rutrum mi suscipit, ultrices nulla. Phasellus nec risus vel nunc suscipit suscipit. Vivamus egestas quis urna id consectetur. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Sed vel suscipit lacus, aliquet cursus odio. Sed eget fringilla ante. Nullam luctus eu metus id facilisis. Integer eu nulla fringilla, tempus lorem in, pulvinar tellus. Fusce pulvinar augue sed ante gravida tristique. Pellentesque sagittis tristique lobortis. Curabitur elit tellus, scelerisque a mollis vitae, euismod a enim. Mauris iaculis velit sit amet placerat porttitor. Ut sed massa eget lorem molestie ornare.\r\n\r\nCras ultricies facilisis est ac efficitur. In faucibus faucibus sapien eget efficitur. Morbi hendrerit arcu quis metus convallis, et aliquam metus eleifend. Maecenas a magna vitae enim vestibulum tincidunt in quis ante. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Fusce cursus eget felis ut finibus. Phasellus pharetra ultricies nunc, et varius ipsum lobortis eget. Cras in nulla lobortis massa imperdiet venenatis. In nunc libero, auctor quis tincidunt non, pretium quis magna. Donec quis orci nunc.\r\n\r\nOrci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Suspendisse lacinia accumsan nisl posuere iaculis. Etiam ultrices tincidunt pharetra. Sed nunc enim, sagittis a sapien ut, condimentum pellentesque tortor. Suspendisse potenti. Nullam in sem pharetra, consectetur lectus nec, volutpat leo. Vivamus at quam in ex tincidunt efficitur ac et nulla. Etiam pretium quis lacus feugiat sodales. Fusce enim metus, luctus id convallis at, luctus at arcu. Nullam vitae felis quis tellus hendrerit sollicitudin.', 'sample-article-16', '{"facebook":"https://www.facebook.com","instagram":"https://www.instagram.com","threads":"https://www.threads.net","youtube":"https://www.youtube.com","tiktok":"https://www.tiktok.com"}', 'english'),
@@ -73,7 +73,7 @@ INSERT INTO `Articles` (`id`, `published`, `title`, `overview`, `content`, `link
 (40, '2024-04-12 12:00:00', 'Exemple d\'Article 20', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc quis dolor posuere, fringilla libero vel, vehicula leo. Curabitur eget dapibus magna. Pellentesque sit amet velit id mauris imperdiet pellentesque eget nec urna. Suspendisse potenti. Phasellus a est sed nunc consectetur mollis et nec neque. Proin maximus nibh sit amet nulla.', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla eu cursus diam. Ut rutrum sodales euismod. Phasellus cursus mi at odio molestie tincidunt. Vivamus a tempus mi. Mauris mattis vitae diam a pharetra. Nulla nec ex enim. Morbi sit amet quam tristique, ultrices urna in, rutrum lectus. Vivamus sed nisl nec purus lobortis cursus vel id elit. Cras in augue nisl.\r\n\r\nSed ac cursus erat. Maecenas vestibulum est et tincidunt dictum. Praesent eu justo tortor. Vestibulum posuere erat urna, sit amet maximus quam pulvinar eu. Sed porttitor maximus augue, vitae dictum eros vehicula ut. Aliquam ut volutpat nisi. Sed urna urna, finibus a mauris eu, tristique mollis arcu. Nulla ac risus augue.\r\n\r\nProin porta sapien cursus velit ullamcorper, sit amet consectetur augue pretium. Vestibulum fermentum malesuada nisi sit amet cursus. Aliquam auctor urna eget varius consequat. Vivamus non tortor suscipit, rutrum mi suscipit, ultrices nulla. Phasellus nec risus vel nunc suscipit suscipit. Vivamus egestas quis urna id consectetur. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Sed vel suscipit lacus, aliquet cursus odio. Sed eget fringilla ante. Nullam luctus eu metus id facilisis. Integer eu nulla fringilla, tempus lorem in, pulvinar tellus. Fusce pulvinar augue sed ante gravida tristique. Pellentesque sagittis tristique lobortis. Curabitur elit tellus, scelerisque a mollis vitae, euismod a enim. Mauris iaculis velit sit amet placerat porttitor. Ut sed massa eget lorem molestie ornare.\r\n\r\nCras ultricies facilisis est ac efficitur. In faucibus faucibus sapien eget efficitur. Morbi hendrerit arcu quis metus convallis, et aliquam metus eleifend. Maecenas a magna vitae enim vestibulum tincidunt in quis ante. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Fusce cursus eget felis ut finibus. Phasellus pharetra ultricies nunc, et varius ipsum lobortis eget. Cras in nulla lobortis massa imperdiet venenatis. In nunc libero, auctor quis tincidunt non, pretium quis magna. Donec quis orci nunc.\r\n\r\nOrci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Suspendisse lacinia accumsan nisl posuere iaculis. Etiam ultrices tincidunt pharetra. Sed nunc enim, sagittis a sapien ut, condimentum pellentesque tortor. Suspendisse potenti. Nullam in sem pharetra, consectetur lectus nec, volutpat leo. Vivamus at quam in ex tincidunt efficitur ac et nulla. Etiam pretium quis lacus feugiat sodales. Fusce enim metus, luctus id convallis at, luctus at arcu. Nullam vitae felis quis tellus hendrerit sollicitudin.', 'exemple-d-article-20', '{"facebook":"https://www.facebook.com","instagram":"https://www.instagram.com","threads":"https://www.threads.net","youtube":"https://www.youtube.com","tiktok":"https://www.tiktok.com"}', 'french'),
 (41, '2024-04-12 12:00:00', 'Sample Article 21', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc quis dolor posuere, fringilla libero vel, vehicula leo. Curabitur eget dapibus magna. Pellentesque sit amet velit id mauris imperdiet pellentesque eget nec urna. Suspendisse potenti. Phasellus a est sed nunc consectetur mollis et nec neque. Proin maximus nibh sit amet nulla.', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla eu cursus diam. Ut rutrum sodales euismod. Phasellus cursus mi at odio molestie tincidunt. Vivamus a tempus mi. Mauris mattis vitae diam a pharetra. Nulla nec ex enim. Morbi sit amet quam tristique, ultrices urna in, rutrum lectus. Vivamus sed nisl nec purus lobortis cursus vel id elit. Cras in augue nisl.\r\n\r\nSed ac cursus erat. Maecenas vestibulum est et tincidunt dictum. Praesent eu justo tortor. Vestibulum posuere erat urna, sit amet maximus quam pulvinar eu. Sed porttitor maximus augue, vitae dictum eros vehicula ut. Aliquam ut volutpat nisi. Sed urna urna, finibus a mauris eu, tristique mollis arcu. Nulla ac risus augue.\r\n\r\nProin porta sapien cursus velit ullamcorper, sit amet consectetur augue pretium. Vestibulum fermentum malesuada nisi sit amet cursus. Aliquam auctor urna eget varius consequat. Vivamus non tortor suscipit, rutrum mi suscipit, ultrices nulla. Phasellus nec risus vel nunc suscipit suscipit. Vivamus egestas quis urna id consectetur. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Sed vel suscipit lacus, aliquet cursus odio. Sed eget fringilla ante. Nullam luctus eu metus id facilisis. Integer eu nulla fringilla, tempus lorem in, pulvinar tellus. Fusce pulvinar augue sed ante gravida tristique. Pellentesque sagittis tristique lobortis. Curabitur elit tellus, scelerisque a mollis vitae, euismod a enim. Mauris iaculis velit sit amet placerat porttitor. Ut sed massa eget lorem molestie ornare.\r\n\r\nCras ultricies facilisis est ac efficitur. In faucibus faucibus sapien eget efficitur. Morbi hendrerit arcu quis metus convallis, et aliquam metus eleifend. Maecenas a magna vitae enim vestibulum tincidunt in quis ante. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Fusce cursus eget felis ut finibus. Phasellus pharetra ultricies nunc, et varius ipsum lobortis eget. Cras in nulla lobortis massa imperdiet venenatis. In nunc libero, auctor quis tincidunt non, pretium quis magna. Donec quis orci nunc.\r\n\r\nOrci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Suspendisse lacinia accumsan nisl posuere iaculis. Etiam ultrices tincidunt pharetra. Sed nunc enim, sagittis a sapien ut, condimentum pellentesque tortor. Suspendisse potenti. Nullam in sem pharetra, consectetur lectus nec, volutpat leo. Vivamus at quam in ex tincidunt efficitur ac et nulla. Etiam pretium quis lacus feugiat sodales. Fusce enim metus, luctus id convallis at, luctus at arcu. Nullam vitae felis quis tellus hendrerit sollicitudin.', 'sample-article-21', '{"facebook":"https://www.facebook.com","instagram":"https://www.instagram.com","threads":"https://www.threads.net","youtube":"https://www.youtube.com","tiktok":"https://www.tiktok.com"}', 'english'),
 (42, '2024-04-12 12:00:00', 'Exemple d\'Article 21', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc quis dolor posuere, fringilla libero vel, vehicula leo. Curabitur eget dapibus magna. Pellentesque sit amet velit id mauris imperdiet pellentesque eget nec urna. Suspendisse potenti. Phasellus a est sed nunc consectetur mollis et nec neque. Proin maximus nibh sit amet nulla.', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla eu cursus diam. Ut rutrum sodales euismod. Phasellus cursus mi at odio molestie tincidunt. Vivamus a tempus mi. Mauris mattis vitae diam a pharetra. Nulla nec ex enim. Morbi sit amet quam tristique, ultrices urna in, rutrum lectus. Vivamus sed nisl nec purus lobortis cursus vel id elit. Cras in augue nisl.\r\n\r\nSed ac cursus erat. Maecenas vestibulum est et tincidunt dictum. Praesent eu justo tortor. Vestibulum posuere erat urna, sit amet maximus quam pulvinar eu. Sed porttitor maximus augue, vitae dictum eros vehicula ut. Aliquam ut volutpat nisi. Sed urna urna, finibus a mauris eu, tristique mollis arcu. Nulla ac risus augue.\r\n\r\nProin porta sapien cursus velit ullamcorper, sit amet consectetur augue pretium. Vestibulum fermentum malesuada nisi sit amet cursus. Aliquam auctor urna eget varius consequat. Vivamus non tortor suscipit, rutrum mi suscipit, ultrices nulla. Phasellus nec risus vel nunc suscipit suscipit. Vivamus egestas quis urna id consectetur. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Sed vel suscipit lacus, aliquet cursus odio. Sed eget fringilla ante. Nullam luctus eu metus id facilisis. Integer eu nulla fringilla, tempus lorem in, pulvinar tellus. Fusce pulvinar augue sed ante gravida tristique. Pellentesque sagittis tristique lobortis. Curabitur elit tellus, scelerisque a mollis vitae, euismod a enim. Mauris iaculis velit sit amet placerat porttitor. Ut sed massa eget lorem molestie ornare.\r\n\r\nCras ultricies facilisis est ac efficitur. In faucibus faucibus sapien eget efficitur. Morbi hendrerit arcu quis metus convallis, et aliquam metus eleifend. Maecenas a magna vitae enim vestibulum tincidunt in quis ante. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Fusce cursus eget felis ut finibus. Phasellus pharetra ultricies nunc, et varius ipsum lobortis eget. Cras in nulla lobortis massa imperdiet venenatis. In nunc libero, auctor quis tincidunt non, pretium quis magna. Donec quis orci nunc.\r\n\r\nOrci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Suspendisse lacinia accumsan nisl posuere iaculis. Etiam ultrices tincidunt pharetra. Sed nunc enim, sagittis a sapien ut, condimentum pellentesque tortor. Suspendisse potenti. Nullam in sem pharetra, consectetur lectus nec, volutpat leo. Vivamus at quam in ex tincidunt efficitur ac et nulla. Etiam pretium quis lacus feugiat sodales. Fusce enim metus, luctus id convallis at, luctus at arcu. Nullam vitae felis quis tellus hendrerit sollicitudin.', 'exemple-d-article-21', '{"facebook":"https://www.facebook.com","instagram":"https://www.instagram.com","threads":"https://www.threads.net","youtube":"https://www.youtube.com","tiktok":"https://www.tiktok.com"}', 'french');
-INSERT INTO `Articles` (`id`, `published`, `title`, `overview`, `content`, `link`, `networks`, `language`) VALUES
+INSERT INTO `Static__Articles` (`id`, `published`, `title`, `overview`, `content`, `link`, `networks`, `language`) VALUES
 (43, '2024-04-12 12:00:00', 'Sample Article 22', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc quis dolor posuere, fringilla libero vel, vehicula leo. Curabitur eget dapibus magna. Pellentesque sit amet velit id mauris imperdiet pellentesque eget nec urna. Suspendisse potenti. Phasellus a est sed nunc consectetur mollis et nec neque. Proin maximus nibh sit amet nulla.', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla eu cursus diam. Ut rutrum sodales euismod. Phasellus cursus mi at odio molestie tincidunt. Vivamus a tempus mi. Mauris mattis vitae diam a pharetra. Nulla nec ex enim. Morbi sit amet quam tristique, ultrices urna in, rutrum lectus. Vivamus sed nisl nec purus lobortis cursus vel id elit. Cras in augue nisl.\r\n\r\nSed ac cursus erat. Maecenas vestibulum est et tincidunt dictum. Praesent eu justo tortor. Vestibulum posuere erat urna, sit amet maximus quam pulvinar eu. Sed porttitor maximus augue, vitae dictum eros vehicula ut. Aliquam ut volutpat nisi. Sed urna urna, finibus a mauris eu, tristique mollis arcu. Nulla ac risus augue.\r\n\r\nProin porta sapien cursus velit ullamcorper, sit amet consectetur augue pretium. Vestibulum fermentum malesuada nisi sit amet cursus. Aliquam auctor urna eget varius consequat. Vivamus non tortor suscipit, rutrum mi suscipit, ultrices nulla. Phasellus nec risus vel nunc suscipit suscipit. Vivamus egestas quis urna id consectetur. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Sed vel suscipit lacus, aliquet cursus odio. Sed eget fringilla ante. Nullam luctus eu metus id facilisis. Integer eu nulla fringilla, tempus lorem in, pulvinar tellus. Fusce pulvinar augue sed ante gravida tristique. Pellentesque sagittis tristique lobortis. Curabitur elit tellus, scelerisque a mollis vitae, euismod a enim. Mauris iaculis velit sit amet placerat porttitor. Ut sed massa eget lorem molestie ornare.\r\n\r\nCras ultricies facilisis est ac efficitur. In faucibus faucibus sapien eget efficitur. Morbi hendrerit arcu quis metus convallis, et aliquam metus eleifend. Maecenas a magna vitae enim vestibulum tincidunt in quis ante. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Fusce cursus eget felis ut finibus. Phasellus pharetra ultricies nunc, et varius ipsum lobortis eget. Cras in nulla lobortis massa imperdiet venenatis. In nunc libero, auctor quis tincidunt non, pretium quis magna. Donec quis orci nunc.\r\n\r\nOrci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Suspendisse lacinia accumsan nisl posuere iaculis. Etiam ultrices tincidunt pharetra. Sed nunc enim, sagittis a sapien ut, condimentum pellentesque tortor. Suspendisse potenti. Nullam in sem pharetra, consectetur lectus nec, volutpat leo. Vivamus at quam in ex tincidunt efficitur ac et nulla. Etiam pretium quis lacus feugiat sodales. Fusce enim metus, luctus id convallis at, luctus at arcu. Nullam vitae felis quis tellus hendrerit sollicitudin.', 'sample-article-22', '{"facebook":"https://www.facebook.com","instagram":"https://www.instagram.com","threads":"https://www.threads.net","youtube":"https://www.youtube.com","tiktok":"https://www.tiktok.com"}', 'english'),
 (44, '2024-04-12 12:00:00', 'Exemple d\'Article 22', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc quis dolor posuere, fringilla libero vel, vehicula leo. Curabitur eget dapibus magna. Pellentesque sit amet velit id mauris imperdiet pellentesque eget nec urna. Suspendisse potenti. Phasellus a est sed nunc consectetur mollis et nec neque. Proin maximus nibh sit amet nulla.', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla eu cursus diam. Ut rutrum sodales euismod. Phasellus cursus mi at odio molestie tincidunt. Vivamus a tempus mi. Mauris mattis vitae diam a pharetra. Nulla nec ex enim. Morbi sit amet quam tristique, ultrices urna in, rutrum lectus. Vivamus sed nisl nec purus lobortis cursus vel id elit. Cras in augue nisl.\r\n\r\nSed ac cursus erat. Maecenas vestibulum est et tincidunt dictum. Praesent eu justo tortor. Vestibulum posuere erat urna, sit amet maximus quam pulvinar eu. Sed porttitor maximus augue, vitae dictum eros vehicula ut. Aliquam ut volutpat nisi. Sed urna urna, finibus a mauris eu, tristique mollis arcu. Nulla ac risus augue.\r\n\r\nProin porta sapien cursus velit ullamcorper, sit amet consectetur augue pretium. Vestibulum fermentum malesuada nisi sit amet cursus. Aliquam auctor urna eget varius consequat. Vivamus non tortor suscipit, rutrum mi suscipit, ultrices nulla. Phasellus nec risus vel nunc suscipit suscipit. Vivamus egestas quis urna id consectetur. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Sed vel suscipit lacus, aliquet cursus odio. Sed eget fringilla ante. Nullam luctus eu metus id facilisis. Integer eu nulla fringilla, tempus lorem in, pulvinar tellus. Fusce pulvinar augue sed ante gravida tristique. Pellentesque sagittis tristique lobortis. Curabitur elit tellus, scelerisque a mollis vitae, euismod a enim. Mauris iaculis velit sit amet placerat porttitor. Ut sed massa eget lorem molestie ornare.\r\n\r\nCras ultricies facilisis est ac efficitur. In faucibus faucibus sapien eget efficitur. Morbi hendrerit arcu quis metus convallis, et aliquam metus eleifend. Maecenas a magna vitae enim vestibulum tincidunt in quis ante. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Fusce cursus eget felis ut finibus. Phasellus pharetra ultricies nunc, et varius ipsum lobortis eget. Cras in nulla lobortis massa imperdiet venenatis. In nunc libero, auctor quis tincidunt non, pretium quis magna. Donec quis orci nunc.\r\n\r\nOrci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Suspendisse lacinia accumsan nisl posuere iaculis. Etiam ultrices tincidunt pharetra. Sed nunc enim, sagittis a sapien ut, condimentum pellentesque tortor. Suspendisse potenti. Nullam in sem pharetra, consectetur lectus nec, volutpat leo. Vivamus at quam in ex tincidunt efficitur ac et nulla. Etiam pretium quis lacus feugiat sodales. Fusce enim metus, luctus id convallis at, luctus at arcu. Nullam vitae felis quis tellus hendrerit sollicitudin.', 'exemple-d-article-22', '{"facebook":"https://www.facebook.com","instagram":"https://www.instagram.com","threads":"https://www.threads.net","youtube":"https://www.youtube.com","tiktok":"https://www.tiktok.com"}', 'french'),
 (45, '2024-04-12 12:00:00', 'Sample Article 23', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc quis dolor posuere, fringilla libero vel, vehicula leo. Curabitur eget dapibus magna. Pellentesque sit amet velit id mauris imperdiet pellentesque eget nec urna. Suspendisse potenti. Phasellus a est sed nunc consectetur mollis et nec neque. Proin maximus nibh sit amet nulla.', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla eu cursus diam. Ut rutrum sodales euismod. Phasellus cursus mi at odio molestie tincidunt. Vivamus a tempus mi. Mauris mattis vitae diam a pharetra. Nulla nec ex enim. Morbi sit amet quam tristique, ultrices urna in, rutrum lectus. Vivamus sed nisl nec purus lobortis cursus vel id elit. Cras in augue nisl.\r\n\r\nSed ac cursus erat. Maecenas vestibulum est et tincidunt dictum. Praesent eu justo tortor. Vestibulum posuere erat urna, sit amet maximus quam pulvinar eu. Sed porttitor maximus augue, vitae dictum eros vehicula ut. Aliquam ut volutpat nisi. Sed urna urna, finibus a mauris eu, tristique mollis arcu. Nulla ac risus augue.\r\n\r\nProin porta sapien cursus velit ullamcorper, sit amet consectetur augue pretium. Vestibulum fermentum malesuada nisi sit amet cursus. Aliquam auctor urna eget varius consequat. Vivamus non tortor suscipit, rutrum mi suscipit, ultrices nulla. Phasellus nec risus vel nunc suscipit suscipit. Vivamus egestas quis urna id consectetur. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Sed vel suscipit lacus, aliquet cursus odio. Sed eget fringilla ante. Nullam luctus eu metus id facilisis. Integer eu nulla fringilla, tempus lorem in, pulvinar tellus. Fusce pulvinar augue sed ante gravida tristique. Pellentesque sagittis tristique lobortis. Curabitur elit tellus, scelerisque a mollis vitae, euismod a enim. Mauris iaculis velit sit amet placerat porttitor. Ut sed massa eget lorem molestie ornare.\r\n\r\nCras ultricies facilisis est ac efficitur. In faucibus faucibus sapien eget efficitur. Morbi hendrerit arcu quis metus convallis, et aliquam metus eleifend. Maecenas a magna vitae enim vestibulum tincidunt in quis ante. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Fusce cursus eget felis ut finibus. Phasellus pharetra ultricies nunc, et varius ipsum lobortis eget. Cras in nulla lobortis massa imperdiet venenatis. In nunc libero, auctor quis tincidunt non, pretium quis magna. Donec quis orci nunc.\r\n\r\nOrci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Suspendisse lacinia accumsan nisl posuere iaculis. Etiam ultrices tincidunt pharetra. Sed nunc enim, sagittis a sapien ut, condimentum pellentesque tortor. Suspendisse potenti. Nullam in sem pharetra, consectetur lectus nec, volutpat leo. Vivamus at quam in ex tincidunt efficitur ac et nulla. Etiam pretium quis lacus feugiat sodales. Fusce enim metus, luctus id convallis at, luctus at arcu. Nullam vitae felis quis tellus hendrerit sollicitudin.', 'sample-article-23', '{"facebook":"https://www.facebook.com","instagram":"https://www.instagram.com","threads":"https://www.threads.net","youtube":"https://www.youtube.com","tiktok":"https://www.tiktok.com"}', 'english'),
@@ -86,10 +86,10 @@ INSERT INTO `Articles` (`id`, `published`, `title`, `overview`, `content`, `link
 -- --------------------------------------------------------
 
 --
--- Table structure for table `Blocks`
+-- Table structure for table `Static__Blocks`
 --
 
-CREATE TABLE `Blocks` (
+CREATE TABLE `Static__Blocks` (
   `id` int(11) NOT NULL,
   `created` datetime NOT NULL,
   `deleted` datetime DEFAULT NULL,
@@ -99,19 +99,19 @@ CREATE TABLE `Blocks` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `Blocks`
+-- Dumping data for table `Static__Blocks`
 --
 
-INSERT INTO `Blocks` (`id`, `created`, `deleted`, `sessionID`, `blockerID`, `blockedID`) VALUES
+INSERT INTO `Static__Blocks` (`id`, `created`, `deleted`, `sessionID`, `blockerID`, `blockedID`) VALUES
 (1, '2024-04-12 12:00:00', '2024-04-12 12:00:00', 1, 1, 2);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `Confirmations`
+-- Table structure for table `Static__Confirmations`
 --
 
-CREATE TABLE `Confirmations` (
+CREATE TABLE `Static__Confirmations` (
   `id` int(11) NOT NULL,
   `created` datetime NOT NULL,
   `deleted` datetime DEFAULT NULL,
@@ -121,19 +121,19 @@ CREATE TABLE `Confirmations` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `Confirmations`
+-- Dumping data for table `Static__Confirmations`
 --
 
-INSERT INTO `Confirmations` (`id`, `created`, `deleted`, `sessionID`, `email`, `code`) VALUES
+INSERT INTO `Static__Confirmations` (`id`, `created`, `deleted`, `sessionID`, `email`, `code`) VALUES
 (1, '2024-04-12 12:00:00', NULL, 1, 'hello@pythony.dev', '1A2B3C4D');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `Contact`
+-- Table structure for table `Static__Contact`
 --
 
-CREATE TABLE `Contact` (
+CREATE TABLE `Static__Contact` (
   `id` int(11) NOT NULL,
   `created` datetime NOT NULL,
   `sessionID` int(11) NOT NULL,
@@ -143,19 +143,19 @@ CREATE TABLE `Contact` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `Contact`
+-- Dumping data for table `Static__Contact`
 --
 
-INSERT INTO `Contact` (`id`, `created`, `sessionID`, `userID`, `email`, `message`) VALUES
+INSERT INTO `Static__Contact` (`id`, `created`, `sessionID`, `userID`, `email`, `message`) VALUES
 (1, '2024-04-12 12:00:00', 1, 1, 'hello@pythony.dev', 'I would like to thank you for…');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `Emails`
+-- Table structure for table `Static__Emails`
 --
 
-CREATE TABLE `Emails` (
+CREATE TABLE `Static__Emails` (
   `id` int(11) NOT NULL,
   `created` datetime NOT NULL,
   `sessionID` int(11) NOT NULL,
@@ -166,19 +166,19 @@ CREATE TABLE `Emails` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `Emails`
+-- Dumping data for table `Static__Emails`
 --
 
-INSERT INTO `Emails` (`id`, `created`, `sessionID`, `userID`, `email`, `title`, `content`) VALUES
+INSERT INTO `Static__Emails` (`id`, `created`, `sessionID`, `userID`, `email`, `title`, `content`) VALUES
 (1, '2024-04-12 12:00:00', 1, 0, 'hello@pythony.dev', 'Static - Welcome', 'Hello, <br/> <br/> Thanks for Signing Up ! You can now <a href="https://www.pythony.dev/Static/?log-in"> Log In </a> to your Account with your Credentials : <br/> <br/> Email Address : hello@pythony.dev <br/> Password : 123 <br/> <br/> You can change this information on the <a href="https://www.pythony.dev/Static/settings"> Settings </a> page of your Account. <br/> <br/> Sincerely, <br/> <br/> The Static Team <br/> <br/> To unsubscribe, you can Contact Us <a href="mailto:hello@pythony.dev"> by Email </a> or via <a href="https://www.pythony.dev/Static/contact"> our Website. </a>');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `Errors`
+-- Table structure for table `Static__Errors`
 --
 
-CREATE TABLE `Errors` (
+CREATE TABLE `Static__Errors` (
   `id` int(11) NOT NULL,
   `created` datetime NOT NULL,
   `sessionID` int(11) NOT NULL,
@@ -189,19 +189,19 @@ CREATE TABLE `Errors` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `Errors`
+-- Dumping data for table `Static__Errors`
 --
 
-INSERT INTO `Errors` (`id`, `created`, `sessionID`, `userID`, `link`, `error`, `response`) VALUES
+INSERT INTO `Static__Errors` (`id`, `created`, `sessionID`, `userID`, `link`, `error`, `response`) VALUES
 (1, '2024-04-12 12:00:00', 1, 0, '/Static/', 200, 'Success');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `Logs`
+-- Table structure for table `Static__Logs`
 --
 
-CREATE TABLE `Logs` (
+CREATE TABLE `Static__Logs` (
   `id` int(11) NOT NULL,
   `created` datetime NOT NULL,
   `sessionID` int(11) NOT NULL,
@@ -210,20 +210,20 @@ CREATE TABLE `Logs` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `Logs`
+-- Dumping data for table `Static__Logs`
 --
 
-INSERT INTO `Logs` (`id`, `created`, `sessionID`, `userID`, `status`) VALUES
+INSERT INTO `Static__Logs` (`id`, `created`, `sessionID`, `userID`, `status`) VALUES
 (1, '2024-04-12 12:00:00', 1, 1, 'success'),
 (2, '2024-04-12 12:00:00', 1, 1, 'error');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `Messages`
+-- Table structure for table `Static__Messages`
 --
 
-CREATE TABLE `Messages` (
+CREATE TABLE `Static__Messages` (
   `id` int(11) NOT NULL,
   `created` datetime NOT NULL,
   `deleted` datetime DEFAULT NULL,
@@ -235,19 +235,19 @@ CREATE TABLE `Messages` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `Messages`
+-- Dumping data for table `Static__Messages`
 --
 
-INSERT INTO `Messages` (`id`, `created`, `deleted`, `sessionID`, `senderID`, `receiverID`, `message`, `image`) VALUES
+INSERT INTO `Static__Messages` (`id`, `created`, `deleted`, `sessionID`, `senderID`, `receiverID`, `message`, `image`) VALUES
 (1, '2024-04-12 12:00:00', NULL, 1, 1, 2, 'Hi Julie, it\'s Anthony !', 'bcc69d6a8f2dc7b02a951a4154136d29f745f51a');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `Posts`
+-- Table structure for table `Static__Posts`
 --
 
-CREATE TABLE `Posts` (
+CREATE TABLE `Static__Posts` (
   `id` int(11) NOT NULL,
   `created` datetime NOT NULL,
   `deleted` datetime DEFAULT NULL,
@@ -259,10 +259,10 @@ CREATE TABLE `Posts` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `Posts`
+-- Dumping data for table `Static__Posts`
 --
 
-INSERT INTO `Posts` (`id`, `created`, `deleted`, `sessionID`, `userID`, `threadID`, `message`, `image`) VALUES
+INSERT INTO `Static__Posts` (`id`, `created`, `deleted`, `sessionID`, `userID`, `threadID`, `message`, `image`) VALUES
 (1, '2024-04-12 12:00:00', NULL, 1, 1, 1, 'Welcome !', 'ee0f3838b49255130935e4f405d3f1864031de27'),
 (2, '2024-04-12 12:00:00', NULL, 1, 1, 2, 'Bienvenue !', 'da3653c8bfdb3d51977d8e5d75a53e7bda3f0de0'),
 (3, '2024-04-12 12:00:00', NULL, 1, 2, 1, 'Hello, I am Julie !', NULL),
@@ -287,10 +287,10 @@ INSERT INTO `Posts` (`id`, `created`, `deleted`, `sessionID`, `userID`, `threadI
 -- --------------------------------------------------------
 
 --
--- Table structure for table `Reports`
+-- Table structure for table `Static__Reports`
 --
 
-CREATE TABLE `Reports` (
+CREATE TABLE `Static__Reports` (
   `id` int(11) NOT NULL,
   `created` datetime NOT NULL,
   `sessionID` int(11) NOT NULL,
@@ -300,10 +300,10 @@ CREATE TABLE `Reports` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `Reports`
+-- Dumping data for table `Static__Reports`
 --
 
-INSERT INTO `Reports` (`id`, `created`, `sessionID`, `userID`, `setting`, `value`) VALUES
+INSERT INTO `Static__Reports` (`id`, `created`, `sessionID`, `userID`, `setting`, `value`) VALUES
 (1, '2024-04-12 12:00:00', 1, 1, 'thread', 1),
 (2, '2024-04-12 12:00:00', 1, 1, 'thread', 2),
 (3, '2024-04-12 12:00:00', 1, 1, 'post', 1),
@@ -312,10 +312,10 @@ INSERT INTO `Reports` (`id`, `created`, `sessionID`, `userID`, `setting`, `value
 -- --------------------------------------------------------
 
 --
--- Table structure for table `Requests`
+-- Table structure for table `Static__Requests`
 --
 
-CREATE TABLE `Requests` (
+CREATE TABLE `Static__Requests` (
   `id` int(11) NOT NULL,
   `created` datetime NOT NULL,
   `sessionID` int(11) NOT NULL,
@@ -326,19 +326,19 @@ CREATE TABLE `Requests` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `Requests`
+-- Dumping data for table `Static__Requests`
 --
 
-INSERT INTO `Requests` (`id`, `created`, `sessionID`, `userID`, `link`, `request`, `language`) VALUES
+INSERT INTO `Static__Requests` (`id`, `created`, `sessionID`, `userID`, `link`, `request`, `language`) VALUES
 (1, '2024-04-12 12:00:00', 1, 0, '/Static/', NULL, 'english');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `Sessions`
+-- Table structure for table `Static__Sessions`
 --
 
-CREATE TABLE `Sessions` (
+CREATE TABLE `Static__Sessions` (
   `id` int(11) NOT NULL,
   `created` datetime NOT NULL,
   `ipAddress` varchar(255) DEFAULT NULL,
@@ -347,37 +347,37 @@ CREATE TABLE `Sessions` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `Sessions`
+-- Dumping data for table `Static__Sessions`
 --
 
-INSERT INTO `Sessions` (`id`, `created`, `ipAddress`, `userAgent`, `parameters`) VALUES
+INSERT INTO `Static__Sessions` (`id`, `created`, `ipAddress`, `userAgent`, `parameters`) VALUES
 (1, '2024-04-12 12:00:00', '127.0.0.1', 'Static/1.0', NULL);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `Tasks`
+-- Table structure for table `Static__Tasks`
 --
 
-CREATE TABLE `Tasks` (
+CREATE TABLE `Static__Tasks` (
   `id` int(11) NOT NULL,
   `created` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `Tasks`
+-- Dumping data for table `Static__Tasks`
 --
 
-INSERT INTO `Tasks` (`id`, `created`) VALUES
+INSERT INTO `Static__Tasks` (`id`, `created`) VALUES
 (1, '2024-04-12 12:00:00');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `Threads`
+-- Table structure for table `Static__Threads`
 --
 
-CREATE TABLE `Threads` (
+CREATE TABLE `Static__Threads` (
   `id` int(11) NOT NULL,
   `created` datetime NOT NULL,
   `deleted` datetime DEFAULT NULL,
@@ -386,20 +386,20 @@ CREATE TABLE `Threads` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `Threads`
+-- Dumping data for table `Static__Threads`
 --
 
-INSERT INTO `Threads` (`id`, `created`, `deleted`, `title`, `language`) VALUES
+INSERT INTO `Static__Threads` (`id`, `created`, `deleted`, `title`, `language`) VALUES
 (1, '2024-04-12 12:00:00', NULL, 'Hello World from Static !', 'english'),
 (2, '2024-04-12 12:00:00', NULL, 'Hello World de Static !', 'french');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `Tokens`
+-- Table structure for table `Static__Tokens`
 --
 
-CREATE TABLE `Tokens` (
+CREATE TABLE `Static__Tokens` (
   `id` int(11) NOT NULL,
   `created` datetime NOT NULL,
   `deleted` datetime DEFAULT NULL,
@@ -409,19 +409,19 @@ CREATE TABLE `Tokens` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `Tokens`
+-- Dumping data for table `Static__Tokens`
 --
 
-INSERT INTO `Tokens` (`id`, `created`, `deleted`, `sessionID`, `userID`, `value`) VALUES
+INSERT INTO `Static__Tokens` (`id`, `created`, `deleted`, `sessionID`, `userID`, `value`) VALUES
 (1, '2024-04-12 12:00:00', NULL, 1, 0, 'a885ab870f0c919fa2452e7cfaaf7036f2121c92');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `Updates`
+-- Table structure for table `Static__Updates`
 --
 
-CREATE TABLE `Updates` (
+CREATE TABLE `Static__Updates` (
   `id` int(11) NOT NULL,
   `created` datetime NOT NULL,
   `sessionID` int(11) NOT NULL,
@@ -431,10 +431,10 @@ CREATE TABLE `Updates` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `Updates`
+-- Dumping data for table `Static__Updates`
 --
 
-INSERT INTO `Updates` (`id`, `created`, `sessionID`, `userID`, `setting`, `value`) VALUES
+INSERT INTO `Static__Updates` (`id`, `created`, `sessionID`, `userID`, `setting`, `value`) VALUES
 (1, '2024-04-12 12:00:00', 1, 1, 'email', 'hello@pythony.dev'),
 (2, '2024-04-12 12:00:00', 1, 1, 'username', 'Pythony'),
 (3, '2024-04-12 12:00:00', 1, 1, 'password', 'd7c35a4da36a8fe3d0ebec8e5cc91b0816a18516'),
@@ -443,10 +443,10 @@ INSERT INTO `Updates` (`id`, `created`, `sessionID`, `userID`, `setting`, `value
 -- --------------------------------------------------------
 
 --
--- Table structure for table `Users`
+-- Table structure for table `Static__Users`
 --
 
-CREATE TABLE `Users` (
+CREATE TABLE `Static__Users` (
   `id` int(11) NOT NULL,
   `created` datetime NOT NULL,
   `deleted` datetime DEFAULT NULL,
@@ -460,10 +460,10 @@ CREATE TABLE `Users` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `Users`
+-- Dumping data for table `Static__Users`
 --
 
-INSERT INTO `Users` (`id`, `created`, `deleted`, `sessionID`, `email`, `username`, `language`, `notifications`, `others`, `password`) VALUES
+INSERT INTO `Static__Users` (`id`, `created`, `deleted`, `sessionID`, `email`, `username`, `language`, `notifications`, `others`, `password`) VALUES
 (1, '2024-04-12 12:00:00', NULL, 1, 'hello@pythony.dev', 'Pythony', 'english', '{"message":"true","published":"true"}', '{"theme":"aqua","languages":"english,french","contact":"true"}', '65e2ea4f025f942a7923c60f90ac16919c6eb3e1'),
 (2, '2024-04-12 12:00:00', NULL, 1, 'julie@pythony.dev', 'Julie', 'english', '{"message":"true","published":"true"}', '{"theme":"aqua","languages":"english,french","contact":"true"}', '65e2ea4f025f942a7923c60f90ac16919c6eb3e1'),
 (3, '2024-04-12 12:00:00', NULL, 1, 'marc@pythony.dev', 'Marc', 'english', '{"message":"true","published":"true"}', '{"theme":"aqua","languages":"english,french","contact":"true"}', '65e2ea4f025f942a7923c60f90ac16919c6eb3e1'),
@@ -478,10 +478,10 @@ INSERT INTO `Users` (`id`, `created`, `deleted`, `sessionID`, `email`, `username
 -- --------------------------------------------------------
 
 --
--- Table structure for table `Welcome`
+-- Table structure for table `Static__Welcome`
 --
 
-CREATE TABLE `Welcome` (
+CREATE TABLE `Static__Welcome` (
   `id` int(11) NOT NULL,
   `created` datetime NOT NULL,
   `deleted` datetime DEFAULT NULL,
@@ -492,10 +492,10 @@ CREATE TABLE `Welcome` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `Welcome`
+-- Dumping data for table `Static__Welcome`
 --
 
-INSERT INTO `Welcome` (`id`, `created`, `deleted`, `sessionID`, `userID`, `email`, `language`) VALUES
+INSERT INTO `Static__Welcome` (`id`, `created`, `deleted`, `sessionID`, `userID`, `email`, `language`) VALUES
 (1, '2024-04-12 12:00:00', NULL, 1, 0, 'hello@pythony.dev', 'english');
 
 --
@@ -503,111 +503,111 @@ INSERT INTO `Welcome` (`id`, `created`, `deleted`, `sessionID`, `userID`, `email
 --
 
 --
--- Indexes for table `Articles`
+-- Indexes for table `Static__Articles`
 --
-ALTER TABLE `Articles`
+ALTER TABLE `Static__Articles`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `Blocks`
+-- Indexes for table `Static__Blocks`
 --
-ALTER TABLE `Blocks`
+ALTER TABLE `Static__Blocks`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `Confirmations`
+-- Indexes for table `Static__Confirmations`
 --
-ALTER TABLE `Confirmations`
+ALTER TABLE `Static__Confirmations`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `Contact`
+-- Indexes for table `Static__Contact`
 --
-ALTER TABLE `Contact`
+ALTER TABLE `Static__Contact`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `Emails`
+-- Indexes for table `Static__Emails`
 --
-ALTER TABLE `Emails`
+ALTER TABLE `Static__Emails`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `Errors`
+-- Indexes for table `Static__Errors`
 --
-ALTER TABLE `Errors`
+ALTER TABLE `Static__Errors`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `Logs`
+-- Indexes for table `Static__Logs`
 --
-ALTER TABLE `Logs`
+ALTER TABLE `Static__Logs`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `Messages`
+-- Indexes for table `Static__Messages`
 --
-ALTER TABLE `Messages`
+ALTER TABLE `Static__Messages`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `Posts`
+-- Indexes for table `Static__Posts`
 --
-ALTER TABLE `Posts`
+ALTER TABLE `Static__Posts`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `Reports`
+-- Indexes for table `Static__Reports`
 --
-ALTER TABLE `Reports`
+ALTER TABLE `Static__Reports`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `Requests`
+-- Indexes for table `Static__Requests`
 --
-ALTER TABLE `Requests`
+ALTER TABLE `Static__Requests`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `Sessions`
+-- Indexes for table `Static__Sessions`
 --
-ALTER TABLE `Sessions`
+ALTER TABLE `Static__Sessions`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `Tasks`
+-- Indexes for table `Static__Tasks`
 --
-ALTER TABLE `Tasks`
+ALTER TABLE `Static__Tasks`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `Threads`
+-- Indexes for table `Static__Threads`
 --
-ALTER TABLE `Threads`
+ALTER TABLE `Static__Threads`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `Tokens`
+-- Indexes for table `Static__Tokens`
 --
-ALTER TABLE `Tokens`
+ALTER TABLE `Static__Tokens`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `Updates`
+-- Indexes for table `Static__Updates`
 --
-ALTER TABLE `Updates`
+ALTER TABLE `Static__Updates`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `Users`
+-- Indexes for table `Static__Users`
 --
-ALTER TABLE `Users`
+ALTER TABLE `Static__Users`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `Welcome`
+-- Indexes for table `Static__Welcome`
 --
-ALTER TABLE `Welcome`
+ALTER TABLE `Static__Welcome`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -615,109 +615,109 @@ ALTER TABLE `Welcome`
 --
 
 --
--- AUTO_INCREMENT for table `Articles`
+-- AUTO_INCREMENT for table `Static__Articles`
 --
-ALTER TABLE `Articles`
+ALTER TABLE `Static__Articles`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=51;
 
 --
--- AUTO_INCREMENT for table `Blocks`
+-- AUTO_INCREMENT for table `Static__Blocks`
 --
-ALTER TABLE `Blocks`
+ALTER TABLE `Static__Blocks`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
--- AUTO_INCREMENT for table `Confirmations`
+-- AUTO_INCREMENT for table `Static__Confirmations`
 --
-ALTER TABLE `Confirmations`
+ALTER TABLE `Static__Confirmations`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
--- AUTO_INCREMENT for table `Contact`
+-- AUTO_INCREMENT for table `Static__Contact`
 --
-ALTER TABLE `Contact`
+ALTER TABLE `Static__Contact`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
--- AUTO_INCREMENT for table `Emails`
+-- AUTO_INCREMENT for table `Static__Emails`
 --
-ALTER TABLE `Emails`
+ALTER TABLE `Static__Emails`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
--- AUTO_INCREMENT for table `Errors`
+-- AUTO_INCREMENT for table `Static__Errors`
 --
-ALTER TABLE `Errors`
+ALTER TABLE `Static__Errors`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
--- AUTO_INCREMENT for table `Logs`
+-- AUTO_INCREMENT for table `Static__Logs`
 --
-ALTER TABLE `Logs`
+ALTER TABLE `Static__Logs`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
--- AUTO_INCREMENT for table `Messages`
+-- AUTO_INCREMENT for table `Static__Messages`
 --
-ALTER TABLE `Messages`
+ALTER TABLE `Static__Messages`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
--- AUTO_INCREMENT for table `Posts`
+-- AUTO_INCREMENT for table `Static__Posts`
 --
-ALTER TABLE `Posts`
+ALTER TABLE `Static__Posts`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
--- AUTO_INCREMENT for table `Reports`
+-- AUTO_INCREMENT for table `Static__Reports`
 --
-ALTER TABLE `Reports`
+ALTER TABLE `Static__Reports`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
--- AUTO_INCREMENT for table `Requests`
+-- AUTO_INCREMENT for table `Static__Requests`
 --
-ALTER TABLE `Requests`
+ALTER TABLE `Static__Requests`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
--- AUTO_INCREMENT for table `Sessions`
+-- AUTO_INCREMENT for table `Static__Sessions`
 --
-ALTER TABLE `Sessions`
+ALTER TABLE `Static__Sessions`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
--- AUTO_INCREMENT for table `Tasks`
+-- AUTO_INCREMENT for table `Static__Tasks`
 --
-ALTER TABLE `Tasks`
+ALTER TABLE `Static__Tasks`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
--- AUTO_INCREMENT for table `Threads`
+-- AUTO_INCREMENT for table `Static__Threads`
 --
-ALTER TABLE `Threads`
+ALTER TABLE `Static__Threads`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
--- AUTO_INCREMENT for table `Tokens`
+-- AUTO_INCREMENT for table `Static__Tokens`
 --
-ALTER TABLE `Tokens`
+ALTER TABLE `Static__Tokens`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
--- AUTO_INCREMENT for table `Updates`
+-- AUTO_INCREMENT for table `Static__Updates`
 --
-ALTER TABLE `Updates`
+ALTER TABLE `Static__Updates`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
--- AUTO_INCREMENT for table `Users`
+-- AUTO_INCREMENT for table `Static__Users`
 --
-ALTER TABLE `Users`
+ALTER TABLE `Static__Users`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
--- AUTO_INCREMENT for table `Welcome`
+-- AUTO_INCREMENT for table `Static__Welcome`
 --
-ALTER TABLE `Welcome`
+ALTER TABLE `Static__Welcome`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;

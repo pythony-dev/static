@@ -15,7 +15,7 @@
             if(\Static\Models\Users::isEmail($email) != "success") return "email";
             else if($sessionID <= 0 || $userID < 0 || !self::delete($email)) return "error";
 
-            $query = parent::$pdo->prepare("INSERT INTO Welcome (created, deleted, sessionID, userID, email, language) VALUES (NOW(), NULL, :sessionID, :userID, :email, :language)");
+            $query = parent::$pdo->prepare("INSERT INTO " . parent::getPrefix() . "Welcome (created, deleted, sessionID, userID, email, language) VALUES (NOW(), NULL, :sessionID, :userID, :email, :language)");
             $query->bindValue(":sessionID", $sessionID, PDO::PARAM_INT);
             $query->bindValue(":userID", $userID, PDO::PARAM_INT);
             $query->bindValue(":email", $email, PDO::PARAM_STR);
@@ -39,14 +39,14 @@
 
             if(!in_array(\Static\Models\Users::isEmail($email), array("success", "used"))) return false;
 
-            $query = parent::$pdo->prepare("UPDATE Welcome SET deleted = NOW() WHERE deleted IS NULL AND email = :email");
+            $query = parent::$pdo->prepare("UPDATE " . parent::getPrefix() . "Welcome SET deleted = NOW() WHERE deleted IS NULL AND email = :email");
             $query->bindValue(":email", $email, PDO::PARAM_STR);
 
             return $query->execute();
         }
 
         public static function newsletter() {
-            $query = parent::$pdo->query("SELECT email, language FROM Welcome WHERE deleted IS NULL AND DATEDIFF(NOW(), created) IN (1, 3, 7, 15, 31)");
+            $query = parent::$pdo->query("SELECT email, language FROM " . parent::getPrefix() . "Welcome WHERE deleted IS NULL AND DATEDIFF(NOW(), created) IN (1, 3, 7, 15, 31)");
 
             while($welcome = $query->fetch()) {
                 \Static\Languages\Translate::setLanguage(\Static\Kernel::getValue($welcome, "language"));

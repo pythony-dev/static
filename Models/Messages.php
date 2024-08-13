@@ -19,7 +19,7 @@
                     Users.username AS username,
                     (
                         SELECT MAX(created)
-                        FROM Messages
+                        FROM " . parent::getPrefix() . "Messages
                         WHERE
                             (senderID = :userID AND receiverID = Users.id)
                             OR
@@ -27,7 +27,7 @@
                     ) AS updated,
                     (
                         SELECT message
-                        FROM Messages
+                        FROM " . parent::getPrefix() . "Messages
                         WHERE
                             (senderID = :userID AND receiverID = Users.id)
                             OR
@@ -35,8 +35,8 @@
                         ORDER BY ID DESC
                         LIMIT 1
                     ) AS message
-                FROM Messages
-                INNER JOIN Users
+                FROM " . parent::getPrefix() . "Messages AS Messages
+                INNER JOIN " . parent::getPrefix() . "Users AS Users
                 ON Users.id = IF(Messages.senderID = :userID, Messages.receiverID, Messages.senderID)
                 WHERE
                     Messages.deleted IS NULL
@@ -91,8 +91,8 @@
                     Messages.image AS image,
                     Users.id AS userID,
                     Users.username AS username
-                FROM Messages
-                INNER JOIN Users
+                FROM " . parent::getPrefix() . "Messages AS Messages
+                INNER JOIN " . parent::getPrefix() . "Users AS Users
                 ON Users.id = Messages.senderID
                 WHERE
                     Messages.deleted IS NULL
@@ -144,7 +144,7 @@
             if($status != "success") return $status;
             else if($receiverID <= 0 || empty($message) || $sessionID <= 0 || $userID <= 0 || $receiverID == $userID) return "error";
 
-            $query = parent::$pdo->prepare("INSERT INTO Messages (created, deleted, sessionID, senderID, receiverID, message, image) VALUES (NOW(), NULL, :sessionID, :senderID, :receiverID, :message, :image)");
+            $query = parent::$pdo->prepare("INSERT INTO " . parent::getPrefix() . "Messages (created, deleted, sessionID, senderID, receiverID, message, image) VALUES (NOW(), NULL, :sessionID, :senderID, :receiverID, :message, :image)");
             $query->bindValue(":sessionID", $sessionID, PDO::PARAM_INT);
             $query->bindValue(":senderID", $userID, PDO::PARAM_INT);
             $query->bindValue(":receiverID", $receiverID, PDO::PARAM_INT);
@@ -181,7 +181,7 @@
 
             if($messageID <= 0 || $userID <= 0) return "error";
 
-            $query = parent::$pdo->prepare("UPDATE Messages SET deleted = NOW() WHERE id = :messageID AND deleted IS NULL AND senderID = :userID");
+            $query = parent::$pdo->prepare("UPDATE " . parent::getPrefix() . "Messages SET deleted = NOW() WHERE id = :messageID AND deleted IS NULL AND senderID = :userID");
             $query->bindValue(":messageID", $messageID, PDO::PARAM_INT);
             $query->bindValue(":userID", $userID, PDO::PARAM_INT);
 
@@ -196,7 +196,7 @@
             if($otherID <= 0 || $userID <= 0) return "error";
 
             $query = parent::$pdo->prepare("
-                UPDATE Messages
+                UPDATE " . parent::getPrefix() . "Messages
                 SET deleted = NOW()
                 WHERE
                     deleted IS NULL
@@ -218,7 +218,7 @@
 
             if($userID <= 0) return false;
 
-            $query = parent::$pdo->prepare("UPDATE Messages SET deleted = NOW() WHERE deleted IS NULL AND (senderID = :userID OR receiverID = :userID)");
+            $query = parent::$pdo->prepare("UPDATE " . parent::getPrefix() . "Messages SET deleted = NOW() WHERE deleted IS NULL AND (senderID = :userID OR receiverID = :userID)");
             $query->bindValue(":userID", $userID, PDO::PARAM_INT);
 
             return $query->execute();
@@ -234,8 +234,8 @@
             $query = parent::$pdo->prepare("
                 SELECT
                     others,
-                    (SELECT COUNT(id) FROM Blocks WHERE deleted IS NULL AND blockerID = :otherID AND blockedID = :userID) AS blocks
-                FROM Users
+                    (SELECT COUNT(id) FROM " . parent::getPrefix() . "Blocks WHERE deleted IS NULL AND blockerID = :otherID AND blockedID = :userID) AS blocks
+                FROM " . parent::getPrefix() . "Users
                 WHERE
                     id = :otherID
                     AND
@@ -260,7 +260,7 @@
 
             $query = parent::$pdo->prepare("
                 SELECT COUNT(id) AS count
-                FROM Messages
+                FROM " . parent::getPrefix() . "Messages
                 WHERE
                     deleted IS NULL
                     AND
@@ -282,7 +282,7 @@
 
             if(empty($hash)) return 0;
 
-            $query = parent::$pdo->query("SELECT id FROM Messages WHERE deleted IS NULL ORDER BY ID DESC");
+            $query = parent::$pdo->query("SELECT id FROM " . parent::getPrefix() . "Messages WHERE deleted IS NULL ORDER BY ID DESC");
 
             while($response = $query->fetch()) {
                 if(\Static\Kernel::getHash("Message", $response["id"]) == $hash) return $response["id"];

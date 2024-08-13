@@ -6,8 +6,8 @@
 
         private static $settings = array(
             "name" => "Static",
-            "version" => "2.1.1",
-            "static" => "2.1.1",
+            "version" => "2.1.2",
+            "static" => "2.1.2",
 
             "link" => "https://www.pythony.dev/Static",
             "email" => "hello@pythony.dev",
@@ -19,6 +19,7 @@
             "database" => "Static",
             "username" => "Pythony",
             "password" => "Pythony123#",
+            "prefix" => "Static",
 
             "facebook" => "https://www.facebook.com",
             "instagram" => "https://www.instagram.com",

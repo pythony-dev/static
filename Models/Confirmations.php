@@ -24,7 +24,7 @@
                 else $code .= chr($random + 55);
             }
 
-            $query = parent::$pdo->prepare("INSERT INTO Confirmations (created, deleted, sessionID, email, code) VALUES (NOW(), NULL, :sessionID, :email, :code)");
+            $query = parent::$pdo->prepare("INSERT INTO " . parent::getPrefix() . "Confirmations (created, deleted, sessionID, email, code) VALUES (NOW(), NULL, :sessionID, :email, :code)");
             $query->bindValue(":sessionID", $sessionID, PDO::PARAM_INT);
             $query->bindValue(":email", $email, PDO::PARAM_STR);
             $query->bindValue(":code", $code, PDO::PARAM_STR);
@@ -42,7 +42,7 @@
 
             if(!in_array(\Static\Models\Users::isEmail($email), array("success", "used"))) return false;
 
-            $query = parent::$pdo->prepare("UPDATE Confirmations SET deleted = NOW() WHERE deleted IS NULL AND email = :email");
+            $query = parent::$pdo->prepare("UPDATE " . parent::getPrefix() . "Confirmations SET deleted = NOW() WHERE deleted IS NULL AND email = :email");
             $query->bindValue(":email", $email, PDO::PARAM_STR);
 
             return $query->execute();
@@ -54,7 +54,7 @@
 
             if(!in_array(\Static\Models\Users::isEmail($email), array("success", "used")) || strlen($code) != 8) return false;
 
-            $query = parent::$pdo->prepare("SELECT id FROM Confirmations WHERE deleted IS NULL AND email = :email AND code = :code AND UNIX_TIMESTAMP(NOW()) - UNIX_TIMESTAMP(created) <= 3600");
+            $query = parent::$pdo->prepare("SELECT id FROM " . parent::getPrefix() . "Confirmations WHERE deleted IS NULL AND email = :email AND code = :code AND UNIX_TIMESTAMP(NOW()) - UNIX_TIMESTAMP(created) <= 3600");
             $query->bindValue(":email", $email, PDO::PARAM_STR);
             $query->bindValue(":code", $code, PDO::PARAM_STR);
             $query->execute();

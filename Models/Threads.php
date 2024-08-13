@@ -15,13 +15,13 @@
                 SELECT
                     id,
                     title,
-                    (SELECT userID FROM Posts WHERE threadID = Threads.id LIMIT 1) AS userID,
-                    (SELECT username FROM Users WHERE id = userID) AS author,
-                    (SELECT MAX(created) FROM Posts WHERE threadID = Threads.id) AS updated,
+                    (SELECT userID FROM " . parent::getPrefix() . "Posts WHERE threadID = Threads.id LIMIT 1) AS userID,
+                    (SELECT username FROM " . parent::getPrefix() . "Users WHERE id = userID) AS author,
+                    (SELECT MAX(created) FROM " . parent::getPrefix() . "Posts WHERE threadID = Threads.id) AS updated,
                     (
                         SELECT COUNT(Posts.id)
-                        FROM Posts
-                        INNER JOIN Users
+                        FROM " . parent::getPrefix() . "Posts AS Posts
+                        INNER JOIN " . parent::getPrefix() . "Users AS Users
                         ON Users.id = Posts.userID
                         WHERE
                             Posts.deleted IS NULL
@@ -30,7 +30,7 @@
                             AND
                             Users.deleted IS NULL
                     ) AS count
-                FROM Threads
+                FROM " . parent::getPrefix() . "Threads AS Threads
                 WHERE
                     deleted IS NULL
                     AND
@@ -38,8 +38,8 @@
                     AND
                     (
                         SELECT COUNT(Posts.id)
-                        FROM Posts
-                        INNER JOIN Users
+                        FROM " . parent::getPrefix() . "Posts AS Posts
+                        INNER JOIN " . parent::getPrefix() . "Users AS Users
                         ON Users.id = Posts.userID
                         WHERE
                             Posts.deleted IS NULL
@@ -79,7 +79,7 @@
         public static function count() {
             $query = parent::$pdo->prepare("
                 SELECT COUNT(id) AS count
-                FROM Threads
+                FROM " . parent::getPrefix() . "Threads AS Threads
                 WHERE
                     deleted IS NULL
                     AND
@@ -87,8 +87,8 @@
                     AND
                     (
                         SELECT COUNT(Posts.id)
-                        FROM Posts
-                        INNER JOIN Users
+                        FROM " . parent::getPrefix() . "Posts AS Posts
+                        INNER JOIN " . parent::getPrefix() . "Users AS Users
                         ON Users.id = Posts.userID
                         WHERE
                             Posts.deleted IS NULL
@@ -101,7 +101,7 @@
             $query->bindValue(":languages", \Static\Languages\Translate::getUserLanguage(), PDO::PARAM_STR);
             $query->execute();
 
-            return $query->fetch()["count"] ?? 0;
+            return max($query->fetch()["count"] ?? 0, 1);
         }
 
         public static function create($title, $message, $image) {
@@ -114,7 +114,7 @@
 
             if(empty($title) || empty($message) || $sessionID <= 0 || $userID <= 0) return "error";
 
-            $query = parent::$pdo->prepare("INSERT INTO Threads (created, deleted, title, language) VALUES (NOW(), NULL, :title, :language)");
+            $query = parent::$pdo->prepare("INSERT INTO " . parent::getPrefix() . "Threads (created, deleted, title, language) VALUES (NOW(), NULL, :title, :language)");
             $query->bindValue(":title", $title, PDO::PARAM_STR);
             $query->bindValue(":language", \Static\Languages\Translate::getLanguage(), PDO::PARAM_STR);
 
@@ -136,13 +136,13 @@
 
             if($threadID <= 0 || $sessionID <= 0 || $userID <= 0) return "error";
 
-            $query = parent::$pdo->prepare("SELECT userID FROM Posts WHERE threadID = :threadID LIMIT 1");
+            $query = parent::$pdo->prepare("SELECT userID FROM " . parent::getPrefix() . "Posts WHERE threadID = :threadID LIMIT 1");
             $query->bindValue(":threadID", $threadID, PDO::PARAM_INT);
             $query->execute();
 
             if(!($author = $query->fetch()["userID"]) || $author != $userID) return "error";
 
-            $query = parent::$pdo->prepare("UPDATE Threads SET deleted = NOW() WHERE id = :threadID AND deleted IS NULL");
+            $query = parent::$pdo->prepare("UPDATE " . parent::getPrefix() . "Threads SET deleted = NOW() WHERE id = :threadID AND deleted IS NULL");
             $query->bindValue(":threadID", $threadID, PDO::PARAM_INT);
 
             return $query->execute() && (int)$query->rowCount() == 1 ? "success" : "error";
@@ -153,7 +153,7 @@
 
             if(empty($hash)) return 0;
 
-            $query = parent::$pdo->query("SELECT id, title FROM Threads WHERE deleted IS NULL ORDER BY ID DESC");
+            $query = parent::$pdo->query("SELECT id, title FROM " . parent::getPrefix() . "Threads WHERE deleted IS NULL ORDER BY ID DESC");
 
             while($response = $query->fetch()) {
                 if(\Static\Kernel::getHash("Thread", $response["id"]) == $hash) return !$title ? $response["id"] : $response["title"];

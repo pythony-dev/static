@@ -16,6 +16,10 @@
             }
         }
 
+        public final static function getPrefix() {
+            return \Static\Settings::getSettings("prefix") ? \Static\Settings::getSettings("prefix") . "__" : null;
+        }
+
     }
 
 ?>

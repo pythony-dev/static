@@ -15,7 +15,7 @@
 
             if($value <= 0 || $sessionID <= 0 || $userID < 0) return "error";
 
-            $query = parent::$pdo->prepare("INSERT INTO Reports (created, sessionID, userID, setting, value) VALUES (NOW(), :sessionID, :userID, :setting, :value)");
+            $query = parent::$pdo->prepare("INSERT INTO " . parent::getPrefix() . "Reports (created, sessionID, userID, setting, value) VALUES (NOW(), :sessionID, :userID, :setting, :value)");
             $query->bindValue(":sessionID", $sessionID, PDO::PARAM_INT);
             $query->bindValue(":userID", $userID, PDO::PARAM_INT);
             $query->bindValue(":setting", $setting, PDO::PARAM_STR);

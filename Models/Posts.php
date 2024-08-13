@@ -20,8 +20,8 @@
                     Posts.message AS message,
                     Posts.image AS image,
                     Users.username AS username
-                FROM Posts
-                INNER JOIN Users
+                FROM " . parent::getPrefix() . "Posts AS Posts
+                INNER JOIN " . parent::getPrefix() . "Users AS Users
                 ON Users.id = Posts.userID
                 WHERE
                     Posts.deleted IS NULL
@@ -61,8 +61,8 @@
 
             $query = parent::$pdo->prepare("
                 SELECT COUNT(Posts.id) AS count
-                FROM Posts
-                INNER JOIN Users
+                FROM " . parent::getPrefix() . "Posts AS Posts
+                INNER JOIN " . parent::getPrefix() . "Users AS Users
                 ON Users.id = Posts.userID
                 WHERE
                     Posts.deleted IS NULL
@@ -74,7 +74,7 @@
             $query->bindValue(":threadID", $threadID, PDO::PARAM_INT);
             $query->execute();
 
-            return $query->fetch()["count"] ?? 0;
+            return max($query->fetch()["count"] ?? 0, 1);
         }
 
         public static function create($link, $message, $image) {
@@ -88,7 +88,7 @@
 
             if($threadID <= 0 || empty($message) || $sessionID <= 0 || $userID <= 0) return "error";
 
-            $query = parent::$pdo->prepare("INSERT INTO Posts (created, deleted, sessionID, userID, threadID, message, image) VALUES (NOW(), NULL, :sessionID, :userID, :threadID, :message, :image)");
+            $query = parent::$pdo->prepare("INSERT INTO " . parent::getPrefix() . "Posts (created, deleted, sessionID, userID, threadID, message, image) VALUES (NOW(), NULL, :sessionID, :userID, :threadID, :message, :image)");
             $query->bindValue(":sessionID", $sessionID, PDO::PARAM_INT);
             $query->bindValue(":userID", $userID, PDO::PARAM_INT);
             $query->bindValue(":threadID", $threadID, PDO::PARAM_INT);
@@ -108,13 +108,13 @@
 
             if($postID <= 0 || $userID <= 0) return "error";
 
-            $query = parent::$pdo->prepare("SELECT MIN(id) AS id FROM Posts WHERE threadID = (SELECT threadID FROM Posts WHERE id = :postID)");
+            $query = parent::$pdo->prepare("SELECT MIN(id) AS id FROM " . parent::getPrefix() . "Posts WHERE threadID = (SELECT threadID FROM " . parent::getPrefix() . "Posts WHERE id = :postID)");
             $query->bindValue(":postID", $postID, PDO::PARAM_INT);
             $query->execute();
 
             if(!($firstID = $query->fetch()["id"]) || $firstID == $postID) return "error";
 
-            $query = parent::$pdo->prepare("UPDATE Posts SET deleted = NOW() WHERE id = :postID AND deleted IS NULL AND userID = :userID");
+            $query = parent::$pdo->prepare("UPDATE " . parent::getPrefix() . "Posts SET deleted = NOW() WHERE id = :postID AND deleted IS NULL AND userID = :userID");
             $query->bindValue(":postID", $postID, PDO::PARAM_INT);
             $query->bindValue(":userID", $userID, PDO::PARAM_INT);
 
@@ -126,7 +126,7 @@
 
             if(empty($hash)) return 0;
 
-            $query = parent::$pdo->query("SELECT id FROM Posts WHERE deleted IS NULL ORDER BY ID DESC");
+            $query = parent::$pdo->query("SELECT id FROM " . parent::getPrefix() . "Posts WHERE deleted IS NULL ORDER BY ID DESC");
 
             while($response = $query->fetch()) {
                 if(\Static\Kernel::getHash("Post", $response["id"]) == $hash) return $response["id"];

@@ -11,7 +11,7 @@
 
             if($page <= 0) return array();
 
-            $query = parent::$pdo->prepare("SELECT id, title, overview, link FROM Articles WHERE NOW() >= published AND language = :language ORDER BY id DESC LIMIT :page, 5");
+            $query = parent::$pdo->prepare("SELECT id, title, overview, link FROM " . parent::getPrefix() . "Articles WHERE NOW() >= published AND language = :language ORDER BY id DESC LIMIT :page, 5");
             $query->bindValue(":language", \Static\Languages\Translate::getLanguage(), PDO::PARAM_STR);
             $query->bindValue(":page", $page * 5 - 5, PDO::PARAM_INT);
             $query->execute();
@@ -31,11 +31,11 @@
         }
 
         public static function count() {
-            $query = parent::$pdo->prepare("SELECT COUNT(id) AS count FROM Articles WHERE NOW() >= published AND language = :language");
+            $query = parent::$pdo->prepare("SELECT COUNT(id) AS count FROM " . parent::getPrefix() . "Articles WHERE NOW() >= published AND language = :language");
             $query->bindValue(":language", \Static\Languages\Translate::getLanguage(), PDO::PARAM_STR);
             $query->execute();
 
-            return $query->fetch()["count"] ?? 0;
+            return max($query->fetch()["count"] ?? 0, 1);
         }
 
         public static function getArticle($link) {
@@ -43,7 +43,7 @@
 
             if(empty($link)) return array();
 
-            $query = parent::$pdo->prepare("SELECT id, published, title, overview, content, networks FROM Articles WHERE link = :link AND language = :language");
+            $query = parent::$pdo->prepare("SELECT id, published, title, overview, content, networks FROM " . parent::getPrefix() . "Articles WHERE link = :link AND language = :language");
             $query->bindValue(":link", $link, PDO::PARAM_STR);
             $query->bindValue(":language", \Static\Languages\Translate::getLanguage(), PDO::PARAM_STR);
             $query->execute();
@@ -54,7 +54,7 @@
         public static function getRandomArticles($link) {
             $link = htmlspecialchars($link);
 
-            $query = parent::$pdo->prepare("SELECT id, title, overview, link FROM Articles WHERE NOW() >= published AND link != :link AND language = :language ORDER BY RAND() LIMIT 3");
+            $query = parent::$pdo->prepare("SELECT id, title, overview, link FROM " . parent::getPrefix() . "Articles WHERE NOW() >= published AND link != :link AND language = :language ORDER BY RAND() LIMIT 3");
             $query->bindValue(":link", $link, PDO::PARAM_STR);
             $query->bindValue(":language", \Static\Languages\Translate::getLanguage(), PDO::PARAM_STR);
             $query->execute();
@@ -77,7 +77,7 @@
             $users = \Static\Models\Users::getUsers();
             $languages = array();
 
-            $query = parent::$pdo->query("SELECT title, overview, link, language FROM Articles WHERE DATE(NOW()) = DATE(published)");
+            $query = parent::$pdo->query("SELECT title, overview, link, language FROM " . parent::getPrefix() . "Articles WHERE DATE(NOW()) = DATE(published)");
 
             while($article = $query->fetch()) {
                 foreach($users as $user) {

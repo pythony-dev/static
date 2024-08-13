@@ -24,7 +24,7 @@
             else if(self::isPassword($password) != "success") return "password";
             else if($agree != "true" || $sessionID <= 0 || $userID != 0 || !in_array($language, \Static\Languages\Translate::getAllLanguages())) return "error";
 
-            $query = parent::$pdo->prepare("INSERT INTO Users (created, deleted, sessionID, email, username, language, notifications, others, password) VALUES (NOW(), NULL, :sessionID, :email, :username, :language, :notifications, :others, :password)");
+            $query = parent::$pdo->prepare("INSERT INTO " . parent::getPrefix() . "Users (created, deleted, sessionID, email, username, language, notifications, others, password) VALUES (NOW(), NULL, :sessionID, :email, :username, :language, :notifications, :others, :password)");
             $query->bindValue(":sessionID", $sessionID, PDO::PARAM_INT);
             $query->bindValue(":email", $email, PDO::PARAM_STR);
             $query->bindValue(":username", $username, PDO::PARAM_STR);
@@ -65,7 +65,7 @@
 
             $password = \Static\Kernel::getHash("Password", $password);
 
-            $query = parent::$pdo->prepare("SELECT id, language, others, password FROM Users WHERE email = :email AND deleted IS NULL");
+            $query = parent::$pdo->prepare("SELECT id, language, others, password FROM " . parent::getPrefix() . "Users WHERE email = :email AND deleted IS NULL");
             $query->bindValue(":email", $email, PDO::PARAM_STR);
             $query->execute();
 
@@ -104,13 +104,13 @@
             else if(self::isPassword($password) != "success") return "password";
             else if($userID != 0) return "error";
 
-            $query = parent::$pdo->prepare("SELECT id, password FROM Users WHERE email = :email AND deleted IS NULL");
+            $query = parent::$pdo->prepare("SELECT id, password FROM " . parent::getPrefix() . "Users WHERE email = :email AND deleted IS NULL");
             $query->bindValue(":email", $email, PDO::PARAM_STR);
             $query->execute();
 
             if(!($results = $query->fetch())) return "error";
 
-            $query = parent::$pdo->prepare("UPDATE Users SET password = :password WHERE email = :email AND deleted IS NULL");
+            $query = parent::$pdo->prepare("UPDATE " . parent::getPrefix() . "Users SET password = :password WHERE email = :email AND deleted IS NULL");
             $query->bindValue(":password", \Static\Kernel::getHash("Password", $password), PDO::PARAM_STR);
             $query->bindValue(":email", $email, PDO::PARAM_STR);
 
@@ -130,7 +130,7 @@
 
             if(empty($search) || $userID <= 0) return "error";
 
-            $query = parent::$pdo->prepare("SELECT id, username FROM Users WHERE id != :userID AND deleted IS NULL AND username LIKE :username ORDER BY ID DESC LIMIT 10");
+            $query = parent::$pdo->prepare("SELECT id, username FROM " . parent::getPrefix() . "Users WHERE id != :userID AND deleted IS NULL AND username LIKE :username ORDER BY ID DESC LIMIT 10");
             $query->bindValue(":userID", $userID, PDO::PARAM_INT);
             $query->bindValue(":username", $search . "%", PDO::PARAM_STR);
             $query->execute();
@@ -159,7 +159,7 @@
 
             if($userID <= 0) return array();
 
-            $query = parent::$pdo->prepare("SELECT id, email, username, language, notifications, others FROM Users WHERE id = :userID AND deleted IS NULL");
+            $query = parent::$pdo->prepare("SELECT id, email, username, language, notifications, others FROM " . parent::getPrefix() . "Users WHERE id = :userID AND deleted IS NULL");
             $query->bindValue(":userID", $userID, PDO::PARAM_INT);
             $query->execute();
 
@@ -171,7 +171,7 @@
         }
 
         public static function getUsers() {
-            $query = parent::$pdo->query("SELECT email, language, notifications FROM Users WHERE deleted IS NULL");
+            $query = parent::$pdo->query("SELECT email, language, notifications FROM " . parent::getPrefix() . "Users WHERE deleted IS NULL");
 
             $results = array();
 
@@ -200,7 +200,7 @@
 
             $confirm = \Static\Kernel::getHash("Password", $confirm);
 
-            $query = parent::$pdo->prepare("SELECT email, username FROM Users WHERE id = :userID AND password = :confirm AND deleted IS NULL");
+            $query = parent::$pdo->prepare("SELECT email, username FROM " . parent::getPrefix() . "Users WHERE id = :userID AND password = :confirm AND deleted IS NULL");
             $query->bindValue(":userID", $userID, PDO::PARAM_INT);
             $query->bindValue(":confirm", $confirm, PDO::PARAM_STR);
             $query->execute();
@@ -209,7 +209,7 @@
 
             if(in_array($language, \Static\Languages\Translate::getAllLanguages())) $_SESSION["language"] = $language;
 
-            $query = parent::$pdo->prepare("UPDATE Users SET email = :email, username = :username, language = :language WHERE id = :userID");
+            $query = parent::$pdo->prepare("UPDATE " . parent::getPrefix() . "Users SET email = :email, username = :username, language = :language WHERE id = :userID");
             $query->bindValue(":email", $email, PDO::PARAM_STR);
             $query->bindValue(":username", $username, PDO::PARAM_STR);
             $query->bindValue(":language", $language, PDO::PARAM_STR);
@@ -230,14 +230,14 @@
 
             $confirm = \Static\Kernel::getHash("Password", $confirm);
 
-            $query = parent::$pdo->prepare("SELECT id FROM Users WHERE id = :userID AND password = :confirm AND deleted IS NULL");
+            $query = parent::$pdo->prepare("SELECT id FROM " . parent::getPrefix() . "Users WHERE id = :userID AND password = :confirm AND deleted IS NULL");
             $query->bindValue(":userID", $userID, PDO::PARAM_INT);
             $query->bindValue(":confirm", $confirm, PDO::PARAM_STR);
             $query->execute();
 
             if(!$query->fetch()) return "confirm";
 
-            $query = parent::$pdo->prepare("UPDATE Users SET notifications = :notifications WHERE id = :userID");
+            $query = parent::$pdo->prepare("UPDATE " . parent::getPrefix() . "Users SET notifications = :notifications WHERE id = :userID");
             $query->bindValue(":notifications", $notifications, PDO::PARAM_STR);
             $query->bindValue(":userID", $userID, PDO::PARAM_INT);
 
@@ -262,14 +262,14 @@
 
             $confirm = \Static\Kernel::getHash("Password", $confirm);
 
-            $query = parent::$pdo->prepare("SELECT id FROM Users WHERE id = :userID AND password = :confirm AND deleted IS NULL");
+            $query = parent::$pdo->prepare("SELECT id FROM " . parent::getPrefix() . "Users WHERE id = :userID AND password = :confirm AND deleted IS NULL");
             $query->bindValue(":userID", $userID, PDO::PARAM_INT);
             $query->bindValue(":confirm", $confirm, PDO::PARAM_STR);
             $query->execute();
 
             if(!$query->fetch()) return "confirm";
 
-            $query = parent::$pdo->prepare("UPDATE Users SET others = :others WHERE id = :userID");
+            $query = parent::$pdo->prepare("UPDATE " . parent::getPrefix() . "Users SET others = :others WHERE id = :userID");
             $query->bindValue(":others", $others, PDO::PARAM_STR);
             $query->bindValue(":userID", $userID, PDO::PARAM_INT);
 
@@ -298,14 +298,14 @@
             $password = \Static\Kernel::getHash("Password", $password);
             $confirm = \Static\Kernel::getHash("Password", $confirm);
 
-            $query = parent::$pdo->prepare("SELECT password FROM Users WHERE id = :userID AND password = :confirm AND deleted IS NULL");
+            $query = parent::$pdo->prepare("SELECT password FROM " . parent::getPrefix() . "Users WHERE id = :userID AND password = :confirm AND deleted IS NULL");
             $query->bindValue(":userID", $userID, PDO::PARAM_INT);
             $query->bindValue(":confirm", $confirm, PDO::PARAM_STR);
             $query->execute();
 
             if(!($results = $query->fetch())) return "confirm";
 
-            $query = parent::$pdo->prepare("UPDATE Users SET password = :password WHERE id = :userID");
+            $query = parent::$pdo->prepare("UPDATE " . parent::getPrefix() . "Users SET password = :password WHERE id = :userID");
             $query->bindValue(":password", $password, PDO::PARAM_STR);
             $query->bindValue(":userID", $userID, PDO::PARAM_INT);
 
@@ -324,7 +324,7 @@
 
             $confirm = \Static\Kernel::getHash("Password", $confirm);
 
-            $query = parent::$pdo->prepare("SELECT email FROM Users WHERE id = :userID AND password = :confirm AND deleted IS NULL");
+            $query = parent::$pdo->prepare("SELECT email FROM " . parent::getPrefix() . "Users WHERE id = :userID AND password = :confirm AND deleted IS NULL");
             $query->bindValue(":userID", $userID, PDO::PARAM_INT);
             $query->bindValue(":confirm", $confirm, PDO::PARAM_STR);
             $query->execute();
@@ -332,7 +332,7 @@
             if(!($email = \Static\Kernel::getValue($query->fetch(), "email"))) return "confirm";
             else if(!\Static\Models\Messages::deleteUser() || !\Static\Models\Blocks::deleteUser()) return "error";
 
-            $query = parent::$pdo->prepare("UPDATE Users SET deleted = NOW() WHERE id = :userID");
+            $query = parent::$pdo->prepare("UPDATE " . parent::getPrefix() . "Users SET deleted = NOW() WHERE id = :userID");
             $query->bindValue(":userID", $userID, PDO::PARAM_INT);
 
             if($query->execute() && (int)$query->rowCount() == 1) {
@@ -350,7 +350,7 @@
         }
 
         public static function resume() {
-            $query = parent::$pdo->query("SELECT email, language FROM Users WHERE deleted IS NULL AND DATEDIFF(NOW(), created) IN (1, 3, 7, 15, 31)");
+            $query = parent::$pdo->query("SELECT email, language FROM " . parent::getPrefix() . "Users WHERE deleted IS NULL AND DATEDIFF(NOW(), created) IN (1, 3, 7, 15, 31)");
 
             while($user = $query->fetch()) {
                 \Static\Languages\Translate::setLanguage(\Static\Kernel::getValue($user, "language"));
@@ -372,7 +372,7 @@
 
             if(empty($hash)) return 0;
 
-            $query = parent::$pdo->query("SELECT id FROM Users WHERE deleted IS NULL ORDER BY ID DESC");
+            $query = parent::$pdo->query("SELECT id FROM " . parent::getPrefix() . "Users WHERE deleted IS NULL ORDER BY ID DESC");
 
             while($response = $query->fetch()) {
                 if(\Static\Kernel::getHash("User", $response["id"]) == $hash) return $response["id"];
@@ -389,7 +389,7 @@
             if(empty($email) || !preg_match("#^[0-9A-Za-z-_.]{3,64}@[0-9A-Za-z-_.]{3,64}$#", $email)) return "invalid";
             else if($userID < 0) return "error";
 
-            $query = parent::$pdo->prepare("SELECT id FROM Users WHERE email = :email AND id != :userID AND deleted IS NULL");
+            $query = parent::$pdo->prepare("SELECT id FROM " . parent::getPrefix() . "Users WHERE email = :email AND id != :userID AND deleted IS NULL");
             $query->bindValue(":email", $email, PDO::PARAM_STR);
             $query->bindValue(":userID", $userID, PDO::PARAM_INT);
             $query->execute();
@@ -405,7 +405,7 @@
             if(empty($username) || !preg_match("#^[0-9A-Za-z]{3,16}$#", $username)) return "invalid";
             else if($userID < 0) return "error";
 
-            $query = parent::$pdo->prepare("SELECT id FROM Users WHERE username = :username AND id != :userID AND deleted IS NULL");
+            $query = parent::$pdo->prepare("SELECT id FROM " . parent::getPrefix() . "Users WHERE username = :username AND id != :userID AND deleted IS NULL");
             $query->bindValue(":username", $username, PDO::PARAM_STR);
             $query->bindValue(":userID", $userID, PDO::PARAM_INT);
             $query->execute();

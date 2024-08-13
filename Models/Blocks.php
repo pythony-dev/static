@@ -14,14 +14,14 @@
 
             if($blockedID <= 0 || $sessionID <= 0 || $userID <= 0 || $blockedID == $userID) return "error";
 
-            $query = parent::$pdo->prepare("SELECT COUNT(id) AS count FROM Blocks WHERE deleted IS NULL AND blockerID = :blockerID AND blockedID = :blockedID");
+            $query = parent::$pdo->prepare("SELECT COUNT(id) AS count FROM " . parent::getPrefix() . "Blocks WHERE deleted IS NULL AND blockerID = :blockerID AND blockedID = :blockedID");
             $query->bindValue(":blockerID", $userID, PDO::PARAM_INT);
             $query->bindValue(":blockedID", $blockedID, PDO::PARAM_INT);
             $query->execute();
 
             if($query->fetch()["count"] >= 1) return "success";
 
-            $query = parent::$pdo->prepare("INSERT INTO Blocks (created, deleted, sessionID, blockerID, blockedID) VALUES (NOW(), NULL, :sessionID, :blockerID, :blockedID)");
+            $query = parent::$pdo->prepare("INSERT INTO " . parent::getPrefix() . "Blocks (created, deleted, sessionID, blockerID, blockedID) VALUES (NOW(), NULL, :sessionID, :blockerID, :blockedID)");
             $query->bindValue(":sessionID", $sessionID, PDO::PARAM_INT);
             $query->bindValue(":blockerID", $userID, PDO::PARAM_INT);
             $query->bindValue(":blockedID", $blockedID, PDO::PARAM_INT);
@@ -36,7 +36,7 @@
 
             if($blockedID <= 0 || $userID <= 0) return "error";
 
-            $query = parent::$pdo->prepare("UPDATE Blocks SET deleted = NOW() WHERE deleted IS NULL AND blockerID = :blockerID AND blockedID = :blockedID");
+            $query = parent::$pdo->prepare("UPDATE " . parent::getPrefix() . "Blocks SET deleted = NOW() WHERE deleted IS NULL AND blockerID = :blockerID AND blockedID = :blockedID");
             $query->bindValue(":blockerID", $userID, PDO::PARAM_INT);
             $query->bindValue(":blockedID", $blockedID, PDO::PARAM_INT);
 
@@ -50,7 +50,7 @@
 
             if($userID <= 0) return false;
 
-            $query = parent::$pdo->prepare("UPDATE Blocks SET deleted = NOW() WHERE deleted IS NULL AND (blockerID = :userID OR blockedID = :userID)");
+            $query = parent::$pdo->prepare("UPDATE " . parent::getPrefix() . "Blocks SET deleted = NOW() WHERE deleted IS NULL AND (blockerID = :userID OR blockedID = :userID)");
             $query->bindValue(":userID", $userID, PDO::PARAM_INT);
 
             return $query->execute();
@@ -65,8 +65,8 @@
                 SELECT
                     Users.id AS userID,
                     Users.username username
-                FROM Blocks
-                INNER JOIN Users
+                FROM " . parent::getPrefix() . "Blocks AS Blocks
+                INNER JOIN " . parent::getPrefix() . "Users AS Users
                 ON Users.id = Blocks.blockedID
                 WHERE
                     Blocks.deleted IS NULL
