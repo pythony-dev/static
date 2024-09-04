@@ -107,7 +107,7 @@
                         $view = "Views/" . self::$route . ".php";
                         $controller = "\Static\Controllers\\" . self::$route;
 
-                        if(!file_exists($view)) return self::setError(404, \Static\Languages\Translate::getText("error-view") . $view, false);
+                        if(!file_exists($view) && self::$route != "Tests") return self::setError(404, \Static\Languages\Translate::getText("error-view") . $view, false);
                         else if(!class_exists($controller)) return self::setError(404, \Static\Languages\Translate::getText("error-controller") . $controller, false);
 
                         $parameters = $controller::start(\Static\Controllers\Main::start(array_merge($parameters, array(
@@ -120,7 +120,9 @@
                         ))));
 
                         ob_start();
-                        require($view);
+
+                        if(self::$route != "Tests") require($view);
+
                         $body = ob_get_contents();
                         ob_end_clean();
 

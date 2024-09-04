@@ -5,7 +5,7 @@
         <?php foreach($parameters["links"] as $name => $link) { ?>
             <li>
                 <?php if(!is_array($link)) { ?>
-                    <a class="text-decoration-none" href="<?= $parameters["getPath"]($link); ?>"> <?= $name; ?> </a>
+                    <a<?= $link != "/welcome" ? null : " id=\"siteMap-welcome\""; ?> class="text-decoration-none" href="<?= $parameters["getPath"]($link); ?>"> <?= $name; ?> </a>
                 <?php } else { ?>
                     <ul class="ps-5 list-unstyled">
                         <?php foreach($link as $subname => $sublink) { ?>

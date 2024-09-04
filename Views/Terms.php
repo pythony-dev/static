@@ -5,6 +5,6 @@
         <p class="p-5 text-justify"> <?= $parameters["getText"]("terms-" . strtolower($terms) . "-content", true); ?> </p>
     <?php } ?>
     <div class="p-5">
-        <a class="w-100 btn rounded-pill button-classic" href="<?= $parameters["getPath"]("/"); ?>"> <?= $parameters["getText"]("terms-button"); ?> </a>
+        <a id="terms-home" class="w-100 btn rounded-pill button-classic" href="<?= $parameters["getPath"]("/"); ?>"> <?= $parameters["getText"]("terms-button"); ?> </a>
     </div>
 </article>

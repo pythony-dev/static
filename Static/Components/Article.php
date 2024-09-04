@@ -29,7 +29,7 @@
                     <p class="px-5 <?= !empty($button) && !empty($link) ? "py-4" : "pb-5 pt-4"; ?> text-justify"> <?= $content; ?> </p>
                     <?php if(!empty($button) && !empty($link)) { ?>
                         <div class="px-5 pb-5 pt-4">
-                            <a class="w-100 btn rounded-pill button-outline" href="<?= $link; ?>"> <?= $button; ?> </a>
+                            <a class="w-100 btn rounded-pill button-outline article-link" href="<?= $link; ?>"> <?= $button; ?> </a>
                         </div>
                     <?php } ?>
                 </div>

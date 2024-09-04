@@ -30,6 +30,12 @@
                 ));
             }
 
+            if($_SESSION["tests"] || \Static\Kernel::getRoute() == "Tests") {
+                \Static\Kernel::addScript("/Public/Scripts/Tests.js");
+
+                $parameters["alerts"] = array_merge($parameters["alerts"], array("index-alert-tests-success", "index-alert-tests-error"));
+            }
+
             return $parameters;
         }
 

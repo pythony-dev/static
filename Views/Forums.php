@@ -7,7 +7,7 @@
                 <?php if($id != 0) { ?>
                     <div class="line"> </div>
                 <?php } ?>
-                <a class="text-decoration-none text-<?= \Static\Kernel::isLight() ? "dark" : "light"; ?>" href="<?= $parameters["getPath"]("/thread/" . $thread["hash"]); ?>">
+                <a class="text-decoration-none text-<?= \Static\Kernel::isLight() ? "dark" : "light"; ?> thread-link" href="<?= $parameters["getPath"]("/thread/" . $thread["hash"]); ?>">
                     <div class="row mx-0">
                         <div class="col-9 col-md-5 my-auto px-0 p<?= $id == 0 ? "b" : ($id == array_key_last($parameters["threads"]) ? "t" : "y"); ?>-5">
                             <div class="d-flex">
@@ -39,7 +39,7 @@
     <?= Static\Components\Pagination::create($parameters["page"], $parameters["limit"], $parameters["getPath"]("/forums")); ?>
     <div class="p-5">
         <?php if($parameters["userID"] <= 0) { ?>
-            <button class="w-100 btn rounded-pill button-classic" type="button" data-bs-toggle="modal" data-bs-target="#signUp-modal"> <?= $parameters["getText"]("forums-signUp"); ?> </button>
+            <button id="forums-signUp" class="w-100 btn rounded-pill button-classic" type="button" data-bs-toggle="modal" data-bs-target="#signUp-modal"> <?= $parameters["getText"]("forums-signUp"); ?> </button>
         <?php } else { ?>
             <button class="w-100 btn rounded-pill button-classic" data-bs-toggle="modal" data-bs-target="#create-modal"> <?= $parameters["getText"]("forums-create"); ?> </button>
         <?php } ?>

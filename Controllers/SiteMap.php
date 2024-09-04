@@ -31,8 +31,8 @@
                 $parameters["getText"]("title-contact") => "/contact",
                 $parameters["getText"]("title-terms") => "/terms",
                 $parameters["getText"]("title-privacy") => "/privacy",
-                $parameters["getText"]("title-welcome") => "/welcome",
                 $parameters["getText"]("title-siteMap") => "/site-map",
+                $parameters["getText"]("title-welcome") => "/welcome",
             );
             else {
                 $chats = array();
@@ -62,8 +62,8 @@
                     ),
                     $parameters["getText"]("title-terms") => "/terms",
                     $parameters["getText"]("title-privacy") => "/privacy",
-                    $parameters["getText"]("title-welcome") => "/welcome",
                     $parameters["getText"]("title-siteMap") => "/site-map",
+                    $parameters["getText"]("title-welcome") => "/welcome",
                 );
             }
 

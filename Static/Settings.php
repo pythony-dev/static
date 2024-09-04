@@ -6,14 +6,15 @@
 
         private static $settings = array(
             "name" => "Static",
-            "version" => "2.1.2",
-            "static" => "2.1.2",
+            "version" => "2.2.0",
+            "static" => "2.2.0",
 
             "link" => "https://www.pythony.dev/Static",
             "email" => "hello@pythony.dev",
             "debug" => false,
 
             "salt" => "0123456789ABCDEF",
+            "tests" => "FEDCBA9876543210",
 
             "host" => "Static",
             "database" => "Static",

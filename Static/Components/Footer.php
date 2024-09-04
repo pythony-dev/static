@@ -19,7 +19,7 @@
                     <div class="row mx-0">
                         <div class="col-6 col-md-4 offset-3 offset-md-0 my-auto p-5">
                             <div class="bg-light shadow border rounded-circle">
-                                <a href="<?= \Static\Kernel::getPath("/"); ?>">
+                                <a id="footer-icon" href="<?= \Static\Kernel::getPath("/"); ?>">
                                     <img class="img-fluid" src="<?= \Static\Kernel::getPath("/Public/Images/Index/Icon.png"); ?>" alt="<?= \Static\Settings::getSettings("name"); ?>"/>
                                 </a>
                             </div>
@@ -28,10 +28,9 @@
                             <p class="mb-0"> <?= \Static\Languages\Translate::getText("footer-copyright", false, $copyright); ?> </p>
                             <p> <?= \Static\Languages\Translate::getText("footer-developed", true); ?> </p>
                             <div class="d-flex flex-column flex-md-row justify-content-between align-items-center">
-                                <a class="text-decoration-none link-light" href="<?= \Static\Kernel::getPath("/contact"); ?>"> <?= \Static\Languages\Translate::getText("footer-contact"); ?> </a>
-                                <a class="text-decoration-none link-light" href="<?= \Static\Kernel::getPath("/terms"); ?>"> <?= \Static\Languages\Translate::getText("footer-terms"); ?> </a>
-                                <a class="text-decoration-none link-light" href="<?= \Static\Kernel::getPath("/privacy"); ?>"> <?= \Static\Languages\Translate::getText("footer-privacy"); ?> </a>
-                                <a class="text-decoration-none link-light" href="<?= \Static\Kernel::getPath("/site-map"); ?>"> <?= \Static\Languages\Translate::getText("footer-sitemap"); ?> </a>
+                                <a id="footer-terms" class="text-decoration-none link-light" href="<?= \Static\Kernel::getPath("/terms"); ?>"> <?= \Static\Languages\Translate::getText("footer-terms"); ?> </a>
+                                <a id="footer-privacy" class="text-decoration-none link-light" href="<?= \Static\Kernel::getPath("/privacy"); ?>"> <?= \Static\Languages\Translate::getText("footer-privacy"); ?> </a>
+                                <a id="footer-siteMap" class="text-decoration-none link-light" href="<?= \Static\Kernel::getPath("/site-map"); ?>"> <?= \Static\Languages\Translate::getText("footer-siteMap"); ?> </a>
                             </div>
                             <div class="d-flex justify-content-between pt-4">
                                 <?php foreach(\Static\Kernel::getNetworks() as $network) { ?>

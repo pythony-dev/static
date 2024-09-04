@@ -1,7 +1,7 @@
 
 <!DOCTYPE HTML>
 
-<html lang="<?= substr(\Static\Languages\Translate::getLanguage(), 0, 2); ?>" data-bs-theme="<?= \Static\Kernel::isLight() ? "light" : "dark"; ?>" link="<?= $parameters["getSettings"]("link"); ?>">
+<html lang="<?= substr(\Static\Languages\Translate::getLanguage(), 0, 2); ?>" data-bs-theme="<?= \Static\Kernel::isLight() ? "light" : "dark"; ?>" link="<?= $parameters["getSettings"]("link"); ?>"<?= !is_array($parameters["tests"]) ? null : " tests=\"" . str_replace("\"", "'", json_encode($parameters["tests"])) . "\""; ?>>
     <head>
         <meta charset="utf-8"/>
         <meta name="viewport" content="width=device-width, initial-scale=1"/>
@@ -42,7 +42,7 @@
                                         <?php } ?>
                                     </div>
                                     <div class="d-flex justify-content-center align-items-center col-12 col-md-2 px-0 pt-4 pt-md-0">
-                                        <button class="btn-close alert-close" alert="<?= str_replace("-alert", "", $alert); ?>"> </button>
+                                        <button id="alert-<?= str_replace("-alert", "", $alert); ?>-close" class="btn-close alert-close" alert="<?= str_replace("-alert", "", $alert); ?>"> </button>
                                     </div>
                                 </div>
                             </div>

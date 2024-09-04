@@ -47,7 +47,7 @@
     <?= Static\Components\Pagination::create($parameters["page"], $parameters["limit"], $parameters["getPath"]("/thread/" . $parameters["link"])); ?>
     <div class="p-5">
         <?php if($parameters["userID"] <= 0) { ?>
-            <button class="w-100 btn rounded-pill button-classic" type="button" data-bs-toggle="modal" data-bs-target="#signUp-modal"> <?= $parameters["getText"]("thread-signUp"); ?> </button>
+            <button id="thread-signUp" class="w-100 btn rounded-pill button-classic" type="button" data-bs-toggle="modal" data-bs-target="#signUp-modal"> <?= $parameters["getText"]("thread-signUp"); ?> </button>
         <?php } else { ?>
             <button class="w-100 btn rounded-pill button-classic" data-bs-toggle="modal" data-bs-target="#create-modal"> <?= $parameters["getText"]("thread-create"); ?> </button>
         <?php } ?>

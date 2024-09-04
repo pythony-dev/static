@@ -48,7 +48,7 @@
                             AND
                             Users.deleted IS NULL
                     ) >= 1
-                ORDER BY updated DESC
+                ORDER BY updated DESC, id DESC
                 LIMIT :page, 10
             ");
             $query->bindValue(":languages", \Static\Languages\Translate::getUserLanguage(), PDO::PARAM_STR);
