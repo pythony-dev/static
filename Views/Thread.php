@@ -22,7 +22,7 @@
                         </div>
                         <?php if($post["chat"]) { ?>
                             <a class="my-auto me-md-4 mt-4 mt-md-auto" href="<?= $post["chat"]; ?>">
-                                <input class="btn rounded-circle image-48 ratio-1 button-outline" type="image" src="<?= $parameters["getPath"]("/Public/Images/Icons/" . (\Static\Kernel::isLight() ? "Light" : "Dark") . "/Chat.png"); ?>" alt="<?= $parameters["getText"]("thread-chat"); ?>"/>
+                                <input class="btn rounded-circle image-48 ratio-1 button-outline post-chat" type="image" src="<?= $parameters["getPath"]("/Public/Images/Icons/" . (\Static\Kernel::isLight() ? "Light" : "Dark") . "/Chat.png"); ?>" alt="<?= $parameters["getText"]("thread-chat"); ?>"/>
                             </a>
                         <?php } ?>
                     <?php } else if($id != 0 || $parameters["page"] != 1) { ?>
@@ -49,7 +49,7 @@
         <?php if($parameters["userID"] <= 0) { ?>
             <button id="thread-signUp" class="w-100 btn rounded-pill button-classic" type="button" data-bs-toggle="modal" data-bs-target="#signUp-modal"> <?= $parameters["getText"]("thread-signUp"); ?> </button>
         <?php } else { ?>
-            <button class="w-100 btn rounded-pill button-classic" data-bs-toggle="modal" data-bs-target="#create-modal"> <?= $parameters["getText"]("thread-create"); ?> </button>
+            <button id="thread-create" class="w-100 btn rounded-pill button-classic" data-bs-toggle="modal" data-bs-target="#create-modal"> <?= $parameters["getText"]("thread-create"); ?> </button>
         <?php } ?>
     </div>
 </article>

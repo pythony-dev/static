@@ -2,7 +2,7 @@
     <h1 class="p-5 fw-bold"> <?= $parameters["getText"]("messages-title"); ?> </h1>
     <p class="p-5 text-justify"> <?= $parameters["getText"]("messages-content"); ?> </p>
     <div class="p-5">
-        <button class="w-100 btn rounded-pill button-classic" data-bs-toggle="modal" data-bs-target="#search-modal"> <?= $parameters["getText"]("messages-search"); ?> </button>
+        <button id="messages-search" class="w-100 btn rounded-pill button-classic" data-bs-toggle="modal" data-bs-target="#search-modal"> <?= $parameters["getText"]("messages-search"); ?> </button>
     </div>
     <div id="messages-list" class="p-5">
         <div class="d-none">

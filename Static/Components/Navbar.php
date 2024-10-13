@@ -60,14 +60,14 @@
                             </li>
                             <li class="w-200 my-auto pt-3 pb-4 py-lg-0">
                                 <div class="position-relative d-flex flex-column flex-lg-row">
-                                    <button class="w-50 btn button-top button-outline" type="button" data-bs-toggle="modal" data-bs-target="#signUp-modal"> <?= \Static\Languages\Translate::getText("title-signUp"); ?> </button>
-                                    <button class="w-50 btn button-bottom button-outline" type="button" data-bs-toggle="modal" data-bs-target="#logIn-modal"> <?= \Static\Languages\Translate::getText("title-logIn"); ?> </button>
+                                    <button id="navbar-signUp" class="w-50 btn button-top button-outline" type="button" data-bs-toggle="modal" data-bs-target="#signUp-modal"> <?= \Static\Languages\Translate::getText("title-signUp"); ?> </button>
+                                    <button id="navbar-logIn" class="w-50 btn button-bottom button-outline" type="button" data-bs-toggle="modal" data-bs-target="#logIn-modal"> <?= \Static\Languages\Translate::getText("title-logIn"); ?> </button>
                                 </div>
                             </li>
                         <?php } else { ?>
                             <li class="w-200 my-auto pt-3 pb-4 py-lg-0">
                                 <div class="position-relative d-flex flex-column flex-lg-row">
-                                    <a class="w-50 btn button-top button-outline" href="<?= \Static\Kernel::getPath("/messages"); ?>"> <?= \Static\Languages\Translate::getText("title-messages"); ?> </a>
+                                    <a id="navbar-messages" class="w-50 btn button-top button-outline" href="<?= \Static\Kernel::getPath("/messages"); ?>"> <?= \Static\Languages\Translate::getText("title-messages"); ?> </a>
                                     <div class="w-50">
                                         <button class="w-100 btn button-bottom dropdown-toggle button-outline" data-bs-toggle="dropdown"> <?= \Static\Languages\Translate::getText("title-settings"); ?> </button>
                                         <ul class="w-100 dropdown-menu text-center">

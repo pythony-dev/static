@@ -34,6 +34,26 @@ $(document).ready(() => {
             localStorage.setItem("tests", tests)
 
             $(test[1]).click()
+        } else if(test.length == 2 && test[0] == "continue" && $(test[1]).length == 1) {
+            localStorage.setItem("tests", tests)
+
+            $(test[1]).click()
+
+            start()
+        } else if(test.length == 2 && test[0] == "check" && $(test[1]).length == 1) {
+            $(test[1]).attr("checked", "true")
+
+            localStorage.setItem("tests", tests)
+
+            start()
+        } else if(test.length == 2 && test[0] == "wait" && $(test[1]).length == 1) {
+            $(test[1]).addClass("is-invalid").blur(event => {
+                $(test[1]).removeClass("is-invalid").off("blur")
+
+                localStorage.setItem("tests", tests)
+
+                start()
+            })
         } else if(test.length == 3 && test[0] == "value" && $(test[1]).length == 1 && test[2] != "") {
             localStorage.setItem("tests", tests)
 

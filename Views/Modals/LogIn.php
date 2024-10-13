@@ -6,9 +6,9 @@
             <form id="logIn-form" class="p-4">
                 <input id="logIn-email" class="form-control text-center rounded-pill" type="email" placeholder="<?= $parameters["getText"]("logIn-email"); ?>" required/>
                 <input id="logIn-password" class="mt-4 form-control text-center rounded-pill" type="password" placeholder="<?= $parameters["getText"]("logIn-password"); ?>" required/>
-                <input class="w-100 mt-4 btn rounded-pill button-classic" type="submit" value="<?= $parameters["getText"]("logIn-submit"); ?>"/>
-                <button class="w-100 my-4 btn rounded-pill button-outline" type="button" data-bs-toggle="modal" data-bs-target="#reset-modal"> <?= $parameters["getText"]("logIn-reset"); ?> </button>
-                <button class="w-100 mt-4 btn rounded-pill button-outline" type="button" data-bs-dismiss="modal"> <?= $parameters["getText"]("logIn-cancel"); ?> </button>
+                <input id="logIn-submit" class="w-100 mt-4 btn rounded-pill button-classic" type="submit" value="<?= $parameters["getText"]("logIn-submit"); ?>"/>
+                <button id="logIn-reset" class="w-100 my-4 btn rounded-pill button-outline" type="button" data-bs-toggle="modal" data-bs-target="#reset-modal"> <?= $parameters["getText"]("logIn-reset"); ?> </button>
+                <button id="logIn-cancel" class="w-100 mt-4 btn rounded-pill button-outline" type="button" data-bs-dismiss="modal"> <?= $parameters["getText"]("logIn-cancel"); ?> </button>
             </form>
         </div>
     </div>

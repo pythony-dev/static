@@ -41,7 +41,7 @@
         <?php if($parameters["userID"] <= 0) { ?>
             <button id="forums-signUp" class="w-100 btn rounded-pill button-classic" type="button" data-bs-toggle="modal" data-bs-target="#signUp-modal"> <?= $parameters["getText"]("forums-signUp"); ?> </button>
         <?php } else { ?>
-            <button class="w-100 btn rounded-pill button-classic" data-bs-toggle="modal" data-bs-target="#create-modal"> <?= $parameters["getText"]("forums-create"); ?> </button>
+            <button id="forums-create" class="w-100 btn rounded-pill button-classic" data-bs-toggle="modal" data-bs-target="#create-modal"> <?= $parameters["getText"]("forums-create"); ?> </button>
         <?php } ?>
     </div>
 </article>

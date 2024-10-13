@@ -2,7 +2,7 @@
     <h1 id="chat-title" class="p-5 fw-bold"> <?= $parameters["title"]; ?> </h1>
     <p class="p-5 text-justify"> <?= $parameters["getText"]("chat-content"); ?> </p>
     <div class="p-5">
-        <button class="w-100 btn rounded-pill button-classic" data-bs-toggle="modal" data-bs-target="#create-modal"> <?= $parameters["getText"]("chat-create"); ?> </button>
+        <button id="chat-create" class="w-100 btn rounded-pill button-classic" data-bs-toggle="modal" data-bs-target="#create-modal"> <?= $parameters["getText"]("chat-create"); ?> </button>
     </div>
     <div id="chat-list" class="p-5">
         <div class="d-none">

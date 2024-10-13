@@ -38,7 +38,7 @@
                                     <div class="col-12 col-md-10 px-0">
                                         <p class="mb-0"> <?= $parameters["getText"]($alert); ?> </p>
                                         <?php if(str_contains($parameters["getText"]($alert), "?")) { ?>
-                                            <button class="w-50 mt-4 btn rounded-pill button-outline alert-yes"> <?= $parameters["getText"]("index-alert-yes"); ?> </button>
+                                            <button id="alert-<?= str_replace("-alert", "", $alert); ?>-yes" class="w-50 mt-4 btn rounded-pill button-outline alert-yes"> <?= $parameters["getText"]("index-alert-yes"); ?> </button>
                                         <?php } ?>
                                     </div>
                                     <div class="d-flex justify-content-center align-items-center col-12 col-md-2 px-0 pt-4 pt-md-0">

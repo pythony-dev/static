@@ -17,7 +17,7 @@
                     </div>
                     <label class="ps-3 text-justify" for="signUp-agree"> <?= $parameters["getText"]("signUp-agree", true); ?> </label>
                 </div>
-                <input class="w-100 my-4 btn rounded-pill button-classic" type="submit" value="<?= $parameters["getText"]("signUp-submit"); ?>"/>
+                <input id="signUp-submit" class="w-100 my-4 btn rounded-pill button-classic" type="submit" value="<?= $parameters["getText"]("signUp-submit"); ?>"/>
                 <button id="signUp-cancel" class="w-100 mt-4 btn rounded-pill button-outline" type="button" data-bs-dismiss="modal"> <?= $parameters["getText"]("signUp-cancel"); ?> </button>
             </form>
         </div>

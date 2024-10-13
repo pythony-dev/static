@@ -17,8 +17,8 @@
                 <input id="create-value" class="d-none"/>
                 <img id="create-image" class="d-none mt-4 img-fluid shadow border rounded image-256 ratio-1 pointer" alt="#"/>
                 <div id="create-spinner" class="d-none mt-4 spinner-border"> </div>
-                <input class="w-100 my-4 btn rounded-pill button-classic" type="submit" value="<?= $parameters["getText"]("create-submit"); ?>"/>
-                <button class="w-100 mt-4 btn rounded-pill button-outline" type="button" data-bs-dismiss="modal"> <?= $parameters["getText"]("create-cancel"); ?> </button>
+                <input id="create-submit" class="w-100 my-4 btn rounded-pill button-classic" type="submit" value="<?= $parameters["getText"]("create-submit"); ?>"/>
+                <button id="create-cancel" class="w-100 mt-4 btn rounded-pill button-outline" type="button" data-bs-dismiss="modal"> <?= $parameters["getText"]("create-cancel"); ?> </button>
             </form>
         </div>
     </div>

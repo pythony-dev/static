@@ -10,8 +10,8 @@
                 </div>
                 <input id="reset-code" class="d-none mt-4 form-control text-center rounded-pill" type="text" placeholder="<?= $parameters["getText"]("reset-code"); ?>"/>
                 <input id="reset-password" class="mt-4 form-control text-center rounded-pill" type="password" placeholder="<?= $parameters["getText"]("reset-password"); ?>" required/>
-                <input class="w-100 my-4 btn rounded-pill button-classic" type="submit" value="<?= $parameters["getText"]("reset-submit"); ?>"/>
-                <button class="w-100 mt-4 btn rounded-pill button-outline" type="button" data-bs-dismiss="modal"> <?= $parameters["getText"]("reset-cancel"); ?> </button>
+                <input id="reset-submit" class="w-100 my-4 btn rounded-pill button-classic" type="submit" value="<?= $parameters["getText"]("reset-submit"); ?>"/>
+                <button id="reset-cancel" class="w-100 mt-4 btn rounded-pill button-outline" type="button" data-bs-dismiss="modal"> <?= $parameters["getText"]("reset-cancel"); ?> </button>
             </form>
         </div>
     </div>

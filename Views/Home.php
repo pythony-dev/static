@@ -6,7 +6,7 @@
         <?php if($parameters["userID"] <= 0) { ?>
             <button id="home-top" class="w-100 btn rounded-pill button-classic" type="button" data-bs-toggle="modal" data-bs-target="#signUp-modal"> <?= $parameters["getText"]("home-button"); ?> </button>
         <?php } else { ?>
-            <a class="w-100 btn rounded-pill button-classic" href="<?= $parameters["getPath"]("/settings"); ?>"> <?= $parameters["getText"]("home-button"); ?> </a>
+            <a id="home-top" class="w-100 btn rounded-pill button-classic" href="<?= $parameters["getPath"]("/settings"); ?>"> <?= $parameters["getText"]("home-button"); ?> </a>
         <?php } ?>
     </div>
     <?php foreach($parameters["themes"] as $id => $theme) {
@@ -24,7 +24,7 @@
         <?php if($parameters["userID"] <= 0) { ?>
             <button id="home-bottom" class="w-100 btn rounded-pill button-classic" type="button" data-bs-toggle="modal" data-bs-target="#signUp-modal"> <?= $parameters["getText"]("home-button"); ?> </button>
         <?php } else { ?>
-            <a class="w-100 btn rounded-pill button-classic" href="<?= $parameters["getPath"]("/settings"); ?>"> <?= $parameters["getText"]("home-button"); ?> </a>
+            <a id="home-bottom" class="w-100 btn rounded-pill button-classic" href="<?= $parameters["getPath"]("/settings"); ?>"> <?= $parameters["getText"]("home-button"); ?> </a>
         <?php } ?>
     </div>
 </article>

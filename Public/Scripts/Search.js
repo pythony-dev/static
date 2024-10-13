@@ -37,7 +37,7 @@ $(document).ready(() => {
                                     </div>\
                                     " + (user["chat"] ? "\
                                         <a class=\"my-auto me-md-4 mt-4 mt-md-auto\" href=\"" + user["chat"] + "\">\
-                                            <input class=\"btn rounded-circle image-48 ratio-1 button-outline\" type=\"image\" src=\"" + $("html").attr("link") + "/Public/Images/Icons/" + ($("html").attr("data-bs-theme") != "dark" ? "Light" : "Dark") + "/Chat.png\" alt=\"" + $("#search-chat").val() + "\"/>\
+                                            <input class=\"btn rounded-circle image-48 ratio-1 button-outline user-chat\" type=\"image\" src=\"" + $("html").attr("link") + "/Public/Images/Icons/" + ($("html").attr("data-bs-theme") != "dark" ? "Light" : "Dark") + "/Chat.png\" alt=\"" + $("#search-chat").val() + "\"/>\
                                         </a>\
                                     " : "") + "\
                                 </div>\

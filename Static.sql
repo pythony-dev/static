@@ -263,8 +263,8 @@ CREATE TABLE `Static__Posts` (
 --
 
 INSERT INTO `Static__Posts` (`id`, `created`, `deleted`, `sessionID`, `userID`, `threadID`, `message`, `image`) VALUES
-(1, '2024-04-12 12:00:00', NULL, 1, 1, 1, 'Welcome !', 'ee0f3838b49255130935e4f405d3f1864031de27'),
-(2, '2024-04-12 12:00:00', NULL, 1, 1, 2, 'Bienvenue !', 'da3653c8bfdb3d51977d8e5d75a53e7bda3f0de0'),
+(1, '2024-04-12 12:00:00', NULL, 1, 1, 1, 'Hello, I am Pythony !', 'ee0f3838b49255130935e4f405d3f1864031de27'),
+(2, '2024-04-12 12:00:00', NULL, 1, 1, 2, 'Bonjour, je suis Pythony !', 'da3653c8bfdb3d51977d8e5d75a53e7bda3f0de0'),
 (3, '2024-04-12 12:00:00', NULL, 1, 2, 1, 'Hello, I am Julie !', NULL),
 (4, '2024-04-12 12:00:00', NULL, 1, 2, 2, 'Bonjour, je suis Julie !', NULL),
 (5, '2024-04-12 12:00:00', NULL, 1, 3, 1, 'Hello, I am Marc !', NULL),

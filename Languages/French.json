@@ -39,7 +39,7 @@
     "footer-contact" : "Contact",
     "footer-terms" : "Termes et Conditions",
     "footer-privacy" : "Politique de Confidentialité",
-    "footer-sitemap" : "Plan du Site",
+    "footer-siteMap" : "Plan du Site",
 
     "index-alert-yes" : "Oui",
     "index-alert-token" : "Impossible de se Connecter à @name Actuellement !",
@@ -208,7 +208,7 @@
     "reset-email" : "Adresse Email (steve@exemple.com)",
     "reset-confirm" : "Confirmer",
     "reset-code" : "Code de Confirmation (1A2B3C4D)",
-    "reset-password" : "Mot de Passe (St@ve123#)",
+    "reset-password" : "Nouveau Mot de Passe (St@ve123#)",
     "reset-submit" : "Réinitialiser",
     "reset-cancel" : "Annuler",
     "reset-alert-submit-confirm" : "Merci de Confirmer votre Adresse Email !",
