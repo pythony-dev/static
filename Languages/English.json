@@ -30,8 +30,9 @@
     "title-settings-logOut" : "Log Out",
     "title-terms" : "Terms and Conditions",
     "title-privacy" : "Privacy Policy",
-    "title-welcome" : "Welcome",
     "title-siteMap" : "Site Map",
+    "title-welcome" : "Welcome",
+    "title-tests" : "Tests",
     "title-error" : "Error",
 
     "footer-copyright" : "Copyright © @year @project - All Rights Reserved - Version @version",
@@ -46,6 +47,8 @@
     "index-alert-language" : "Unable to Change Language for Now !",
     "index-alert-theme" : "Unable to Change Theme for Now !",
     "index-alert-logOut" : "Unable to Log Out for Now !",
+    "index-alert-tests-success" : "Tests Succeeded",
+    "index-alert-tests-error" : "Tests Failed !",
 
     "upload-alert-extension" : "Please use a Image with the Extension .jpg, .jpeg or .png !",
     "upload-alert-type" : "Please use a JPG, JPEG or PNG Image Type !",

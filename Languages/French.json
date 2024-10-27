@@ -30,8 +30,9 @@
     "title-settings-logOut" : "Déconnexion",
     "title-terms" : "Termes et Conditions",
     "title-privacy" : "Politique de Confidentialité",
-    "title-welcome" : "Bienvenue",
     "title-siteMap" : "Plan du Site",
+    "title-welcome" : "Bienvenue",
+    "title-tests" : "Tests",
     "title-error" : "Erreur",
 
     "footer-copyright" : "Copyright © @year @project - Tous Droits Réservés - Version @version",
@@ -46,6 +47,8 @@
     "index-alert-language" : "Impossible de Changer de Langue Actuellement !",
     "index-alert-theme" : "Impossible de Changer de Thème Actuellement !",
     "index-alert-logOut" : "Impossible de se Déconnecter Actuellement !",
+    "index-alert-tests-success" : "Les Tests ont Réussis",
+    "index-alert-tests-error" : "Les Tests ont Échoués !",
 
     "upload-alert-extension" : "Veuillez utiliser une Image avec l'Extension .jpg, .jpeg ou .png !",
     "upload-alert-type" : "Veuillez utiliser une Image de Type JPG, JPEG ou PNG !",

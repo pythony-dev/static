@@ -239,7 +239,15 @@ CREATE TABLE `Static__Messages` (
 --
 
 INSERT INTO `Static__Messages` (`id`, `created`, `deleted`, `sessionID`, `senderID`, `receiverID`, `message`, `image`) VALUES
-(1, '2024-04-12 12:00:00', NULL, 1, 1, 2, 'Hi Julie, it\'s Anthony !', 'bcc69d6a8f2dc7b02a951a4154136d29f745f51a');
+(1, '2024-04-12 12:00:00', NULL, 1, 1, 2, 'Hi Julie, it\'s Pythony !', 'bcc69d6a8f2dc7b02a951a4154136d29f745f51a'),
+(2, '2024-04-12 12:00:00', NULL, 1, 1, 3, 'Hi Marc, it\'s Pythony !', 'bcc69d6a8f2dc7b02a951a4154136d29f745f51a'),
+(3, '2024-04-12 12:00:00', NULL, 1, 1, 4, 'Hi Mathilde, it\'s Pythony !', 'bcc69d6a8f2dc7b02a951a4154136d29f745f51a'),
+(4, '2024-04-12 12:00:00', NULL, 1, 1, 5, 'Hi Robert, it\'s Pythony !', 'bcc69d6a8f2dc7b02a951a4154136d29f745f51a'),
+(5, '2024-04-12 12:00:00', NULL, 1, 1, 6, 'Hi Johanna, it\'s Pythony !', 'bcc69d6a8f2dc7b02a951a4154136d29f745f51a'),
+(6, '2024-04-12 12:00:00', NULL, 1, 1, 7, 'Hi Pascal, it\'s Pythony !', 'bcc69d6a8f2dc7b02a951a4154136d29f745f51a'),
+(7, '2024-04-12 12:00:00', NULL, 1, 1, 8, 'Hi Vanessa, it\'s Pythony !', 'bcc69d6a8f2dc7b02a951a4154136d29f745f51a'),
+(8, '2024-04-12 12:00:00', NULL, 1, 1, 9, 'Hi Albert, it\'s Pythony !', 'bcc69d6a8f2dc7b02a951a4154136d29f745f51a'),
+(9, '2024-04-12 12:00:00', NULL, 1, 1, 10, 'Hi Valentine, it\'s Pythony !', 'bcc69d6a8f2dc7b02a951a4154136d29f745f51a');
 
 -- --------------------------------------------------------
 

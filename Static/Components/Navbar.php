@@ -72,13 +72,13 @@
                                         <button class="w-100 btn button-bottom dropdown-toggle button-outline" data-bs-toggle="dropdown"> <?= \Static\Languages\Translate::getText("title-settings"); ?> </button>
                                         <ul class="w-100 dropdown-menu text-center">
                                             <li>
-                                                <a class="dropdown-item" href="<?= \Static\Kernel::getPath("/settings"); ?>"> <?= \Static\Languages\Translate::getText("title-settings-account"); ?> </a>
+                                                <a id="navbar-settings-account" class="dropdown-item" href="<?= \Static\Kernel::getPath("/settings"); ?>"> <?= \Static\Languages\Translate::getText("title-settings-account"); ?> </a>
                                             </li>
                                             <li>
-                                                <a class="dropdown-item" href="<?= \Static\Kernel::getPath("/settings?notifications"); ?>"> <?= \Static\Languages\Translate::getText("title-settings-notifications"); ?> </a>
+                                                <a id="navbar-settings-notifications" class="dropdown-item" href="<?= \Static\Kernel::getPath("/settings?notifications"); ?>"> <?= \Static\Languages\Translate::getText("title-settings-notifications"); ?> </a>
                                             </li>
                                             <li>
-                                                <a class="dropdown-item" href="<?= \Static\Kernel::getPath("/settings?others"); ?>"> <?= \Static\Languages\Translate::getText("title-settings-others"); ?> </a>
+                                                <a id="navbar-settings-others" class="dropdown-item" href="<?= \Static\Kernel::getPath("/settings?others"); ?>"> <?= \Static\Languages\Translate::getText("title-settings-others"); ?> </a>
                                             </li>
                                             <li>
                                                 <div class="dropdown-divider"> </div>

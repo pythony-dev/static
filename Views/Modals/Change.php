@@ -6,8 +6,8 @@
             <form id="change-form" class="p-4">
                 <input id="change-password" class="form-control text-center rounded-pill" type="password" placeholder="<?= $parameters["getText"]("change-password"); ?>" required/>
                 <input id="change-confirm" class="mt-4 form-control text-center rounded-pill" type="password" placeholder="<?= $parameters["getText"]("change-confirm"); ?>" required/>
-                <input class="w-100 my-4 btn rounded-pill button-classic" type="submit" value="<?= $parameters["getText"]("change-submit"); ?>"/>
-                <button class="w-100 mt-4 btn rounded-pill button-outline" type="button" data-bs-dismiss="modal"> <?= $parameters["getText"]("change-cancel"); ?> </button>
+                <input id="change-submit" class="w-100 my-4 btn rounded-pill button-classic" type="submit" value="<?= $parameters["getText"]("change-submit"); ?>"/>
+                <button id="change-cancel" class="w-100 mt-4 btn rounded-pill button-outline" type="button" data-bs-dismiss="modal"> <?= $parameters["getText"]("change-cancel"); ?> </button>
             </form>
         </div>
     </div>

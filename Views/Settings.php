@@ -3,13 +3,13 @@
     <p class="p-5 text-justify"> <?= $parameters["getText"]("settings-content"); ?> </p>
     <ul class="flex-column flex-md-row m-5 nav nav-tabs nav-fill">
         <li class="nav-item">
-            <button class="nav-link<?= $parameters["tabs"]["account"] ? " active" : null; ?> color" data-bs-toggle="tab" data-bs-target="#settings-account-form"> <?= $parameters["getText"]("settings-account"); ?> </button>
+            <button id="settings-account-tab" class="nav-link<?= $parameters["tabs"]["account"] ? " active" : null; ?> color" data-bs-toggle="tab" data-bs-target="#settings-account-form"> <?= $parameters["getText"]("settings-account"); ?> </button>
         </li>
         <li class="nav-item">
-            <button class="nav-link<?= $parameters["tabs"]["notifications"] ? " active" : null; ?> color" data-bs-toggle="tab" data-bs-target="#settings-notifications-form"> <?= $parameters["getText"]("settings-notifications"); ?> </button>
+            <button id="settings-notifications-tab" class="nav-link<?= $parameters["tabs"]["notifications"] ? " active" : null; ?> color" data-bs-toggle="tab" data-bs-target="#settings-notifications-form"> <?= $parameters["getText"]("settings-notifications"); ?> </button>
         </li>
         <li class="nav-item">
-            <button class="nav-link<?= $parameters["tabs"]["others"] ? " active" : null; ?> color" data-bs-toggle="tab" data-bs-target="#settings-others-form"> <?= $parameters["getText"]("settings-others"); ?> </button>
+            <button id="settings-others-tab" class="nav-link<?= $parameters["tabs"]["others"] ? " active" : null; ?> color" data-bs-toggle="tab" data-bs-target="#settings-others-form"> <?= $parameters["getText"]("settings-others"); ?> </button>
         </li>
         <li class="nav-item">
             <button id="settings-logOut" class="nav-link color"> <?= $parameters["getText"]("settings-logOut"); ?> </button>
@@ -33,12 +33,12 @@
                         <?php } ?>
                     </select>
                     <input id="settings-account-confirm" class="my-5 form-control text-center rounded-pill" type="password" placeholder="<?= $parameters["getText"]("settings-account-confirm"); ?>" required/>
-                    <input class="w-100 btn rounded-pill button-classic" type="submit" value="<?= $parameters["getText"]("settings-account-submit"); ?>"/>
+                    <input id="settings-account-submit" class="w-100 btn rounded-pill button-classic" type="submit" value="<?= $parameters["getText"]("settings-account-submit"); ?>"/>
                 </div>
             </div>
-            <button class="w-100 mt-5 btn rounded-pill button-outline" type="button" data-bs-toggle="modal" data-bs-target="#blocks-modal"> <?= $parameters["getText"]("settings-account-blocks"); ?> </button>
-            <button class="w-100 mt-5 btn rounded-pill button-outline" type="button" data-bs-toggle="modal" data-bs-target="#change-modal"> <?= $parameters["getText"]("settings-account-change"); ?> </button>
-            <button class="w-100 mt-5 btn rounded-pill button-outline" type="button" data-bs-toggle="modal" data-bs-target="#delete-modal"> <?= $parameters["getText"]("settings-account-delete"); ?> </button>
+            <button id="settings-account-blocks" class="w-100 mt-5 btn rounded-pill button-outline" type="button" data-bs-toggle="modal" data-bs-target="#blocks-modal"> <?= $parameters["getText"]("settings-account-blocks"); ?> </button>
+            <button id="settings-account-change" class="w-100 mt-5 btn rounded-pill button-outline" type="button" data-bs-toggle="modal" data-bs-target="#change-modal"> <?= $parameters["getText"]("settings-account-change"); ?> </button>
+            <button id="settings-account-delete" class="w-100 mt-5 btn rounded-pill button-outline" type="button" data-bs-toggle="modal" data-bs-target="#delete-modal"> <?= $parameters["getText"]("settings-account-delete"); ?> </button>
         </form>
         <form id="settings-notifications-form" class="tab-pane fade<?= $parameters["tabs"]["notifications"] ? " show active" : null; ?>">
             <?php foreach($parameters["notifications"] as $id => $notification) { ?>
@@ -50,7 +50,7 @@
                 </div>
             <?php } ?>
             <input id="settings-notifications-confirm" class="my-5 form-control text-center rounded-pill" type="password" placeholder="<?= $parameters["getText"]("settings-notifications-confirm"); ?>" required/>
-            <input class="w-100 btn rounded-pill button-classic" type="submit" value="<?= $parameters["getText"]("settings-notifications-submit"); ?>"/>
+            <input id="settings-notifications-submit" class="w-100 btn rounded-pill button-classic" type="submit" value="<?= $parameters["getText"]("settings-notifications-submit"); ?>"/>
         </form>
         <form id="settings-others-form" class="tab-pane fade<?= $parameters["tabs"]["others"] ? " show active" : null; ?>">
             <select id="settings-others-theme" class="form-select rounded-pill">
@@ -81,7 +81,7 @@
                 <label class="ps-4 text-justify" for="settings-others-contact"> <?= $parameters["getText"]("settings-others-contact"); ?> </label>
             </div>
             <input id="settings-others-confirm" class="my-5 form-control text-center rounded-pill" type="password" placeholder="<?= $parameters["getText"]("settings-others-confirm"); ?>" required/>
-            <input class="w-100 btn rounded-pill button-classic" type="submit" value="<?= $parameters["getText"]("settings-others-submit"); ?>"/>
+            <input id="settings-others-submit" class="w-100 btn rounded-pill button-classic" type="submit" value="<?= $parameters["getText"]("settings-others-submit"); ?>"/>
         </form>
     </div>
 </article>

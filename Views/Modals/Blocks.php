@@ -15,7 +15,7 @@
                             <div class="my-auto">
                                 <input class="btn rounded-circle image-48 ratio-1 button-outline block-unblock" type="image" src="<?= $parameters["getPath"]("/Public/Images/Icons/" . (\Static\Kernel::isLight() ? "Light" : "Dark") . "/Unblock.png"); ?>" alt="<?= $parameters["getText"]("blocks-unblock"); ?>" user="<?= \Static\Kernel::getHash("User", $block["userID"]); ?>"/>
                             </div>
-                            <a class="my-auto me-md-3 mt-3 mt-md-auto" href="<?= $parameters["getPath"]("/chat/" . \Static\Kernel::getHash("User", $block["userID"])); ?>">
+                            <a class="my-auto me-md-3 mt-3 mt-md-auto block-chat" href="<?= $parameters["getPath"]("/chat/" . \Static\Kernel::getHash("User", $block["userID"])); ?>">
                                 <input class="btn rounded-circle image-48 ratio-1 button-outline" type="image" src="<?= $parameters["getPath"]("/Public/Images/Icons/" . (\Static\Kernel::isLight() ? "Light" : "Dark") . "/Chat.png"); ?>" alt="<?= $parameters["getText"]("blocks-chat"); ?>"/>
                             </a>
                         </div>
@@ -25,7 +25,7 @@
                 <p class="p-4 mb-0"> <?= $parameters["getText"]("blocks-empty"); ?> </p>
             <?php } ?>
             <div class="p-4">
-                <button class="w-100 btn rounded-pill button-outline" type="button" data-bs-dismiss="modal"> <?= $parameters["getText"]("blocks-cancel"); ?> </button>
+                <button id="blocks-cancel" class="w-100 btn rounded-pill button-outline" type="button" data-bs-dismiss="modal"> <?= $parameters["getText"]("blocks-cancel"); ?> </button>
             </div>
         </div>
     </div>
