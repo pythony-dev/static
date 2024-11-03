@@ -26,6 +26,10 @@ $(document).ready(() => {
 
                 location.replace($("html").attr("link") + "/tests")
             })
+        } else if(test.length == 1 && test[0] == "sleep") {
+            localStorage.setItem("tests", tests)
+            
+            setTimeout(start, 250)
         } else if(test.length == 2 && test[0] == "follow" && $(test[1]).length == 1 && $(test[1]).attr("href") != undefined) {
             localStorage.setItem("tests", tests)
 

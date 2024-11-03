@@ -61,7 +61,7 @@
 
             $userID = (int)\Static\Kernel::getValue($_SESSION, "userID");
 
-            if(empty($email) || empty($password) || $userID != 0) return "error";
+            if(empty($email) || self::isPassword($password) != "success" || $userID != 0) return "error";
 
             $password = \Static\Kernel::getHash("Password", $password);
 
@@ -104,7 +104,7 @@
             else if(self::isPassword($password) != "success") return "password";
             else if($userID != 0) return "error";
 
-            $query = parent::$pdo->prepare("SELECT id, password FROM " . parent::getPrefix() . "Users WHERE email = :email AND deleted IS NULL");
+            $query = parent::$pdo->prepare("SELECT id, language, others, password FROM " . parent::getPrefix() . "Users WHERE email = :email AND deleted IS NULL");
             $query->bindValue(":email", $email, PDO::PARAM_STR);
             $query->execute();
 
@@ -120,7 +120,22 @@
                 "settings" => \Static\Kernel::getPath("/settings?" . \Static\Emails::getParameters()),
             ));
 
-            return \Static\Models\Confirmations::delete($email) && $query->execute() && \Static\Models\Updates::create("reset", $results["password"], $results["id"]) && \Static\Emails::send($email, $title, $content) ? "success" : "error";
+            if(!\Static\Models\Confirmations::delete($email) || !$query->execute() || !\Static\Models\Updates::create("reset", $results["password"], $results["id"]) || !\Static\Emails::send($email, $title, $content)) return "error";
+
+            $_SESSION["userID"] = (int)$results["id"];
+
+            $language = $results["language"];
+
+            if(in_array($language, \Static\Languages\Translate::getAllLanguages())) $_SESSION["language"] = $language;
+
+            $color = \Static\Kernel::getValue(json_decode(htmlspecialchars_decode(htmlspecialchars_decode($results["others"])), true), "theme");
+
+            if(in_array($color, array_keys(\Static\Kernel::getThemes()))) $_SESSION["theme"] = array(
+                "color" => $color,
+                "mode" => \Static\Kernel::getValue($_SESSION, array("theme", "mode")),
+            );
+
+            return \Static\Models\Logs::create((int)$results["id"], "reset") ? "success" : "error";
         }
 
         public static function search($search) {
@@ -130,7 +145,7 @@
 
             if(empty($search) || $userID <= 0) return "error";
 
-            $query = parent::$pdo->prepare("SELECT id, username FROM " . parent::getPrefix() . "Users WHERE id != :userID AND deleted IS NULL AND username LIKE :username ORDER BY ID DESC LIMIT 10");
+            $query = parent::$pdo->prepare("SELECT id, username FROM " . parent::getPrefix() . "Users WHERE id != :userID AND deleted IS NULL AND username LIKE :username LIMIT 10");
             $query->bindValue(":userID", $userID, PDO::PARAM_INT);
             $query->bindValue(":username", $search . "%", PDO::PARAM_STR);
             $query->execute();

@@ -48,6 +48,7 @@
             else if(!array_key_exists("request", $_POST) || $hash) {
                 self::addRoute("manifest", "/manifest");
                 self::addRoute("email", "/email/(link)");
+                self::addRoute("tests", "/tests");
                 self::addRoute("error", "/error/(error)");
 
                 $start = strlen(\Static\Settings::getSettings("link")) + 1;

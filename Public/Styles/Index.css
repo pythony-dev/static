@@ -1,9 +1,11 @@
 * {
     font-family : "Chillax Light";
-} .h1, .h2, .h3, .nav-link, .button-classic, .button-outline {
+} .h1, .h2, .h3, .nav-link, .page-link, .button-classic, .button-outline {
     font-family : "Chillax Medium";
 } h1, h2, h3 {
     font-family : "Chillax Bold";
+} .h1, h1, .h2, h2, .h3, h3, p {
+    margin-bottom : 0px;
 } .container {
     background-attachment : fixed;
     background-size : cover;
@@ -30,15 +32,23 @@
     border-radius : 20px 0px 0px 20px;
 } .rounded-right {
     border-radius : 0px 20px 20px 0px;
+} .dropdown-divider {
+    margin : 8px;
 } .section {
     margin-top : calc(10vh + 19px);
 } .networks {
     height : 5vh;
 } .text-justify {
     text-align : justify;
+} .button-classic, .button-outline {
+    text-transform : uppercase;
 } .line {
     height : 3px;
     border-radius: 3px;
+} .page-item:first-child .page-link {
+    border-radius : 20px 0px 0px 20px;
+} .page-item:last-child .page-link {
+    border-radius : 0px 20px 20px 0px;
 } .image-48 {
     width : 48px;
 } .image-64 {

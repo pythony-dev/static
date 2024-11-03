@@ -83,6 +83,7 @@
                 array("modal", "#alert-signUp-submit-success", "#signUp-submit", "#alert-signUp-submit-success-close"),
                 array("click", "#navbar-logOut"),
                 array("continue", "#logIn-cancel"),
+                array("sleep"),
                 array("modal", "#logIn-modal", "#navbar-logIn", "#logIn-cancel"),
                 array("value", "#logIn-email", $id . "@" . end(explode("@", \Static\Settings::getSettings("email")))),
                 array("value", "#logIn-password", "123"),
@@ -117,6 +118,7 @@
                 array("follow", "#navbar-messages"),
                 array("modal", "#search-modal", "#messages-search", "#search-cancel"),
                 array("value", "#search-username", "Pythony"),
+                array("sleep"),
                 array("modal", "#alert-search-block-ask", ".user-block:first", "#alert-search-block-ask-close"),
                 array("modal", "#alert-search-block-ask", ".user-block:first", "#alert-search-block-ask-yes"),
                 array("click", ".user-chat:first"),
@@ -171,6 +173,7 @@
                 array("value", "#delete-confirm", "123"),
                 array("modal", "#alert-delete-ask", "#delete-submit", "#alert-delete-ask-close"),
                 array("modal", "#alert-delete-ask", "#delete-submit", "#alert-delete-ask-yes"),
+                array("sleep"),
                 array("click", "#alert-delete-success-close"),
             );
 

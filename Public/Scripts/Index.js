@@ -7,12 +7,12 @@ $(document).ready(() => {
                 "action" : "theme",
                 "mode" : window.matchMedia("(prefers-color-scheme : dark)").matches ? "dark" : "light",
             }).then(response => {
-                if(response["status"] == "success" && !("serviceWorker" in navigator && !navigator.serviceWorker.controller)) location.reload()
+                if(response["status"] == "success" && !("serviceWorker" in navigator && !navigator.serviceWorker.controller) && !$("html").attr("tests")) location.reload()
             })
         }, false)
     }
 
-    if("serviceWorker" in navigator && !navigator.serviceWorker.controller) navigator.serviceWorker.register($("html").attr("link") + "/Worker.js").then(() => navigator.serviceWorker.ready.then(() => location.reload()))
+    if("serviceWorker" in navigator && !navigator.serviceWorker.controller && !$("html").attr("tests")) navigator.serviceWorker.register($("html").attr("link") + "/Worker.js").then(() => navigator.serviceWorker.ready.then(() => location.reload()))
 
     $(".language").click(event => {
         getToken(token => {

@@ -18,7 +18,6 @@
     Static\Kernel::addRoute("privacy", "/privacy");
     Static\Kernel::addRoute("siteMap", "/site-map");
     Static\Kernel::addRoute("welcome", "/welcome");
-    Static\Kernel::addRoute("tests", "/tests");
 
     Static\Kernel::addRequest("threads");
     Static\Kernel::addRequest("posts");

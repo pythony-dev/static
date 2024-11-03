@@ -21,25 +21,25 @@
                 <div id="navbar-collapse" class="navbar-collapse collapse">
                     <ul class="navbar-nav w-100">
                         <li class="w-100 my-auto nav-item">
-                            <a id="navbar-home" class="nav-link<?= \Static\Kernel::getRoute() != "Home" ? null : " active"; ?>" href="<?= \Static\Kernel::getPath("/"); ?>"> <?= \Static\Languages\Translate::getText("title-home"); ?> </a>
+                            <a id="navbar-home" class="nav-link text-uppercase<?= \Static\Kernel::getRoute() != "Home" ? null : " active"; ?>" href="<?= \Static\Kernel::getPath("/"); ?>"> <?= \Static\Languages\Translate::getText("title-home"); ?> </a>
                         </li>
                         <?php if($userID <= 0) { ?>
                             <li class="w-100 my-auto nav-item">
-                                <a id="navbar-features" class="nav-link<?= \Static\Kernel::getRoute() != "Features" ? null : " active"; ?>" href="<?= \Static\Kernel::getPath("/features"); ?>"> <?= \Static\Languages\Translate::getText("title-features"); ?> </a>
+                                <a id="navbar-features" class="nav-link text-uppercase<?= \Static\Kernel::getRoute() != "Features" ? null : " active"; ?>" href="<?= \Static\Kernel::getPath("/features"); ?>"> <?= \Static\Languages\Translate::getText("title-features"); ?> </a>
                             </li>
                         <?php } ?>
                         <li class="w-100 my-auto nav-item">
-                            <a id="navbar-news" class="nav-link<?= !in_array(\Static\Kernel::getRoute(), array("News", "Article")) ? null : " active"; ?>" href="<?= \Static\Kernel::getPath("/news"); ?>"> <?= \Static\Languages\Translate::getText("title-news"); ?> </a>
+                            <a id="navbar-news" class="nav-link text-uppercase<?= !in_array(\Static\Kernel::getRoute(), array("News", "Article")) ? null : " active"; ?>" href="<?= \Static\Kernel::getPath("/news"); ?>"> <?= \Static\Languages\Translate::getText("title-news"); ?> </a>
                         </li>
                         <li class="w-100 my-auto nav-item">
-                            <a id="navbar-forums" class="nav-link<?= !in_array(\Static\Kernel::getRoute(), array("Forums", "Thread")) ? null : " active"; ?>" href="<?= \Static\Kernel::getPath("/forums"); ?>"> <?= \Static\Languages\Translate::getText("title-forums"); ?> </a>
+                            <a id="navbar-forums" class="nav-link text-uppercase<?= !in_array(\Static\Kernel::getRoute(), array("Forums", "Thread")) ? null : " active"; ?>" href="<?= \Static\Kernel::getPath("/forums"); ?>"> <?= \Static\Languages\Translate::getText("title-forums"); ?> </a>
                         </li>
                         <li class="w-100 my-auto nav-item">
-                            <a id="navbar-contact" class="nav-link<?= \Static\Kernel::getRoute() != "Contact" ? null : " active"; ?>" href="<?= \Static\Kernel::getPath("/contact"); ?>"> <?= \Static\Languages\Translate::getText("title-contact"); ?> </a>
+                            <a id="navbar-contact" class="nav-link text-uppercase<?= \Static\Kernel::getRoute() != "Contact" ? null : " active"; ?>" href="<?= \Static\Kernel::getPath("/contact"); ?>"> <?= \Static\Languages\Translate::getText("title-contact"); ?> </a>
                         </li>
                         <?php if($userID <= 0) { ?>
                             <li class="w-100 my-auto nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown"> <?= \Static\Languages\Translate::getText("title-language"); ?> </a>
+                                <a class="nav-link text-uppercase dropdown-toggle" data-bs-toggle="dropdown"> <?= \Static\Languages\Translate::getText("title-language"); ?> </a>
                                 <ul class="w-100 dropdown-menu text-center">
                                     <?php foreach(\Static\Languages\Translate::getAllLanguages() as $language) { ?>
                                         <li>
@@ -49,7 +49,7 @@
                                 </ul>
                             </li>
                             <li class="w-100 my-auto nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown"> <?= \Static\Languages\Translate::getText("title-theme"); ?> </a>
+                                <a class="nav-link text-uppercase dropdown-toggle" data-bs-toggle="dropdown"> <?= \Static\Languages\Translate::getText("title-theme"); ?> </a>
                                 <ul class="w-100 dropdown-menu text-center">
                                     <?php foreach(\Static\Kernel::getThemes() as $theme => $colors) { ?>
                                         <li>

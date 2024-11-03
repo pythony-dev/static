@@ -14,12 +14,17 @@
 
             $_SERVER["REDIRECT_URL"] = substr(\Static\Settings::getSettings("link"), (array_key_exists("HTTPS", $_SERVER) ? 8 : 7) + strlen(\Static\Kernel::getValue($_SERVER, "HTTP_HOST"))) . "/email/" . $hash;
 
+            $theme = $_SESSION["theme"];
+            $_SESSION["theme"] = null;
+
             ob_start();
 
             \Static\Kernel::start($hash);
 
             $content = ob_get_contents();
             ob_end_clean();
+
+            $_SESSION["theme"] = $theme;
 
             if(!\Static\Settings::getSettings("debug")) return mail($email, \Static\Settings::getSettings("name") . " - " . $title, $content, $headers);
             else return true;
