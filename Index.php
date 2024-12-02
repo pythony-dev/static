@@ -29,7 +29,6 @@
     Static\Kernel::addRequest("blocks");
     Static\Kernel::addRequest("welcome");
     Static\Kernel::addRequest("images");
-    Static\Kernel::addRequest("tasks");
 
     Static\Kernel::start();
 

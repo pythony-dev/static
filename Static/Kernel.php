@@ -142,8 +142,8 @@
                 header("Content-Type: application/json");
 
                 self::addRequest("tokens", false);
-                self::addRequest("siteMap");
                 self::addRequest("settings");
+                self::addRequest("tasks", false);
 
                 $search = self::getValue($_POST, "request");
 
